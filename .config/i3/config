@@ -191,6 +191,7 @@ exec_always --no-startup-id feh --bg-scale /home/enigma/Pictures/stars_galaxies-
 exec --no-startup-id compton -f
 exec --no-startup-id xinput disable "SynPS/2 Synaptics TouchPad"
 exec --no-startup-id nm-applet
+exec --no-startup-id alsactl restore
 
 for_window [class="^Chromium$" title=" - Chromium$"] border none
 for_window [class="Pavucontrol"] floating enable
