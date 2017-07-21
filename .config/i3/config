@@ -188,6 +188,7 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # wallpaper
 exec_always --no-startup-id feh --bg-scale /home/enigma/Pictures/stars_galaxies-wallpaper-2560x1440.jpg
+exec_always --no-startup-id ~/.config/i3/scripts/bing_wallpaper.sh
 exec --no-startup-id compton -f
 exec --no-startup-id xinput disable "SynPS/2 Synaptics TouchPad"
 exec --no-startup-id nm-applet
