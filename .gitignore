@@ -1,0 +1,13 @@
+/*
+
+!.gitignore
+!.config/
+!.bashrc
+!.gitconfig
+!hwfix.sh
+!.atom/
+.atom/*
+!.atom/.apmrc
+!.atom/config.cson
+!.atom/package_list
+
