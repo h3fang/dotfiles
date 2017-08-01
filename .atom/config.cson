@@ -1,0 +1,49 @@
+"*":
+  core:
+    openEmptyEditorOnStart: false
+    projectHome: "/home/enigma/projects"
+    telemetryConsent: "no"
+    themes: [
+      "one-light-ui"
+      "one-light-syntax"
+    ]
+  editor:
+    fontFamily: "Hack"
+    fontSize: 15
+    softWrap: true
+    tabLength: 4
+  "exception-reporting":
+    userId: "7c1b65c4-65e4-4f0d-8d77-430dfe483d4f"
+  "highlight-selected":
+    highlightBackground: true
+    lightTheme: true
+  latex:
+    engine: "xelatex"
+  latexer: {}
+  "linter-ui-default":
+    panelHeight: 142
+  "one-light-ui":
+    fontSize: 14
+  welcome:
+    showOnStartup: false
+".beamer.latex.tex.text":
+  editor:
+    tabLength: 4
+".bibtex.text":
+  editor:
+    tabLength: 4
+".knitr.latex.tex.text":
+  editor:
+    tabLength: 4
+".latex.memoir.tex.text":
+  editor:
+    tabLength: 4
+".latex.tex.text":
+  editor:
+    tabLength: 4
+".latex.tex.text.tikz":
+  editor:
+    tabLength: 4
+".tex.text":
+  editor:
+    tabLength: 4
