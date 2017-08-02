@@ -195,7 +195,7 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # wallpaper
-exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpaper.jpg
+exec_always --no-startup-id feh --bg-fill --no-fehbg ~/Pictures/wallpaper.jpg
 #exec_always --no-startup-id ~/.config/i3/scripts/bing_wallpaper.sh
 exec --no-startup-id compton -f
 exec --no-startup-id xinput disable "SynPS/2 Synaptics TouchPad"
