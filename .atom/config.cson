@@ -1,4 +1,6 @@
 "*":
+  "autocomplete-python":
+    useKite: false
   core:
     openEmptyEditorOnStart: false
     projectHome: "/home/enigma/projects"
@@ -21,7 +23,7 @@
     engine: "xelatex"
   latexer: {}
   "linter-ui-default":
-    panelHeight: 142
+    panelHeight: 106
   "one-light-ui":
     fontSize: 14
   welcome:
