@@ -28,6 +28,7 @@ set wrap "Wrap lines
 set number
 set showcmd
 set cursorline
+hi CursorLine   cterm=NONE ctermbg=234 ctermfg=NONE
 filetype indent on
 set wildmenu
 set lazyredraw
