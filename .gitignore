@@ -3,6 +3,7 @@
 !.gitignore
 !.config/
 !.bashrc
+!.vimrc
 !.gitconfig
 !hwfix.sh
 !.atom/
