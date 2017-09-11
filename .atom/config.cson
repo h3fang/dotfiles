@@ -25,7 +25,7 @@
   "linter-ui-default":
     panelHeight: 106
   "one-light-ui":
-    fontSize: 10
+    fontSize: 8
   welcome:
     showOnStartup: false
 ".beamer.latex.tex.text":
