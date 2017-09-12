@@ -92,8 +92,8 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-set $workspace1 "1 "
-set $workspace2 "2 "
+set $workspace1 "1 "
+set $workspace2 "2 "
 set $workspace3 "3 "
 set $workspace4 "4 "
 set $workspace5 "5 "
@@ -128,7 +128,7 @@ bindsym $mod+9 workspace $workspace9
 bindsym $mod+0 workspace $workspace10
 
 # assign apps to workspaces
-assign [class="Chromium"] → $workspace1
+assign [class="Chromium"] → $workspace2
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -229,3 +229,7 @@ mode "$mode_system" {
 }
 
 bindsym $mod+Pause mode "$mode_system"
+
+# custom key bindings
+bindsym $mod+c exec --no-startup-id chromium
+
