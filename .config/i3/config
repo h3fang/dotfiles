@@ -194,22 +194,6 @@ bindsym XF86AudioPause exec --no-startup-id playerctl pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
-# wallpaper
-exec_always --no-startup-id feh --bg-fill --no-fehbg ~/Pictures/wallpaper.jpg
-#exec_always --no-startup-id ~/.config/i3/scripts/bing_wallpaper.sh
-exec --no-startup-id compton -f
-exec --no-startup-id xinput disable "SynPS/2 Synaptics TouchPad"
-exec --no-startup-id nm-applet
-exec --no-startup-id alsactl restore
-
-for_window [class="^Chromium$" title=" - Chromium$"] border none
-for_window [class="Pavucontrol"] floating enable
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="task_dialog"] floating enable
-for_window [title="Preferences$"] floating enable
-for_window [class="MATLAB R2017a" title="^Figure "] floating enable # matlab figure
-for_window [class="MATLAB R2017a" title="^Editor "] floating enable # matlab editor
-
 # power management
 set $Locker i3lock -c 00cfff && sleep 1
 
@@ -229,8 +213,26 @@ mode "$mode_system" {
 
 bindsym $mod+Pause mode "$mode_system"
 
+# wallpaper
+exec_always --no-startup-id feh --bg-fill --no-fehbg ~/Pictures/wallpaper.jpg
+#exec_always --no-startup-id ~/.config/i3/scripts/bing_wallpaper.sh
+exec --no-startup-id compton -f
+exec --no-startup-id xinput disable "SynPS/2 Synaptics TouchPad"
+exec --no-startup-id nm-applet
+exec --no-startup-id alsactl restore
+exec --no-startup-id xset dpms 300
+exec --no-startup-id xautolock -time 5 -locker $Locker
+
+for_window [class="^Chromium$" title=" - Chromium$"] border none
+for_window [class="Pavucontrol"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [title="Preferences$"] floating enable
+for_window [class="MATLAB R2017a" title="^Figure "] floating enable # matlab figure
+for_window [class="MATLAB R2017a" title="^Editor "] floating enable # matlab editor
+
 # assign apps to workspaces
-assign [class="Chromium"] → $workspace2
+assign [class="Chromium"] $workspace2
 assign [class="MATLAB R2017a"] $workspace4
 
 # custom key bindings
