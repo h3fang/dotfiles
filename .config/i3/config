@@ -127,9 +127,6 @@ bindsym $mod+8 workspace $workspace8
 bindsym $mod+9 workspace $workspace9
 bindsym $mod+0 workspace $workspace10
 
-# assign apps to workspaces
-assign [class="Chromium"] → $workspace2
-
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -210,6 +207,8 @@ for_window [class="Pavucontrol"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [title="Preferences$"] floating enable
+for_window [class="MATLAB R2017a" title="^Figure "] floating enable # matlab figure
+for_window [class="MATLAB R2017a" title="^Editor "] floating enable # matlab editor
 
 # power management
 set $Locker i3lock -c 00cfff && sleep 1
@@ -230,6 +229,11 @@ mode "$mode_system" {
 
 bindsym $mod+Pause mode "$mode_system"
 
+# assign apps to workspaces
+assign [class="Chromium"] → $workspace2
+assign [class="MATLAB R2017a"] $workspace4
+
 # custom key bindings
 bindsym $mod+c exec --no-startup-id chromium
+bindsym $mod+m exec --no-startup-id ~/MATLAB/R2017a/bin/matlab -desktop -nosplash
 
