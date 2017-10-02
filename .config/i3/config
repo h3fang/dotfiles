@@ -230,6 +230,7 @@ for_window [window_role="task_dialog"] floating enable
 for_window [title="Preferences$"] floating enable
 for_window [class="MATLAB R2017a" title="^Figure "] floating enable # matlab figure
 for_window [class="MATLAB R2017a" title="^Editor "] floating enable # matlab editor
+for_window [class="Nm-connection-editor"] floating enable
 
 # assign apps to workspaces
 assign [class="Chromium"] $workspace2
