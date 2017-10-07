@@ -23,7 +23,7 @@
     engine: "xelatex"
   latexer: {}
   "linter-ui-default":
-    panelHeight: 106
+    panelHeight: 300
   "one-light-ui":
     fontSize: 8
   welcome:
