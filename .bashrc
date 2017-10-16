@@ -8,6 +8,10 @@
 alias ls='ls --color=auto -l'
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
+alias pacilog='cat /var/log/pacman.log | grep "pacman \-S \w"'
+alias pacrlog='cat /var/log/pacman.log | grep "pacman \-R"'
+alias pacopt='pacaur -Sc && sudo pacman-optimize'
+alias pacsyu='pacaur -Syu'
 
 export HISTCONTROL=ignoredups:erasedups
 
