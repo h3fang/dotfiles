@@ -11,7 +11,6 @@
     ]
   editor:
     fontFamily: "Hack"
-    fontSize: 10
     softWrap: true
     tabLength: 4
   "exception-reporting":
@@ -24,8 +23,7 @@
   latexer: {}
   "linter-ui-default":
     panelHeight: 300
-  "one-light-ui":
-    fontSize: 8
+  "one-light-ui": {}
   welcome:
     showOnStartup: false
 ".beamer.latex.tex.text":
