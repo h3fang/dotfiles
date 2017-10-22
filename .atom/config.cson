@@ -11,6 +11,7 @@
     ]
   editor:
     fontFamily: "Hack"
+    fontSize: 15
     softWrap: true
     tabLength: 4
   "exception-reporting":
