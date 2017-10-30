@@ -3,6 +3,7 @@
 !fontconfig/
 !i3/
 !i3blocks/
+!i3lock-blur/
 !rofi/
 !chromium-flags.conf
 !.gitignore

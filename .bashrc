@@ -18,6 +18,7 @@ alias cctv5='mpv --fs --no-resume-playback http://202.120.58.89/hls/cctv5hd.m3u8
 alias cctv5n='mpv --fs --no-resume-playback http://202.120.58.89/hls/cctv5.m3u8'
 alias cctv5p='mpv --fs --no-resume-playback http://202.120.58.89/hls/cctv5phd.m3u8'
 alias cctv6='mpv --fs --no-resume-playback http://202.120.58.89/hls/cctv6hd.m3u8'
+alias cctv6n='mpv --fs --no-resume-playback http://202.120.58.89/hls/cctv6.m3u8'
 
 export HISTCONTROL=ignoredups:erasedups
 
