@@ -195,7 +195,7 @@ bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # power management
-set $Locker i3lock -c 00cfff && sleep 1
+set $Locker ~/.config/i3lock-blur/lock && sleep 1
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
