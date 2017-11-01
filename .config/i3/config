@@ -218,8 +218,8 @@ exec_always --no-startup-id feh --bg-fill --no-fehbg ~/Pictures/wallpaper.jpg
 exec --no-startup-id compton -f
 exec --no-startup-id xinput disable "SynPS/2 Synaptics TouchPad"
 exec --no-startup-id nm-applet
-exec --no-startup-id xset dpms 300
-exec --no-startup-id xautolock -time 10 -locker "$Locker"
+exec --no-startup-id sleep 1 && xset dpms 300
+exec --no-startup-id xss-lock -- $Locker
 
 for_window [class="^Chromium$" title=" - Chromium$"] border none
 for_window [class="Pavucontrol"] floating enable

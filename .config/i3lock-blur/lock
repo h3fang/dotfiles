@@ -2,6 +2,11 @@
 
 # Dependencies: ffmpeg i3lock
 
+#MONITORSTATE=$(xset q | grep "Monitor is \w" | awk '{print $3}')
+#if [ "$1" != "force" ] && [ "$MONITORSTATE" == "On" ]; then
+#    exit 0
+#fi
+
 IMAGE=/tmp/i3lock-blur.png
 SCRIPT=`realpath $0`
 SCRIPTPATH=`dirname $SCRIPT`
@@ -10,7 +15,7 @@ RES=$(xrandr --current | grep '*' | uniq | head -n 1 | awk '{print $1}')
 
 ffmpeg -f x11grab -video_size $RES -y -i $DISPLAY -i $LOCK -filter_complex "boxblur=5:1,overlay=(main_w-overlay_w)/2:(main_h-overlay_h)/2" -vframes 1 $IMAGE
 
-i3lock -i $IMAGE
+i3lock -n -t -i $IMAGE -e
 
 rm $IMAGE
 
