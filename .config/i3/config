@@ -196,15 +196,16 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # power management
 set $Locker ~/.config/i3lock-blur/lock && sleep 1
+set $CloseApps ~/.config/i3/scripts/close_apps.sh
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (p) poweroff
 mode "$mode_system" {
     bindsym l exec --no-startup-id $Locker, mode "default"
-    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym e exec --no-startup-id $CloseApps && i3-msg exit, mode "default"
     bindsym s exec --no-startup-id systemctl suspend, mode "default"
     bindsym h exec --no-startup-id systemctl hibernate, mode "default"
-    bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym p exec --no-startup-id systemctl poweroff -i, mode "default"
+    bindsym r exec --no-startup-id $CloseApps && systemctl reboot, mode "default"
+    bindsym p exec --no-startup-id $CloseApps && systemctl poweroff -i, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
