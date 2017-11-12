@@ -230,9 +230,11 @@ for_window [title="Preferences$"] floating enable
 for_window [class="MATLAB R2017?" title="^Figure "] floating enable # matlab figure
 for_window [class="MATLAB R2017?" title="^Editor "] floating enable # matlab editor
 for_window [class="Nm-connection-editor"] floating enable
+for_window [title="Zotero Item Selector"] floating enable; resize shrink width 10000px; resize grow width 800px; resize shrink height 10000px; resize grow height 400px; move position center;
 
 # assign apps to workspaces
 assign [class="Chromium"] $workspace2
+assign [class="Atom"] $workspace3
 assign [class="MATLAB R2017?"] $workspace4
 
 # custom key bindings
