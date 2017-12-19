@@ -5,6 +5,7 @@
 !i3blocks/
 !i3lock-blur/
 !rofi/
+!mpv/
 !chromium-flags.conf
 !.gitignore
-!mpv/
+

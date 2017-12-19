@@ -5,11 +5,9 @@
 !.bashrc
 !.vimrc
 !.gitconfig
-!hwfix.sh
-!switch_video_card.sh
 !.atom/
 .atom/*
 !.atom/.apmrc
 !.atom/config.cson
 !.atom/package_list
-
+!scripts/

@@ -8,6 +8,7 @@
 alias ls='ls --color=auto -l'
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
+alias paclog='vim /var/log/pacman.log'
 alias pacilog='cat /var/log/pacman.log | grep "pacman \-S \w"'
 alias paculog='cat /var/log/pacman.log | grep "upgraded \w"'
 alias pacrlog='cat /var/log/pacman.log | grep "pacman \-R"'
