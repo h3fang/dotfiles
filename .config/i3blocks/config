@@ -13,8 +13,8 @@ interval=3
 label=
 interval=3
 
-[bandwidth]
-interval=3
+#[bandwidth]
+#interval=3
 
 [wifi]
 instance=wlo1
