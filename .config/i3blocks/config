@@ -36,5 +36,5 @@ label=
 interval=30
 
 [date]
-command=date '+ %b %d  %H:%M'
+command=date '+ %b %d %a  %H:%M'
 interval=1
