@@ -11,7 +11,8 @@ IMAGE=/tmp/i3lock-blur.png
 SCRIPT=`realpath $0`
 SCRIPTPATH=`dirname $SCRIPT`
 LOCK=$SCRIPTPATH/lock.png
-RES=$(xrandr --current | grep '*' | head -n 1 | awk '{print $1}')
+#RES=$(xrandr --current | grep '*' | head -n 1 | awk '{print $1}')
+RES=$(xdpyinfo | grep dimensions | head -n 1 | awk '{print $2}')
 
 ffmpeg -loglevel warning -f x11grab -video_size $RES -y -i $DISPLAY -i $LOCK -filter_complex "boxblur=5:1,overlay=(main_w-overlay_w)/2:(main_h-overlay_h)/2" -vframes 1 $IMAGE
 
