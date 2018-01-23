@@ -12,8 +12,8 @@ alias paclog='vim /var/log/pacman.log'
 alias pacilog='cat /var/log/pacman.log | grep "pacman \-S \w"'
 alias paculog='cat /var/log/pacman.log | grep "upgraded \w"'
 alias pacrlog='cat /var/log/pacman.log | grep "pacman \-R"'
-alias pacopt='pacaur -Sc && sudo pacman-optimize'
-alias pacsyu='pacaur -Syu'
+alias pacopt='trizen -Sc && sudo pacman-optimize'
+alias pacsyu='trizen -Syu'
 
 # SJTU IPTV
 alias cctv5='mpv --fs --no-resume-playback --no-ytdl http://202.120.58.89/hls/cctv5hd.m3u8'
