@@ -1,4 +1,9 @@
 "*":
+  "atom-beautify":
+    c:
+      default_beautifier: "clang-format"
+    cpp:
+      default_beautifier: "clang-format"
   "autocomplete-python":
     useKite: false
   core:
