@@ -16,7 +16,6 @@
     ]
   editor:
     fontFamily: "Hack"
-    fontSize: 15
     scrollSensitivity: 200
     softWrap: true
     tabLength: 4
@@ -26,7 +25,10 @@
     highlightBackground: true
     lightTheme: true
   latex:
+    enableSynctex: false
     engine: "xelatex"
+    outputDirectory: "build"
+    producer: "xdvipdfmx"
   latexer: {}
   "linter-ui-default":
     panelHeight: 300
