@@ -4,6 +4,8 @@
       default_beautifier: "clang-format"
     cpp:
       default_beautifier: "clang-format"
+    python:
+      max_line_length: 200
   "autocomplete-python":
     useKite: false
   core:

@@ -8,4 +8,5 @@
 !mpv/
 !chromium-flags.conf
 !.gitignore
+!matplotlib/
 
