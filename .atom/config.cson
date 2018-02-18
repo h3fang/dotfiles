@@ -12,12 +12,9 @@
     openEmptyEditorOnStart: false
     projectHome: "/home/enigma/projects"
     telemetryConsent: "no"
-    themes: [
-      "one-light-ui"
-      "one-light-syntax"
-    ]
   editor:
     fontFamily: "Hack"
+    fontSize: 16
     scrollSensitivity: 200
     softWrap: true
     tabLength: 4
