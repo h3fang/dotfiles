@@ -5,9 +5,9 @@ function use_nvidia
     sudo cp /etc/X11/xorg.conf.nvidia /etc/X11/xorg.conf
 
     outputclass="/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf"
-    if [ -e $outputclass ]
+    if [ -e $outputclass.backup ]
     then
-        sudo mv $outputclass $outputclass.backup
+        sudo mv $outputclass.backup $outputclass
     fi
 
     # comment out poweroff nvidia card cmds
