@@ -3,7 +3,12 @@
 function use_nvidia
 {
     sudo cp /etc/X11/xorg.conf.nvidia /etc/X11/xorg.conf
-    sudo mv /usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf /usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf.backup
+
+    outputclass="/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf"
+    if [ -e $outputclass ]
+    then
+        sudo mv $outputclass $outputclass.backup
+    fi
 
     # comment out poweroff nvidia card cmds
     HWFIXPath="/home/enigma/scripts/hwfix.sh"
@@ -21,7 +26,12 @@ function use_nvidia
 function use_intel
 {
     sudo cp /etc/X11/xorg.conf.intel /etc/X11/xorg.conf
-    sudo mv /usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf /usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf.backup
+
+    outputclass="/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf"
+    if [ -e $outputclass ]
+    then
+        sudo mv $outputclass $outputclass.backup
+    fi
 
     # poweroff nvidia card
     HWFIXPath="/home/enigma/scripts/hwfix.sh"
