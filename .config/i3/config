@@ -216,7 +216,7 @@ bindsym $mod+Pause mode "$mode_system"
 
 # wallpaper
 exec_always --no-startup-id feh --bg-fill --no-fehbg ~/Pictures/wallpaper.jpg
-exec --no-startup-id compton -f
+exec --no-startup-id compton -cCGf
 exec --no-startup-id xinput disable "SynPS/2 Synaptics TouchPad"
 exec --no-startup-id nm-applet
 exec --no-startup-id sleep 1 && xset dpms 300
@@ -240,4 +240,5 @@ assign [class="MATLAB R2017?"] $workspace4
 # custom key bindings
 bindsym $mod+c exec --no-startup-id chromium
 bindsym $mod+m exec --no-startup-id "~/MATLAB/R2017b/bin/matlab -desktop -nosplash"
+bindsym $mod+Shift+s --release exec --no-startup-id "scrot -s"
 
