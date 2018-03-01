@@ -240,5 +240,5 @@ assign [class="MATLAB R2017?"] $workspace4
 # custom key bindings
 bindsym $mod+c exec --no-startup-id chromium
 bindsym $mod+m exec --no-startup-id "~/MATLAB/R2017b/bin/matlab -desktop -nosplash"
-bindsym $mod+Shift+s --release exec --no-startup-id "scrot -s"
+bindsym $mod+Shift+s --release exec --no-startup-id "scrot -q 100 -s"
 
