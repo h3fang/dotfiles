@@ -216,7 +216,7 @@ bindsym $mod+Pause mode "$mode_system"
 
 # wallpaper
 exec_always --no-startup-id feh --bg-fill --no-fehbg ~/Pictures/wallpaper.jpg
-exec --no-startup-id compton -cCGf
+exec --no-startup-id compton -CGf --backend glx
 exec --no-startup-id xinput disable "SynPS/2 Synaptics TouchPad"
 exec --no-startup-id nm-applet
 exec --no-startup-id sleep 1 && xset dpms 300
