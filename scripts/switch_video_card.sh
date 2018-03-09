@@ -48,6 +48,7 @@ function use_intel
     sudo sed -i '/^xrandr --set/ s/^/#/' /etc/lightdm/display_setup.sh
 }
 
+# to get PRIME work with nouveau, xf86-video-nouveau must be installed
 function use_nouveau
 {
     sudo cp /etc/X11/xorg.conf.nouveau /etc/X11/xorg.conf
