@@ -9,4 +9,4 @@
 !chromium-flags.conf
 !.gitignore
 !matplotlib/
-
+!pikaur.conf
