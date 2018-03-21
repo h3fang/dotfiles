@@ -5,14 +5,14 @@
 import os
 import sys
 import shutil
-
+import glob
 
 shittyfiles = [
     '~/.adobe',              # Flash crap
     '~/.macromedia',         # Flash crap
     '~/.recently-used',
-    '~/.local/share/recently-used.xbel',
-    '~/Desktop',             # Firefox creates this
+    '~/.local/share/recently-used.xbel*',
+    '~/Desktop',             # Firefox creates this, something else also creates this
     '~/.thumbnails',
     '~/.gconfd',
     '~/.gconf',
@@ -74,9 +74,9 @@ def rmshit():
     found = []
     for f in shittyfiles:
         absf = os.path.expanduser(f)
-        if os.path.exists(absf):
-            found.append(absf)
-            print("    %s" % f)
+        for fl in glob.glob(absf):
+            found.append(fl)
+            print("    %s" % fl)
 
     if len(found) == 0:
         print("No shitty files found :)")
