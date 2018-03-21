@@ -1,5 +1,6 @@
 " From /usr/share/vim/vimfiles/archlinux.vim
 set nocompatible
+set viminfo='50,<1000,s100,:0,n~/vim/viminfo
 set backspace=indent,eol,start
 
 set history=100
