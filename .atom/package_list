@@ -1,8 +1,9 @@
-atom-beautify@0.30.9
+atom-beautify@0.32.2
 autocomplete-python@1.10.5
 convert-file-encoding@0.1.0
 highlight-selected@0.13.1
 language-latex@1.1.1
+language-matlab@0.2.1
 latex@0.49.0
 latexer@0.3.0
 
