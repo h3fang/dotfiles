@@ -21,7 +21,6 @@
     fontSize: 16
     scrollSensitivity: 200
     softWrap: true
-    tabLength: 4
   "exception-reporting":
     userId: "7c1b65c4-65e4-4f0d-8d77-430dfe483d4f"
   "highlight-selected":
