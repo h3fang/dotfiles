@@ -3,3 +3,9 @@
 	name = Fang He
 [core]
 	autocrlf = input
+[alias]
+    st = status
+    co = commit
+    br = branch
+    di = diff
+    ch = checkout
