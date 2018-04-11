@@ -14,6 +14,7 @@ alias paculog='cat /var/log/pacman.log | grep "upgraded \w"'
 alias pacrlog='cat /var/log/pacman.log | grep "pacman \-R"'
 alias pacopt='pikaur -Sc && sudo pacman-optimize'
 alias pacsyu='pikaur -Syu'
+alias cls='printf "\033c"'
 
 # SJTU IPTV
 alias cctv5='mpv --fs --no-resume-playback --no-ytdl http://202.120.58.89/hls/cctv5hd.m3u8'
