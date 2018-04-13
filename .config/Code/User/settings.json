@@ -3,6 +3,7 @@
     "workbench.colorTheme": "Quiet Light",
     "window.zoomLevel": -2,
     "editor.fontSize": 15,
+    "editor.wordWrap": "on",
     "terminal.external.linuxExec": "xfce4-terminal",
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 10000,
