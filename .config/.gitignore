@@ -10,3 +10,8 @@
 !.gitignore
 !matplotlib/
 !pikaur.conf
+!Code/
+Code/*
+!Code/User
+Code/User/*
+!Code/User/settings.json
