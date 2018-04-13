@@ -5,11 +5,6 @@
 !.bashrc
 !.vimrc
 !.gitconfig
-!.atom/
-.atom/*
-!.atom/.apmrc
-!.atom/config.cson
-!.atom/package_list
 !scripts/
 scripts/ss.sh
 
