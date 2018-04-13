@@ -18,7 +18,7 @@
     ]
   editor:
     fontFamily: "Hack"
-    fontSize: 16
+    fontSize: 17
     scrollSensitivity: 200
     softWrap: true
   "exception-reporting":
