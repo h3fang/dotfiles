@@ -235,7 +235,7 @@ for_window [title="Zotero Item Selector" class="Chromium"] floating enable; resi
 
 # assign apps to workspaces
 assign [class="Chromium"] $workspace2
-assign [class="Atom"] $workspace3
+assign [class="Code"] $workspace3
 assign [class="MATLAB R2017?"] $workspace4
 
 # custom key bindings
