@@ -26,6 +26,7 @@
             "name": "latexmk",
             "command": "latexmk",
             "args": [
+                "-xelatex",
                 "-synctex=1",
                 "-interaction=nonstopmode",
                 "-outdir=build",
@@ -35,8 +36,8 @@
             ]
         },
         {
-            "name": "pdflatex",
-            "command": "pdflatex",
+            "name": "xelatex",
+            "command": "xelatex",
             "args": [
                 "-synctex=1",
                 "-interaction=nonstopmode",
