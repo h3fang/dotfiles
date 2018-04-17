@@ -8,6 +8,10 @@
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 10000,
 
+    // python
+    "python.linting.pylintEnabled": false,
+    "python.linting.enabled": false,
+
     // Privacy
     "workbench.statusBar.feedback.visible": false,
     "telemetry.enableCrashReporter": false,
