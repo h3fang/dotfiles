@@ -41,11 +41,12 @@ PS1="\[\033[38;5;39m\][\u@\h\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[
 
 export VISUAL="vim"
 
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-    ssh-agent > ~/.ssh-agent-thing
-    eval "$(<~/.ssh-agent-thing)" > /dev/null
-    ssh-add
-fi
 if [[ "$SSH_AGENT_PID" == "" ]]; then
     eval "$(<~/.ssh-agent-thing)" > /dev/null
 fi
+if ! ps -p $SSH_AGENT_PID > /dev/null; then
+    ssh-agent > ~/.ssh-agent-thing
+    eval "$(<~/.ssh-agent-thing)"
+    ssh-add
+fi
+
