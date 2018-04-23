@@ -222,7 +222,7 @@ exec --no-startup-id xinput disable "SynPS/2 Synaptics TouchPad"
 exec --no-startup-id nm-applet --no-agent
 exec --no-startup-id sleep 1 && xset dpms 300
 exec --no-startup-id xss-lock -- $Locker
-exec --no-startup-id fcitx
+#exec --no-startup-id fcitx
 
 for_window [class="^Chromium$" title=" - Chromium$"] border none
 for_window [class="Pavucontrol"] floating enable
