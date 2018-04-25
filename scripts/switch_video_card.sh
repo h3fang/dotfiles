@@ -23,6 +23,13 @@ function use_nvidia
     sudo sed -i '/^xrandr --set/ s/^/#/' /etc/lightdm/display_setup.sh
     # enable reverse PRIME for nvidia
     sudo sed -i '/^#xrandr --setprovideroutputsource modesetting NVIDIA-0/ s/^#//' /etc/lightdm/display_setup.sh
+    
+    # setup xrandr
+    # uncomment nvidia setting
+    sudo sed -i '/^#xrandr --output eDP-1-1/ s/^#//' /etc/lightdm/display_setup.sh
+    # comment out nouveau setting
+    sudo sed -i '/^xrandr --output eDP1/ s/^/#/' /etc/lightdm/display_setup.sh
+    sudo sed -i '/^xrandr --output HDMI-1-2/ s/^/#/' /etc/lightdm/display_setup.sh
 }
 
 function use_intel
@@ -74,5 +81,12 @@ function use_nouveau
     sudo sed -i '/^xrandr --set/ s/^/#/' /etc/lightdm/display_setup.sh
     # enable reverse PRIME for nouveau
     sudo sed -i '/^#xrandr --setprovideroutputsource modesetting nouveau/ s/^#//' /etc/lightdm/display_setup.sh
+    
+    # setup xrandr
+    # comment out nvidia setting
+    sudo sed -i '/^xrandr --output eDP-1-1/ s/^/#/' /etc/lightdm/display_setup.sh
+    # uncomment nouveau setting
+    sudo sed -i '/^#xrandr --output eDP1/ s/^#//' /etc/lightdm/display_setup.sh
+    sudo sed -i '/^#xrandr --output HDMI-1-2/ s/^#//' /etc/lightdm/display_setup.sh
 }
 
