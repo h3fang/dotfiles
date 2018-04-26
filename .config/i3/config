@@ -229,18 +229,17 @@ for_window [class="Pavucontrol"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [title="Preferences$"] floating enable
-#for_window [class="MATLAB R2017?" title="^Figure "] floating enable, move position center, move container to $workspace4 # matlab figure
-#for_window [class="MATLAB R2017?" title="^Editor "] floating enable # matlab editor
+for_window [class="MATLAB R20*"] layout tabbed
 for_window [class="Nm-connection-editor"] floating enable
 for_window [title="Zotero Item Selector" class="Chromium"] floating enable; resize shrink width 10000px; resize grow width 800px; resize shrink height 10000px; resize grow height 400px; move position center;
 
 # assign apps to workspaces
 assign [class="Chromium"] $workspace2
 assign [class="Code"] $workspace3
-assign [class="MATLAB R2017?"] $workspace4
+assign [class="MATLAB R20*"] $workspace4
 
 # custom key bindings
 bindsym $mod+c exec --no-startup-id chromium
-bindsym $mod+m exec --no-startup-id "~/MATLAB/R2017b/bin/matlab -desktop -nosplash"
+bindsym $mod+m exec --no-startup-id "export LD_PRELOAD=/usr/lib/libstdc++.so; export LD_LIBRARY_PATH=/usr/lib/xorg/modules/dri/; ~/MATLAB/R2018a/bin/matlab -desktop -nosplash"
 bindsym $mod+Shift+s --release exec --no-startup-id "scrot -q 100 -s"
 
