@@ -1,0 +1,18 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    {
+        "key": "ctrl+s",
+        "command": "git.stageSelectedRanges",
+        "when": "isInDiffEditor && editorTextFocus"
+    },
+    {
+        "key": "ctrl+u",
+        "command": "git.unstageSelectedRanges",
+        "when": "isInDiffEditor && editorTextFocus"
+    },
+    {
+        "key": "ctrl+r",
+        "command": "git.revertSelectedRanges",
+        "when": "isInDiffEditor && editorTextFocus"
+    }
+]
