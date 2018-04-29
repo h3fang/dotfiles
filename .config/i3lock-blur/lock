@@ -15,7 +15,7 @@ LOCK=$SCRIPTPATH/lock.png
 #RES=$(xdpyinfo | grep dimensions | head -n 1 | awk '{print $2}')
 RES=$(xrandr --listmonitors | grep \* | head -n 1 | sed -r 's/^.* ([0-9]+)\/[0-9]+x([0-9]+)\/.*$/\1x\2/')
 
-ffmpeg -loglevel warning -f x11grab -video_size $RES -y -i $DISPLAY -i $LOCK -filter_complex "boxblur=5:1,overlay=(main_w-overlay_w)/2:(main_h-overlay_h)/2" -vframes 1 $IMAGE
+ffmpeg -loglevel warning -f x11grab -video_size $RES -y -i $DISPLAY -i $LOCK -filter_complex "boxblur=10:3,overlay=(main_w-overlay_w)/2:(main_h-overlay_h)/2" -vframes 1 $IMAGE
 
 i3lock -n -t -i $IMAGE -e
 
