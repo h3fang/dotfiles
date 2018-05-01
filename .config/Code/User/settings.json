@@ -1,6 +1,12 @@
 {
     // Editor
-    "workbench.colorTheme": "Quiet Light",
+    "workbench.colorTheme": "Default Light+",
+    "workbench.colorCustomizations": {
+        "[Default Light+]": {
+            "editor.background": "#fcfafb",
+        }
+    },
+
     "window.zoomLevel": -2,
     "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}vscode",
     "editor.fontSize": 15,
