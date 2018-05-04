@@ -1,6 +1,6 @@
 #!/bin/sh
 
-tar --exclude='.config/mpv/watch_later' \
+tar -I pigz --exclude='.config/mpv/watch_later' \
     --exclude='.config/Atom' \
     --exclude='.config/chromium' \
     --exclude='.config/Code' \
@@ -8,7 +8,7 @@ tar --exclude='.config/mpv/watch_later' \
     --exclude='projects/ns3/ns*' \
     --exclude='projects/ns3/pkg' \
     --exclude='projects/ClusterAD/Data' \
-    -cvf - \
+    -cvf arch-enigma-home-$(date -I).tar.xz \
     ~/.config \
     ~/projects \
     ~/scripts \
@@ -16,5 +16,5 @@ tar --exclude='.config/mpv/watch_later' \
     ~/.gitconfig \
     ~/.bashrc \
     ~/.vimrc \
-    ~/.gitignore \
-    | xz -1 -c -T 8 - > arch-enigma-home-$(date -I).tar.xz
+    ~/.gitignore
+
