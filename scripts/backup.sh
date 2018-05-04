@@ -1,15 +1,14 @@
 #!/bin/sh
 
-tar -I pigz \
-    --exclude='/home/enigma/.config/mpv/watch_later' \
-    --exclude='/home/enigma/.config/Atom' \
-    --exclude='/home/enigma/.config/chromium' \
-    --exclude='/home/enigma/.config/Code' \
-    --exclude='/home/enigma/projects/ns3/src' \
-    --exclude='/home/enigma/projects/ns3/ns*' \
-    --exclude='/home/enigma/projects/ns3/pkg' \
-    --exclude='/home/enigma/projects/ClusterAD/Data' \
-    -cvf arch-enigma-home-$(date -I).tar.gz \
+tar --exclude='.config/mpv/watch_later' \
+    --exclude='.config/Atom' \
+    --exclude='.config/chromium' \
+    --exclude='.config/Code' \
+    --exclude='projects/ns3/src' \
+    --exclude='projects/ns3/ns*' \
+    --exclude='projects/ns3/pkg' \
+    --exclude='projects/ClusterAD/Data' \
+    -cvf - \
     ~/.config \
     ~/projects \
     ~/scripts \
@@ -17,4 +16,5 @@ tar -I pigz \
     ~/.gitconfig \
     ~/.bashrc \
     ~/.vimrc \
-    ~/.gitignore
+    ~/.gitignore \
+    | xz -1 -c -T 8 - > arch-enigma-home-$(date -I).tar.xz
