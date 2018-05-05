@@ -8,7 +8,7 @@ tar -I pigz --exclude='.config/mpv/watch_later' \
     --exclude='projects/ns3/ns*' \
     --exclude='projects/ns3/pkg' \
     --exclude='projects/ClusterAD/Data' \
-    -cvf arch-enigma-home-$(date -I).tar.xz \
+    -cvf arch-enigma-home-$(date -I).tar.gz \
     ~/.config \
     ~/projects \
     ~/scripts \
