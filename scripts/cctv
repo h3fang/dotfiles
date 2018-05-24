@@ -1,4 +1,0 @@
-#!/bin/sh
-
-mpv --fs --no-resume-playback --no-ytdl http://202.120.58.89/hls/cctv$1.m3u8
-
