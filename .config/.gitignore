@@ -9,7 +9,7 @@
 !chromium-flags.conf
 !.gitignore
 !matplotlib/
-!pikaur.conf
+!aurman/
 !Code/
 Code/*
 !Code/User
