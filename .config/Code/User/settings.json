@@ -24,6 +24,9 @@
     "workbench.statusBar.feedback.visible": false,
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
+    "update.channel": "none",
+    "extensions.ignoreRecommendations": true,
+    "workbench.settings.enableNaturalLanguageSearch": false,
 
     // Latex
     "latex-workshop.view.pdf.viewer": "external",
