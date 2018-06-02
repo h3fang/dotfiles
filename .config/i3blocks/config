@@ -28,7 +28,7 @@ label=
 [volume]
 command=/home/enigma/.config/i3blocks/scripts/volume
 markup=pango
-interval=once
+interval=3
 signal=1
 
 [battery]
