@@ -69,5 +69,6 @@
             ]
         }
     ],
-    "latex-workshop.latex.outputDir": "./build/"
+    "latex-workshop.latex.outputDir": "./build/",
+    "latex-workshop.latex.clean.enabled": true
 }
