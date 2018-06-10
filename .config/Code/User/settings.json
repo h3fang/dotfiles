@@ -9,6 +9,7 @@
 
     "window.zoomLevel": -2,
     "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}vscode",
+    "editor.fontFamily": "'DejaVu Sans Mono', 'Noto Sans CJK', 'Noto Color Emoji'",
     "editor.fontSize": 15,
     "editor.wordWrap": "on",
     "terminal.external.linuxExec": "xfce4-terminal",
