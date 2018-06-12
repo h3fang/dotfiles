@@ -224,6 +224,7 @@ exec --no-startup-id xinput disable "SynPS/2 Synaptics TouchPad"
 exec --no-startup-id nm-applet --no-agent
 exec --no-startup-id sleep 1 && xset dpms 300
 exec --no-startup-id xss-lock -- $Locker
+exec --no-startup-id env GDK_DPI_SCALE=1.25 thunar --daemon
 #exec --no-startup-id fcitx
 
 for_window [class="^Chromium$" title=" - Chromium$"] border none
