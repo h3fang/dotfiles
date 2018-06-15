@@ -12,6 +12,11 @@
     "editor.fontFamily": "'DejaVu Sans Mono', 'Noto Sans CJK', 'Noto Color Emoji'",
     "editor.fontSize": 15,
     "editor.wordWrap": "on",
+    "editor.tokenColorCustomizations": {
+        "[Quiet Light]": {
+            "comments": "#008000"
+        }
+    },
     "terminal.external.linuxExec": "xfce4-terminal",
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 10000,
