@@ -22,6 +22,10 @@
     "files.autoSaveDelay": 10000,
     "git.confirmSync": false,
 
+    // C/C++
+    "C_Cpp.clang_format_path": "/usr/bin/clang-format",
+    "C_Cpp.clang_format_style": "{BasedOnStyle: LLVM, IndentWidth: 4}",
+
     // python
     "python.linting.pylintEnabled": false,
     "python.linting.enabled": false,
