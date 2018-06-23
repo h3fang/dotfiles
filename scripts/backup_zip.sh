@@ -7,6 +7,7 @@ tar -I pigz --exclude='.config/mpv/watch_later' \
     --exclude='projects/ns3/src' \
     --exclude='projects/ns3/ns*' \
     --exclude='projects/ns3/pkg' \
+    --exclude='projects/**/build' \
     --exclude='projects/ClusterAD/Data' \
     --exclude='projects/ClusterAD/Results' \
     --exclude='projects/Southwest-Weight-Estimation/Data' \
