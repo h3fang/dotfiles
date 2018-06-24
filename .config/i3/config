@@ -241,6 +241,8 @@ assign [class="Chromium"] $workspace2
 assign [class="Code"] $workspace3
 assign [class="MATLAB R20*"] $workspace4
 
+for_window [workspace=$workspace3] layout tabbed
+
 # custom key bindings
 bindsym $mod+c exec --no-startup-id chromium
 bindsym $mod+m exec --no-startup-id "export LD_PRELOAD=/usr/lib/libstdc++.so; export LD_LIBRARY_PATH=/usr/lib/xorg/modules/dri/; ~/MATLAB/R2018a/bin/matlab -desktop -nosplash"
