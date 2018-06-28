@@ -4,14 +4,9 @@ tar -I pigz --exclude='.config/mpv/watch_later' \
     --exclude='.config/Atom' \
     --exclude='.config/chromium' \
     --exclude='.config/Code' \
-    --exclude='projects/ns3/src' \
-    --exclude='projects/ns3/ns*' \
-    --exclude='projects/ns3/pkg' \
     --exclude='projects/**/build' \
-    --exclude='projects/ClusterAD/Data' \
-    --exclude='projects/ClusterAD/Results' \
-    --exclude='projects/Southwest-Weight-Estimation/Data' \
-    --exclude='projects/Southwest-Weight-Estimation/Results' \
+    --exclude='projects/**/Data' \
+    --exclude='projects/**/Results' \
     --exclude='.~lock.*' \
     -cvf arch-enigma-home-$(date -I).tar.gz \
     ~/.config \
