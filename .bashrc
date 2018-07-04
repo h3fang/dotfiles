@@ -24,6 +24,8 @@ alias cctv5p='mpv --fs --no-resume-playback --no-ytdl http://202.120.58.89/hls/c
 alias cctv6='mpv --fs --no-resume-playback --no-ytdl http://202.120.58.89/hls/cctv6hd.m3u8'
 alias cctv6n='mpv --fs --no-resume-playback --no-ytdl http://202.120.58.89/hls/cctv6.m3u8'
 
+export HISTSIZE=10000
+export HISEFILESIZE=10000
 export HISTCONTROL=ignoredups:erasedups
 
 man() {
