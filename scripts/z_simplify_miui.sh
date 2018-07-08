@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ADB=/home/enigma/Downloads/platform-tools/adb
+ADB=adb
 
 echo restart abd as root ...
 $ADB root
@@ -42,7 +42,7 @@ $ADB shell rm -r /system/priv-app/MiGameCenterSDKService
 # $ADB shell rm -r /system/priv-app/CloudBackup
 
 # editing hosts
-$ADB shell echo "52.84.246.72 d3c33hcgiwev3.cloudfront.net" >> /etc/hosts
+# $ADB shell echo "52.84.246.72 d3c33hcgiwev3.cloudfront.net" >> /etc/hosts
 
 echo press any key to reboot ...
 pause
