@@ -8,7 +8,7 @@ tar -I pigz \
     --exclude='projects/**/build' \
     --exclude='projects/**/Data' \
     --exclude='projects/**/Results' \
-    --exclude="projects/AUR/*/*.tar.xz" \
+    --exclude="projects/AUR/*/*.tar.?z" \
     --exclude='projects/AUR/*/*/*' \
     --exclude='.~lock.*' \
     -cvf arch-enigma-home-$(date -I).tar.gz \
