@@ -41,8 +41,9 @@
     // Latex
     "latex-workshop.view.pdf.viewer": "external",
     "latex-workshop.view.pdf.external.command": {
-        "command": "evince",
+        "command": "qpdfview",
         "args": [
+            "--unique",
             "%PDF%"
         ]
     },
@@ -97,5 +98,8 @@
         }
     ],
     "latex-workshop.latex.outputDir": "./build/",
-    "latex-workshop.latex.clean.enabled": false
+    "latex-workshop.latex.clean.enabled": false,
+    "cSpell.userWords": [
+        "overdetermined"
+    ]
 }
