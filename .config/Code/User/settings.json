@@ -101,5 +101,6 @@
     "latex-workshop.latex.clean.enabled": false,
     "cSpell.userWords": [
         "overdetermined"
-    ]
+    ],
+    "cSpell.diagnosticLevel": "Hint",
 }
