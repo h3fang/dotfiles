@@ -6,6 +6,7 @@
 !i3lock-blur/
 !rofi/
 !mpv/
+!dunst/
 !chromium-flags.conf
 !.gitignore
 !matplotlib/
