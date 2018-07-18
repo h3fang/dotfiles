@@ -20,6 +20,8 @@ tar -I pigz \
     ~/.gtkrc-2.0 \
     ~/.gitconfig \
     ~/.bashrc \
+    ~/.bash_profile \
+    ~/.xinitrc \
     ~/.vimrc \
     ~/.gitignore
 
