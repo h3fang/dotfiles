@@ -7,7 +7,7 @@
 
 ## See http://matplotlib.org/users/customizing.html#the-matplotlibrc-file for
 
-backend      : qt5agg
+backend      : Qt5Agg
 
 #### FIGURE
 ## See http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure
