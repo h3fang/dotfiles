@@ -41,7 +41,8 @@ fi
 #xrandr --setprovideroutputsource modesetting nouveau
 
 # setup display
-xrandr --output eDP-1 --auto --dpi 144 --primary
+xrandr --auto --dpi 144
+#xrandr --output eDP-1 --auto --dpi 144 --primary
 #xrandr --output eDP1 --auto --dpi 144 --primary
 #xrandr --output HDMI-1-2 --auto --right-of eDP1
 
