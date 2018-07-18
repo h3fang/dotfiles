@@ -3,6 +3,8 @@
 !.gitignore
 !.config/
 !.bashrc
+!.bash_profile
+!.xinitrc
 !.vimrc
 !.gitconfig
 !scripts/

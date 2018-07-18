@@ -20,16 +20,18 @@ function use_nvidia
     sudo mv /usr/lib/modprobe.d/graphicscard.conf /usr/lib/modprobe.d/graphicscard.conf.backup
 
     # comment out all PRIME settings
-    sudo sed -i '/^xrandr --set/ s/^/#/' /etc/lightdm/display_setup.sh
+    sed -i '/^xrandr --set/ s/^/#/' ~/.xinitrc
     # enable reverse PRIME for nvidia
-    sudo sed -i '/^#xrandr --setprovideroutputsource modesetting NVIDIA-0/ s/^#//' /etc/lightdm/display_setup.sh
+    sed -i '/^#xrandr --setprovideroutputsource modesetting NVIDIA-0/ s/^#//' ~/.xinitrc
     
-    # setup xrandr
+    # setup display
     # uncomment nvidia setting
-    sudo sed -i '/^#xrandr --output eDP-1-1/ s/^#//' /etc/lightdm/display_setup.sh
+    sed -i '/^#xrandr --output eDP-1/ s/^#//' ~/.xinitrc
+    # comment out intel setting
+    sed -i '/^xrandr --auto --dpi 144/ s/^/#/' ~/.xinitrc
     # comment out nouveau setting
-    sudo sed -i '/^xrandr --output eDP1/ s/^/#/' /etc/lightdm/display_setup.sh
-    sudo sed -i '/^xrandr --output HDMI-1-2/ s/^/#/' /etc/lightdm/display_setup.sh
+    sed -i '/^xrandr --output eDP1/ s/^/#/' ~/.xinitrc
+    sed -i '/^xrandr --output HDMI/ s/^/#/' ~/.xinitrc
 }
 
 function use_intel
@@ -52,7 +54,11 @@ function use_intel
     sudo mv /usr/lib/modprobe.d/graphicscard.conf.backup /usr/lib/modprobe.d/graphicscard.conf
 
     # disable PRIME
-    sudo sed -i '/^xrandr --set/ s/^/#/' /etc/lightdm/display_setup.sh
+    sed -i '/^xrandr --set/ s/^/#/' ~/.xinitrc
+
+    # setup display
+    sed -i '/^xrandr --output / s/^/#/' ~/.xinitrc
+    sed -i '/^#xrandr --auto --dpi 144/ s/^#//' ~/.xinitrc
 }
 
 # to get PRIME work with nouveau, xf86-video-nouveau must be installed
@@ -78,15 +84,17 @@ function use_nouveau
     sudo mv /usr/lib/modprobe.d/nvidia.conf /usr/lib/modprobe.d/nvidia.conf.backup
 
     # comment out all PRIME settings
-    sudo sed -i '/^xrandr --set/ s/^/#/' /etc/lightdm/display_setup.sh
+    sed -i '/^xrandr --set/ s/^/#/' ~/.xinitrc
     # enable reverse PRIME for nouveau
-    sudo sed -i '/^#xrandr --setprovideroutputsource modesetting nouveau/ s/^#//' /etc/lightdm/display_setup.sh
+    sed -i '/^#xrandr --setprovideroutputsource modesetting nouveau/ s/^#//' ~/.xinitrc
     
-    # setup xrandr
+    # setup display
     # comment out nvidia setting
-    sudo sed -i '/^xrandr --output eDP-1-1/ s/^/#/' /etc/lightdm/display_setup.sh
+    sed -i '/^xrandr --output eDP-1/ s/^/#/' ~/.xinitrc
+    # comment out intel setting
+    sed -i '/^xrandr --auto --dpi 144/ s/^/#/' ~/.xinitrc
     # uncomment nouveau setting
-    sudo sed -i '/^#xrandr --output eDP1/ s/^#//' /etc/lightdm/display_setup.sh
-    sudo sed -i '/^#xrandr --output HDMI-1-2/ s/^#//' /etc/lightdm/display_setup.sh
+    sed -i '/^#xrandr --output eDP1/ s/^#//' ~/.xinitrc
+    sed -i '/^#xrandr --output HDMI/ s/^#//' ~/.xinitrc
 }
 
