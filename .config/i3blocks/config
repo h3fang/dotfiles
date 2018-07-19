@@ -26,12 +26,13 @@ label=
 #label=
 
 [volume]
-command=/home/enigma/.config/i3blocks/scripts/volume
+command=~/.config/i3blocks/scripts/volume
 markup=pango
 interval=3
 signal=1
 
 [battery]
+command=~/.config/i3blocks/scripts/battery
 label=
 interval=30
 
