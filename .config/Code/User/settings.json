@@ -47,6 +47,13 @@
             "%PDF%"
         ]
     },
+    "latex-workshop.view.pdf.external.synctex": {
+        "command": "qpdfview",
+        "args": [
+            "--unique",
+            "%PDF%#src:%TEX%:%LINE%:0"
+        ]
+    },
     "latex-workshop.latex.recipes": [
         {
           "name": "latexmk",
