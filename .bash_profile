@@ -10,6 +10,6 @@ if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
         cp $X_SESSION_LOG ${X_SESSION_LOG}.old
     fi
 
-    exec startx -- -keeptty > ~/.local/share/xorg/xsession.log 2>&1
+    exec startx -- -keeptty > $X_SESSION_LOG 2>&1
 fi
 
