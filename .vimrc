@@ -1,5 +1,22 @@
-" From /usr/share/vim/vimfiles/archlinux.vim
 set nocompatible
+
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
+
+" Make sure you use single quotes
+Plug 'honza/vim-snippets'
+Plug 'maralla/completor.vim'
+Plug 'vim-airline/vim-airline'
+" Plug 'lervag/vimtex'
+" On-demand loading
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'majutsushi/tagbar', { 'on':  'TagbarToggle' }
+
+" Initialize plugin system
+call plug#end()
+
 set viminfo='50,<1000,s100,:0,n~/vim/viminfo
 set backspace=indent,eol,start
 
@@ -50,3 +67,5 @@ imap <C-v> <C-r><C-o>+
 " https://stackoverflow.com/questions/5728259/how-to-clear-the-line-number-in-vim-when-copying
 se mouse+=a
 
+nmap <F7> :NERDTreeToggle<CR>
+nmap <F8> :TagbarToggle<CR>
