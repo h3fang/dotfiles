@@ -107,7 +107,11 @@
     "latex-workshop.latex.outputDir": "./build/",
     "latex-workshop.latex.clean.enabled": false,
     "cSpell.userWords": [
-        "overdetermined"
+        "elsevier",
+        "frobenius",
+        "nonlinearly",
+        "overdetermined",
+        "toeplitz"
     ],
-    "cSpell.diagnosticLevel": "Hint",
+    "cSpell.diagnosticLevel": "Information",
 }
