@@ -34,7 +34,7 @@ signal=1
 [battery]
 command=~/.config/i3blocks/scripts/battery
 label=
-interval=30
+interval=10
 
 [date]
 command=date '+ %b %d %a  %H:%M'
