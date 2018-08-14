@@ -7,9 +7,9 @@
         }
     },
 
-    "window.zoomLevel": -2,
+    "window.zoomLevel": 0,
     "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}vscode",
-    "editor.fontFamily": "'DejaVu Sans Mono', 'Noto Sans CJK', 'Noto Color Emoji'",
+    "editor.fontFamily": "'Hack', 'Noto Sans CJK', 'Noto Color Emoji'",
     "editor.fontSize": 15,
     "editor.wordWrap": "on",
     "editor.tokenColorCustomizations": {
@@ -107,11 +107,17 @@
     "latex-workshop.latex.outputDir": "./build/",
     "latex-workshop.latex.clean.enabled": false,
     "cSpell.userWords": [
+        "autoencoder",
+        "dataset",
         "elsevier",
         "frobenius",
+        "jacobian",
         "nonlinearly",
         "overdetermined",
         "toeplitz"
     ],
     "cSpell.diagnosticLevel": "Information",
+    "cSpell.enabledLanguageIds": [
+        "latex"
+    ]
 }
