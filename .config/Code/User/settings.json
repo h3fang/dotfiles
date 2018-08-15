@@ -10,7 +10,7 @@
     "window.zoomLevel": 0,
     "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}vscode",
     "editor.fontFamily": "'Hack', 'Noto Sans CJK', 'Noto Color Emoji'",
-    "editor.fontSize": 15,
+    "editor.fontSize": 16,
     "editor.wordWrap": "on",
     "editor.tokenColorCustomizations": {
         "[Quiet Light]": {
