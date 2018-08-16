@@ -1,18 +1,13 @@
 set nocompatible
 
+" vim-plug
+"
 " Specify a directory for plugins
-" - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
-Plug 'honza/vim-snippets'
-Plug 'maralla/completor.vim'
 Plug 'vim-airline/vim-airline'
-" Plug 'lervag/vimtex'
-" On-demand loading
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'majutsushi/tagbar', { 'on':  'TagbarToggle' }
 
 " Initialize plugin system
 call plug#end()
