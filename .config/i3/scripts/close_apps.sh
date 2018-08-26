@@ -6,7 +6,7 @@ sleep 3
 
 # gracefully close all apps, needs wmctrl
 wmctrl -l | awk '{print $1}' | while read APP; do
-    notify-send "[$APP] not closed, please check unsaved content and close it manually."
+    notify-send "[$APP] is not closed, please check unsaved content and close it manually."
     exit 1
 done
 
