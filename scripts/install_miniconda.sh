@@ -7,7 +7,8 @@ rm Miniconda3-latest-Linux-x86_64.sh
 # echo "alias miniconda='export PATH=~/.local/miniconda3/bin:$PATH'" >> ~/.bashrc
 # open a new terminal, run miniconda
 
+export PATH=~/.local/miniconda3/bin:$PATH
 conda update conda
-conda install numpy scipy pandas matplotlib sympy scikit-learn numba
+conda install numpy scipy pandas matplotlib sympy scikit-learn
 conda update --all
 
