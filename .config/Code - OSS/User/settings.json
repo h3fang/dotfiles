@@ -8,7 +8,7 @@
     },
 
     "window.zoomLevel": 0,
-    "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}vscode",
+    "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}code-oss",
     "editor.fontFamily": "'Hack', 'Noto Sans CJK', 'Noto Color Emoji'",
     "editor.fontSize": 16,
     "editor.wordWrap": "on",
