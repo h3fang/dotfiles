@@ -239,7 +239,7 @@ for_window [title="Zotero Item Selector" class="Chromium"] floating enable; resi
 
 # assign apps to workspaces
 assign [class="Chromium"] $workspace2
-assign [class="Code"] $workspace3
+assign [class="code"] $workspace3
 assign [class="MATLAB R20*"] $workspace4
 
 for_window [workspace=$workspace3] layout tabbed
