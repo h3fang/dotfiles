@@ -246,7 +246,7 @@ for_window [workspace=$workspace3] layout tabbed
 
 # custom key bindings
 bindsym $mod+c exec --no-startup-id chromium
-bindsym $mod+m exec --no-startup-id "export LD_PRELOAD=/usr/lib/libstdc++.so; export LD_LIBRARY_PATH=/usr/lib/xorg/modules/dri/; ~/MATLAB/R2018a/bin/matlab -desktop -nosplash"
+bindsym $mod+m exec --no-startup-id "export LD_PRELOAD=/usr/lib/libstdc++.so; export LD_LIBRARY_PATH=/usr/lib/xorg/modules/dri/; ~/MATLAB/R2018b/bin/matlab -desktop -nosplash"
 bindsym $mod+Shift+s --release exec --no-startup-id "sleep 0.5; maim -m 6 -s ~/Pictures/screenshot_$(date -Iseconds).png"
 
 # disble focus follow mouse
