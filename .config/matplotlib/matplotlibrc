@@ -12,8 +12,9 @@ backend      : Qt5Agg
 #### FIGURE
 ## See http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure
 #figure.figsize   : 6.4, 4.8   ## figure size in inches
-figure.dpi       : 150        ## figure dots per inch
+figure.dpi       : 144        ## figure dots per inch
 
+font.size : 15
 
 ## Figure layout
 figure.autolayout : True     ## When True, automatically adjust subplot
