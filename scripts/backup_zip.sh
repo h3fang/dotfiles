@@ -13,6 +13,7 @@ tar -I pigz \
     --exclude="projects/AUR/*/*.tar.?z" \
     --exclude='projects/AUR/*/*/*' \
     --exclude='projects/Courses/**/*.pdf' \
+    --exclude='projects/ClusterAD/*/*' \
     --exclude='.~lock.*' \
     -cvf arch-enigma-home-$(date -I).tar.gz \
     ~/.config \
