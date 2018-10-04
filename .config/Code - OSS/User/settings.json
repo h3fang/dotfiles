@@ -11,7 +11,7 @@
     "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}code-oss",
     "editor.fontFamily": "'Hack', 'Noto Sans CJK', 'Noto Color Emoji'",
     "editor.fontSize": 16,
-    "editor.wordWrap": "on",
+    "editor.wordWrap": "bounded",
     "editor.tokenColorCustomizations": {
         "[Quiet Light]": {
             "comments": "#008000"
@@ -119,5 +119,6 @@
     "cSpell.diagnosticLevel": "Information",
     "cSpell.enabledLanguageIds": [
         "latex"
-    ]
+    ],
+    "editor.wordWrapColumn": 128
 }
