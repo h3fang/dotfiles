@@ -120,5 +120,6 @@
     "cSpell.enabledLanguageIds": [
         "latex"
     ],
-    "editor.wordWrapColumn": 128
+    "editor.wordWrapColumn": 128,
+    "python.formatting.provider": "none"
 }
