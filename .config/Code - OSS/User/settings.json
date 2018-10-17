@@ -56,21 +56,21 @@
     },
     "latex-workshop.latex.recipes": [
         {
-          "name": "latexmk",
-          "tools": [
-            "latexmk"
-          ]
+            "name": "latexmk",
+            "tools": [
+                "latexmk"
+            ]
         },
         {
-          "name": "xelatex -> bibtex -> xelatex*2",
-          "tools": [
-            "xelatex",
-            "bibtex",
-            "xelatex",
-            "xelatex"
-          ]
+            "name": "xelatex -> bibtex -> xelatex*2",
+            "tools": [
+                "xelatex",
+                "bibtex",
+                "xelatex",
+                "xelatex"
+            ]
         }
-      ],
+    ],
     "latex-workshop.latex.tools": [
         {
             "name": "latexmk",
@@ -100,7 +100,7 @@
             "name": "bibtex",
             "command": "bibtex",
             "args": [
-                "%DOCFILE%"
+                "build/%DOCFILE%"
             ]
         }
     ],
