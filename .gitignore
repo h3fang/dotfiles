@@ -6,6 +6,7 @@
 !.bash_profile
 !.xinitrc
 !.vimrc
+!.latexmkrc
 !.gitconfig
 !scripts/
 scripts/ss.sh
