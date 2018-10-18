@@ -12,6 +12,7 @@
     "editor.fontFamily": "'Hack', 'Noto Sans CJK', 'Noto Color Emoji'",
     "editor.fontSize": 16,
     "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 128,
     "editor.tokenColorCustomizations": {
         "[Quiet Light]": {
             "comments": "#008000"
@@ -29,6 +30,7 @@
     // python
     "python.linting.pylintEnabled": false,
     "python.linting.enabled": false,
+    "python.formatting.provider": "none",
 
     // Privacy
     "workbench.statusBar.feedback.visible": false,
@@ -112,14 +114,15 @@
         "elsevier",
         "frobenius",
         "jacobian",
+        "metaheuristic",
         "nonlinearly",
         "overdetermined",
-        "toeplitz"
+        "toeplitz",
+        "waypoint",
+        "waypoints"
     ],
     "cSpell.diagnosticLevel": "Information",
     "cSpell.enabledLanguageIds": [
         "latex"
-    ],
-    "editor.wordWrapColumn": 128,
-    "python.formatting.provider": "none"
+    ]
 }
