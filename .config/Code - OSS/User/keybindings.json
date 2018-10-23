@@ -14,5 +14,9 @@
         "key": "ctrl+r",
         "command": "git.revertSelectedRanges",
         "when": "isInDiffEditor && editorTextFocus"
+    },
+    {
+        "key": "shift+r",
+        "command": "python.execInTerminal"
     }
 ]
