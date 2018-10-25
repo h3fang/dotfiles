@@ -18,7 +18,7 @@
             "comments": "#008000"
         }
     },
-    "terminal.external.linuxExec": "xfce4-terminal",,
+    "terminal.external.linuxExec": "xfce4-terminal",
     "terminal.integrated.rendererType": "dom",
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 10000,

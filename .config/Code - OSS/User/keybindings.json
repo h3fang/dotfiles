@@ -16,7 +16,7 @@
         "when": "isInDiffEditor && editorTextFocus"
     },
     {
-        "key": "shift+r",
+        "key": "alt+r",
         "command": "python.execInTerminal"
     }
 ]
