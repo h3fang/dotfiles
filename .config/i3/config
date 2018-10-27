@@ -222,7 +222,7 @@ exec --no-startup-id compton
 exec --no-startup-id xinput disable "SynPS/2 Synaptics TouchPad"
 #The applet can show notifications for events such as connecting to or disconnecting from a WiFi network. For these notifications to display, ensure that you have a notification server installed - see Desktop notifications. If you use the applet without a notification server, you might see some messages in stdout/stderr, and the app might hang. 
 exec --no-startup-id nm-applet --no-agent
-exec --no-startup-id sleep 1 && xset dpms 300
+exec --no-startup-id sleep 0.1 && xset dpms 300
 exec --no-startup-id xss-lock -- $Locker
 exec --no-startup-id sleep 1 && devmon --no-gui
 exec --no-startup-id env GDK_DPI_SCALE=1.2 thunar --daemon
