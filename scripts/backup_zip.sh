@@ -3,8 +3,9 @@
 tar -I pigz \
     --exclude='.config/mpv/watch_later' \
     --exclude='.config/Atom' \
-    --exclude='.config/chromium' \
+    --exclude='.config/Code' \
     --exclude='.config/Code - OSS' \
+    --exclude='.config/chromium' \
     --exclude='.config/QtProject/qtcreator/qbs' \
     --exclude='.config/QtProject/qtcreator/.helpcollection' \
     --exclude='projects/**/build' \
