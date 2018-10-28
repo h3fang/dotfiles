@@ -15,6 +15,7 @@ tar -I pigz \
     --exclude='projects/Courses/**/*.pdf' \
     --exclude='projects/ClusterAD/*/*' \
     --exclude='.~lock.*' \
+    --exclude='**/__pycache__' \
     -cvf arch-enigma-home-$(date -I).tar.gz \
     ~/.config \
     ~/projects \

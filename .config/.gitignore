@@ -11,10 +11,10 @@
 !.gitignore
 !matplotlib/
 !aurman/
-!Code - OSS/
-Code - OSS/*
-!Code - OSS/User
-Code - OSS/User/*
-!Code - OSS/User/settings.json
-!Code - OSS/User/keybindings.json
-!Code - OSS/User/snippets
+!Code/
+Code/*
+!Code/User
+Code/User/*
+!Code/User/settings.json
+!Code/User/keybindings.json
+!Code/User/snippets
