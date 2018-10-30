@@ -6,8 +6,12 @@ tar -I pigz \
     --exclude='.config/Code' \
     --exclude='.config/Code - OSS' \
     --exclude='.config/chromium' \
+    --exclude='.config/libreoffice' \
+    --exclude='.config/GIMP' \
+    --exclude='.config/pulse' \
     --exclude='.config/QtProject/qtcreator/qbs' \
     --exclude='.config/QtProject/qtcreator/.helpcollection' \
+    --exclude='.config/fcitx/libpinyin/data' \
     --exclude='projects/**/build' \
     --exclude='projects/**/Data' \
     --exclude='projects/**/Results' \
@@ -15,6 +19,7 @@ tar -I pigz \
     --exclude='projects/AUR/*/*/*' \
     --exclude='projects/Courses/**/*.pdf' \
     --exclude='projects/ClusterAD/*/*' \
+    --exclude='projects/SJTUThesis/.git' \
     --exclude='.~lock.*' \
     --exclude='**/__pycache__' \
     -cvf arch-enigma-home-$(date -I).tar.gz \
