@@ -18,6 +18,7 @@ alias cls='printf "\033c"'
 alias music='mpv --volume=60 --shuffle --loop-playlist=inf --no-resume-playback --audio-display=no ~/Music/'
 # See https://github.com/chubin/wttr.in
 alias weather='curl https://wttr.in'
+alias duc='find . -maxdepth 1 -mindepth 1 -exec du -sh {} \; | sort -rh'
 
 # SJTU IPTV
 alias cctv5='mpv --fs --no-resume-playback --no-ytdl http://202.120.58.89/hls/cctv5hd.m3u8'
