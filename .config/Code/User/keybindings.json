@@ -18,5 +18,13 @@
     {
         "key": "alt+r",
         "command": "python.execInTerminal"
+    },
+    {
+        "key": "ctrl+,",
+        "command": "workbench.action.openSettingsJson"
+    },
+    {
+        "key": "ctrl+,",
+        "command": "-workbench.action.openSettings"
     }
 ]
