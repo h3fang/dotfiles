@@ -10,6 +10,7 @@
 !Dharkael/
 !chromium-flags.conf
 !.gitignore
+!compton.conf
 !matplotlib/
 !aurman/
 !Code/
