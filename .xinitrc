@@ -49,6 +49,10 @@ xrandr --auto --dpi 144
 # numlock
 numlockx &
 
+# gnome-keyring
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+export SSH_AUTH_SOCK
+
 # window manager or desktop environment
 exec i3
 
