@@ -1,14 +1,23 @@
 #!/bin/sh
 
-pkill transmission-qt
+wmctrl -c Transmission
+
 i3-msg [class="."] kill
+
+devmon -r && pkill udevil
+pkill gnome-keyring-daemon
+
 sleep 3
 
-# gracefully close all apps, needs wmctrl
-wmctrl -l | awk '{print $1}' | while read APP; do
-    notify-send "[$APP] is not closed, please check unsaved content and close it manually."
-    exit 1
+# check transmission
+while [[ $(pidof transmission-qt) ]]; do
+    notify-send "transmission-qt is still running."
+    sleep 3600
 done
 
-devmon -r
+# check every window
+wmctrl -l | awk '{print $1}' | while read APP; do
+    notify-send "[$APP] is not closed, please check unsaved content and close it manually."
+    sleep 3600
+done
 
