@@ -119,6 +119,7 @@
         "nonlinearly",
         "overdetermined",
         "toeplitz",
+        "voxel",
         "waypoint",
         "waypoints"
     ],
