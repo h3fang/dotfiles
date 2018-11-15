@@ -17,7 +17,16 @@ RES=$(xrandr --listmonitors | grep -i eDP | head -n 1 | sed -r 's/^.* ([0-9]+)\/
 
 ffmpeg -loglevel warning -f x11grab -video_size $RES -y -i $DISPLAY -i $LOCK -filter_complex "boxblur=10:3,overlay=(main_w-overlay_w)/2:(main_h-overlay_h)/2" -vframes 1 $IMAGE
 
+revert() {
+    killall -SIGUSR2 dunst
+}
+
+trap revert HUP INT TERM
+killall -SIGUSR1 dunst
+
 i3lock -n -t -i $IMAGE -e
+
+revert
 
 rm $IMAGE
 
