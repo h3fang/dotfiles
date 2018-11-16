@@ -5,7 +5,7 @@ wmctrl -c Transmission
 i3-msg [class="."] kill
 
 devmon -r && pkill udevil
-killall gnome-keyring-daemon
+kill $(pidof gnome-keyring-daemon)
 
 sleep 3
 

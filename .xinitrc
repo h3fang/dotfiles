@@ -52,8 +52,6 @@ numlockx &
 # gnome-keyring
 dbus-update-activation-environment --systemd DISPLAY
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
-export GNOME_KEYRING_CONTROL
-export GNOME_KEYRING_PID
 #export SSH_AUTH_SOCK
 
 # window manager or desktop environment
