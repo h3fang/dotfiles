@@ -18,8 +18,6 @@ tar -I pigz \
     --exclude="projects/AUR/*/*.tar.?z" \
     --exclude='projects/AUR/*/*/*' \
     --exclude='projects/Courses/**/*.pdf' \
-    --exclude='projects/ClusterAD/*/*' \
-    --exclude='projects/SJTUThesis/.git' \
     --exclude='.~lock.*' \
     --exclude='**/__pycache__' \
     -cvf arch-enigma-home-$(date -I).tar.gz \
@@ -34,5 +32,6 @@ tar -I pigz \
     ~/.bash_profile \
     ~/.xinitrc \
     ~/.vimrc \
-    ~/.gitignore
+    ~/.gitignore \
+    ~/.latexmkrc
 
