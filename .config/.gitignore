@@ -12,7 +12,7 @@
 !.gitignore
 !compton.conf
 !matplotlib/
-!aurman/
+!yay/
 !Code/
 Code/*
 !Code/User
