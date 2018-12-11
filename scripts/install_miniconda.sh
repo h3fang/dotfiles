@@ -9,6 +9,5 @@ rm Miniconda3-latest-Linux-x86_64.sh
 
 export PATH=~/.local/miniconda3/bin:$PATH
 conda update conda
-conda install numpy scipy pandas matplotlib sympy scikit-learn
-conda update --all
+conda install numpy scipy pandas matplotlib scikit-learn
 

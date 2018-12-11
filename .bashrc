@@ -27,8 +27,7 @@ alias cctv5p='mpv --fs --no-resume-playback --no-ytdl http://202.120.58.89/hls/c
 alias cctv6='mpv --fs --no-resume-playback --no-ytdl http://202.120.58.89/hls/cctv6hd.m3u8'
 alias cctv6n='mpv --fs --no-resume-playback --no-ytdl http://202.120.58.89/hls/cctv6.m3u8'
 
-# added by Miniconda3 installer
-alias miniconda='export PATH=~/miniconda3/bin:$PATH'
+alias miniconda='export PATH=~/.local/miniconda3/bin:$PATH'
 
 export HISTSIZE=10000
 export HISEFILESIZE=10000
