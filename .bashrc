@@ -50,11 +50,11 @@ export PS1="\[\033[38;5;39m\]┌── [ \u @ \h \[$(tput sgr0)\]\[\033[38;5;201
 export VISUAL="vim"
 
 if [[ "$SSH_AGENT_PID" == "" ]]; then
-    eval "$(<~/.ssh-agent-thing)" > /dev/null
+    eval "$(<~/.cache/ssh-agent-thing)" > /dev/null
 fi
 if ! ps -p $SSH_AGENT_PID > /dev/null; then
     ssh-agent > ~/.ssh-agent-thing
-    eval "$(<~/.ssh-agent-thing)"
+    eval "$(<~/.cache/ssh-agent-thing)"
     ssh-add
 fi
 
