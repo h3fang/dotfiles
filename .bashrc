@@ -55,7 +55,7 @@ if [[ "$SSH_AGENT_PID" == "" ]]; then
     eval "$(<~/.cache/ssh-agent-thing)" > /dev/null
 fi
 if ! ps -p $SSH_AGENT_PID > /dev/null; then
-    ssh-agent > ~/.ssh-agent-thing
+    ssh-agent > ~/.cache/ssh-agent-thing
     eval "$(<~/.cache/ssh-agent-thing)"
     ssh-add
 fi
