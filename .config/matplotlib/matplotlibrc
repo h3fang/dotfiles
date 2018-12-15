@@ -17,6 +17,6 @@ figure.dpi       : 144         ## figure dots per inch
 font.size : 15
 
 ## Figure layout
-figure.autolayout : True       ## When True, automatically adjust subplot
+#figure.autolayout : True       ## When True, automatically adjust subplot
                                ## parameters to make the plot fit the figure
                                ## using `tight_layout`
