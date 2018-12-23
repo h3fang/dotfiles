@@ -11,7 +11,7 @@ backend      : Qt5Agg
 
 #### FIGURE
 ## See http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure
-figure.figsize   : 10, 6       ## figure size in inches
+figure.figsize   : 12, 6.75    ## figure size in inches
 figure.dpi       : 144         ## figure dots per inch
 
 font.size : 15

@@ -14,8 +14,6 @@ alias paclog='vim /var/log/pacman.log'
 alias pacilog='cat /var/log/pacman.log | grep "pacman \-S \w"'
 alias paculog='cat /var/log/pacman.log | grep "upgraded \w"'
 alias pacrlog='cat /var/log/pacman.log | grep "pacman \-R"'
-alias pacopt='yay -Sc'
-alias pacsyu='yay'
 alias cls='printf "\033c"'
 alias music='mpv --volume=60 --shuffle --loop-playlist=inf --no-resume-playback --audio-display=no ~/Music/'
 # See https://github.com/chubin/wttr.in
