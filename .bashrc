@@ -49,12 +49,3 @@ export PS1="\[\033[38;5;39m\]┌── [ \u @ \h \[$(tput sgr0)\]\[\033[38;5;201
 
 export VISUAL="vim"
 
-#if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-#    ssh-agent > ~/.cache/ssh-agent-env
-#    eval "$(<~/.cache/ssh-agent-env)"
-#    ssh-add
-#fi
-#if [[ "$SSH_AGENT_PID" == "" ]]; then
-#    eval "$(<~/.cache/ssh-agent-env)"
-#fi
-
