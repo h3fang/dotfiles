@@ -9,6 +9,6 @@
 !.latexmkrc
 !.gitconfig
 !scripts/
-scripts/ss.sh
+scripts/bw.sh
 scripts/ali.sh
 
