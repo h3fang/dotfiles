@@ -81,7 +81,7 @@
             "args": [
                 "-synctex=1",
                 "-interaction=nonstopmode",
-                "-outdir=build",
+                "-outdir=%OUTDIR%",
                 "-file-line-error",
                 "-pdfxe",
                 "-xelatex",
@@ -94,7 +94,7 @@
             "args": [
                 "-synctex=1",
                 "-interaction=nonstopmode",
-                "-output-directory=build",
+                "-output-directory=%OUTDIR%",
                 "-file-line-error",
                 "%DOC%"
             ]
@@ -103,11 +103,11 @@
             "name": "bibtex",
             "command": "bibtex",
             "args": [
-                "build/%DOCFILE%"
+                "%OUTDIR%/%DOCFILE%"
             ]
         }
     ],
-    "latex-workshop.latex.outputDir": "./build/",
+    "latex-workshop.latex.outputDir": "build",
     "latex-workshop.latex.clean.enabled": false,
     "cSpell.userWords": [
         "autoencoder",
