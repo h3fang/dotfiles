@@ -33,7 +33,7 @@ signal=1
 
 [battery]
 command=~/.config/i3blocks/scripts/battery
-label=
+#label=
 interval=10
 
 [date]
