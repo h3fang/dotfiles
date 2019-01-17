@@ -10,3 +10,6 @@ mount --bind /mnt/cache/.config /home/enigma/.config
 #echo "\_SB.PCI0.PEG0.PEGP._OFF" > /proc/acpi/call
 #rmmod acpi_call
 
+# to solve mutiple (61) systemd-udevd processes problem
+systemctl restart systemd-udevd
+
