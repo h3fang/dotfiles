@@ -46,7 +46,6 @@ export PS1="\[\033[38;5;39m\]┌── [ \u @ \h \[$(tput sgr0)\]\[\033[38;5;201
 export VISUAL="vim"
 
 # HSTR configuration
-alias hh=hstr                    # hh to be alias for hstr
 export HSTR_CONFIG=hicolor,raw-history-view       # get more colors
 shopt -s histappend              # append new history items to .bash_history
 export HISTCONTROL=ignoreboth:erasedups   # leading space hides commands from history
