@@ -62,5 +62,3 @@ imap <C-v> <C-r><C-o>+
 " https://stackoverflow.com/questions/5728259/how-to-clear-the-line-number-in-vim-when-copying
 se mouse+=a
 
-nmap <F7> :NERDTreeToggle<CR>
-nmap <F8> :TagbarToggle<CR>
