@@ -1,4 +1,9 @@
 {
+    // Settings
+    "workbench.settings.editor": "json",
+    "workbench.settings.openDefaultSettings": true,
+    "workbench.settings.useSplitJSON": true,
+
     // Editor
     "workbench.colorTheme": "Default Light+",
     "workbench.colorCustomizations": {
