@@ -26,8 +26,7 @@ alias cctv5n='mpv --fs --no-resume-playback --no-ytdl http://202.120.58.89/hls/c
 alias cctv5p='mpv --fs --no-resume-playback --no-ytdl http://202.120.58.89/hls/cctv5phd.m3u8'
 alias cctv6='mpv --fs --no-resume-playback --no-ytdl http://202.120.58.89/hls/cctv6hd.m3u8'
 alias cctv6n='mpv --fs --no-resume-playback --no-ytdl http://202.120.58.89/hls/cctv6.m3u8'
-
-alias miniconda='export PATH=~/.local/miniconda3/bin:$PATH; export PS1=${PS1//\\u/\\[\\033[38;5;197m\\]\(miniconda\) \\[\\033[38;5;39m\\]\\u}'
+alias miniconda='source ~/.local/miniconda3/bin/activate main'
 
 man() {
     LESS_TERMCAP_md=$'\e[01;31m' \
@@ -39,9 +38,18 @@ man() {
     command man "$@"
 }
 
+conda_prompt() {
+    if test -z "$CONDA_DEFAULT_ENV"
+    then
+        echo ""
+    else
+        echo "${CONDA_DEFAULT_ENV} "
+    fi
+}
+
 #PS1='[\u@\h \W]\$ '
 #PS1="\[\033[38;5;39m\][\u@\h\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;10m\]\W\[$(tput sgr0)\]\[\033[38;5;39m\]]\\$\[$(tput sgr0)\] "
-export PS1="\[\033[38;5;39m\]┌── [ \u @ \h \[$(tput sgr0)\]\[\033[38;5;201m\]\t \[$(tput sgr0)\]\[\033[38;5;10m\]\w \[$(tput sgr0)\]\[\033[38;5;39m\]]\n\[\033[38;5;39m\]└── \\$ \[$(tput sgr0)\]"
+export PS1="\[\033[38;5;39m\]┌── [ \[\033[38;5;197m\]\$(conda_prompt)\[\033[38;5;39m\]\u @ \h \[$(tput sgr0)\]\[\033[38;5;201m\]\t \[$(tput sgr0)\]\[\033[38;5;10m\]\w \[$(tput sgr0)\]\[\033[38;5;39m\]]\n\[\033[38;5;39m\]└── \\$ \[$(tput sgr0)\]"
 
 export VISUAL="vim"
 
