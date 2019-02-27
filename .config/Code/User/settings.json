@@ -37,6 +37,7 @@
     "python.linting.pylintEnabled": false,
     "python.linting.enabled": false,
     "python.formatting.provider": "none",
+    "python.condaPath": "~/.local/miniconda3/bin/conda",
 
     // Privacy
     "workbench.statusBar.feedback.visible": false,
