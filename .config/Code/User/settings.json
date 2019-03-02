@@ -48,7 +48,7 @@
     "workbench.settings.enableNaturalLanguageSearch": false,
 
     // Latex
-    "latex-workshop.view.pdf.viewer": "external",
+    "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.view.pdf.external.command": {
         "command": "qpdfview",
         "args": [
