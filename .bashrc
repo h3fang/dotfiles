@@ -67,5 +67,5 @@ if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\C-a hstr -- \C-j"'; fi
 # if this is interactive shell, then bind 'kill last command' to Ctrl-x k
 if [[ $- =~ .*i.* ]]; then bind '"\C-xk": "\C-a hstr -k \C-j"'; fi
 
-cat ~/.bash_history | nl|sort -k2 -k 1,1nr|uniq -f1|sort -n|cut -f2 > ~/.bash_history
+tac ~/.bash_history | awk '!x[$0]++' | tac > /tmp/clean_bh; mv /tmp/clean_bh ~/.bash_history
 
