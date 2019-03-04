@@ -23,6 +23,8 @@
             "comments": "#008000"
         }
     },
+    "editor.minimap.showSlider": "always",
+    "editor.minimap.renderCharacters": false,
     "terminal.external.linuxExec": "xfce4-terminal",
     "terminal.integrated.rendererType": "dom",
     "files.autoSave": "afterDelay",
@@ -126,6 +128,7 @@
         "nonlinearly",
         "overdetermined",
         "overfit",
+        "raphson",
         "toeplitz",
         "voxel",
         "waypoint",
