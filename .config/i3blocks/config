@@ -5,25 +5,14 @@ color=#E0E0E0
 label=
 interval=3
 
-#[cpu_usage]
-#interval=1
-#label=
-
 [memory]
 label=
 interval=3
-
-#[bandwidth]
-#interval=3
 
 [wifi]
 instance=wlo1
 interval=5
 label=
-
-#[disk]
-#interval=1
-#label=
 
 [volume]
 command=~/.config/i3blocks/scripts/volume
@@ -33,9 +22,9 @@ signal=1
 
 [battery]
 command=~/.config/i3blocks/scripts/battery
-#label=
 interval=10
 
 [date]
 command=date '+ %b %d %a  %H:%M'
 interval=1
+
