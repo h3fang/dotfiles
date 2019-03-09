@@ -1,5 +1,7 @@
 #!/bin/sh
 
+ARCHIVE_NAME=~/arch-enigma-home-$(date -I).tar.gz
+
 tar -I pigz \
     --exclude='.config/mpv/watch_later' \
     --exclude='.config/Atom' \
@@ -20,7 +22,7 @@ tar -I pigz \
     --exclude='projects/Courses/**/*.pdf' \
     --exclude='.~lock.*' \
     --exclude='**/__pycache__' \
-    -cvf arch-enigma-home-$(date -I).tar.gz \
+    -cvf $ARCHIVE_NAME \
     ~/.config \
     ~/projects \
     ~/scripts \
@@ -34,4 +36,7 @@ tar -I pigz \
     ~/.vimrc \
     ~/.gitignore \
     ~/.latexmkrc
+
+echo -e "\nuploading ..."
+rclone copy $ARCHIVE_NAME gdrv: -v --timeout=30s
 
