@@ -17,7 +17,7 @@ alias pacrlog='cat /var/log/pacman.log | grep -E " removed (\w|-)*" | grep -E "(
 alias cls='printf "\033c"'
 alias music='mpv --volume=60 --shuffle --loop-playlist=inf --no-resume-playback --audio-display=no ~/Music/'
 # See https://github.com/chubin/wttr.in
-alias weather='curl https://wttr.in'
+alias weather='curl https://wttr.in?lang=zh'
 alias duc='find . -maxdepth 1 -mindepth 1 -exec du -sh {} \; | sort -rh'
 alias dot='/usr/bin/git --git-dir=$HOME/.config/dotfiles/ --work-tree=$HOME'
 
