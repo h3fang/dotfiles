@@ -45,7 +45,7 @@
     "workbench.statusBar.feedback.visible": false,
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
-    "update.channel": "none",
+    "update.mode": "none",
     "extensions.ignoreRecommendations": true,
     "workbench.settings.enableNaturalLanguageSearch": false,
 
@@ -113,10 +113,20 @@
             "args": [
                 "%OUTDIR%/%DOCFILE%"
             ]
+        },
+        {
+            "name": "scp",
+            "command": "scp",
+            "args": [
+                "%OUTDIR%/%DOCFILE%.pdf",
+                "nso:~/projects/%DOCFILE%.pdf"
+            ]
         }
     ],
     "latex-workshop.latex.outDir": "build",
-    "latex-workshop.latex.autoClean.run": "never",
+    "latex-workshop.latex.autoClean.run": "onFailed",
+
+    // spell checker
     "cSpell.userWords": [
         "autoencoder",
         "dataset",
