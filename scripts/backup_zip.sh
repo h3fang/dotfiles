@@ -18,6 +18,7 @@ tar -I pigz \
     --exclude='projects/**/Data' \
     --exclude='projects/**/Results' \
     --exclude="projects/AUR/*/*.tar.?z" \
+    --exclude="projects/AUR/*/*.tar.bz2" \
     --exclude='projects/AUR/*/*/*' \
     --exclude='projects/Courses/**/*.pdf' \
     --exclude='.~lock.*' \

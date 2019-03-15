@@ -1,6 +1,9 @@
 # no space after comma
 # no slash after source directory
-rsync -ahv --delete --ignore-errors --delete-excluded --exclude={"\$RECYCLE.BIN","System Volume Information"} /run/media/enigma/Data /media/stash/backup/win_Data/
-rsync -ahv --delete --ignore-errors --delete-excluded /run/media/enigma/Windows/Users/hfeni/Downloads /media/stash/backup/win_Data/
-rsync -ahv --delete --ignore-errors --delete-excluded /run/media/enigma/Windows/Users/hfeni/Pictures /media/stash/backup/win_Data/
+
+PREFIX=/run/media/enigma
+
+rsync -ahv --delete --ignore-errors --delete-excluded --exclude={"\$RECYCLE.BIN","System Volume Information"} $PREFIX/Data $PREFIX/stash/backup/win_Data/
+rsync -ahv --delete --ignore-errors --delete-excluded $PREFIX/Windows/Users/hfeni/Downloads $PREFIX/stash/backup/win_Data/
+rsync -ahv --delete --ignore-errors --delete-excluded $PREFIX/Windows/Users/hfeni/Pictures $PREFIX/stash/backup/win_Data/
 
