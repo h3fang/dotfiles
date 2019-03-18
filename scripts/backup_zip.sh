@@ -1,6 +1,7 @@
 #!/bin/sh
 
-ARCHIVE_NAME=~/arch-enigma-home-$(date -I).tar.gz
+PREFIX=arch-enigma-home
+ARCHIVE=~/${PREFIX}-$(date -I).tar.gz
 
 tar -I pigz \
     --exclude='.config/mpv/watch_later' \
@@ -21,9 +22,10 @@ tar -I pigz \
     --exclude="projects/AUR/*/*.tar.bz2" \
     --exclude='projects/AUR/*/*/*' \
     --exclude='projects/Courses/**/*.pdf' \
+    --exclude='projects/Courses/**/*.npz' \
     --exclude='.~lock.*' \
     --exclude='**/__pycache__' \
-    -cvf $ARCHIVE_NAME \
+    -cf $ARCHIVE \
     ~/.config \
     ~/projects \
     ~/scripts \
@@ -38,6 +40,31 @@ tar -I pigz \
     ~/.gitignore \
     ~/.latexmkrc
 
-echo -e "\nuploading ..."
-rclone copy $ARCHIVE_NAME gdrv: -v --timeout=30s
+echo
+ls -hl ~/${PREFIX}*.tar.gz
 
+echo
+read -p "Upload (y/[n])? " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    echo -e "\nuploading ..."
+    rclone --stats-one-line -P --stats 1s copy $ARCHIVE gdrv: -v --timeout=30s
+fi
+
+echo
+read -p "Remove old backups (y/[n])? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    oldbackups=$(ls ~/$PREFIX*.tar.gz)
+    for f in ${oldbackups[@]}
+    do
+        if [[ "$f" != "$ARCHIVE" ]]
+        then
+            echo  "removing $f"
+            rm $f
+        fi
+    done
+fi
+
+echo -e "\nDone."
