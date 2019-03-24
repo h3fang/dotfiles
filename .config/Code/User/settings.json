@@ -129,11 +129,14 @@
     // spell checker
     "cSpell.userWords": [
         "autoencoder",
+        "backend",
         "dataset",
         "elsevier",
+        "ensembling",
         "frobenius",
-        "hyperparameters",
+        "hyperparameter",
         "jacobian",
+        "laplacian",
         "metaheuristic",
         "nonlinearly",
         "overdetermined",
@@ -141,8 +144,7 @@
         "raphson",
         "toeplitz",
         "voxel",
-        "waypoint",
-        "waypoints"
+        "waypoint"
     ],
     "cSpell.diagnosticLevel": "Information",
     "cSpell.enabledLanguageIds": [
