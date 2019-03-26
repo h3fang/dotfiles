@@ -3,9 +3,11 @@
 wmctrl -c Transmission
 
 i3-msg [class="."] kill
-
-devmon -r && pkill udevil
 kill $(pidof gnome-keyring-daemon)
+
+sync
+#devmon -r && pkill udevil
+udiskie-umount -ad
 
 sleep 3
 
