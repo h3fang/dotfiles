@@ -18,6 +18,7 @@ tar -I pigz \
     --exclude='projects/**/build' \
     --exclude='projects/**/Data' \
     --exclude='projects/**/Results' \
+    --exclude='projects/**/.vscode/ipch' \
     --exclude="projects/AUR/*/*.tar.?z" \
     --exclude="projects/AUR/*/*.tar.bz2" \
     --exclude='projects/AUR/*/*/*' \
