@@ -1,11 +1,10 @@
 command=/usr/lib/i3blocks/$BLOCK_NAME
 color=#F0F0F0
 
-
 [weather]
 command=curl -Ss 'https://wttr.in?0TQ&lang=zh' | cut -c 16- | head -2 | xargs echo
 markup=pango
-interval=60
+interval=300
 
 [load_average]
 label=
