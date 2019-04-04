@@ -62,3 +62,6 @@ imap <C-v> <C-r><C-o>+
 " https://stackoverflow.com/questions/5728259/how-to-clear-the-line-number-in-vim-when-copying
 se mouse+=a
 
+" https://vi.stackexchange.com/questions/14357/moving-viminfo-file-to-vim-dir
+set viminfo+=n~/.vim/viminfo
+
