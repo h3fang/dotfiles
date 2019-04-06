@@ -10,7 +10,7 @@ do
   conda update --all --prune
 done
 
-conda clean -p
+conda clean -a
 
 echo "updated all conda environments"
 
