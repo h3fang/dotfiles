@@ -31,7 +31,6 @@ tar -I pigz \
     ~/projects \
     ~/scripts \
     ~/Pictures \
-    ~/Documents \
     ~/.gtkrc-2.0 \
     ~/.gitconfig \
     ~/.bashrc \
