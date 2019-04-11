@@ -1,14 +1,66 @@
-/*
+# hidden folders
+.conda/
+.cache/
+.gnupg/
+.icons/
+.keras/
+.local/
+.mozilla/
+.npm/
+.nv/
+.pki/
+.ssh/
+.vim/
+.vispy/
+.vscode/
+.zotero/
 
-!.gitignore
-!.config/
-!.bashrc
-!.bash_profile
-!.xinitrc
-!.vimrc
-!.latexmkrc
-!.gitconfig
-!scripts/
-scripts/bw.sh
+# .config folder
+.config/borg/
+.config/chromium/
+.config/configstore/
+.config/dconf/
+.config/dotfiles/
+.config/fcitx/
+.config/gedit/
+.config/GIMP/
+.config/gtk-2.0/
+.config/gtk-3.0/
+.config/libreoffice/
+.config/mpv/watchlater/
+.config/pulse/
+.config/qpdfview/qpdfview.conf
+.config/QtProject/
+.config/rclone/
+.config/Thunar/
+.config/transmission/
+.config/xfce4/
+.config/mimeapps.list
+.config/QtProject.conf
+
+# .config/Code folder
+.config/Code/*
+!.config/Code/User/
+.config/Code/User/workspaceStorage/
+.config/Code/User/globalStorage/
+
+# common folders
+backups/
+Desktop/
+Documents/
+Downloads/
+Music/
+Pictures/
+projects/
+Videos/
+Zotero/
+
+# special scripts
 scripts/ali.sh
+
+# special dotfiles
+.bash_history
+.esd_auth
+.Xauthority
+.gtkrc-2.0
 

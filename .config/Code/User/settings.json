@@ -131,6 +131,7 @@
         "autoencoder",
         "backend",
         "dataset",
+        "discretize",
         "elsevier",
         "ensembling",
         "frobenius",
