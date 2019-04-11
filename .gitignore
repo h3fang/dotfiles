@@ -27,7 +27,7 @@
 .config/gtk-2.0/
 .config/gtk-3.0/
 .config/libreoffice/
-.config/mpv/watchlater/
+.config/mpv/watch_later/
 .config/pulse/
 .config/qpdfview/qpdfview.conf
 .config/QtProject/
