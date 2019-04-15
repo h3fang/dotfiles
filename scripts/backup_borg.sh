@@ -3,7 +3,7 @@
 REPO=~/backups
 PREFIX=arch-enigma-home
 
-borg create --compression zstd,10 \
+borg create --compression zstd,10 --stats --list --filter=AME \
     --exclude='/home/enigma/.config/mpv/watch_later' \
     --exclude='/home/enigma/.config/Atom' \
     --exclude='/home/enigma/.config/Code' \
