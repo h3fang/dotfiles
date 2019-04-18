@@ -1,7 +1,7 @@
 #!/bin/bash
 
 LOG_FILE=/tmp/pacman_install_log_$(date +%s)
-cat /var/log/pacman.log | sed '/\[ALPM\] installed /s/\[ALPM\] installed //;t;d' > $LOG_FILE
+sed '/\[ALPM\] installed /s/\[ALPM\] installed //;t;d' /var/log/pacman.log > $LOG_FILE
 
 for i in $(pacman -Qqe)
 do
