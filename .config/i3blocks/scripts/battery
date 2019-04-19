@@ -89,9 +89,12 @@ if ($status eq 'Discharging') {
         }
     }
 
-	if ($percent < 5) {
+	if ($percent < 10) {
 		exit(33);
 	}
+} else {
+	system("rm $bat_critical_file");
+	system("rm $bat_low_file");
 }
 
 exit(0);
