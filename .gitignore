@@ -57,6 +57,7 @@ Zotero/
 
 # special scripts
 scripts/ali.sh
+scripts/do.sh
 
 # special dotfiles
 .bash_history
