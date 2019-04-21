@@ -7,10 +7,9 @@ do
    :
   echo "updating environment $i ..."
   conda activate $i
-  conda update --all --prune
+  conda update --all
+  conda clean -a
 done
-
-conda clean -a
 
 echo "updated all conda environments"
 
