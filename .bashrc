@@ -5,6 +5,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+alias cp="rsync -ah --progress"
 alias free='free -h'
 alias df='df -h'
 alias ls='ls --color=auto -l'
