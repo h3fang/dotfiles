@@ -1,5 +1,6 @@
 {
-    // Settings
+    // Settings,
+    "workbench.startupEditor": "welcomePageInEmptyWorkbench",
     "workbench.settings.editor": "json",
     "workbench.settings.openDefaultSettings": true,
     "workbench.settings.useSplitJSON": true,
