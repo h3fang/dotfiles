@@ -50,7 +50,7 @@ read -p "Sync with Google Drive (y/[n])? " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     echo -e "\nuploading ..."
-    rclone --stats-one-line -P --stats 1s sync $REPO gdrv:${PREFIX}-borg -v --timeout=30s
+    rclone --stats-one-line -P --stats 1s --drive-use-trash=false sync $REPO gdrv:${PREFIX}-borg -v --timeout=30s
 fi
 
 echo -e "\nDone."
