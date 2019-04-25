@@ -4,6 +4,7 @@
 .gnupg/
 .icons/
 .keras/
+.theano/
 .local/
 .mozilla/
 .npm/
@@ -18,6 +19,7 @@
 # .config folder
 .config/borg/
 .config/chromium/
+.config/cef_user_data/
 .config/configstore/
 .config/dconf/
 .config/dotfiles/
