@@ -11,5 +11,7 @@ echo "changeps1: False" >> ~/.local/miniconda3/.condarc
 # create "main" environment with popular packages
 export PATH=~/.local/miniconda3/bin:$PATH
 conda update conda
-conda create -n main numpy scipy pandas matplotlib scikit-learn
-
+conda create -n main numpy scipy pandas matplotlib scikit-learn pillow h5py xlrd cython
+conda activate main
+conda install tensorflow keras shapely
+pip install --upgrade tensorflow-probability pymc3 vispy
