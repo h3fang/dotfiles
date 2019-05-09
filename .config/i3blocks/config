@@ -4,7 +4,7 @@ color=#F0F0F0
 [weather]
 command=curl -Ss 'https://wttr.in?0TQ&lang=zh' | cut -c 16-48 | head -2 | xargs echo
 markup=pango
-interval=300
+interval=600
 
 [load_average]
 label=
