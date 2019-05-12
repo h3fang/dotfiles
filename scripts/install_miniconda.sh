@@ -13,8 +13,9 @@ echo "changeps1: False" >> ~/.local/miniconda3/.condarc
 # create "main" environment with popular packages
 export PATH=~/.local/miniconda3/bin:$PATH
 conda update conda
-conda create -n main numpy scipy pandas matplotlib scikit-learn pillow h5py xlrd cython shapely
+conda create -n main numpy scipy pandas matplotlib scikit-learn pillow h5py xlrd shapely vispy
 conda activate main
-#conda install tensorflow-gpu keras
-conda install pytorch cudatoolkit=10.0 -c pytorch
-pip install --upgrade pymc3 vispy #tensorflow-probability
+conda config --env --add channels pytorch
+#conda install pytorch cudatoolkit=10.0
+#pip install tensorflow-gpu==2.0.0-alpha0 tensorflow-probability
+pip install --upgrade pymc3
