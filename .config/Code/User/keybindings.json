@@ -26,5 +26,14 @@
     {
         "key": "ctrl+,",
         "command": "-workbench.action.openSettings"
+    },
+    {
+        "key": "ctrl+alt+r",
+        "command": "revealFileInOS"
+    },
+    {
+        "key": "ctrl+alt+r",
+        "command": "-revealFileInOS",
+        "when": "!editorFocus"
     }
 ]
