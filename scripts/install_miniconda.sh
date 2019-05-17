@@ -10,12 +10,19 @@ rm $MINICONDA_FILE
 # prevent conda activate from changing PS1
 echo "changeps1: False" >> ~/.local/miniconda3/.condarc
 
-# create "main" environment with popular packages
-export PATH=~/.local/miniconda3/bin:$PATH
+# update base
+source ~/.local/miniconda3/bin/activate
 conda update conda
+
+# create "main" environment with popular packages
 conda create -n main numpy scipy pandas matplotlib scikit-learn pillow h5py xlrd shapely vispy
-conda activate main
+source ~/.local/miniconda3/bin/activate main
 conda config --env --add channels pytorch
-#conda install pytorch cudatoolkit=10.0
-#pip install tensorflow-gpu==2.0.0-alpha0 tensorflow-probability
-pip install --upgrade pymc3
+conda install -n main pytorch cudatoolkit=10.0
+
+# "probability" environment
+conda create --clone main -n probability
+source ~/.local/miniconda3/bin/activate probability
+pip install tensorflow-gpu==2.0.0-alpha0 tensorflow-probability
+pip install pymc3
+pip install pyro-ppl
