@@ -1,7 +1,7 @@
 #!/bin/sh
 
 read -p "remove then install latest miniconda? (y/[n]) " -n 1 -r
-echo    # (optional) move to a new line
+echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     # silent install to ~/.local/miniconda3
@@ -21,7 +21,7 @@ conda update conda
 N_GPUS=$(lspci | grep -i nvidia | grep -i 3d | wc -l)
 
 read -p "setup main? (y/[n]) " -n 1 -r
-echo    # (optional) move to a new line
+echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     conda remove -n main --all
@@ -37,7 +37,7 @@ then
 fi
 
 read -p "setup probability? (y/[n]) " -n 1 -r
-echo    # (optional) move to a new line
+echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     conda remove -n probability --all
