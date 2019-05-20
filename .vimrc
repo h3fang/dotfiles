@@ -65,3 +65,6 @@ se mouse+=a
 " https://vi.stackexchange.com/questions/14357/moving-viminfo-file-to-vim-dir
 set viminfo+=n~/.vim/viminfo
 
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+
