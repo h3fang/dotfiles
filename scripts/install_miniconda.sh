@@ -25,15 +25,22 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     conda remove -n main --all
+
     # create "main" environment with popular packages
     conda create -n main numpy scipy pandas matplotlib scikit-learn pillow h5py xlrd shapely vispy
     source ~/.local/miniconda3/bin/activate main
+
+    # pytorch
     conda config --env --add channels pytorch
     if [ $N_GPUS -gt 0 ]; then
         conda install -n main pytorch cudatoolkit=10.0
     else
         conda install -n main pytorch-cpu
     fi
+
+    # gym
+    conda install chardet future idna requests urllib3
+    pip install gym # should only install pyglet and gym from pypi
 fi
 
 read -p "setup probability? (y/[n]) " -n 1 -r
@@ -41,6 +48,7 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     conda remove -n probability --all
+
     # "probability" environment
     conda create --clone main -n probability
     source ~/.local/miniconda3/bin/activate probability
@@ -49,7 +57,7 @@ then
     else
         pip install tensorflow==2.0.0-alpha0 tensorflow-probability
     fi
-    pip install pymc3
+    conda install -c conda-forge pymc3
     pip install pyro-ppl
 fi
 
