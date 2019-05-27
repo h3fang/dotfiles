@@ -17,17 +17,9 @@ alias paculog='cat /var/log/pacman.log | grep -E " upgraded (\w|-|\+)*" | grep -
 alias pacrlog='cat /var/log/pacman.log | grep -E " removed (\w|-|\+)*" | grep -E "(\w|-|\+)* \("'
 alias cls='printf "\033c"'
 alias music='mpv --volume=60 --shuffle --loop-playlist=inf --no-resume-playback --audio-display=no ~/Music/'
-# See https://github.com/chubin/wttr.in
 alias weather='curl https://wttr.in?lang=zh'
 alias ncdu='ncdu --color dark'
 alias dot='/usr/bin/git --git-dir=$HOME/.config/dotfiles/ --work-tree=$HOME'
-
-# SJTU IPTV
-alias cctv5='mpv --fs --no-resume-playback --no-ytdl http://202.120.58.89/hls/cctv5hd.m3u8'
-alias cctv5n='mpv --fs --no-resume-playback --no-ytdl http://202.120.58.89/hls/cctv5.m3u8'
-alias cctv5p='mpv --fs --no-resume-playback --no-ytdl http://202.120.58.89/hls/cctv5phd.m3u8'
-alias cctv6='mpv --fs --no-resume-playback --no-ytdl http://202.120.58.89/hls/cctv6hd.m3u8'
-alias cctv6n='mpv --fs --no-resume-playback --no-ytdl http://202.120.58.89/hls/cctv6.m3u8'
 alias miniconda='source ~/.local/miniconda3/bin/activate main'
 
 man() {
