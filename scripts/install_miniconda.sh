@@ -1,6 +1,6 @@
 #!/bin/sh
 
-read -p "remove then install latest miniconda? (y/[n]) " -n 1 -r
+read -p "remove then install latest miniconda? (y/[n]) " -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -20,7 +20,7 @@ conda update conda
 
 N_GPUS=$(lspci | grep -i nvidia | grep -i 3d | wc -l)
 
-read -p "setup main? (y/[n]) " -n 1 -r
+read -p "setup main? (y/[n]) " -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -43,7 +43,7 @@ then
     pip install gym # should only install pyglet and gym from pypi
 fi
 
-read -p "setup probability? (y/[n]) " -n 1 -r
+read -p "setup probability? (y/[n]) " -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then

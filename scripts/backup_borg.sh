@@ -46,7 +46,7 @@ borg info $REPO
 borg prune -v --list --keep-within=10d --keep-daily=30 --keep-weekly=4 --keep-monthly=3 $REPO
 
 echo
-read -p "Sync with Google Drive (y/[n])? " -n 1 -r
+read -p "Sync with Google Drive (y/[n])? " -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     echo -e "\nuploading ..."
