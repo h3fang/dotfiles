@@ -1,13 +1,13 @@
 #!/bin/bash
 
 source ~/.local/miniconda3/bin/activate
-conda_envs=($(conda info -e | grep miniconda3 | awk '{print $1}'))
-for i in "${conda_envs[@]}"
-do
-   :
-  echo "updating environment $i ..."
-  conda activate $i
+for env in $(conda info -e | grep miniconda3 | awk '{print $1}'); do
+  echo "updating environment $env ..."
+  conda activate $env
   conda update --all
+  for pkg in $(conda list | grep pypi$ | awk '{print $1}'); do
+      pip install --upgrade $pkg
+  done
   conda clean -a
 done
 
