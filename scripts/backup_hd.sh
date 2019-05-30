@@ -8,7 +8,7 @@ rsync -ahv --delete --ignore-errors --delete-excluded \
     --exclude="arch-enigma-home-*.tar.gz" \
     --exclude="projects/build" \
     --exclude="projects/*/Data" \
-    --exclude="projects/*/Results" \
+    --exclude="projects/*/Results/**/*.npz" \
     --exclude="projects/AUR/*/*/*" \
     --exclude="projects/AUR/*/*.tar.?z" \
     --exclude=".cache" \
