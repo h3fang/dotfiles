@@ -1,10 +1,36 @@
 #!/bin/sh
 
-# no space after comma
+BACKUP_LOC=/run/media/enigma/stash/backup/
+
 # no slash after source directory
-rsync -ahv --delete --ignore-errors --delete-excluded --exclude={"MATLAB",".cache","projects/*/Data","projects/*/Results","projects/AUR/*/*/*","projects/AUR/*/*.tar.?z",".local/miniconda3",".local/share/Trash",".local/share/Steam",".nv",".thumbnails",".gvfs",".config/Code/*Cache*",".config/Code - OSS/*Cache*",".config/chromium",".config/Code/logs",".config/Code - OSS/logs",".local/share/gvfs-metadata",".local/share/recently-used.xbel*","arch-enigma-home-*.tar.gz",".vscode/extensions",".vscode-oss/extensions",".theano","projects/build"} ~ /run/media/enigma/stash/backup/
+rsync -ahv --delete --ignore-errors --delete-excluded \
+    --exclude="MATLAB" \
+    --exclude="arch-enigma-home-*.tar.gz" \
+    --exclude="projects/build" \
+    --exclude="projects/*/Data" \
+    --exclude="projects/*/Results" \
+    --exclude="projects/AUR/*/*/*" \
+    --exclude="projects/AUR/*/*.tar.?z" \
+    --exclude=".cache" \
+    --exclude=".nv" \
+    --exclude=".gvfs" \
+    --exclude=".theano" \
+    --exclude=".thumbnails" \
+    --exclude=".local/miniconda3" \
+    --exclude=".local/share/Trash" \
+    --exclude=".local/share/Steam" \
+    --exclude=".local/share/gvfs-metadata" \
+    --exclude=".local/share/recently-used.xbel*" \
+    --exclude=".config/chromium" \
+    --exclude=".config/Code/*Cache*" \
+    --exclude=".config/Code - OSS/*Cache*" \
+    --exclude=".config/Code/logs" \
+    --exclude=".config/Code - OSS/logs" \
+    --exclude=".vscode/extensions" \
+    --exclude=".vscode-oss/extensions" \
+    ~ $BACKUP_LOC
 
 for target in /etc /boot/loader /usr/lib/modprobe.d /usr/lib/modules-load.d ; do
-    rsync -ahv --delete --ignore-errors --delete-excluded $target /run/media/enigma/stash/backup/
+    rsync -ahv --delete --ignore-errors --delete-excluded $target $BACKUP_LOC
 done
 
