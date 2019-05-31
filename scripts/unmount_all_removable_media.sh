@@ -10,7 +10,7 @@ do
         DEVTO=`echo $device|awk -F"/" 'NF>1{print $NF}'`
         echo `df -h|grep "$(ls /dev/$DEVTO*)"|awk '{print $1}'` is the exact device
         UM=`df -h|grep "$(ls /dev/$DEVTO*)"|awk '{print $1}'`
-        if sudo umount $UM; then
+        if umount $UM; then
             echo umounted $UM
         else
             echo failed to unmount $UM
