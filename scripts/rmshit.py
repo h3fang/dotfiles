@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#!/usr/bin/python3
 
 # From https://github.com/lahwaacz/Scripts/blob/master/rmshit.py
 
@@ -8,48 +8,30 @@ import shutil
 import glob
 
 shittyfiles = [
-    '~/.adobe',              # Flash crap
-    '~/.macromedia',         # Flash crap
     '~/.recently-used',
     '~/.local/share/recently-used.xbel*',
-    '~/Desktop',             # Firefox creates this, something else also creates this
+    '~/.local/share/gegl-*',
     '~/.thumbnails',
+    '~/.cache/thumbnails',
     '~/.gconfd',
     '~/.gconf',
-    '~/.local/share/gegl-0.2',
-    '~/.FRD/log/app.log',   # FRD
-    '~/.FRD/links.txt',     # FRD
-    '~/.objectdb',          # FRD
-    '~/.gstreamer-0.10',
+    '~/.gstreamer-*',
     '~/.pulse',
     '~/.esd_auth',
     '~/.config/enchant',
-    '~/.spicec',            # contains only log file; unconfigurable
-    '~/.dropbox-dist',
+    '~/.config/cef_user_data',
+    '~/.config/configstore',
+    '~/.config/dconf',
+    '~/.config/mpv/watch_later',
     '~/.parallel',
     '~/.dbus',
-    '~/ca2',                # WTF?
-    '~/ca2~',               # WTF?
-    '~/.distlib/',          # contains another empty dir, don't know which software creates it
-    '~/.bazaar/',           # bzr insists on creating files holding default values
-    '~/.bzr.log',
     '~/.nv/',
-    '~/.viminfo',           # configured to be moved to ~/.cache/vim/viminfo, but it is still sometimes created...
     '~/.npm/',              # npm cache
     '~/.java/',
     '~/.oracle_jre_usage/',
-    '~/.jssc/',
-    '~/.tox/',              # cache directory for tox
-    '~/.pylint.d/',
-    '~/.qute_test/',
-    '~/.QtWebEngineProcess/',
-    '~/.qutebrowser/',      # created empty, only with webengine backend
-    '~/.asy/',
-    '~/.cmake/',
-    '~/.gnome/',
-    '~/unison.log',
     '~/.texlive/',
-    '~/.w3m/',
+    '~/.mozilla/',
+    '~/.pki/'
 ]
 
 
