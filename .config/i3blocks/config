@@ -8,11 +8,11 @@ interval=600
 
 [load_average]
 label=
-interval=3
+interval=5
 
 [memory]
 label=
-interval=3
+interval=5
 
 [wifi]
 instance=wlo1
@@ -22,14 +22,14 @@ label=
 [volume]
 command=~/.config/i3blocks/scripts/volume
 markup=pango
-interval=3
+interval=5
 signal=1
 
 [battery]
 command=~/.config/i3blocks/scripts/battery.py
-interval=10
+interval=20
 
 [date]
 command=date '+ %b %d %a  %H:%M'
-interval=1
+interval=2
 
