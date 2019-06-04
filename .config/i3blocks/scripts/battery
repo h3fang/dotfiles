@@ -40,7 +40,7 @@ $full_text = "$percent%";
 if ($status eq 'Discharging') {
 	$full_text = '' . $full_text;
 } elsif ($status eq 'Charging') {
-	$full_text = '' . $full_text;
+	$full_text = ' ' . $full_text;
 } else {
 	$full_text = '' . $full_text;
 }
@@ -66,21 +66,21 @@ if ($status eq 'Discharging') {
             system("touch $bat_critical_file");
             system("notify-send -u critical \"Low battery\" \"Battery running critically low at $percent%\"");
         }
-        
+
 		print "#FF0000\n";
 	} else {
 	    system("rm $bat_critical_file");
-	    
+
 	    if ($percent < 40) {
             if (! -e $bat_low_file) {
                 system("touch $bat_low_file");
                 system("notify-send -u critical \"Low battery\" \"Battery running low at $percent%\"");
             }
-            
+
 		    print "#FFAE00\n";
 	    } else {
 	        system("rm $bat_low_file");
-	        
+
 	        if ($percent < 60) {
 		        print "#FFF600\n";
 	        } elsif ($percent < 85) {
