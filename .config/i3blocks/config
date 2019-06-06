@@ -2,7 +2,7 @@ command=/usr/lib/i3blocks/$BLOCK_NAME
 color=#F0F0F0
 
 [weather]
-command=curl -Ss 'https://wttr.in?format="%C+%t"&lang=zh' | xargs echo
+command=~/.config/i3blocks/scripts/weather.py
 interval=600
 
 [load_average]
