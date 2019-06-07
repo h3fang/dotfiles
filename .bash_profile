@@ -6,7 +6,9 @@
 [[ -f ~/scripts/envs ]] && . ~/scripts/envs
 
 start_i3wm() {
-    X_SESSION_LOG=~/.local/share/xorg/xsession.log
+    X_LOG_DIR=~/.local/share/xorg
+    mkdir -p $X_LOG_DIR
+    X_SESSION_LOG=$X_LOG_DIR/xsession.log
     if [[ -f $X_SESSION_LOG ]]; then
         /usr/bin/cp $X_SESSION_LOG ${X_SESSION_LOG}.old
     fi
@@ -15,7 +17,16 @@ start_i3wm() {
 }
 
 start_sway() {
-    XDG_SESSION_TYPE=wayland QT_WAYLAND_FORCE_DPI=physical exec sway
+    SWAY_LOG_DIR=~/.local/share/sway
+    mkdir -p $SWAY_LOG_DIR
+    SWAY_LOG=$SWAY_LOG_DIR/sway.log
+    if [[ -f $SWAY_LOG ]]; then
+        /usr/bin/cp $SWAY_LOG ${SWAY_LOG}.old
+    fi
+
+    XDG_SESSION_TYPE=wayland \
+    QT_WAYLAND_FORCE_DPI=physical \
+    exec sway > $SWAY_LOG 2>&1
 }
 
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
