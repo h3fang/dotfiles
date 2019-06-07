@@ -46,6 +46,7 @@ conda_prompt() {
 PS1="\[\033[38;5;39m\]┌── [ \[\033[38;5;197m\]\$(conda_prompt)\[\033[38;5;39m\]\u @ \h \[$(tput sgr0)\]\[\033[38;5;201m\]\t \[$(tput sgr0)\]\[\033[38;5;10m\]\w \[$(tput sgr0)\]\[\033[38;5;39m\]]\n\[\033[38;5;39m\]└── \\$ \[$(tput sgr0)\]"
 
 export VISUAL="vim"
+export LESSHISTFILE=/dev/null
 
 # HSTR configuration
 alias hh=hstr                    # hh to be alias for hstr
