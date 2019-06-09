@@ -2,13 +2,13 @@
 
 import os,requests
 
-r = requests.get("https://wttr.in/?format=%C+%t&lang=zh")
+r = requests.get("https://wttr.in/?format=%C+%t&lang=zh", timeout=5)
 
 if r.status_code != 200:
     a = os.getenv("OWM_AID")
     if a is None:
         exit(1)
-    r = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q=Hong%20Kong&units=metric&lang=zh_cn&appid={a}')
+    r = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q=Hong%20Kong&units=metric&lang=zh_cn&appid={a}', timeout=5)
     if r.status_code != 200:
         exit(2)
 

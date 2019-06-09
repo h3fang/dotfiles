@@ -17,7 +17,7 @@ alias paculog='grep -E " upgraded (\w|-|\+)*" /var/log/pacman.log | grep -E "(\w
 alias pacrlog='grep -E " removed (\w|-|\+)*" /var/log/pacman.log | grep -E "(\w|-|\+)* \("'
 alias cls='printf "\033c"'
 alias music='mpv --volume=60 --shuffle --loop-playlist=inf --no-resume-playback --audio-display=no ~/Music/'
-alias weather='curl https://wttr.in?lang=zh'
+alias weather='curl -m 5 https://wttr.in?lang=zh'
 alias ncdu='ncdu --color dark'
 alias dot='/usr/bin/git --git-dir=$HOME/.config/dotfiles/ --work-tree=$HOME'
 alias miniconda='source ~/.local/miniconda3/bin/activate main'
