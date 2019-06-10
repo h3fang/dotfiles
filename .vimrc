@@ -58,6 +58,8 @@ vmap <C-x> "+c
 vmap <C-v> c<ESC>"+p
 imap <C-v> <C-r><C-o>+
 
+set clipboard=unnamedplus
+
 " Fix mouse selection
 " https://stackoverflow.com/questions/5728259/how-to-clear-the-line-number-in-vim-when-copying
 se mouse+=a
