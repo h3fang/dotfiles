@@ -191,6 +191,7 @@ bindsym $mod+r mode "resize"
 #
 # Login control
 #
+set $CloseApps ~/.config/sway/scripts/close_apps.sh
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (p) poweroff
 mode "$mode_system" {
     bindsym l exec $LOCK, mode "default"
@@ -239,6 +240,7 @@ bar {
     colors {
         statusline #ffffff
         background #323232
+        separator #cccccc
         focused_workspace  #4c7899 #2075c7 #ffffff
 		inactive_workspace #333333 #222222 #aaaaaa
 		urgent_workspace   #2f343a #c00000 #ffffff
@@ -286,7 +288,7 @@ exec_always {
 }
 
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec nm-applet --no-agent
+# exec nm-applet --no-agent
 exec udiskie -anT2
 exec GDK_DPI_SCALE=1.1 thunar --daemon
 exec dunst -font "Monospace 12"
