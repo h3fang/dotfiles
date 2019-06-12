@@ -53,7 +53,8 @@ set hlsearch
 
 " Copy & Paste
 " https://superuser.com/questions/10588/how-to-make-cut-copy-paste-in-gvim-on-ubuntu-work-with-ctrlx-ctrlc-ctrlv/189198#189198
-vmap <C-c> "+yi
+" https://www.reddit.com/r/Fedora/comments/ax9p9t/vim_and_system_clipboard_under_wayland/
+xnoremap <C-c> "+y y:call system("wl-copy", @")<CR>
 vmap <C-x> "+c
 vmap <C-v> c<ESC>"+p
 imap <C-v> <C-r><C-o>+
