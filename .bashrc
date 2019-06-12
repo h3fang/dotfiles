@@ -21,6 +21,7 @@ alias weather='curl -m 5 https://wttr.in?lang=zh'
 alias ncdu='ncdu --color dark'
 alias dot='/usr/bin/git --git-dir=$HOME/.config/dotfiles/ --work-tree=$HOME'
 alias miniconda='source ~/.local/miniconda3/bin/activate main'
+alias yaySc="yay -Sc --noconfirm"
 
 man() {
     LESS_TERMCAP_md=$'\e[01;31m' \
