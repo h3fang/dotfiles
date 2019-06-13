@@ -4,9 +4,11 @@ wmctrl -c Transmission
 
 i3-msg [class="."] kill
 
+sleep 3
+
 # check transmission
-if [[ $(pidof transmission-qt) ]]; then
-    notify-send "transmission-qt is still running."
+if [[ $(pgrep transmission) ]]; then
+    notify-send "transmission is still running."
     exit 1
 fi
 
@@ -23,4 +25,3 @@ fi
 
 udiskie-umount -ad
 
-sleep 3
