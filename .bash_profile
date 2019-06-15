@@ -25,7 +25,11 @@ start_sway() {
     fi
 
     XDG_SESSION_TYPE=wayland \
+    QT_QPA_PLATFORM=wayland-egl \
     QT_WAYLAND_FORCE_DPI=physical \
+    SDL_VIDEODRIVER=wayland \
+    _JAVA_AWT_WM_NONREPARENTING=1 \
+    MOZ_ENABLE_WAYLAND=1 \
     exec sway > $SWAY_LOG 2>&1
 }
 
