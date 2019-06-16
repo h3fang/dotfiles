@@ -70,18 +70,15 @@
     },
     "latex-workshop.latex.recipes": [
         {
-            "name": "latexmk",
+            "name": "latexmk-xelatex",
             "tools": [
-                "latexmk"
+                "latexmk-xelatex"
             ]
         },
         {
-            "name": "xelatex -> bibtex -> xelatex*2",
+            "name": "latexmk",
             "tools": [
-                "xelatex",
-                "bibtex",
-                "xelatex",
-                "xelatex"
+                "latexmk"
             ]
         }
     ],
@@ -92,29 +89,23 @@
             "args": [
                 "-synctex=1",
                 "-interaction=nonstopmode",
-                "-outdir=%OUTDIR%",
                 "-file-line-error",
-                "-pdfxe",
-                "-xelatex",
+                "-pdf",
+                "-outdir=%OUTDIR%",
                 "%DOC%"
             ]
         },
         {
-            "name": "xelatex",
-            "command": "xelatex",
+            "name": "latexmk-xelatex",
+            "command": "latexmk",
             "args": [
                 "-synctex=1",
                 "-interaction=nonstopmode",
-                "-output-directory=%OUTDIR%",
                 "-file-line-error",
+                "-pdfxe",
+                "-xelatex",
+                "-outdir=%OUTDIR%",
                 "%DOC%"
-            ]
-        },
-        {
-            "name": "bibtex",
-            "command": "bibtex",
-            "args": [
-                "%OUTDIR%/%DOCFILE%"
             ]
         },
         {
@@ -147,6 +138,7 @@
         "overdetermined",
         "overfit",
         "raphson",
+        "stochasticity",
         "toeplitz",
         "voxel",
         "waypoint"
