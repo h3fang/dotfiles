@@ -24,6 +24,7 @@
 			"",
 			"\\usetheme{Madrid}",
 			"\\usecolortheme{beaver}",
+			"\\usefonttheme{professionalfonts}",
 			"",
 			"% custom colors",
 			"\\setbeamercolor*{author in head/foot}{parent=palette secondary}",
@@ -76,16 +77,17 @@
 		"body": [
 			"\\documentclass[aspectratio=169, compress]{beamer}",
 			"",
+			"\\usepackage{graphicx}",
 			"\\usepackage{tikz}",
 			"\\usetikzlibrary{shapes.geometric,arrows,positioning,fit,calc}",
 			"\\usepackage{smartdiagram}",
 			"\\usepackage{textpos}",
 			"",
 			"\\usetheme{metropolis}",
-			"",
-			"% custom colors",
+			"\\usefonttheme{professionalfonts}",
+			"\\setsansfont{Latin Modern Sans}",
+			"\\setmonofont{Latin Modern Mono}",
 			"\\setbeamercolor{frametitle}{bg=, fg=black}",
-			"% \\setbeamerfont{frametitle}{size=\normalsize}",
 			"",
 			"% Information to be included in the title page",
 			"\\title{Slide Title}",
@@ -116,7 +118,7 @@
 			"\\end{document}",
 			""
 		],
-		"description": "Beamer template (Madrid theme)"
+		"description": "Beamer template (metropolis theme)"
 	},
 	"Latex common packages": {
 		"prefix": "packages",
