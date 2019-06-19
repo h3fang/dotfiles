@@ -16,6 +16,7 @@ borg create --compression auto,zstd,10 --stats --list --filter=AME \
     --exclude='/home/enigma/.config/QtProject/qtcreator/qbs' \
     --exclude='/home/enigma/.config/QtProject/qtcreator/.helpcollection' \
     --exclude='/home/enigma/.config/fcitx/libpinyin/data' \
+    --exclude='sh:/home/enigma/.ssh/known_hosts' \
     --exclude='sh:/home/enigma/projects/**/[bB]uild' \
     --exclude='sh:/home/enigma/projects/**/[dD]ata' \
     --exclude='sh:/home/enigma/projects/**/[rR]esults' \
@@ -28,6 +29,7 @@ borg create --compression auto,zstd,10 --stats --list --filter=AME \
     --exclude='sh:/home/enigma/**/__pycache__' \
     ${REPO}::{now:%Y-%m-%d_%H:%M:%S} \
     ~/.config \
+    ~/.ssh \
     ~/scripts \
     ~/Pictures \
     ~/projects \
