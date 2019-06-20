@@ -220,6 +220,8 @@ bindsym $mod+Pause mode "$mode_system"
 exec_always --no-startup-id feh --bg-fill --no-fehbg ~/Pictures/wallpapers/starry_sky.jpg
 exec --no-startup-id compton
 exec --no-startup-id xinput disable "SynPS/2 Synaptics TouchPad"
+exec --no-startup-id numlockx
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #The applet can show notifications for events such as connecting to or disconnecting from a WiFi network. For these notifications to display, ensure that you have a notification server installed - see Desktop notifications. If you use the applet without a notification server, you might see some messages in stdout/stderr, and the app might hang.
 exec --no-startup-id nm-applet --no-agent
 exec --no-startup-id udiskie -anT2

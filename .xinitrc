@@ -46,12 +46,6 @@ xrandr --auto --dpi 144
 #xrandr --output eDP1 --auto --dpi 144 --primary
 #xrandr --output HDMI-1-2 --auto --right-of eDP1
 
-# numlock
-numlockx &
-
-# polkit agent
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-
 # window manager or desktop environment
 exec i3
 
