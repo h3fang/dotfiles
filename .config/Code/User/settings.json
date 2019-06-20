@@ -50,6 +50,7 @@
     "telemetry.enableTelemetry": false,
     "update.mode": "none",
     "extensions.ignoreRecommendations": true,
+    "extensions.showRecommendationsOnlyOnDemand": true,
     "workbench.settings.enableNaturalLanguageSearch": false,
 
     // Latex
