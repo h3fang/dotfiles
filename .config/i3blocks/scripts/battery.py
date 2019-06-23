@@ -9,11 +9,11 @@ status, percent, time = re.match(f"Battery {bat_num}: " + r"(\w+), (\d+)%,? ?(\d
 percent = int(percent)
 
 if status == "Discharging":
-    full_text = "" + f"{percent}% ({time})"
+    full_text = " " + f"{percent}% ({time})"
 elif status == "Charging":
     full_text = " " + f"{percent}% ({time})"
 else:
-    full_text = "" + f"{percent}%"
+    full_text = " " + f"{percent}%"
 
 print(full_text)
 print(full_text)
