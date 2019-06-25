@@ -42,12 +42,6 @@ function use_intel
 {
     sudo cp /etc/X11/xorg.conf.intel /etc/X11/xorg.conf
 
-    outputclass="/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf"
-    if [ -e $outputclass ]
-    then
-        sudo mv $outputclass $outputclass.backup
-    fi
-
     # poweroff nvidia GPU
     sudo systemctl enable disable_nvidia.service
 
