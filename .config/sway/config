@@ -290,7 +290,7 @@ exec_always {
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # exec nm-applet --no-agent
 exec udiskie -anT2
-exec GDK_DPI_SCALE=1.1 thunar --daemon
+exec env GDK_DPI_SCALE=1.1 thunar --daemon
 exec dunst -font "Monospace 12"
 
 include /etc/sway/config.d/*
