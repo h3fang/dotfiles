@@ -37,6 +37,10 @@ start_sway() {
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
 
+export GTK_IM_MODULE=fcitx5
+export QT_IM_MODULE=fcitx5
+export XMODIFIERS=@im=fcitx5
+
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
     start_i3wm
 elif [[ $XDG_VTNR -eq 2 ]]; then

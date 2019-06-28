@@ -229,7 +229,7 @@ exec --no-startup-id xset s 600 300 && xset dpms 300 600 660
 exec --no-startup-id xss-lock -- $Locker
 exec --no-startup-id env GDK_DPI_SCALE=1.1 thunar --daemon
 exec --no-startup-id dunst
-#exec --no-startup-id fcitx
+#exec --no-startup-id fcitx5
 
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable

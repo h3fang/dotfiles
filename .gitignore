@@ -23,11 +23,12 @@
 .config/configstore/
 .config/dconf/
 .config/dotfiles/
-.config/fcitx/
+.config/fcitx5/conf/
 .config/gedit/
 .config/GIMP/
 .config/gtk-2.0/
 .config/gtk-3.0/
+.config/ibus/bus/
 .config/libreoffice/
 .config/mpv/watch_later/
 .config/pulse/
