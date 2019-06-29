@@ -24,6 +24,7 @@ start_sway() {
         /usr/bin/cp $SWAY_LOG ${SWAY_LOG}.old
     fi
 
+    XKB_DEFAULT_LAYOUT=us \
     XDG_SESSION_TYPE=wayland \
     QT_QPA_PLATFORM=xcb \
     QT_WAYLAND_FORCE_DPI=physical \
@@ -41,9 +42,11 @@ export GTK_IM_MODULE=fcitx5
 export QT_IM_MODULE=fcitx5
 export XMODIFIERS=@im=fcitx5
 
+export ELECTRON_TRASH=gio
+
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
     start_i3wm
-elif [[ $XDG_VTNR -eq 2 ]]; then
+elif [[ ! $DISPLAY && $XDG_VTNR -eq 2 ]]; then
     start_sway
 fi
 
