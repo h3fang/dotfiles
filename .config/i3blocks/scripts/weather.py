@@ -4,7 +4,7 @@ import os,requests
 
 r = requests.get("https://wttr.in/?format=%C+%t&lang=zh", timeout=5)
 
-if r.status_code != 200:
+if r.status_code != 200 or "°C" not in r.text:
     a = os.getenv("OWM_AID")
     if a is None:
         exit(1)
