@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 wmctrl -c Transmission
 
@@ -19,7 +19,7 @@ wmctrl -l | awk '{print $1}' | while read APP; do
     $all_closed=0
 done
 
-if [ $all_closed = 0 ]; then
+if [[ $all_closed -eq 0 ]]; then
     exit 2
 fi
 
