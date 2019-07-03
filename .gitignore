@@ -23,6 +23,7 @@
 .config/configstore/
 .config/dconf/
 .config/dotfiles/
+.config/enchant/
 .config/fcitx5/conf/
 .config/gedit/
 .config/GIMP/
