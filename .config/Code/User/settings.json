@@ -35,8 +35,7 @@
     // C/C++
     "C_Cpp.clang_format_path": "/usr/bin/clang-format",
     "C_Cpp.clang_format_style": "{BasedOnStyle: LLVM, IndentWidth: 4}",
-    "C_Cpp.intelliSenseCacheSize": 200,
-    "C_Cpp.intelliSenseEngine": "Tag Parser",
+    "C_Cpp.intelliSenseCacheSize": 500,
 
     // python
     "python.linting.pylintEnabled": false,
