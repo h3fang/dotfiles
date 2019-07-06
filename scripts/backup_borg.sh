@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 REPO=~/backups
 PREFIX=arch-enigma-home
@@ -51,8 +51,7 @@ borg prune -v --list --keep-within=10d --keep-daily=30 --keep-weekly=4 --keep-mo
 
 echo
 read -p "Sync with Google Drive (y/[n])? " -r
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
+if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo -e "\nuploading ..."
     rclone --stats-one-line -P --stats 1s --drive-use-trash=false sync $REPO gdrv:${PREFIX}-borg -v --timeout=30s
 fi
