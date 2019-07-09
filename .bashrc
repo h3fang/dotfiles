@@ -64,5 +64,6 @@ if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\C-a hstr -- \C-j"'; fi
 # if this is interactive shell, then bind 'kill last command' to Ctrl-x k
 if [[ $- =~ .*i.* ]]; then bind '"\C-xk": "\C-a hstr -k \C-j"'; fi
 
-tac ~/.bash_history | awk '!x[$0]++' | tac > /tmp/clean_bh; mv /tmp/clean_bh ~/.bash_history
-
+tmp_bh=/tmp/bash_history_$((RANDOM * $(date +"%s")))
+tac ~/.bash_history | awk '!x[$0]++' | tac > $tmp_bh; mv $tmp_bh ~/.bash_history
+unset tmp_bh
