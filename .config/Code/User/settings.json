@@ -44,7 +44,6 @@
     "python.condaPath": "~/.local/miniconda3/bin/conda",
 
     // Privacy
-    "workbench.statusBar.feedback.visible": false,
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
     "update.mode": "none",
