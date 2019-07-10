@@ -1,9 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 
 read -p "remove then install latest miniconda? (y/[n]) " -r
 echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
+if [[ $REPLY =~ ^[Yy]$ ]]; then
     # silent install to ~/.local/miniconda3
     MINICONDA_FILE=/tmp/$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c $(shuf -i 20-50 -n 1))
     rm -rf ~/.local/miniconda3
@@ -22,8 +21,7 @@ N_GPUS=$(lspci | grep -i nvidia | grep -i 3d | wc -l)
 
 read -p "setup main? (y/[n]) " -r
 echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
+if [[ $REPLY =~ ^[Yy]$ ]]; then
     conda remove -n main --all
 
     # create "main" environment with popular packages
@@ -45,8 +43,7 @@ fi
 
 read -p "setup probability? (y/[n]) " -r
 echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
+if [[ $REPLY =~ ^[Yy]$ ]]; then
     conda remove -n probability --all
 
     # "probability" environment
