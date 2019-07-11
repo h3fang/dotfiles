@@ -4,7 +4,7 @@ read -p "remove then install latest miniconda? (y/[n]) " -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     # silent install to ~/.local/miniconda3
-    MINICONDA_FILE=/tmp/$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c $(shuf -i 20-50 -n 1))
+    MINICONDA_FILE=/tmp/mc_$(openssl rand -hex 20)
     rm -rf ~/.local/miniconda3
     curl -o $MINICONDA_FILE https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
     bash $MINICONDA_FILE -b -p ~/.local/miniconda3
@@ -57,4 +57,3 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     conda install -c conda-forge pymc3
     pip install pyro-ppl
 fi
-
