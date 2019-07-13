@@ -5,6 +5,11 @@
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 [[ -f ~/scripts/envs ]] && . ~/scripts/envs
 
+tmp_bh=/tmp/bash_history_$((RANDOM * $(date +"%s")))
+tac ~/.bash_history | awk '!x[$0]++' | tac > $tmp_bh
+mv $tmp_bh ~/.bash_history
+unset tmp_bh
+
 start_i3wm() {
     X_LOG_DIR=~/.local/share/xorg
     mkdir -p $X_LOG_DIR
