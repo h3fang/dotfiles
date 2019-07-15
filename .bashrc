@@ -23,6 +23,7 @@ alias dot='/usr/bin/git --git-dir=$HOME/.config/dotfiles/ --work-tree=$HOME'
 alias miniconda='source ~/.local/miniconda3/bin/activate main'
 alias yaySc="yay -Sc --noconfirm"
 alias windows="swaymsg -t get_tree | grep -P 'app_id|class' | awk '{print \$1 \" \" \$2}' | sed '/null,/d' | sort"
+alias mpkg="PKGEXT=.pkg.tar makepkg"
 
 man() {
     LESS_TERMCAP_md=$'\e[01;31m' \
