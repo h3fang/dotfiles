@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PREFIX=arch-enigma-home
+PREFIX=arch-${HOSTNAME}-${USER}-home
 ARCHIVE=~/${PREFIX}-$(date -I).tar.gz
 
 tar -I pigz \

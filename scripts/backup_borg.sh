@@ -1,33 +1,35 @@
 #!/bin/bash
 
-REPO=~/backups
-PREFIX=arch-enigma-home
+REPO=/home/$USER/backups
+PREFIX=arch-${HOSTNAME}-${USER}-home
 
 borg create --compression auto,zstd,10 --stats --list --filter=AME \
-    --exclude='/home/enigma/.config/mpv/watch_later' \
-    --exclude='/home/enigma/.config/Atom' \
-    --exclude='/home/enigma/.config/borg/security' \
-    --exclude='/home/enigma/.config/Code' \
-    --exclude='/home/enigma/.config/Code - OSS' \
-    --exclude='/home/enigma/.config/chromium' \
-    --exclude='/home/enigma/.config/libreoffice' \
-    --exclude='/home/enigma/.config/GIMP' \
-    --exclude='/home/enigma/.config/pulse' \
-    --exclude='/home/enigma/.config/QtProject/qtcreator/qbs' \
-    --exclude='/home/enigma/.config/QtProject/qtcreator/.helpcollection' \
-    --exclude='/home/enigma/.config/fcitx5/conf/cached_layouts' \
-    --exclude='/home/enigma/.config/ibus/bus' \
-    --exclude='sh:/home/enigma/.ssh/known_hosts' \
-    --exclude='sh:/home/enigma/projects/**/[bB]uild' \
-    --exclude='sh:/home/enigma/projects/**/[dD]ata' \
-    --exclude='sh:/home/enigma/projects/**/[rR]esults' \
-    --exclude='sh:/home/enigma/projects/**/.vscode/ipch' \
-    --exclude="sh:/home/enigma/projects/AUR/*/*.tar.?z" \
-    --exclude="sh:/home/enigma/projects/AUR/*/*.tar.bz2" \
-    --exclude='sh:/home/enigma/projects/AUR/*/*/*' \
-    --exclude='sh:/home/enigma/projects/Courses/**/*.pdf' \
-    --exclude='sh:/home/enigma/projects/Courses/**/*.npz' \
-    --exclude='sh:/home/enigma/**/__pycache__' \
+    --exclude "/home/$USER/.config/mpv/watch_later" \
+    --exclude "/home/$USER/.config/Atom" \
+    --exclude "/home/$USER/.config/borg/security" \
+    --exclude "/home/$USER/.config/Code" \
+    --exclude "/home/$USER/.config/Code - OSS" \
+    --exclude "/home/$USER/.config/VSCodium" \
+    --exclude "/home/$USER/.config/chromium" \
+    --exclude "/home/$USER/.config/libreoffice" \
+    --exclude "/home/$USER/.config/GIMP" \
+    --exclude "/home/$USER/.config/pulse" \
+    --exclude "/home/$USER/.config/QtProject/qtcreator/qbs" \
+    --exclude "/home/$USER/.config/QtProject/qtcreator/.helpcollection" \
+    --exclude "/home/$USER/.config/fcitx5/conf/cached_layouts" \
+    --exclude "/home/$USER/.config/ibus/bus" \
+    --exclude "sh:/home/$USER/.ssh/known_hosts" \
+    --exclude "sh:/home/$USER/projects/**/[bB]uild" \
+    --exclude "sh:/home/$USER/projects/**/[dD]ata" \
+    --exclude "sh:/home/$USER/projects/**/[rR]esults" \
+    --exclude "sh:/home/$USER/projects/**/.vscode/ipch" \
+    --exclude "sh:/home/$USER/projects/AUR/*/*.tar.?z" \
+    --exclude "sh:/home/$USER/projects/AUR/*/*.tar.bz2" \
+    --exclude "sh:/home/$USER/projects/AUR/*/*.pkg.tar" \
+    --exclude "sh:/home/$USER/projects/AUR/*/*/*" \
+    --exclude "sh:/home/$USER/projects/Courses/**/*.pdf" \
+    --exclude "sh:/home/$USER/projects/Courses/**/*.npz" \
+    --exclude "sh:/home/$USER/**/__pycache__" \
     ${REPO}::{now:%Y-%m-%d_%H:%M:%S} \
     ~/.config \
     ~/.ssh \
