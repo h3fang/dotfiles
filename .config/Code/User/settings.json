@@ -145,6 +145,10 @@
     ],
     "cSpell.diagnosticLevel": "Information",
     "cSpell.enabledLanguageIds": [
-        "latex"
+        "latex",
+        "markdown",
+        "git-commit",
+        "text",
+        "plaintext"
     ]
 }
