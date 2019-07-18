@@ -235,7 +235,8 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
-for_window [class="^Chromium$" title=" - Chromium$"] border none
+for_window [class="Chromium"] border none
+for_window [class="Firefox"] border none
 for_window [class="Pavucontrol"] floating enable
 for_window [class="MATLAB R20*"] layout tabbed
 for_window [class="Nm-connection-editor"] floating enable
