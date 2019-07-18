@@ -51,6 +51,7 @@
     "extensions.ignoreRecommendations": true,
     "extensions.showRecommendationsOnlyOnDemand": true,
     "workbench.settings.enableNaturalLanguageSearch": false,
+    "workbench.enableExperiments": false,
 
     // Latex
     "latex-workshop.view.pdf.viewer": "external",
