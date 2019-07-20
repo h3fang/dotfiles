@@ -25,8 +25,10 @@ rsync -ahv --delete --ignore-errors --delete-excluded \
     --exclude=".config/chromium" \
     --exclude=".config/Code/*Cache*" \
     --exclude=".config/Code - OSS/*Cache*" \
+    --exclude=".config/VSCodium/*Cache*" \
     --exclude=".config/Code/logs" \
     --exclude=".config/Code - OSS/logs" \
+    --exclude=".config/VSCodium/logs" \
     --exclude=".vscode/extensions" \
     --exclude=".vscode-oss/extensions" \
     ~ $BACKUP_LOC

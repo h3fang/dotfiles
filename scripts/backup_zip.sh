@@ -8,6 +8,7 @@ tar -I pigz \
     --exclude='.config/Atom' \
     --exclude='.config/Code' \
     --exclude='.config/Code - OSS' \
+    --exclude='.config/VSCodium' \
     --exclude='.config/chromium' \
     --exclude='.config/libreoffice' \
     --exclude='.config/GIMP' \
