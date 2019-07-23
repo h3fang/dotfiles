@@ -116,7 +116,7 @@
             "command": "scp",
             "args": [
                 "%OUTDIR%/%DOCFILE%.pdf",
-                "nso:~/Downloads/%DOCFILE%.pdf"
+                "ac1:~/Downloads/%DOCFILE%.pdf"
             ]
         }
     ],
