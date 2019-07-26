@@ -152,9 +152,5 @@
         "text",
         "plaintext"
     ],
-    "bracket-pair-colorizer-2.colors": [
-        "Black",
-        "Blue",
-        "Magenta"
-    ]
+    "bracket-pair-colorizer-2.colors": []
 }
