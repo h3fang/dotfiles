@@ -49,7 +49,7 @@ borg create --compression auto,zstd,10 --stats --list --filter=AME \
 borg info $REPO
 
 # pruning
-borg prune -v --list --keep-within=10d --keep-daily=30 --keep-weekly=4 --keep-monthly=3 $REPO
+borg prune -v --list --keep-within=10d --keep-daily=30 --keep-weekly=4 --keep-monthly=4 $REPO
 
 echo
 read -p "Sync with Google Drive (y/[n])? " -r
