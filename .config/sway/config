@@ -1,7 +1,3 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
 # Read `man 5 sway` for a complete reference.
 
 ### Variables
@@ -14,6 +10,22 @@ set $menu rofi -modi drun#run#window#keys -show drun -font "Dejavu Sans Mono 11"
 set $LOCK ~/.config/sway/scripts/lock.sh
 
 font pango:DejaVu Sans Mono 12
+
+### Exec
+set $gnome-schema org.gnome.desktop.interface
+
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'Adwaita'
+    gsettings set $gnome-schema icon-theme 'Papirus-Light'
+    gsettings set $gnome-schema cursor-theme 'Adwaita'
+    gsettings set $gnome-schema font-name 'Roboto 12'
+}
+
+#exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+#exec nm-applet
+#exec udiskie -anT2
+exec env GDK_DPI_SCALE=1.1 thunar --daemon
+exec dunst -font "Monospace 12"
 
 ### Output configuration
 #
@@ -276,21 +288,5 @@ assign [class="MATLAB R20*"] $ws4
 for_window [workspace=$ws3] layout tabbed
 
 focus_follows_mouse no
-
-### Exec
-set $gnome-schema org.gnome.desktop.interface
-
-exec_always {
-    gsettings set $gnome-schema gtk-theme 'Materia-light-compact'
-    gsettings set $gnome-schema icon-theme 'Papirus-Light'
-    gsettings set $gnome-schema cursor-theme 'Adwaita'
-    gsettings set $gnome-schema font-name 'Roboto 12'
-}
-
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-# exec nm-applet --no-agent
-exec udiskie -anT2
-exec env GDK_DPI_SCALE=1.1 thunar --daemon
-exec dunst -font "Monospace 12"
 
 include /etc/sway/config.d/*
