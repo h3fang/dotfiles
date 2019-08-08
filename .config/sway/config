@@ -194,7 +194,7 @@ bindsym $mod+r mode "resize"
 set $CloseApps ~/.config/sway/scripts/close_apps.sh
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (p) poweroff
 mode "$mode_system" {
-    bindsym l exec $LOCK, mode "default"
+    bindsym l exec "$LOCK force", mode "default"
     bindsym e exec $CloseApps && swaymsg exit, mode "default"
     bindsym s exec systemctl suspend, mode "default"
     bindsym h exec systemctl hibernate, mode "default"
