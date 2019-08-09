@@ -25,7 +25,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     conda remove -n main --all
 
     # create "main" environment with popular packages
-    conda create -n main numpy scipy pandas matplotlib scikit-learn pillow h5py xlrd shapely vispy
+    conda create -n main numpy scipy pandas matplotlib seaborn scikit-learn pillow h5py xlrd shapely
     source ~/.local/miniconda3/bin/activate main
 
     # pytorch
@@ -39,6 +39,9 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     # gym
     conda install chardet future idna requests urllib3
     pip install gym # should only install pyglet and gym from pypi
+
+    # vispy (the package in default channel is outdated)
+    pip install vispy
 fi
 
 read -p "setup probability? (y/[n]) " -r
