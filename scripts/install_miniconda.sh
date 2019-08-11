@@ -25,7 +25,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     conda remove -n main --all
 
     # create "main" environment with popular packages
-    conda create -n main numpy scipy pandas matplotlib seaborn scikit-learn pillow h5py xlrd shapely
+    conda create -n main numpy scipy pandas matplotlib seaborn scikit-learn tqdm pillow h5py xlrd shapely
     source ~/.local/miniconda3/bin/activate main
 
     # pytorch
