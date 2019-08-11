@@ -11,7 +11,7 @@
 
 # variables
 set $mod Mod4
-set $Locker ~/.config/i3lock-blur/lock && sleep 1
+set $Locker ~/.config/i3lock-blur/lock
 set $CloseApps ~/.config/i3/scripts/close_apps.sh
 
 #font pango:monospace 8
