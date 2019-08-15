@@ -2,6 +2,9 @@
 # requires powertop, python-undervolt
 
 function setup() {
+    ### turn off compositor if it exist
+    pkill compton
+
     ### powertop auto tuning
     # maybe we should leave these managed by TLP
     powertop --auto-tune --quiet
