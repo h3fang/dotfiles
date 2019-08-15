@@ -18,35 +18,15 @@ else:
 print(full_text)
 print(full_text)
 
-critical = Path("/tmp/h3f_battery_critical")
-low = Path("/tmp/h3f_battery_low")
-
 if status == "Discharging":
-    if percent < 20:
-        if not critical.exists():
-            critical.touch()
-            sp.run(f"notify-send -u critical 'Low battery' 'Battery running critically low at {percent}%'", shell=True)
+    if percent <= 20:
         print("#FF0000")
-
         if percent < 10:
             exit(33)
-    else:
-        if critical.exists():
-            critical.unlink()
-        if percent < 40:
-            if not low.exists():
-                low.touch()
-                sp.run(f"notify-send -u critical 'Low battery' 'Battery running critically low at {percent}%'", shell=True)
-            print("#FFAE00")
-        else:
-            if low.exists():
-                low.unlink()
-            if percent < 60:
-                print("#FFF600")
-            elif percent < 85:
-                print("#A8FF00")
-else:
-    if critical.exists():
-        critical.unlink()
-    if low.exists():
-        low.unlink()
+    elif percent <= 40:
+        print("#FFAE00")
+    elif percent <= 60:
+        print("#FFF600")
+    elif percent <= 85:
+        print("#A8FF00")
+
