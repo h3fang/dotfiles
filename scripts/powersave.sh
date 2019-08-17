@@ -1,22 +1,17 @@
 #!/bin/bash
-# requires powertop, python-undervolt
+# requires brightnessctl, tlp, python-undervolt
 
 function setup() {
-    ### turn off compositor if it exist
+    ### compositor
     pkill compton
 
-    ### powertop auto tuning
-    # maybe we should leave these managed by TLP
-    powertop --auto-tune --quiet
+    ### backlight brightness
+    brightnessctl s 10%
 
-    # disable autosuspend for wireless mouse
-    echo 'on' > '/sys/bus/usb/devices/1-1/power/control'
+    ### manual mode for TLP
+    tlp bat
 
-    ### wakeups, check powertop wakeup page
-    echo 'disabled' > '/sys/class/net/eno1/device/power/wakeup'
-    echo 'disabled' > '/sys/bus/usb/devices/1-1/power/wakeup'
-
-    ### undervolting cpu
+    ### undervolting Intel cpu
     undervolt --core -100 --uncore -100 --analogio -100 --cache -100 --gpu -100
 
     ### cpu hyperthread
@@ -28,11 +23,18 @@ function setup() {
 }
 
 function restore() {
-    ### wakeups, check powertop wakeup page
-    echo 'disabled' > '/sys/class/net/eno1/device/power/wakeup'
-    echo 'enabled' > '/sys/bus/usb/devices/1-1/power/wakeup'
+    ### compositor
+    if [[ -n $(pidof i3) ]]; then
+	i3-msg "exec --no-startup-id compton"
+    fi
 
-    ### undervolting cpu
+    ### backlight brightness
+    brightnessctl s 30%
+
+    ### manual mode for TLP
+    tlp ac
+
+    ### undervolting Intel cpu
     undervolt --core 0 --uncore 0 --analogio 0 --cache 0 --gpu 0
 
     ### cpu hyperthread
