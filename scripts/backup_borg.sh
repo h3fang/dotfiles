@@ -1,7 +1,9 @@
 #!/bin/bash
+# requires borg, notify-all, rclone (already setup)
 
 REPO=/home/$USER/backups
 PREFIX=arch-${HOSTNAME}-${USER}-home
+RCLONE_REMOTE=gdrv
 
 borg create --compression auto,zstd,10 --stats --list --filter=AME \
     --exclude "/home/$USER/.config/mpv/watch_later" \
@@ -48,14 +50,24 @@ borg create --compression auto,zstd,10 --stats --list --filter=AME \
 
 borg info $REPO
 
+last_backup_info=$(borg info $REPO --last 1 | grep "This archive:")
+last_size=$(echo $last_backup_info | awk '{print $7}')
+last_unit=$(echo $last_backup_info | awk '{print $8}')
+
+if [[ $(echo $last_size'>'10 | bc -l) == 1 && $last_unit != "kB" ]]; then
+    echo "Abnormal last backup size: $last_size $last_unit"
+    notify-all "Abnormal last backup size: $last_size $last_unit"
+    exit 1
+fi
+
 # pruning
 borg prune -v --list --keep-within=10d --keep-daily=30 --keep-weekly=4 --keep-monthly=4 $REPO
 
 echo
-read -p "Sync with Google Drive (y/[n])? " -r
+read -p "Sync to cloud storage (y/[n])? " -r
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo -e "\nuploading ..."
-    rclone --stats-one-line -P --stats 1s --drive-use-trash=false sync $REPO gdrv:${PREFIX}-borg -v --timeout=30s
+    rclone --stats-one-line -P --stats 1s --drive-use-trash=false sync $REPO ${RCLONE_REMOTE}:${PREFIX}-borg -v --timeout=30s
 fi
 
 echo -e "\nDone."
