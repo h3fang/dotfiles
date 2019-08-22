@@ -74,7 +74,7 @@ function f_backup {
     last_size=$(echo $last_backup_info | awk '{print $7}')
     last_unit=$(echo $last_backup_info | awk '{print $8}')
 
-    if [[ $(echo $last_size'>'10 | bc -l) == 1 && $last_unit != "kB" ]]; then
+    if [[ $(echo $last_size'>'10 | bc -l) -eq 1 && $last_unit != "kB" ]]; then
         echo "Abnormal last backup size: $last_size $last_unit"
         notify-all "Abnormal last backup size: $last_size $last_unit"
         exit 2
