@@ -25,7 +25,7 @@ REPO=/home/$USER/backups
 PREFIX=arch-${HOSTNAME}-${USER}-home
 RCLONE_REMOTE=gdrv
 
-function f_backup() {
+function f_backup {
     borg create --compression auto,zstd,10 --stats --list --filter=AME \
         --exclude "/home/$USER/.config/mpv/watch_later" \
         --exclude "/home/$USER/.config/Atom" \
@@ -81,16 +81,16 @@ function f_backup() {
     fi
 }
 
-function f_prune() {
+function f_prune {
     borg prune -v --list --keep-within=10d --keep-daily=30 --keep-weekly=4 --keep-monthly=4 $REPO
 }
 
-function f_sync() {
+function f_sync {
     echo -e "\nuploading ..."
     rclone --stats-one-line -P --stats 1s --drive-use-trash=false sync $REPO ${RCLONE_REMOTE}:${PREFIX}-borg -v --timeout=30s
 }
 
-function ask_user() {
+function ask_user {
     if [[ $1 == "yes" ]]; then
         $3
     elif [[ $1 == "ask" ]]; then
@@ -99,7 +99,7 @@ function ask_user() {
         echo -e -n '\e[0;0m'
         read -r
         if [[ $REPLY =~ ^[Yy]$ ]]; then
-	        $3
+            $3
         fi
     fi
 }
