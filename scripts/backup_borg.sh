@@ -1,7 +1,8 @@
 #!/bin/bash
 # requires borg, notify-all, rclone (already setup)
 
-set -e -u -o pipefail
+set -uo pipefail
+trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 
 O_BACKUP="ask"
 O_PRUNE="ask"
