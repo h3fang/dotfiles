@@ -1,0 +1,10 @@
+[Unit]
+Description=Automatic borg backup
+
+[Timer]
+OnBootSec=6h
+OnUnitInactiveSec=6h
+Unit=backup_borg.service
+
+[Install]
+WantedBy=timers.target
