@@ -42,6 +42,7 @@
 .config/xfce4/
 .config/mimeapps.list
 .config/QtProject.conf
+.config/systemd/user/timers.target.wants/
 
 # .config/Code folder
 .config/Code/*
