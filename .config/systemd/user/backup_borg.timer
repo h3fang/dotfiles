@@ -1,9 +1,9 @@
 [Unit]
-Description=Automatic borg backup
+Description=Run ~/scripts/backup_borg.sh every 6 hours
 
 [Timer]
-OnBootSec=6h
-OnUnitInactiveSec=6h
+OnCalendar=0/6:00:00
+Persistent=true
 Unit=backup_borg.service
 
 [Install]

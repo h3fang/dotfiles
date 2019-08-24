@@ -1,8 +1,6 @@
 [Unit]
-Description=Automatic borg backup
+Description=Run ~/scripts/backup_borg.sh without sync
 
 [Service]
 Type=simple
-StandardOutput=syslog
-StandardError=syslog
 ExecStart=%h/scripts/backup_borg.sh --backup --prune --no-sync
