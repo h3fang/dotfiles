@@ -1,20 +1,33 @@
-#!/bin/sh
+#!/bin/bash
 
-function use_nvidia
-{
-    sudo cp /etc/X11/xorg.conf.nvidia /etc/X11/xorg.conf
+set -uo pipefail
+trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 
-    outputclass="/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf"
-    if [ -e $outputclass.backup ]
-    then
-        sudo mv $outputclass.backup $outputclass
+F_X11_CONF="/etc/X11/xorg.conf"
+F_NV_OUTPUTCLASS="/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf"
+F_NVIDIA_BLACKLIST="/usr/lib/modprobe.d/blacklist_nvidia.conf"
+F_NOUVEAU_BLACKLIST="/usr/lib/modprobe.d/nvidia.conf"
+F_NV_HOOK="/etc/pacman.d/hooks/nvidia.hook"
+
+function use_nvidia {
+    sudo cp $F_X11_CONF.nvidia $F_X11_CONF
+
+    if [[ -e $F_NV_OUTPUTCLASS.backup ]]; then
+        sudo mv $F_NV_OUTPUTCLASS.backup $F_NV_OUTPUTCLASS
     fi
 
     # do not poweroff nvidia GPU
     sudo systemctl disable disable_nvidia.service
 
-    # remove blacklist nvidia card conf
-    sudo mv /usr/lib/modprobe.d/graphicscard.conf /usr/lib/modprobe.d/graphicscard.conf.backup
+    # remove nvidia from blacklist
+    if [[ -e $F_NVIDIA_BLACKLIST ]]; then
+        sudo mv $F_NVIDIA_BLACKLIST $F_NVIDIA_BLACKLIST.backup
+    fi
+
+    # blacklist nouveau
+    if [[ -e $F_NOUVEAU_BLACKLIST.backup ]]; then
+        sudo mv $F_NOUVEAU_BLACKLIST.backup $F_NOUVEAU_BLACKLIST
+    fi
 
     # comment out all PRIME settings
     sed -i '/^xrandr --set/ s/^/#/' ~/.xinitrc
@@ -35,18 +48,27 @@ function use_nvidia
     sudo sed -i '/^#MODULES=(intel_agp i915 nvidia nvidia_modeset nvidia_uvm nvidia_drm)$/ s/^#//' /etc/mkinitcpio.conf
     sudo sed -i '/^MODULES=(intel_agp i915)$/ s/^/#/' /etc/mkinitcpio.conf
     sudo mkinitcpio -P
-    sudo mv /etc/pacman.d/hooks/nvidia.hook.backup /etc/pacman.d/hooks/nvidia.hook
+
+    if [[ -e $F_NV_HOOK.backup ]]; then
+        sudo mv $F_NV_HOOK.backup $F_NV_HOOK
+    fi
 }
 
-function use_intel
-{
-    sudo cp /etc/X11/xorg.conf.intel /etc/X11/xorg.conf
+function use_intel {
+    sudo cp $F_X11_CONF.intel $F_X11_CONF
 
     # poweroff nvidia GPU
     sudo systemctl enable disable_nvidia.service
 
     # blacklist nvidia
-    sudo mv /usr/lib/modprobe.d/graphicscard.conf.backup /usr/lib/modprobe.d/graphicscard.conf
+    if [[ -e $F_NVIDIA_BLACKLIST.backup ]]; then
+        sudo mv $F_NVIDIA_BLACKLIST.backup $F_NVIDIA_BLACKLIST
+    fi
+
+    # blacklist nouveau
+    if [[ -e $F_NOUVEAU_BLACKLIST.backup ]]; then
+        sudo mv $F_NOUVEAU_BLACKLIST.backup $F_NOUVEAU_BLACKLIST
+    fi
 
     # disable PRIME
     sed -i '/^xrandr --set/ s/^/#/' ~/.xinitrc
@@ -60,27 +82,32 @@ function use_intel
     sudo sed -i '/^MODULES=(intel_agp i915 nvidia nvidia_modeset nvidia_uvm nvidia_drm)$/ s/^/#/' /etc/mkinitcpio.conf
     sudo sed -i '/^#MODULES=(intel_agp i915)$/ s/^#//' /etc/mkinitcpio.conf
     sudo mkinitcpio -P
-    sudo mv /etc/pacman.d/hooks/nvidia.hook /etc/pacman.d/hooks/nvidia.hook.backup
+
+    if [[ -e $F_NV_HOOK ]]; then
+        sudo mv $F_NV_HOOK $F_NV_HOOK.backup
+    fi
 }
 
 # to get PRIME work with nouveau, xf86-video-nouveau must be installed
-function use_nouveau
-{
-    sudo cp /etc/X11/xorg.conf.nouveau /etc/X11/xorg.conf
+function use_nouveau {
+    sudo cp $F_X11_CONF.nouveau $F_X11_CONF
 
-    outputclass="/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf"
-    if [ -e $outputclass ]
-    then
-        sudo mv $outputclass $outputclass.backup
+    if [[ -e $F_NV_OUTPUTCLASS ]]; then
+        sudo mv $F_NV_OUTPUTCLASS $F_NV_OUTPUTCLASS.backup
     fi
 
     # do not poweroff nvidia GPU
     sudo systemctl disable disable_nvidia.service
 
     # blacklist nvidia
-    sudo mv /usr/lib/modprobe.d/graphicscard.conf.backup /usr/lib/modprobe.d/graphicscard.conf
-    # un-blacklist nouveau
-    sudo mv /usr/lib/modprobe.d/nvidia.conf /usr/lib/modprobe.d/nvidia.conf.backup
+    if [[ -e $F_NVIDIA_BLACKLIST.backup ]]; then
+        sudo mv $F_NVIDIA_BLACKLIST.backup $F_NVIDIA_BLACKLIST
+    fi
+
+    # remove nouveau from blacklist
+    if [[ -e $F_NOUVEAU_BLACKLIST ]]; then
+        sudo mv $F_NOUVEAU_BLACKLIST $F_NOUVEAU_BLACKLIST.backup
+    fi
 
     # comment out all PRIME settings
     sed -i '/^xrandr --set/ s/^/#/' ~/.xinitrc
@@ -101,6 +128,19 @@ function use_nouveau
     sudo sed -i '/^MODULES=(intel_agp i915 nvidia nvidia_modeset nvidia_uvm nvidia_drm)$/ s/^/#/' /etc/mkinitcpio.conf
     sudo sed -i '/^MODULES=(intel_agp i915)$/ s/^/#/' /etc/mkinitcpio.conf
     sudo mkinitcpio -P
-    sudo mv /etc/pacman.d/hooks/nvidia.hook /etc/pacman.d/hooks/nvidia.hook.backup
+
+    if [[ -e $F_NV_HOOK ]]; then
+        sudo mv $F_NV_HOOK $F_NV_HOOK.backup
+    fi
 }
 
+if [[ $1 == "nvidia" ]]; then
+    use_nvidia
+elif [[ $1 == "intel" ]]; then
+    use_intel
+elif [[ $1 == "nouveau" ]]; then
+    use_nouveau
+else
+    echo "Invalid arguments"
+    exit 1
+fi
