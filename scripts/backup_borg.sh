@@ -74,10 +74,14 @@ function f_backup {
     last_size=$(echo $last_backup_info | awk '{print $7}')
     last_unit=$(echo $last_backup_info | awk '{print $8}')
 
-    if [[ $(echo $last_size'>'10 | bc -l) -eq 1 && $last_unit != "kB" ]]; then
-        echo "Abnormal last backup size: $last_size $last_unit"
-        notify-all "Abnormal last backup size: $last_size $last_unit"
-        exit 2
+    # anything other than "kB", including "MB", "GB", or possibly "B" (I dont't know the complete list of uints in borg backup)
+    if [[ $last_unit != "kB" ]]; then
+        # delta smaller than 2 MB is fine
+        if ! [[ $last_unit == "MB" && $(echo $last_size'<'2 | bc -l) -eq 1 ]]; then
+            echo "Abnormal last backup size: $last_size $last_unit"
+            notify-all "Abnormal last backup size: $last_size $last_unit"
+            exit 2
+        fi
     fi
 }
 
