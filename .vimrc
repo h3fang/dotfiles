@@ -1,18 +1,5 @@
 set nocompatible
 
-" vim-plug
-"
-" Specify a directory for plugins
-" - Avoid using standard Vim directory names like 'plugin'
-call plug#begin('~/.vim/plugged')
-
-" Make sure you use single quotes
-Plug 'vim-airline/vim-airline'
-
-" Initialize plugin system
-call plug#end()
-
-set viminfo='50,<1000,s100,:0,n~/vim/viminfo
 set backspace=indent,eol,start
 
 set history=100
@@ -21,7 +8,7 @@ set ruler
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.png,.jpg
 
 " General
-set encoding=utf8
+set encoding=utf-8
 
 " Syntax & Scheme
 syntax enable
@@ -64,7 +51,7 @@ imap <C-v> <C-r><C-o>+
 se mouse+=a
 
 " https://vi.stackexchange.com/questions/14357/moving-viminfo-file-to-vim-dir
-set viminfo+=n~/.vim/viminfo
+set viminfo='50,<1000,s100,:0,n~/vim/viminfo
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
