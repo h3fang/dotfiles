@@ -6,10 +6,10 @@
 set $mod Mod4
 set $term xfce4-terminal
 # Note: it's recommended that you pass the final command to sway
-set $menu rofi -modi drun#run#window#keys -show drun -font "Dejavu Sans Mono 11" -width 40
+set $menu rofi -modi drun#run#window#keys -show drun -font "monospace 11" -width 40
 set $LOCK ~/.config/sway/scripts/lock.sh
 
-font pango:DejaVu Sans Mono 12
+font pango:monospace 12
 
 ### Exec
 set $gnome-schema org.gnome.desktop.interface
@@ -25,7 +25,7 @@ exec_always {
 #exec nm-applet
 #exec udiskie -anT2
 exec env GDK_DPI_SCALE=1.1 thunar --daemon
-exec dunst -font "Monospace 12"
+exec dunst -font "monospace 12"
 
 ### Output configuration
 #
@@ -241,7 +241,7 @@ client.unfocused        #2075c7  #222222     #cfcfcf  #292d2e    #222222
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    font pango:DejaVu Sans Mono 12
+    font pango:monospace 12
     position bottom
     mode hide
 
