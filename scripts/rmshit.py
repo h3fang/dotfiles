@@ -18,17 +18,13 @@ shittyfiles = [
     '~/.gconf',
     '~/.gstreamer-*',
     '~/.pulse',
-    '~/.esd_auth',
     '~/.config/mpv/watch_later',
     '~/.parallel',
     '~/.dbus',
     '~/.nv/',
     '~/.npm/',
     '~/.java/',
-    '~/.oracle_jre_usage/',
-    '~/.texlive/',
-    '~/.mozilla/',
-    '~/.pki/'
+    '~/.oracle_jre_usage/'
 ]
 
 
