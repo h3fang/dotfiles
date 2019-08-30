@@ -16,6 +16,7 @@ tar -I pigz \
     --exclude='.config/QtProject/qtcreator/qbs' \
     --exclude='.config/QtProject/qtcreator/.helpcollection' \
     --exclude='.config/fcitx/libpinyin/data' \
+    --exclude='.config/menus' \
     --exclude='projects/**/build' \
     --exclude='projects/**/Data' \
     --exclude='projects/**/Results' \

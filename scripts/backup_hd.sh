@@ -17,6 +17,7 @@ rsync -ahv --delete --ignore-errors --delete-excluded \
     --exclude=".gvfs" \
     --exclude=".theano" \
     --exclude=".thumbnails" \
+    --exclude=".wine" \
     --exclude=".local/miniconda3" \
     --exclude=".local/share/Trash" \
     --exclude=".local/share/Steam" \

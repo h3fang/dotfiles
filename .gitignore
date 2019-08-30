@@ -16,6 +16,7 @@
 .vscode/
 .vscode-oss/
 .zotero/
+.wine/
 
 # .config folder
 .config/borg/
@@ -33,6 +34,7 @@
 .config/ibus/bus/
 .config/libreoffice/
 .config/mpv/watch_later/
+.config/menus/
 .config/pulse/
 .config/qpdfview/qpdfview.conf
 .config/QtProject/

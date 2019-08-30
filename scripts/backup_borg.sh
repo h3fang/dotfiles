@@ -41,6 +41,7 @@ function f_backup {
         --exclude "/home/$USER/.config/QtProject/qtcreator/.helpcollection" \
         --exclude "/home/$USER/.config/fcitx5/conf/cached_layouts" \
         --exclude "/home/$USER/.config/ibus/bus" \
+        --exclude "/home/$USER/.config/menus" \
         --exclude "sh:/home/$USER/.ssh/known_hosts" \
         --exclude "sh:/home/$USER/projects/**/[bB]uild" \
         --exclude "sh:/home/$USER/projects/**/[dD]ata" \
