@@ -36,7 +36,7 @@ function use_nvidia {
 
     # setup display
     # uncomment nvidia setting
-    sed -i '/^#xrandr --output eDP-1/ s/^#//' ~/.xinitrc
+    sed -i '/^#xrandr --output eDP-1-1/ s/^#//' ~/.xinitrc
     # comment out intel setting
     # sed -i '/^xrandr --auto --dpi 144/ s/^/#/' ~/.xinitrc
     # comment out nouveau setting
@@ -116,7 +116,7 @@ function use_nouveau {
 
     # setup display
     # comment out nvidia setting
-    sed -i '/^xrandr --output eDP-1/ s/^/#/' ~/.xinitrc
+    sed -i '/^xrandr --output eDP-1-1/ s/^/#/' ~/.xinitrc
     # comment out intel setting
     sed -i '/^xrandr --auto --dpi 144/ s/^/#/' ~/.xinitrc
     # uncomment nouveau setting
