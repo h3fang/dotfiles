@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -uo pipefail
+set -eEuo pipefail
 trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 
 F_X11_CONF="/etc/X11/xorg.conf"

@@ -1,6 +1,9 @@
 #!/bin/bash
 # requires brightnessctl, tlp, python-undervolt
 
+set -eEuo pipefail
+trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
+
 function setup() {
     ### compositor
     pkill compton
