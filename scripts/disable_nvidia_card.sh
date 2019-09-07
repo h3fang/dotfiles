@@ -1,4 +1,7 @@
-#!/bin/sh
+#!/bin/bash
+
+set -eEuo pipefail
+trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 
 CONTROLLER_BUS_ID=0000:00:01.0
 DEVICE_BUS_ID=0000:01:00.0
