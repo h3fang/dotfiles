@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 PREFIX=arch-${HOSTNAME}-${USER}-home
 ARCHIVE=~/${PREFIX}-$(date -I).tar.gz
@@ -17,12 +17,14 @@ tar -I pigz \
     --exclude='.config/QtProject/qtcreator/.helpcollection' \
     --exclude='.config/fcitx/libpinyin/data' \
     --exclude='.config/menus' \
+    --exclude='projects/build' \
     --exclude='projects/**/build' \
     --exclude='projects/**/Data' \
     --exclude='projects/**/Results' \
     --exclude='projects/**/.vscode/ipch' \
     --exclude="projects/AUR/*/*.tar.?z" \
     --exclude="projects/AUR/*/*.tar.bz2" \
+    --exclude="projects/AUR/*/*.pkg.tar" \
     --exclude='projects/AUR/*/*/*' \
     --exclude='projects/Courses/**/*.pdf' \
     --exclude='projects/Courses/**/*.npz' \
