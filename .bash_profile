@@ -26,6 +26,7 @@ start_sway() {
         /usr/bin/cp $SWAY_LOG ${SWAY_LOG}.old
     fi
 
+    WLR_DRM_DEVICES=/dev/dri/card0 \
     XKB_DEFAULT_LAYOUT=us \
     XDG_SESSION_TYPE=wayland \
     QT_QPA_PLATFORM=xcb \
@@ -34,7 +35,7 @@ start_sway() {
     SDL_VIDEODRIVER=wayland \
     _JAVA_AWT_WM_NONREPARENTING=1 \
     MOZ_ENABLE_WAYLAND=1 \
-    exec sway > $SWAY_LOG 2>&1
+    exec sway --my-next-gpu-wont-be-nvidia > $SWAY_LOG 2>&1
 }
 
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
