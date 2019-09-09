@@ -1,31 +1,29 @@
-command=/usr/lib/i3blocks/$BLOCK_NAME
+command=~/.config/i3blocks/scripts/$BLOCK_NAME
 color=#F0F0F0
 
 [weather]
-command=~/.config/i3blocks/scripts/weather.py
 interval=600
 
 [load_average]
-label=
+label= 
+markup=pango
 interval=5
 
 [memory]
-label=
+label= 
 interval=5
 
 [wifi]
 instance=wlo1
 interval=5
-label=
+label= 
 
 [volume]
-command=~/.config/i3blocks/scripts/volume
 markup=pango
 interval=5
 signal=1
 
 [battery]
-command=~/.config/i3blocks/scripts/battery.py
 interval=20
 
 [date]
