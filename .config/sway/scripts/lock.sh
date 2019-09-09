@@ -1,4 +1,5 @@
 #!/bin/bash
+# requires swaylock-effects, sway (for swaymsg), jq (json parsing), pulseaudio (for pacmd)
 
 if [[ $1 != "force" ]]; then
     chromium_focused=$(swaymsg -t get_tree | jq -r '.. | select(.window_properties?.class == "Chromium") | .focused' | grep "true" | wc -l)
@@ -9,9 +10,4 @@ if [[ $1 != "force" ]]; then
     fi
 fi
 
-IMG=/tmp/swaylock-blur.png
-grim $IMG
-convert $IMG -blur 0x6 $IMG
-composite -gravity center ~/Pictures/lock.png $IMG $IMG
-swaylock -fel --indicator-radius 150 -i $IMG
-rm $IMG
+swaylock --screenshots --clock --indicator --effect-blur 10x3 --datestr="%a %F" --ring-color=2075c7ff --font=monospace -fel --indicator-radius 150
