@@ -1,8 +1,5 @@
 #!/bin/sh
 
-mkdir -p /run/media/enigma/Windows
-ntfs-3g /dev/sda3 /run/media/enigma/Windows
-
 mkdir -p /run/media/enigma/Apps
 ntfs-3g /dev/sdb1 /run/media/enigma/Apps
 
