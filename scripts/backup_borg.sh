@@ -80,7 +80,7 @@ function f_backup {
         # delta smaller than 2 MB is fine
         if ! [[ $last_unit == "MB" && $(echo $last_size'<'2 | bc -l) -eq 1 ]]; then
             echo "Abnormal last backup size: $last_size $last_unit"
-            notify-all "Abnormal last backup size: $last_size $last_unit"
+            notify-all -u critical "Abnormal last backup size: $last_size $last_unit"
             exit 2
         fi
     fi
