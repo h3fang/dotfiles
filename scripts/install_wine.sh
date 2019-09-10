@@ -10,7 +10,7 @@ PKGEXT=.pkg.tar yay -S --needed dxvk-bin
 # use wine prefix in ~/.cache/wine instead of default ~/.wine, this is also exported in ~/scripts/envs
 export WINEPREFIX=~/.cache/wine
 # initialize wine prefix
-wine winecfg
+wineboot -u
 # dxvk
 setup_dxvk install
 # misc
