@@ -5,7 +5,7 @@ trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 
 F_X11_CONF="/etc/X11/xorg.conf"
 F_NV_OUTPUTCLASS="/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf"
-F_NVIDIA_BLACKLIST="/usr/lib/modprobe.d/blacklist_nvidia.conf"
+F_NVIDIA_BLACKLIST="/etc/modprobe.d/blacklist_nvidia.conf"
 F_NOUVEAU_BLACKLIST="/usr/lib/modprobe.d/nvidia.conf"
 F_NV_HOOK="/etc/pacman.d/hooks/nvidia.hook"
 
