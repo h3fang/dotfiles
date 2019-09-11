@@ -36,15 +36,15 @@ fi
 
 # setup PRIME
 #xrandr --setprovideroutputsource NVIDIA-0 modesetting
-#xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --setprovideroutputsource modesetting NVIDIA-0
 #xrandr --setprovideroutputsource nouveau modesetting
 #xrandr --setprovideroutputsource modesetting nouveau
 
 # setup display
-xrandr --auto --dpi 144
-#xrandr --output eDP-1 --auto --dpi 144 --primary
+#xrandr --auto --dpi 144
+xrandr --output eDP-1-1 --auto --dpi 144 --primary
 #xrandr --output eDP1 --auto --dpi 144 --primary
-#xrandr --output HDMI-1-2 --auto --right-of eDP1
+#xrandr --output HDMI-1-1 --auto --right-of eDP1
 
 # window manager or desktop environment
 exec i3
