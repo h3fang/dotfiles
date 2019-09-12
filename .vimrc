@@ -54,5 +54,4 @@ se mouse+=a
 set viminfo='50,<1000,s100,:0,n~/vim/viminfo
 
 highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-match ExtraWhitespace /\t\+/
+match ExtraWhitespace /\s\+$\|\t\+/
