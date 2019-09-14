@@ -34,7 +34,7 @@ rsync -ahv --delete --ignore-errors --delete-excluded \
     --exclude=".vscode-oss/extensions" \
     ~ $BACKUP_LOC
 
-for target in /etc /boot/loader /usr/lib/modprobe.d /usr/lib/modules-load.d ; do
+for target in /etc /boot/loader ; do
     rsync -ahv --delete --ignore-errors --delete-excluded $target $BACKUP_LOC
 done
 
