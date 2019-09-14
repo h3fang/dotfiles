@@ -14,4 +14,4 @@ wineboot -u
 # dxvk
 setup_dxvk install
 # misc
-winetricks isolate_home win10 vcrun2015 corefonts fakechinese fontsmooth=rgb mimeassoc=off
+winetricks vcrun2015 corefonts fakechinese fontsmooth=rgb mimeassoc=off win10 isolate_home
