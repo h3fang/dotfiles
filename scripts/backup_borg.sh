@@ -87,7 +87,7 @@ function f_backup {
 }
 
 function f_prune {
-    borg prune -v --list --keep-within=10d --keep-daily=30 --keep-weekly=4 --keep-monthly=4 $REPO
+    borg prune -v --list --keep-within=10d --keep-daily=30 --keep-weekly=4 --keep-monthly=4 --save-space $REPO
 }
 
 function f_sync {
