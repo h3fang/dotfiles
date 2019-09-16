@@ -10,7 +10,7 @@ echo "$(tac ~/.bash_history | awk '!x[$0]++' | tac)" > ~/.bash_history
 start_i3wm() {
     X_LOG_DIR=~/.local/share/xorg
     mkdir -p $X_LOG_DIR
-    X_SESSION_LOG=$X_LOG_DIR/xsession.log
+    X_SESSION_LOG=$X_LOG_DIR/xsession.$XDG_VTNR.log
     if [[ -f $X_SESSION_LOG ]]; then
         /usr/bin/cp $X_SESSION_LOG ${X_SESSION_LOG}.old
     fi
@@ -21,7 +21,7 @@ start_i3wm() {
 start_sway() {
     SWAY_LOG_DIR=~/.local/share/sway
     mkdir -p $SWAY_LOG_DIR
-    SWAY_LOG=$SWAY_LOG_DIR/sway.log
+    SWAY_LOG=$SWAY_LOG_DIR/sway.$XDG_VTNR.log
     if [[ -f $SWAY_LOG ]]; then
         /usr/bin/cp $SWAY_LOG ${SWAY_LOG}.old
     fi
