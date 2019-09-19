@@ -1,5 +1,5 @@
 #!/bin/bash
-# requires xorg-xprop, libnotify, udiskie
+# requires i3-wm, jq, libnotify, udiskie
 
 # check transmission
 if [[ $(pgrep transmission) ]]; then
@@ -12,9 +12,10 @@ i3-msg [class="."] kill
 sleep 3
 
 # check every window
-n_apps=$(xprop -root | grep '^_NET_CLIENT_LIST(WINDOW)' | egrep -o '0x[0-9a-zA-Z]+' | wc -l)
+apps=$(i3-msg -t get_tree | jq | grep -P "class" | awk '{print $2}' | tr -d ',"' | sed "/^null$/d" | sort)
+n_apps=$(echo $apps | awk '{print NF}')
 if [[ $n_apps -gt 0 ]]; then
-    notify-send -u critical "$n_apps applications are still running, please check unsaved content and close it manually."
+    notify-send -u critical "$(echo -e "$n_apps running application(s).\n$apps")"
     exit 2
 fi
 
