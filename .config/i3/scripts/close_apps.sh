@@ -19,7 +19,4 @@ if [[ $n_apps -gt 0 ]]; then
     exit 2
 fi
 
-kill $(pidof gnome-keyring-daemon)
-
 udiskie-umount -ad
-
