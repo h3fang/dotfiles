@@ -28,7 +28,7 @@ function setup() {
 function restore() {
     ### compositor
     if [[ -n $(pidof i3) ]]; then
-	i3-msg "exec --no-startup-id compton"
+        i3-msg "exec --no-startup-id compton"
     fi
 
     ### backlight brightness

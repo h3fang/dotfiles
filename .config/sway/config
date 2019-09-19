@@ -254,8 +254,8 @@ bar {
         background #323232
         separator #cccccc
         focused_workspace  #4c7899 #2075c7 #ffffff
-		inactive_workspace #333333 #222222 #aaaaaa
-		urgent_workspace   #2f343a #c00000 #ffffff
+        inactive_workspace #333333 #222222 #aaaaaa
+        urgent_workspace   #2f343a #c00000 #ffffff
     }
 }
 
