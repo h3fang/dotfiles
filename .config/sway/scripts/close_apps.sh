@@ -17,7 +17,7 @@ sleep 3
 apps=$(swaymsg -t get_tree | grep -P "app_id|class" | awk '{print $2}' | tr -d ',"' | sed "/^null$/d" | sort)
 n_apps=$(echo $apps | awk '{print NF}')
 if [[ $n_apps -gt 0 ]]; then
-    notify-send -u critical "$(echo -e "$n_apps applications are still running. \n $apps")"
+    notify-send -u critical "$(echo -e "$n_apps running application(s).\n$apps")"
     exit 2
 fi
 
