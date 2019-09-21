@@ -11,6 +11,7 @@ PKGEXT=.pkg.tar yay -S --needed dxvk-bin
 export WINEPREFIX=~/.cache/wine
 # initialize wine prefix
 wineboot -u
+wait $(pgrep wineboot)
 # dxvk
 setup_dxvk install
 # misc
