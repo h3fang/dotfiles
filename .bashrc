@@ -44,9 +44,21 @@ conda_prompt() {
     fi
 }
 
-#PS1='[\u@\h \W]\$ '
-#PS1="\[\033[38;5;39m\][\u@\h\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;10m\]\W\[$(tput sgr0)\]\[\033[38;5;39m\]]\\$\[$(tput sgr0)\] "
-PS1="\[\033[38;5;39m\]┌── [ \[\033[38;5;197m\]\$(conda_prompt)\[\033[38;5;39m\]\u @ \h \[$(tput sgr0)\]\[\033[38;5;201m\]\t \[$(tput sgr0)\]\[\033[38;5;10m\]\w \[$(tput sgr0)\]\[\033[38;5;39m\]]\n\[\033[38;5;39m\]└── \\$ \[$(tput sgr0)\]"
+set_bash_ps1() {
+    local B="\[\033[38;5;39m\]" # blue
+    local R="\[\033[38;5;197m\]" # red
+    local P="\[\033[38;5;201m\]" # purple
+    local G="\[\033[38;5;10m\]" # green
+    local Y="\[\033[38;5;11m\]" # yellow
+
+    local uhc="$B"
+    [[ -n $SSH_CLIENT ]] && uhc="$Y"
+
+    #PS1='[\u@\h \W]\$ '
+    PS1="${B}┌── [ ${R}\$(conda_prompt)${uhc}\u @ \h ${P}\t ${G}\w ${B}]\n${B}└── \\$ \[$(tput sgr0)\]"
+}
+
+set_bash_ps1
 
 export VISUAL="vim"
 export LESSHISTFILE=/dev/null
