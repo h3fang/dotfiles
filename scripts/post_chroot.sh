@@ -68,7 +68,7 @@ echo 'NoExtract = usr/share/dbus-1/services/org.a11y.*' | sudo tee -a /etc/pacma
 
 # adjust the log level for NetwokManager dhcp component, wpa_supplicant, doh-client
 echo -e '[logging]\nlevel=WARN\ndomains=DHCP' | sudo tee /etc/NetworkManager/conf.d/dhcp-logging.conf > /dev/null
-echo -e '[Service]\nLogLevelMax=4' | sudo SYSTEMD_EDITOR=tee systemctl edit wpa_supplicant.service doh-client.service
+echo -e '[Service]\nLogLevelMax=notice' | sudo SYSTEMD_EDITOR=tee systemctl edit wpa_supplicant.service doh-client.service
 
 # earlyoom (requires notify-all)
 sudo sed -i 's|^EARLYOOM_ARGS=.*|EARLYOOM_ARGS="-m 5 -r 0 -N '/usr/bin/notify-all'"|' /etc/default/earlyoom
