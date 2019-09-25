@@ -1,4 +1,5 @@
 #!/bin/bash
+# Note: the name of the laptop display might be different under different kernels (e.g. eDP-1-1 for linux 5.2 and eDP-1 for linux-lts 4.19), double check it
 
 set -eEuo pipefail
 trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
@@ -6,11 +7,13 @@ trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 F_X11_CONF="/etc/X11/xorg.conf"
 F_NV_OUTPUTCLASS="/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf"
 F_NVIDIA_BLACKLIST="/etc/modprobe.d/blacklist_nvidia.conf"
-F_NOUVEAU_BLACKLIST="/usr/lib/modprobe.d/nvidia.conf"
+F_NOUVEAU_BLACKLIST=( "/usr/lib/modprobe.d/nvidia.conf" "/usr/lib/modprobe.d/nvidia-lts.conf" )
 F_NV_HOOK="/etc/pacman.d/hooks/nvidia.hook"
 
 function use_nvidia {
-    cp $F_X11_CONF.nvidia $F_X11_CONF
+    pacman -Qi nvidia || pacman -Qi nvidia-lts
+
+    rm $F_X11_CONF
 
     if [[ -e $F_NV_OUTPUTCLASS.backup ]]; then
         mv $F_NV_OUTPUTCLASS.backup $F_NV_OUTPUTCLASS
@@ -25,9 +28,11 @@ function use_nvidia {
     fi
 
     # blacklist nouveau
-    if [[ -e $F_NOUVEAU_BLACKLIST.backup ]]; then
-        mv $F_NOUVEAU_BLACKLIST.backup $F_NOUVEAU_BLACKLIST
-    fi
+    for blist in "${F_NOUVEAU_BLACKLIST[@]}"; do
+        if [[ -e $blist.backup ]]; then
+            mv $blist.backup $blist
+        fi
+    done
 
     # comment out all PRIME settings
     sed -i '/^xrandr --set/ s/^/#/' ~/.xinitrc
@@ -66,9 +71,11 @@ function use_intel {
     fi
 
     # blacklist nouveau
-    if [[ -e $F_NOUVEAU_BLACKLIST.backup ]]; then
-        mv $F_NOUVEAU_BLACKLIST.backup $F_NOUVEAU_BLACKLIST
-    fi
+    for blist in "${F_NOUVEAU_BLACKLIST[@]}"; do
+        if [[ -e $blist.backup ]]; then
+            mv $blist.backup $blist
+        fi
+    done
 
     # disable PRIME
     sed -i '/^xrandr --set/ s/^/#/' ~/.xinitrc
@@ -105,9 +112,11 @@ function use_nouveau {
     fi
 
     # remove nouveau from blacklist
-    if [[ -e $F_NOUVEAU_BLACKLIST ]]; then
-        mv $F_NOUVEAU_BLACKLIST $F_NOUVEAU_BLACKLIST.backup
-    fi
+    for blist in "${F_NOUVEAU_BLACKLIST[@]}"; do
+        if [[ -e $blist ]]; then
+            mv $blist $blist.backup
+        fi
+    done
 
     # comment out all PRIME settings
     sed -i '/^xrandr --set/ s/^/#/' ~/.xinitrc
