@@ -60,6 +60,7 @@ done
 echo -e 'blacklist btusb\nblacklist bluetooth' | sudo tee /etc/modprobe.d/bluetooth.conf
 echo 'blacklist uvcvideo' | sudo tee /etc/modprobe.d/camera.conf
 echo 'blacklist pcspkr' | sudo tee /etc/modprobe.d/nobeep.conf
+sudo rmmod pcspkr
 
 # at-spi2
 echo 'NO_AT_BRIDGE=1' | sudo tee -a /etc/environment
