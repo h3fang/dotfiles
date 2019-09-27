@@ -32,7 +32,8 @@ mount /dev/sda1 /mnt/boot
 mount /dev/sda3 /mnt/home
 
 # mirrors
-nano /etc/pacman.d/mirrorlist
+echo "$(echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch' | cat - /etc/pacman.d/mirrorlist)" > /etc/pacman.d/mirrorlist
+echo "$(echo 'Server = https://mirrors.sjtug.sjtu.edu.cn/archlinux/$repo/os/$arch' | cat - /etc/pacman.d/mirrorlist)" > /etc/pacman.d/mirrorlist
 
 # pacstrap
 pacstrap /mnt base base-devel intel-ucode sudo gvim networkmanager network-manager-applet
