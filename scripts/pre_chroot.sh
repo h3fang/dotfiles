@@ -6,6 +6,7 @@
 set -eEuo pipefail
 trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 
+echo "checking UEFI ..."
 ls /sys/firmware/efi/efivars
 
 ### pre-chroot
@@ -36,7 +37,7 @@ echo "$(echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$
 echo "$(echo 'Server = https://mirrors.sjtug.sjtu.edu.cn/archlinux/$repo/os/$arch' | cat - /etc/pacman.d/mirrorlist)" > /etc/pacman.d/mirrorlist
 
 # pacstrap
-pacstrap /mnt base base-devel intel-ucode sudo gvim networkmanager network-manager-applet
+pacstrap /mnt base
 
 # fstab
 genfstab -U /mnt >> /mnt/etc/fstab
