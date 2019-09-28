@@ -10,6 +10,8 @@ HostName=h3f-arch
 UserName=h3f
 RootUUID=$(blkid /dev/sda2 | awk '{print $5}')
 
+pacman -S base-devel sudo gvim networkmanager network-manager-applet
+
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 hwclock --systohc
 
@@ -27,13 +29,23 @@ $HostName
 EOF
 
 mkinitcpio -p linux
-bootctl --path=/boot install
 echo "setting root password..."
 passwd root
 useradd -m -G wheel -s /bin/bash $UserName
 echo "setting $UserName password..."
 passwd $UserName
 echo "$UserName ALL=(ALL) ALL" >> /etc/sudoers
+
+pacman -S intel-ucode #amd-ucode
+
+### grub
+pacman -S grub ntfs-3g os-prober
+grub-install --target=i386-pc /dev/sda
+#grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+grub-mkconfig -o /boot/grub/grub.cfg
+
+### systemd-boot
+bootctl --path=/boot install
 
 echo > /etc/pacman.d/hooks/100-systemd-boot.hook <<EOF
 [Trigger]
