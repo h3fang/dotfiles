@@ -36,18 +36,18 @@ echo "setting $UserName password..."
 passwd $UserName
 echo "$UserName ALL=(ALL) ALL" >> /etc/sudoers
 
-pacman -S intel-ucode #amd-ucode
+echo 'Microcode?'
+select ucode in "amd" "intel"; do
+    case $ucode in
+        amd ) pacman -S amd-ucode; break;;
+        intel ) pacman -S intel-ucode; break;;
+    esac
+done
 
-### grub
-pacman -S grub ntfs-3g os-prober
-grub-install --target=i386-pc /dev/sda
-#grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
-grub-mkconfig -o /boot/grub/grub.cfg
+function bl-systemd-boot {
+    bootctl --path=/boot install
 
-### systemd-boot
-bootctl --path=/boot install
-
-echo > /etc/pacman.d/hooks/100-systemd-boot.hook <<EOF
+    echo > /etc/pacman.d/hooks/100-systemd-boot.hook <<EOF
 [Trigger]
 Type = Package
 Operation = Upgrade
@@ -59,16 +59,34 @@ When = PostTransaction
 Exec = /usr/bin/bootctl update
 EOF
 
-echo > /boot/loader/loader.conf <<EOF
+    echo > /boot/loader/loader.conf <<EOF
 timeout 3
 default arch
 editor no
 EOF
 
-echo > /boot/loader/entries/arch.conf <<EOF
+    echo > /boot/loader/entries/arch.conf <<EOF
 title ArchLinux
 linux /vmlinuz-linux
 initrd /intel-ucode.img
 initrd /initramfs-linux.img
 options root=$RootUUID rw quiet nvidia-drm.modeset=1 nmi_watchdog=0 nowatchdog random.trust_cpu=on
 EOF
+}
+
+echo 'Boot loader?'
+select bl in "grub-mbr" "grub-uefi" "systemd-boot"; do
+    case $bl in
+        grub-mbr )
+            pacman -S grub ntfs-3g os-prober
+            grub-install --target=i386-pc /dev/sda
+            grub-mkconfig -o /boot/grub/grub.cfg
+            break;;
+        grub-uefi )
+            pacman -S grub ntfs-3g os-prober
+            grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+            grub-mkconfig -o /boot/grub/grub.cfg
+            break;;
+        systemd-boot ) bl-systemd-boot; break;;
+    esac
+done
