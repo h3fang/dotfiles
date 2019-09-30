@@ -44,7 +44,7 @@ select ucode in "amd" "intel"; do
     esac
 done
 
-function bl-systemd-boot {
+function bl_systemd_boot {
     bootctl --path=/boot install
 
     echo > /etc/pacman.d/hooks/100-systemd-boot.hook <<EOF
@@ -87,6 +87,6 @@ select bl in "grub-mbr" "grub-uefi" "systemd-boot"; do
             grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
             grub-mkconfig -o /boot/grub/grub.cfg
             break;;
-        systemd-boot ) bl-systemd-boot; break;;
+        systemd-boot ) bl_systemd_boot; break;;
     esac
 done
