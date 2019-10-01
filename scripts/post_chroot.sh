@@ -24,22 +24,40 @@ yay -S ttf-hack ttf-roboto otf-font-awesome noto-fonts noto-fonts-cjk noto-fonts
 yay -S mesa pulseaudio
 
 # system tools
-yay -S htop gvim fd ncdu gedit fuseiso zip unzip unrar p7zip file-roller openssh poppler-data mpv #gimp ntfs-3g
+yay -S htop gvim fd ncdu gedit fuseiso zip unzip unrar p7zip file-roller openssh openblas poppler-data mpv #gimp inkscape
 
 # network
-yay -S networkmanager network-manager-applet dhclient ppp sstp-client transmission-qt youtube-dl chromium
+yay -S networkmanager network-manager-applet dhclient ppp sstp-client transmission-gtk youtube-dl chromium
 
-# xorg
-yay -S xorg-server xorg-xinit xorg-xrandr xorg-xinput xorg-xset xorg-xprop
+# DE/WM
+echo 'Install i3?'
+select yn in "y" "n"; do
+    case $yn in
+        y)
+            yay -S xorg-server xorg-xinit xorg-xrandr xorg-xinput xorg-xset xorg-xprop
+            yay -S i3-wm i3blocks i3lock-color numlockx compton feh xss-lock
+            break;;
+        n)  break;;
+    esac
+done
+
+echo 'Install sway?'
+select yn in "y" "n"; do
+    case $yn in
+        y)
+            yay -S sway xorg-server-xwayland swaybg swayidle swaylock-effects-git i3blocks
+            break;;
+        n)  break;;
+    esac
+done
+
+yay -S xfce4-terminal thunar thunar-volman gvfs udiskie rofi brightnessctl
 
 # Latex
 yay -S texlive-bibtexextra texlive-core texlive-formatsextra texlive-humanities texlive-langchinese texlive-latexextra texlive-pictures texlive-pstricks texlive-publishers texlive-science biber
 
 # programming
 yay -S python clang gdb cmake visual-studio-code-bin
-
-# i3
-yay -S i3-wm i3blocks i3lock-color numlockx xfce4-terminal thunar thunar-volman gvfs rofi compton feh xss-lock brightnessctl
 
 # academic
 yay -S zotero
@@ -48,7 +66,7 @@ yay -S zotero
 cd ~/projects
 git clone https://github.com/h3fang/AUR.git
 cd AUR
-for package_dir in $(fd -t d -d 1); do
+for package_dir in notify-all-h3f earlyoom-h3f qpdfview-h3f libblockdev-h3f; do
     cd $package_dir
     PKGEXT=.pkg.tar makepkg -fsri
     cd ..
