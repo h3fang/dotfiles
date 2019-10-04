@@ -54,9 +54,9 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     conda create --clone main -n probability
     source ~/.local/miniconda3/bin/activate probability
     if [ $N_GPUS -gt 0 ]; then
-        pip install tensorflow-gpu==2.0.0-beta1 tensorflow-probability
+        pip install tensorflow-gpu tensorflow-probability
     else
-        pip install tensorflow==2.0.0-beta1 tensorflow-probability
+        pip install tensorflow tensorflow-probability
     fi
     conda install -c conda-forge pymc3
     pip install pyro-ppl
