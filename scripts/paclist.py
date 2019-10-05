@@ -8,6 +8,7 @@ signature = "[ALPM] installed "
 with open("/var/log/pacman.log", "r") as f:
     installed = [ln.replace(signature, "").replace("\n", "") for ln in f if signature in ln]
 
+installed = installed[::-1]
 output = []
 for i in explicit_pkgs.split():
     for ln in installed:
