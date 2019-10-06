@@ -9,8 +9,9 @@ with open("/var/log/pacman.log", "r") as f:
     installed = [ln.replace(signature, "").replace("\n", "") for ln in f if signature in ln]
 
 installed = installed[::-1]
+explicit_pkgs = [' '+e+' ' for e in explicit_pkgs.split()]
 output = []
-for i in explicit_pkgs.split():
+for i in explicit_pkgs:
     for ln in installed:
         if i in ln:
             output.append(ln)
