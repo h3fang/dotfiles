@@ -37,7 +37,7 @@ echo "$(echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$
 echo "$(echo 'Server = https://mirrors.sjtug.sjtu.edu.cn/archlinux/$repo/os/$arch' | cat - /etc/pacman.d/mirrorlist)" > /etc/pacman.d/mirrorlist
 
 # pacstrap
-pacstrap /mnt base
+pacstrap /mnt base linux linux-firmware vim netctl dhclient # wpa_supplicant ppp ifplugd dialog # networkmanager # network-manager-applet
 
 # fstab
 genfstab -U /mnt >> /mnt/etc/fstab
