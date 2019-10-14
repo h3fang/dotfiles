@@ -1,6 +1,6 @@
 #!/bin/bash
 #########
-### assuming /dev/sda2 is root, Asia/Shanghai timezone, en_US and zh_CN locale, systemd-boot, intel-ucode
+### assuming /dev/sda2 is root, Asia/Shanghai timezone, en_US and zh_CN locale, vanilla linux kernel, bash for created user
 #########
 
 set -eEuo pipefail
