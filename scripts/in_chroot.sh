@@ -10,7 +10,7 @@ HostName=h3f-arch
 UserName=h3f
 RootUUID=$(blkid /dev/sda2 | awk '{print $5}')
 
-pacman -S base-devel sudo gvim networkmanager network-manager-applet
+pacman -S base-devel git
 
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 hwclock --systohc
