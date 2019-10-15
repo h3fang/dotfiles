@@ -36,11 +36,12 @@ echo "setting $UserName password..."
 passwd $UserName
 echo "$UserName ALL=(ALL) ALL" >> /etc/sudoers
 
+Microcode=""
 echo 'Microcode?'
 select ucode in "amd" "intel"; do
     case $ucode in
-        amd ) pacman -S amd-ucode; break;;
-        intel ) pacman -S intel-ucode; break;;
+        amd ) pacman -S amd-ucode; Microcode="amd-ucode"; break;;
+        intel ) pacman -S intel-ucode; Microcode="intel-ucode"; break;;
     esac
 done
 
@@ -68,7 +69,7 @@ EOF
     echo > /boot/loader/entries/arch.conf <<EOF
 title ArchLinux
 linux /vmlinuz-linux
-initrd /intel-ucode.img
+initrd /${Microcode}.img
 initrd /initramfs-linux.img
 options root=$RootUUID rw quiet nvidia-drm.modeset=1 nmi_watchdog=0 nowatchdog random.trust_cpu=on
 EOF
