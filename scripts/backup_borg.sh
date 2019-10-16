@@ -92,7 +92,7 @@ function f_prune {
 
 function f_sync {
     echo -e "\nuploading ..."
-    rclone --stats-one-line -P --stats 1s --drive-use-trash=false sync $REPO ${RCLONE_REMOTE}:${PREFIX}-borg -v --timeout=30s
+    rclone --stats-one-line -P --stats 1s --drive-use-trash=false sync $REPO ${RCLONE_REMOTE}:${PREFIX}-borg -v --timeout=30s --fast-list --transfers=10
 }
 
 function ask_user {
