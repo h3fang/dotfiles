@@ -1,6 +1,7 @@
 #!/bin/sh
 
-cd /tmp
+mkdir -p ~/Downloads
+cd ~/Downloads
 
 VER=$(date +%Y.%m.01)
 
