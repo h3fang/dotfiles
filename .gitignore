@@ -2,6 +2,7 @@
 .conda/
 .cache/
 .gnupg/
+.googleearth/
 .icons/
 .keras/
 .theano/
@@ -29,10 +30,13 @@
 .config/fcitx5/conf/
 .config/gedit/
 .config/GIMP/
+.config/Google/
 .config/gtk-2.0/
 .config/gtk-3.0/
 .config/ibus/bus/
 .config/libreoffice/
+.config/kingsoft.conf
+.config/Kingsoft/
 .config/mpv/watch_later/
 .config/menus/
 .config/pulse/
@@ -40,6 +44,7 @@
 .config/QtProject/
 .config/rclone/
 .config/Thunar/
+.config/Trolltech.conf
 .config/transmission/
 .config/xfce4/
 .config/mimeapps.list
