@@ -18,6 +18,7 @@
 .vscode-oss/
 .zotero/
 .wine/
+.steam*
 
 # .config folder
 .config/borg/
