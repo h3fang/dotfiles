@@ -9,10 +9,17 @@ with open("/var/log/pacman.log", "rt") as f:
     for ln in reversed(list(f)):
         if signature in ln:
             tokens = ln.replace(signature, "").replace("\n", "").split(" ")
-            if tokens[2] in installed:
+            if len(tokens) == 4:
+                t_i = 2
+            elif len(tokens) == 3:
+                t_i = 1
+            else:
+                raise RuntimeError("Invalid number of tokens.")
+
+            if tokens[t_i] in installed:
                 continue
             else:
-                installed[tokens[2]] = tokens
+                installed[tokens[t_i]] = tokens
 
 output = []
 for e in explicit_pkgs:
