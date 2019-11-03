@@ -51,6 +51,8 @@
 .config/mimeapps.list
 .config/QtProject.conf
 .config/systemd/user/timers.target.wants/
+.config/modprobed.db
+.config/modprobed-db.conf
 
 # .config/Code folder
 .config/Code/*
