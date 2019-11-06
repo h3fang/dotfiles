@@ -54,7 +54,7 @@ function f_backup {
         --exclude "sh:/home/$USER/projects/Courses/**/*.pdf" \
         --exclude "sh:/home/$USER/projects/Courses/**/*.npz" \
         --exclude "sh:/home/$USER/**/__pycache__" \
-        ${REPO}::{now:%Y-%m-%d_%H:%M:%S} \
+        "${REPO}::{now:%Y-%m-%d_%H:%M:%S}" \
         ~/.config \
         ~/.ssh \
         ~/scripts \
@@ -71,14 +71,14 @@ function f_backup {
         ~/.latexmkrc
 
     # warn for abnormal delta size
-    last_backup_info=$(borg info $REPO --last 1 | grep "This archive:")
-    last_size=$(echo $last_backup_info | awk '{print $7}')
-    last_unit=$(echo $last_backup_info | awk '{print $8}')
+    last_backup_info=$(borg info "$REPO" --last 1 | grep "This archive:")
+    last_size=$(echo "$last_backup_info" | awk '{print $7}')
+    last_unit=$(echo "$last_backup_info" | awk '{print $8}')
 
     # anything other than "kB", including "MB", "GB", or possibly "B" (I dont't know the complete list of uints in borg backup)
     if [[ $last_unit != "kB" ]]; then
         # delta smaller than 2 MB is fine
-        if ! [[ $last_unit == "MB" && $(echo $last_size'<'2 | bc -l) -eq 1 ]]; then
+        if ! [[ $last_unit == "MB" && $(echo "$last_size<2" | bc -l) -eq 1 ]]; then
             echo "Abnormal last backup size: $last_size $last_unit"
             notify-all -u critical "Abnormal last backup size: $last_size $last_unit"
             exit 2
@@ -87,12 +87,12 @@ function f_backup {
 }
 
 function f_prune {
-    borg prune -v --list --keep-within=10d --keep-daily=30 --keep-weekly=4 --keep-monthly=4 --save-space $REPO
+    borg prune -v --list --keep-within=10d --keep-daily=30 --keep-weekly=4 --keep-monthly=4 --save-space "$REPO"
 }
 
 function f_sync {
     echo -e "\nuploading ..."
-    rclone --stats-one-line -P --stats 1s --drive-use-trash=false sync $REPO ${RCLONE_REMOTE}:${PREFIX}-borg -v --timeout=30s --fast-list --transfers=10
+    rclone --stats-one-line -P --stats 1s --drive-use-trash=false sync "$REPO" ${RCLONE_REMOTE}:"$PREFIX"-borg -v --timeout=30s --fast-list --transfers=10
 }
 
 function ask_user {

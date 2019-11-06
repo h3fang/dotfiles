@@ -32,9 +32,9 @@ rsync -ahv --delete --ignore-errors --delete-excluded \
     --exclude=".config/VSCodium/logs" \
     --exclude=".vscode/extensions" \
     --exclude=".vscode-oss/extensions" \
-    ~ $BACKUP_LOC
+    ~ "$BACKUP_LOC"
 
 for target in /etc /boot/loader ; do
-    rsync -ahv --delete --ignore-errors --delete-excluded $target $BACKUP_LOC
+    rsync -ahv --delete --ignore-errors --delete-excluded "$target" "$BACKUP_LOC"
 done
 

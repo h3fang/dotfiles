@@ -30,7 +30,7 @@ function use_nvidia {
     # blacklist nouveau
     for blist in "${F_NOUVEAU_BLACKLIST[@]}"; do
         if [[ -e $blist.backup ]]; then
-            mv $blist.backup $blist
+            mv "$blist".backup "$blist"
         fi
     done
 
@@ -73,7 +73,7 @@ function use_intel {
     # blacklist nouveau
     for blist in "${F_NOUVEAU_BLACKLIST[@]}"; do
         if [[ -e $blist.backup ]]; then
-            mv $blist.backup $blist
+            mv "$blist".backup "$blist"
         fi
     done
 
@@ -114,7 +114,7 @@ function use_nouveau {
     # remove nouveau from blacklist
     for blist in "${F_NOUVEAU_BLACKLIST[@]}"; do
         if [[ -e $blist ]]; then
-            mv $blist $blist.backup
+            mv "$blist" "$blist".backup
         fi
     done
 
