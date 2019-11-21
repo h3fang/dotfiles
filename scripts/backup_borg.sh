@@ -42,6 +42,8 @@ function f_backup {
         --exclude "/home/$USER/.config/fcitx5/conf/cached_layouts" \
         --exclude "/home/$USER/.config/ibus/bus" \
         --exclude "/home/$USER/.config/menus" \
+        --exclude "/home/$USER/.config/transmission/resume" \
+        --exclude "/home/$USER/.config/transmission/dht.dat" \
         --exclude "sh:/home/$USER/.ssh/known_hosts" \
         --exclude "sh:/home/$USER/projects/**/[bB]uild" \
         --exclude "sh:/home/$USER/projects/**/[dD]ata" \
