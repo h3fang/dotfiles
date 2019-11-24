@@ -19,6 +19,7 @@
 .zotero/
 .wine/
 .steam*
+.x-plane/
 
 # .config folder
 .config/borg/
@@ -53,6 +54,7 @@
 .config/systemd/user/timers.target.wants/
 .config/modprobed.db
 .config/modprobed-db.conf
+.config/unity3d/
 
 # .config/Code folder
 .config/Code/*
