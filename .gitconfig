@@ -1,11 +1,12 @@
 [user]
-	email = hf.enigma@gmail.com
-	name = Fang He
+    email = hf.enigma@gmail.com
+    name = Fang He
 [core]
-	autocrlf = input
+    autocrlf = input
 [alias]
     st = status
     co = commit
     br = branch
     di = diff
+    dic = diff --cached
     ch = checkout
