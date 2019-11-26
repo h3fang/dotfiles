@@ -9,12 +9,17 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     curl -o $MINICONDA_FILE https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
     bash $MINICONDA_FILE -b -p ~/.local/miniconda3
     rm $MINICONDA_FILE
-    # prevent conda activate from changing PS1
-    echo "changeps1: False" >> ~/.local/miniconda3/.condarc
 fi
 
-# update base
 source ~/.local/miniconda3/bin/activate
+
+conda config --system --set changeps1 false
+conda config --system --set show_channel_urls true
+conda config --system --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+# It's important to make pytoch on the top of the list, otherwise the pytorch package from main will be installed.
+conda config --system --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch
+
+# update base
 conda update conda
 
 N_GPUS=$(lspci | grep -i nvidia | grep -i 3d | wc -l)
@@ -29,16 +34,15 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     source ~/.local/miniconda3/bin/activate main
 
     # pytorch
-    conda config --env --add channels pytorch
     if [ $N_GPUS -gt 0 ]; then
-        conda install -n main pytorch cudatoolkit=10.0
+        conda install -n main pytorch cudatoolkit=10.1
     else
-        conda install -n main pytorch-cpu
+        conda install -n main pytorch cpuonly
     fi
 
     # gym
-    conda install chardet future idna requests urllib3
-    pip install gym # should only install pyglet and gym from pypi
+    conda install chardet future idna requests urllib3 cloudpickle
+    pip install gym # will install pyglet, freetype-py, opencv-python and gym from pypi
 
     # vispy (the package in default channel is outdated)
     pip install vispy
