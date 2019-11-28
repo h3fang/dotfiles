@@ -272,7 +272,7 @@ for_window [class="Pavucontrol"] floating enable
 for_window [class="MATLAB R20*"] layout tabbed
 for_window [class="Nm-connection-editor"] floating enable
 for_window [title="Preferences$"] floating enable
-for_window [title="Zotero Item Selector" class="Chromium"] floating enable; resize shrink width 10000px; resize grow width 800px; resize shrink height 10000px; resize grow height 400px; move position center;
+for_window [title="Zotero Item Selector" class="Chromium"] floating enable; resize set 800 px 400 px; move position center;
 
 # inhibit swayidle
 for_window [class="Firefox"] inhibit_idle fullscreen
