@@ -26,6 +26,13 @@ signal=1
 [battery]
 interval=20
 
+[arch-update]
+interval=3600
+markup=pango
+label= 
+AUR=true
+QUIET=true
+
 [date]
 command=date '+ %b %d %a  %H:%M'
 interval=2
