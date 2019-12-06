@@ -2,6 +2,7 @@ command=~/.config/i3blocks/scripts/$BLOCK_NAME
 color=#F0F0F0
 
 [weather]
+markup=pango
 interval=600
 
 [load_average]

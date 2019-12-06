@@ -2,19 +2,34 @@
 
 import os,requests
 
-r = requests.get("https://wttr.in/minhang?format=%C+%t&lang=zh", timeout=5)
+LOCATION = "Shanghai"
 
-if r.status_code != 200 or "°C" not in r.text:
+def openweathermap():
     a = os.getenv("OWM_AID")
     if a is None:
-        exit(1)
-    r = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q=minhang&units=metric&lang=zh_cn&appid={a}', timeout=5)
-    if r.status_code != 200:
         exit(2)
+
+    try:
+        r = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={LOCATION}&units=metric&lang=zh_cn&appid={a}', timeout=5)
+    except requests.exceptions.Timeout as e:
+        print("<span color='red'>timeout</span>")
+        exit(1)
+    if r.status_code != 200:
+        print("<span color='red'>error</span>")
+        exit(3)
 
     d = r.json()
     description = d['weather'][0]['description']
     temperature = d['main']['temp']
     print(f"{description} {temperature:.0f}℃")
-else:
-    print(r.text.rstrip().replace("+", ""))
+
+if __name__ == '__main__':
+    try:
+        r = requests.get(f"https://wttr.in/{LOCATION}?format=%l+%c+%t&lang=zh", timeout=5)
+    except requests.exceptions.Timeout as e:
+        openweathermap()
+    else:
+        if r.status_code == 200 and "°C" in r.text:
+            print(r.text.rstrip().replace("+", ""))
+        else:
+            openweathermap()
