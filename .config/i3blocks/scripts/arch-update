@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+# requires: checkupdates (pacman-contrib), yay
+
 # modified from https://github.com/vivien/i3blocks-contrib/tree/master/arch-update
 # format: {official repo packages count}+{AUR packages count}{* if matches WATCH}
 # use yay for AUR check
@@ -11,8 +13,7 @@
 #
 # i3blocks blocklet script to see the available updates of pacman and the AUR
 
-import subprocess
-from subprocess import check_output
+from subprocess import check_output, CalledProcessError, TimeoutExpired
 import argparse
 import os
 import re
@@ -71,13 +72,13 @@ def create_argparse():
 
 def get_repo_updates():
     try:
-        output = check_output(['checkupdates'], timeout=15).decode('utf-8')
-    except subprocess.CalledProcessError as e:
+        output = check_output(['checkupdates'], encoding="utf-8", timeout=15)
+    except CalledProcessError as e:
         if e.returncode == 1 and e.output == "":
             return True, []
         else:
             return False, []
-    except subprocess.TimeoutExpired as e:
+    except TimeoutExpired as e:
         return False, []
 
     updates = [line.split(' ')[0]
@@ -90,13 +91,13 @@ def get_repo_updates():
 def get_aur_updates():
     output = ''
     try:
-        output = check_output(['yay', '-Qua'], timeout=15).decode('utf-8')
-    except subprocess.CalledProcessError as e:
+        output = check_output(['yay', '-Qua'], encoding="utf-8", timeout=15)
+    except CalledProcessError as e:
         if e.returncode == 1 and e.output == "":
             return True, []
         else:
             return False, []
-    except subprocess.TimeoutExpired as e:
+    except TimeoutExpired as e:
         return False, []
 
     return True, [line for line in output.split('\n') if line != ""]
@@ -112,37 +113,36 @@ def matching_updates(updates, watch_list):
     return matches
 
 
-message = "<span color='{0}'>{1}</span>+<span color='{2}'>{3}</span>"
-args = create_argparse()
+if __name__ == '__main__':
+    message = "<span color='{0}'>{1}</span>+<span color='{2}'>{3}</span>"
+    args = create_argparse()
 
-repo_updated, repo_updates = get_repo_updates()
-aur_updated = True
-aur_updates = []
-if args.aur:
-    aur_updated, aur_updates = get_aur_updates()
+    repo_updated, repo_updates = get_repo_updates()
+    aur_updated = True
+    aur_updates = []
+    if args.aur:
+        aur_updated, aur_updates = get_aur_updates()
 
-repo_count = len(repo_updates)
-aur_count = len(aur_updates)
+    repo_count = len(repo_updates)
+    aur_count = len(aur_updates)
 
-repo_color = args.base_color
-aur_color = args.base_color
+    repo_color = args.base_color
+    aur_color = args.base_color
 
-if repo_count > 0:
-    repo_color = args.updates_available_color
+    if repo_count > 0:
+        repo_color = args.updates_available_color
+    elif not repo_updated:
+        repo_color = ERROR_COLOR
 
-if not repo_updated:
-    repo_color = ERROR_COLOR
+    if aur_count > 0:
+        aur_color = args.updates_available_color
+    elif not aur_updated:
+        aur_color = ERROR_COLOR
 
-if aur_count > 0:
-    aur_color = args.updates_available_color
+    matches = matching_updates(repo_updates, args.watch)
+    if matches:
+        message += "*"
 
-if not aur_updated:
-    aur_color = ERROR_COLOR
-
-matches = matching_updates(repo_updates, args.watch)
-if matches:
-    message += "*"
-
-message = message.format(repo_color, repo_count, aur_color, aur_count)
-print(message)
-print(message)
+    message = message.format(repo_color, repo_count, aur_color, aur_count)
+    print(message)
+    print(message)
