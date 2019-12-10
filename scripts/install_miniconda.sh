@@ -30,7 +30,9 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     conda remove -n main --all
 
     # create "main" environment with popular packages
-    conda create -n main numpy scipy pandas matplotlib seaborn scikit-learn tqdm pillow h5py xlrd shapely
+    # use conda gcc_linux-64 instead of system gcc to avoid the mismatch of binutils between gcc tools
+    # https://wiki.gentoo.org/wiki/Binutils_2.32_upgrade_notes/elfutils_0.175:_unable_to_initialize_decompress_status_for_section_.debug_info
+    conda create -n main numpy scipy pandas matplotlib seaborn scikit-learn tqdm pillow h5py xlrd shapely gcc_linux-64
     source ~/.local/miniconda3/bin/activate main
 
     # pytorch
