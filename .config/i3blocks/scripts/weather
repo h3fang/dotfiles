@@ -2,21 +2,33 @@
 
 import os,requests
 
-LOCATION = "Shanghai"
+def get_city():
+    try:
+        r = requests.get(f'https://ipinfo.io', timeout=5)
+    except requests.exceptions.Timeout:
+        return ""
 
-def openweathermap():
+    if r:
+        return r.json()["city"]
+    else:
+        return ""
+
+def openweathermap(location):
+    if location == "":
+        exit(1)
+
     a = os.getenv("OWM_AID")
     if a is None:
         exit(2)
 
     try:
-        r = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={LOCATION}&units=metric&lang=zh_cn&appid={a}', timeout=5)
-    except requests.exceptions.Timeout as e:
+        r = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={location}&units=metric&lang=zh_cn&appid={a}', timeout=5)
+    except requests.exceptions.Timeout:
         print("<span color='red'>timeout</span>")
-        exit(1)
-    if r.status_code != 200:
-        print("<span color='red'>error</span>")
         exit(3)
+    if not r:
+        print("<span color='red'>error</span>")
+        exit(4)
 
     d = r.json()
     description = d['weather'][0]['description']
@@ -24,12 +36,14 @@ def openweathermap():
     print(f"{description} {temperature:.0f}℃")
 
 if __name__ == '__main__':
+    location = get_city()
+
     try:
-        r = requests.get(f"https://wttr.in/{LOCATION}?format=%l+%c+%t&lang=zh", timeout=5)
-    except requests.exceptions.Timeout as e:
-        openweathermap()
+        r = requests.get(f"https://wttr.in/{location}?format=%l+%c+%t&lang=zh", timeout=5)
+    except requests.exceptions.Timeout:
+        openweathermap(location)
     else:
-        if r.status_code == 200 and "°C" in r.text:
+        if r and "°C" in r.text:
             print(r.text.rstrip().replace("+", ""))
         else:
-            openweathermap()
+            openweathermap(location)
