@@ -15,9 +15,18 @@ source ~/.local/miniconda3/bin/activate
 
 conda config --system --set changeps1 false
 conda config --system --set show_channel_urls true
-conda config --system --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
-# It's important to make pytoch on the top of the list, otherwise the pytorch package from main will be installed.
-conda config --system --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch
+
+# use tsinghua mirror?
+read -p "use tsinghua mirror? (y/[n]) " -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    conda config --system --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    # It's important to make pytoch on the top of the list, otherwise the pytorch package from main will be installed.
+    conda config --system --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch
+else
+    conda config --system --remove channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    conda config --system --remove channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch
+fi
 
 # update base
 conda update conda
