@@ -5,28 +5,29 @@ import os,requests
 def get_city():
     try:
         r = requests.get(f'https://ipinfo.io', timeout=5)
-    except requests.exceptions.Timeout:
+        r.raise_for_status()
+    except:
         return ""
 
-    if r:
-        return r.json()["city"]
-    else:
-        return ""
+    return r.json()["city"]
 
 def openweathermap(location):
     if location == "":
+        print("<span color='red'>location</span>")
         exit(1)
 
     a = os.getenv("OWM_AID")
     if a is None:
+        print("<span color='red'>app_id</span>")
         exit(2)
 
     try:
         r = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={location}&units=metric&lang=zh_cn&appid={a}', timeout=5)
+        r.raise_for_status()
     except requests.exceptions.Timeout:
         print("<span color='red'>timeout</span>")
         exit(3)
-    if not r:
+    except:
         print("<span color='red'>error</span>")
         exit(4)
 
@@ -40,7 +41,7 @@ if __name__ == '__main__':
 
     try:
         r = requests.get(f"https://wttr.in/{location}?format=%l+%c+%t&lang=zh", timeout=5)
-    except requests.exceptions.Timeout:
+    except:
         openweathermap(location)
     else:
         if r and "°C" in r.text:
