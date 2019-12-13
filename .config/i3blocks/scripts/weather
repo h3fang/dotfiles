@@ -12,23 +12,25 @@ def get_city():
     return r.json()["city"]
 
 def openweathermap(location):
+    msg = "<span color='red'>{}</span>"
+
     if location == "":
-        print("<span color='red'>location</span>")
+        print(msg.format("location"))
         exit(1)
 
     a = os.getenv("OWM_AID")
     if a is None:
-        print("<span color='red'>app_id</span>")
+        print(msg.format("app_id"))
         exit(2)
 
     try:
         r = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={location}&units=metric&lang=zh_cn&appid={a}', timeout=5)
         r.raise_for_status()
     except requests.exceptions.Timeout:
-        print("<span color='red'>timeout</span>")
+        print(msg.format("timeout"))
         exit(3)
-    except:
-        print("<span color='red'>error</span>")
+    except Exception as e:
+        print(msg.format(type(e).__name__))
         exit(4)
 
     d = r.json()
