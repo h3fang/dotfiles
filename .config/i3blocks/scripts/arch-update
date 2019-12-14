@@ -14,6 +14,7 @@
 # i3blocks blocklet script to see the available updates of pacman and the AUR
 
 from subprocess import check_output, CalledProcessError, TimeoutExpired
+from sys import stderr
 import argparse
 import os
 import re
@@ -69,39 +70,20 @@ def create_argparse():
     )
     return parser.parse_args()
 
-
-def get_repo_updates():
+def check_updates(cmd, callback):
     try:
-        output = check_output(['checkupdates'], encoding="utf-8", timeout=15)
+        output = check_output(cmd, encoding="utf-8", timeout=30)
     except CalledProcessError as e:
+        print(e, file=stderr)
         if e.returncode == 1 and e.output == "":
             return True, []
         else:
             return False, []
-    except TimeoutExpired as e:
+    except Exception as e:
+        print(e, file=stderr)
         return False, []
 
-    updates = [line.split(' ')[0]
-               for line in output.split('\n')
-               if line]
-
-    return True, updates
-
-
-def get_aur_updates():
-    output = ''
-    try:
-        output = check_output(['yay', '-Qua'], encoding="utf-8", timeout=15)
-    except CalledProcessError as e:
-        if e.returncode == 1 and e.output == "":
-            return True, []
-        else:
-            return False, []
-    except TimeoutExpired as e:
-        return False, []
-
-    return True, [line for line in output.split('\n') if line != ""]
-
+    return True, callback(output)
 
 def matching_updates(updates, watch_list):
     matches = set()
@@ -117,11 +99,11 @@ if __name__ == '__main__':
     message = "<span color='{0}'>{1}</span>+<span color='{2}'>{3}</span>"
     args = create_argparse()
 
-    repo_updated, repo_updates = get_repo_updates()
+    repo_updated, repo_updates = check_updates(["checkupdates"], lambda o: [line.split(' ')[0] for line in o.split('\n') if line])
     aur_updated = True
     aur_updates = []
     if args.aur:
-        aur_updated, aur_updates = get_aur_updates()
+        aur_updated, aur_updates = check_updates(["yay", "-Qua"], lambda o: [line for line in o.split('\n') if line])
 
     repo_count = len(repo_updates)
     aur_count = len(aur_updates)
