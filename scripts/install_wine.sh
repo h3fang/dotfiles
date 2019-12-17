@@ -19,4 +19,4 @@ wait $(pgrep wineboot)
 # dxvk
 setup_dxvk install
 # misc
-winetricks vcrun2015 fontsmooth=rgb mimeassoc=off win7 isolate_home
+winetricks fontsmooth=rgb mimeassoc=off isolate_home win10
