@@ -7,6 +7,8 @@
 .keras/
 .theano/
 .local/
+.ipython/
+.jupyter/
 .mozilla/
 .npm/
 .nv/
