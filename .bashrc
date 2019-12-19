@@ -55,7 +55,6 @@ export VISUAL="vim"
 export LESSHISTFILE=/dev/null
 
 # HSTR configuration
-alias hh=hstr                    # hh to be alias for hstr
 export HSTR_CONFIG=hicolor,raw-history-view       # get more colors
 shopt -s histappend              # append new history items to .bash_history
 export HISTCONTROL=ignoreboth    # leading space hides commands from history
