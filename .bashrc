@@ -35,15 +35,6 @@ man() {
     command man "$@"
 }
 
-conda_prompt() {
-    if test -z "$CONDA_DEFAULT_ENV"
-    then
-        echo ""
-    else
-        echo "${CONDA_DEFAULT_ENV} "
-    fi
-}
-
 set_bash_ps1() {
     local B="\[\033[38;5;39m\]" # blue
     local R="\[\033[38;5;197m\]" # red
@@ -55,7 +46,7 @@ set_bash_ps1() {
     [[ -n $SSH_CLIENT ]] && uhc="$Y"
 
     #PS1='[\u@\h \W]\$ '
-    PS1="${B}┌── [ ${R}\$(conda_prompt)${uhc}\u @ \h ${P}\t ${G}\w ${B}]\n${B}└── \\$ \[$(tput sgr0)\]"
+    PS1="${B}┌── [ ${R}\${CONDA_DEFAULT_ENV:+\$CONDA_DEFAULT_ENV }${uhc}\u @ \h ${P}\t ${G}\w ${B}]\n${B}└── \\$ \[$(tput sgr0)\]"
 }
 
 set_bash_ps1
