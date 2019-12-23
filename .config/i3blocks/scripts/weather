@@ -6,10 +6,9 @@ def get_city():
     try:
         r = requests.get(f'https://ipinfo.io', timeout=5)
         r.raise_for_status()
+        return r.json()["city"]
     except:
         return ""
-
-    return r.json()["city"]
 
 def openweathermap(location):
     msg = "<span color='red'>{}</span>"
@@ -26,17 +25,11 @@ def openweathermap(location):
     try:
         r = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={location}&units=metric&lang=zh_cn&appid={a}', timeout=5)
         r.raise_for_status()
-    except requests.exceptions.Timeout:
-        print(msg.format("timeout"))
-        exit(3)
+        d = r.json()
+        print(f"{d['name']} {d['weather'][0]['description']} {d['main']['temp']:.0f}℃")
     except Exception as e:
         print(msg.format(type(e).__name__))
-        exit(4)
-
-    d = r.json()
-    description = d['weather'][0]['description']
-    temperature = d['main']['temp']
-    print(f"{description} {temperature:.0f}℃")
+        exit(3)
 
 if __name__ == '__main__':
     location = get_city()
