@@ -38,6 +38,7 @@
 .config/gtk-2.0/
 .config/gtk-3.0/
 .config/ibus/bus/
+.config/inkscape/
 .config/libreoffice/
 .config/kingsoft.conf
 .config/Kingsoft/
