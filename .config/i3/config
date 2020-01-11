@@ -205,6 +205,7 @@ for_window [workspace=$ws3] layout tabbed
 
 bindsym $mod+c exec --no-startup-id chromium
 bindsym $mod+Shift+s --release exec --no-startup-id "sleep 0.5; flameshot gui -p ~/Pictures/"
+bindsym $mod+Shift+p fullscreen disable; floating enable; resize set 800 600; sticky enable; move window to position center;
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% && pkill -RTMIN+1 i3blocks #increase sound volume
