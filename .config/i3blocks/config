@@ -34,6 +34,10 @@ label=
 AUR=true
 QUIET=true
 
+[kernel-version]
+interval=60
+LINUX_PKG=linux-zen
+
 [date]
 command=date '+ %b %d %a  %H:%M'
 interval=2

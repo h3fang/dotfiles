@@ -1,0 +1,8 @@
+#!/bin/bash
+
+pkg_ver=$(pacman -Q ${LINUX_PKG:-linux} | awk '{print $2}')
+if [[ -z $pkg_ver || ! $(uname -r) =~ $pkg_ver ]]; then
+    echo "kernel update"
+    echo "kernel update"
+    exit 33;
+fi
