@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if [ "$(id -u)" -ne 0 ]; then
+     echo "this script must be run with root privilege"
+     exit 1
+fi
+
 mkdir -p /run/media/enigma/Apps
 mount -t ntfs-3g -U 4CD6F67DD6F6669C /run/media/enigma/Apps
 
