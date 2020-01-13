@@ -5,10 +5,10 @@ BACKUP_LOC=/run/media/enigma/stash/backup/
 # no slash after source directory
 rsync -ahv --delete --ignore-errors --delete-excluded \
     --exclude="MATLAB" \
-    --exclude="arch-${HOSTNAME}-${USER}-home-*.tar.gz" \
+    --exclude="arch-${HOSTNAME}-${USER}-home-*.tar.*" \
     --exclude="projects/build" \
-    --exclude="projects/*/Data" \
-    --exclude="projects/*/Results/**/*.npz" \
+    --exclude="projects/*/[dD]ata" \
+    --exclude="projects/*/[rR]esults/**/*.npz" \
     --exclude="projects/AUR/*/*/*" \
     --exclude="projects/AUR/*/*.tar.?z" \
     --exclude="projects/AUR/*/*.pkg.tar" \
