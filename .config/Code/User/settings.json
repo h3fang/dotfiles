@@ -31,6 +31,7 @@
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 10000,
     "git.confirmSync": false,
+    "diffEditor.ignoreTrimWhitespace": false,
 
     // C/C++
     "C_Cpp.clang_format_path": "/usr/bin/clang-format",
