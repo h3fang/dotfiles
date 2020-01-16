@@ -7,7 +7,7 @@ if [[ $REPLY == "yes" ]]
 then
     udiskie-umount /dev/sdc1
     sudo wipefs --all /dev/sdc
-    sudo parted -s /dev/sdc mklabel gpt mkpart primary fat32 1MiB 100%
+    sudo parted -s /dev/sdc mklabel gpt mkpart primary fat32 0% 100%
     udiskie-umount /dev/sdc1
     sudo mkfs.fat -F 32 -n HEF /dev/sdc1
 fi
