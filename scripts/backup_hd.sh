@@ -34,7 +34,7 @@ rsync -ahv --delete --ignore-errors --delete-excluded \
     --exclude=".vscode-oss/extensions" \
     ~ "$BACKUP_LOC"
 
-for target in /etc /boot/loader ; do
+for target in /etc /boot/loader /mnt/win_data; do
     rsync -ahv --delete --ignore-errors --delete-excluded "$target" "$BACKUP_LOC"
 done
 
