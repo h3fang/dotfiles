@@ -107,14 +107,6 @@
                 "-outdir=%OUTDIR%",
                 "%DOC%"
             ]
-        },
-        {
-            "name": "scp",
-            "command": "scp",
-            "args": [
-                "%OUTDIR%/%DOCFILE%.pdf",
-                "ac1:~/Downloads/%DOCFILE%.pdf"
-            ]
         }
     ],
 
