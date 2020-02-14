@@ -1,5 +1,6 @@
 [Unit]
 Description=Run ~/scripts/backup_borg.sh without sync
+After=multi-user.target
 
 [Service]
 Type=simple
