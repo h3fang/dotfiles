@@ -6,13 +6,16 @@
 set -eEuo pipefail
 trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 
-echo "checking UEFI ..."
-ls /sys/firmware/efi/efivars
+s_uefi() {
+    echo "checking UEFI ..."
+    if [[ ! -d /sys/firmware/efi/efivars ]]; then
+        exit 1
+    fi
+}
 
-### pre-chroot
-
-# partitions
-parted -s /dev/sda -a optimal -- mklabel gpt \
+s_partitions() {
+    echo "making partitions ..."
+    parted -s /dev/sda -a optimal -- mklabel gpt \
     mkpart primary fat32 1MiB 513MiB \
     set 1 esp on \
     name 1 boot \
@@ -20,30 +23,59 @@ parted -s /dev/sda -a optimal -- mklabel gpt \
     name 2 root \
     mkpart primary 100GiB -1MiB \
     name 3 home
+}
 
-# formating
-mkfs.fat -F32 /dev/sda1
-mkfs.ext4 /dev/sda2
-mkfs.ext4 /dev/sda3
+s_formating() {
+    echo "formating partitions ..."
+    mkfs.fat -F32 /dev/sda1
+    mkfs.ext4 /dev/sda2
+    mkfs.ext4 /dev/sda3
+}
 
-# mounting
-mount /dev/sda2 /mnt
-mkdir /mnt/{boot,home}
-mount /dev/sda1 /mnt/boot
-mount /dev/sda3 /mnt/home
+s_mounting() {
+    echo "mounting partitions ..."
+    mount /dev/sda2 /mnt
+    mkdir /mnt/{boot,home}
+    mount /dev/sda1 /mnt/boot
+    mount /dev/sda3 /mnt/home
+}
 
-# mirrors
-echo "$(echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch' | cat - /etc/pacman.d/mirrorlist)" > /etc/pacman.d/mirrorlist
-echo "$(echo 'Server = https://mirrors.sjtug.sjtu.edu.cn/archlinux/$repo/os/$arch' | cat - /etc/pacman.d/mirrorlist)" > /etc/pacman.d/mirrorlist
+s_mirrors() {
+    echo "setting mirrors ..."
+    echo "$(echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch' | cat - /etc/pacman.d/mirrorlist)" > /etc/pacman.d/mirrorlist
+    echo "$(echo 'Server = https://mirrors.sjtug.sjtu.edu.cn/archlinux/$repo/os/$arch' | cat - /etc/pacman.d/mirrorlist)" > /etc/pacman.d/mirrorlist
+}
 
-# pacstrap
-pacstrap /mnt base linux e2fsprogs dosfstools linux-firmware vim netctl dhclient # wpa_supplicant ppp ifplugd dialog # networkmanager # network-manager-applet
+s_pacstrap() {
+    echo "installing basic packages ..."
+    pacstrap /mnt base linux e2fsprogs dosfstools linux-firmware vim netctl dhclient # wpa_supplicant ppp ifplugd dialog
+}
 
-# fstab
-genfstab -U /mnt >> /mnt/etc/fstab
+s_fstab() {
+    echo "generating fstab ..."
+    genfstab -U /mnt >> /mnt/etc/fstab
+}
 
-### chroot
+function ask_user {
+    echo -e -n "\e[38;5;201m"
+    echo -n "$1 ([y]/n)"
+    echo -e -n '\e[0;0m'
+    read -r
+    if [[ ! $REPLY =~ ^[Nn]$ ]]; then
+        $2
+    fi
+}
 
+### pre-chroot
+ask_user "uefi?" s_uefi
+ask_user "partitions?" s_partitions
+ask_user "formating?" s_formating
+ask_user "mounting?" s_mounting
+ask_user "mirrors?" s_mirrors
+ask_user "pacstrap?" s_pacstrap
+ask_user "fstab?" s_fstab
+
+## chroot
 arch-chroot /mnt ./in_chroot.sh
 
 ### clean up
