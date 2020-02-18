@@ -2,7 +2,7 @@
 # requires borg, notify-all, rclone (already setup)
 
 set -eEuo pipefail
-trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
+trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; notify-all "$0: Error on line "$LINENO": $BASH_COMMAND";  exit $s' ERR
 
 O_BACKUP="ask"
 O_PRUNE="ask"
