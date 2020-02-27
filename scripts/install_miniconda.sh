@@ -59,21 +59,3 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     pip install vispy
     conda deactivate
 fi
-
-read -p "setup probability? (y/[n]) " -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-    conda remove -n probability --all
-
-    # "probability" environment
-    conda create --clone main -n probability
-    source ~/.local/miniconda3/bin/activate probability
-    if [ $N_GPUS -gt 0 ]; then
-        pip install tensorflow-gpu tensorflow-probability
-    else
-        pip install tensorflow tensorflow-probability
-    fi
-    conda install -c conda-forge pymc3
-    pip install pyro-ppl
-    conda deactivate
-fi
