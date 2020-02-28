@@ -9,7 +9,7 @@ GREEN="\e[38;2;0;255;0m"
 CLR="\e[0m"
 
 for env in $(conda info -e | grep miniconda3 | awk '{print $1}'); do
-    echo -en "${GREEN}updating environment ${RED}${env}${GREEN} ? (y/[n])${CLR}"
+  echo -en "${GREEN}updating environment ${RED}${env}${GREEN} ? (y/[n])${CLR}"
   read -r
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     conda activate "$env"
@@ -17,10 +17,7 @@ for env in $(conda info -e | grep miniconda3 | awk '{print $1}'); do
     conda update --all
     # pip packages
     for pkg in $(conda list | grep pypi$ | awk '{print $1}'); do
-      # gym requires a specific version of pyglet
-      if [[ $pkg != "pyglet" ]]; then
-        pip install --upgrade "$pkg"
-      fi
+      pip install --upgrade "$pkg"
     done
     conda deactivate
   fi
