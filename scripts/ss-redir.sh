@@ -31,15 +31,15 @@ set_iptables() {
     # Anything else should be redirected to shadowsocks's local port
     iptables -t nat -A SHADOWSOCKS -p tcp -j REDIRECT --to-ports $SS_SOCKS5_PORT
 
+    iptables -t nat -A PREROUTING -p tcp -j SHADOWSOCKS
+    iptables -t nat -A OUTPUT -p tcp -j SHADOWSOCKS
+
     # Add any UDP rules
     ip route add local default dev lo table 100
     ip rule add fwmark 1 lookup 100
     iptables -t mangle -A SHADOWSOCKS -p udp --dport 53 -j TPROXY --on-port $SS_SOCKS5_PORT --tproxy-mark 0x01/0x01
-
-    # Apply the rules
-    iptables -t nat -A PREROUTING -p tcp -j SHADOWSOCKS
-    iptables -t nat -A OUTPUT -p tcp -j SHADOWSOCKS
     iptables -t mangle -A PREROUTING -j SHADOWSOCKS
+    iptables -t mangle -I OUTPUT -p udp --dport 53 -j MARK --set-mark 1
 }
 
 restore() {
