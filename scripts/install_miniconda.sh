@@ -51,11 +51,8 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
         conda install -n main pytorch cpuonly
     fi
 
-    # gym
-    conda install chardet future idna requests urllib3 cloudpickle
-    pip install gym # will install pyglet, freetype-py, opencv-python and gym from pypi
+    # gym, vispy
+    pip install gym vispy
 
-    # vispy (the package in default channel is outdated)
-    pip install vispy
     conda deactivate
 fi
