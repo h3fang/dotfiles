@@ -27,6 +27,7 @@
 .config/borg/
 .config/chromium/
 .config/cef_user_data/
+.config/clash
 .config/configstore/
 .config/dconf/
 .config/dotfiles/
