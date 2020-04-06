@@ -70,7 +70,22 @@ function f_backup {
         ~/.xinitrc \
         ~/.vimrc \
         ~/.gitignore \
-        ~/.latexmkrc
+        ~/.latexmkrc \
+        /etc/pacman.d/hooks \
+        /etc/pacman.d/mirrorlist \
+        /etc/pacman.conf \
+        /etc/mkinitcpio.d \
+        /etc/mkinitcpio.conf \
+        /etc/tlp.d \
+        /etc/tlp.conf \
+        /etc/sysctl.d \
+        /etc/modprobe.d \
+        /etc/modules-load.d \
+        /etc/udev/rules.d \
+        /etc/systemd \
+        /etc/smartdns \
+        /etc/dhclient.conf \
+        /etc/default/earlyoom
 
     # warn for abnormal delta size
     last_backup_info=$(borg info "$REPO" --last 1 | grep "This archive:")
