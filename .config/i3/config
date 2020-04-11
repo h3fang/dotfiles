@@ -21,7 +21,7 @@ exec_always --no-startup-id feh --bg-fill --no-fehbg ~/Pictures/wallpapers/starr
 
 # autostart
 #exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id picom --use-damage
+exec --no-startup-id picom
 exec --no-startup-id dunst
 exec --no-startup-id numlockx
 exec --no-startup-id xinput disable "SynPS/2 Synaptics TouchPad"
