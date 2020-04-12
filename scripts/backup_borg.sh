@@ -85,7 +85,10 @@ function f_backup {
         /etc/systemd \
         /etc/smartdns \
         /etc/dhclient.conf \
-        /etc/default/earlyoom
+        /etc/default/earlyoom \
+        /etc/netctl/interfaces \
+        /etc/resolvconf.conf \
+        /etc/dhclient.conf
 
     # warn for abnormal delta size
     last_backup_info=$(borg info "$REPO" --last 1 | grep "This archive:")
