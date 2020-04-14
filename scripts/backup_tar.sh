@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PREFIX=arch-${HOSTNAME}-${USER}-home
+PREFIX=arch-$(cat /etc/machine-id | head -c 6)-${USER}-home
 ARCHIVE=~/${PREFIX}-$(date -I).tar.zst
 
 tar --exclude='.config/mpv/watch_later' \
