@@ -22,7 +22,7 @@ while [[ "$#" -gt 0 ]]; do
 done
 
 REPO=/home/$USER/backups
-PREFIX=arch-${HOSTNAME}-${USER}-home
+PREFIX=arch-$(cat /etc/machine-id | head -c 6)-${USER}-home
 RCLONE_REMOTE=gdrv
 
 function f_backup {
