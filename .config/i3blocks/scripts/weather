@@ -3,12 +3,16 @@
 import os,requests
 
 def get_city():
-    try:
-        r = requests.get(f'https://ipinfo.io', timeout=5)
-        r.raise_for_status()
-        return r.json()["city"]
-    except:
-        return ""
+    c = os.getenv("LOCATION_CITY")
+    if c is None:
+        try:
+            r = requests.get(f'https://ipinfo.io', timeout=5)
+            r.raise_for_status()
+            return r.json()["city"]
+        except:
+            return ""
+    else:
+        return c
 
 def openweathermap(location):
     msg = "<span color='red'>{}</span>"
