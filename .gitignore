@@ -22,6 +22,7 @@
 .wine/
 .steam*
 .x-plane/
+.zoom/
 
 # .config folder
 .config/borg/
@@ -60,6 +61,8 @@
 .config/modprobed.db
 .config/modprobed-db.conf
 .config/unity3d/
+.config/zoomus.conf
+.config/TabNine/
 
 # .config/Code folder
 .config/Code/*
