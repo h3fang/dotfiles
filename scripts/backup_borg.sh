@@ -58,6 +58,8 @@ function f_backup {
         --exclude "sh:/home/$USER/**/__pycache__" \
         "${REPO}::{now:%Y-%m-%d_%H:%M:%S}" \
         ~/.config \
+        ~/.gnupg \
+        ~/.local/share/keyrings \
         ~/.ssh \
         ~/scripts \
         ~/Pictures \
