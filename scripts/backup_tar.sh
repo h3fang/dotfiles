@@ -30,18 +30,18 @@ tar --exclude='.config/mpv/watch_later' \
     --exclude='.~lock.*' \
     --exclude='**/__pycache__' \
     -cf - \
-    ~/.config \
-    ~/projects \
-    ~/scripts \
-    ~/Pictures \
-    ~/.gtkrc-2.0 \
-    ~/.gitconfig \
-    ~/.bashrc \
-    ~/.bash_profile \
-    ~/.xinitrc \
-    ~/.vimrc \
-    ~/.gitignore \
-    ~/.latexmkrc \
+    .config \
+    projects \
+    scripts \
+    Pictures \
+    .gtkrc-2.0 \
+    .gitconfig \
+    .bashrc \
+    .bash_profile \
+    .xinitrc \
+    .vimrc \
+    .gitignore \
+    .latexmkrc \
     | zstd -10 -T0 -o $ARCHIVE
 
 echo
