@@ -53,7 +53,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 
     # pytorch
     if [ $N_GPUS -gt 0 ]; then
-        conda install -n main pytorch cudatoolkit=10.1
+        conda install -n main pytorch cudatoolkit=10.2
     else
         conda install -n main pytorch cpuonly
     fi
