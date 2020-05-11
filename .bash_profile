@@ -47,6 +47,11 @@ export XMODIFIERS=@im=fcitx5
 
 export ELECTRON_TRASH=gio
 
+ncores=$(cat /proc/cpuinfo | grep -m 1 'cpu cores' | awk '{print $4}')
+export OPENBLAS_NUM_THREADS=$ncores
+export GOTO_NUM_THREADS=$ncores
+export OMP_NUM_THREADS=$ncores
+
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
     start_i3wm
 elif [[ ! $DISPLAY && $XDG_VTNR -eq 2 ]]; then
