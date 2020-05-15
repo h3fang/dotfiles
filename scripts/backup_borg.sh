@@ -26,7 +26,7 @@ PREFIX=arch-$(cat /etc/machine-id | head -c 6)-${USER}-home
 RCLONE_REMOTE=gdrv
 
 function f_backup {
-    borg create --compression auto,zstd,10 --stats --list --filter=AME \
+    borg create --compression auto,zstd,16 --stats --list --filter=AME \
         --exclude "/home/$USER/.config/mpv/watch_later" \
         --exclude "/home/$USER/.config/Atom" \
         --exclude "/home/$USER/.config/borg/security" \
