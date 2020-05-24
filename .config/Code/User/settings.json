@@ -35,7 +35,7 @@
 
     // C/C++
     "C_Cpp.clang_format_path": "/usr/bin/clang-format",
-    "C_Cpp.clang_format_style": "{BasedOnStyle: LLVM, IndentWidth: 4}",
+    "C_Cpp.clang_format_style": "{BasedOnStyle: LLVM, IndentWidth: 4, ColumnLimit: 100}",
     "C_Cpp.intelliSenseCachePath": "~/.cache/vscode-cpptools",
     "C_Cpp.intelliSenseCacheSize": 500,
 
