@@ -205,7 +205,7 @@ for_window [workspace=$ws3] layout tabbed
 
 bindsym $mod+c exec --no-startup-id chromium
 bindsym $mod+Shift+s --release exec --no-startup-id "sleep 0.5; flameshot gui -p ~/Pictures/"
-bindsym $mod+Print --release exec --no-startup-id "maim -g $(slop) ~/Pictures/screenshot-$(date -Is).png"
+bindsym $mod+Print --release exec --no-startup-id "maim -g $(slop -n) -u ~/Pictures/screenshot-$(date -Is).png"
 bindsym $mod+Shift+p fullscreen disable; floating enable; resize set 800 600; sticky enable; move window to position center;
 
 # Pulse Audio controls
