@@ -10,6 +10,7 @@
     "workbench.colorCustomizations": {
         "[Default Light+]": {
             "editor.background": "#efefef",
+            "tab.activeBackground": "#ccdccc"
         }
     },
 
