@@ -2,7 +2,7 @@
 # requires borg, notify-all, rclone (already setup)
 
 set -eEuo pipefail
-trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; notify-all "$0: Error on line "$LINENO": $BASH_COMMAND";  exit $s' ERR
+trap 's=$?; echo "$0: Error on line $LINENO"; notify-all "$0: Error on line $LINENO";  exit $s' ERR
 
 O_BACKUP="ask"
 O_PRUNE="ask"
@@ -55,6 +55,7 @@ function f_backup {
         --exclude "sh:/home/$USER/projects/AUR/*/*/*" \
         --exclude "sh:/home/$USER/projects/Courses/**/*.pdf" \
         --exclude "sh:/home/$USER/projects/Courses/**/*.npz" \
+        --exclude "/home/$USER/projects/blog/public" \
         --exclude "sh:/home/$USER/**/__pycache__" \
         "${REPO}::{now:%Y-%m-%d_%H:%M:%S}" \
         ~/.config \
