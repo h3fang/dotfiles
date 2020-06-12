@@ -29,7 +29,7 @@ set number
 set showcmd
 set cursorline
 hi CursorLine   cterm=NONE ctermbg=234 ctermfg=NONE
-filetype indent on
+filetype plugin indent on
 set wildmenu
 set lazyredraw
 set showmatch
