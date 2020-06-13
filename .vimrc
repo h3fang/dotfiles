@@ -17,7 +17,7 @@ syntax enable
 set smarttab
 set expandtab
 set shiftwidth=4
-set tabstop=4
+set tabstop=8
 set softtabstop=4
 
 set ai "Auto indent
@@ -39,19 +39,19 @@ set incsearch
 set hlsearch
 
 " Copy & Paste
-" https://superuser.com/questions/10588/how-to-make-cut-copy-paste-in-gvim-on-ubuntu-work-with-ctrlx-ctrlc-ctrlv/189198#189198
-" https://www.reddit.com/r/Fedora/comments/ax9p9t/vim_and_system_clipboard_under_wayland/
-xnoremap <C-c> "+y y:call system("wl-copy", @")<CR>
-vmap <C-x> "+c
-vmap <C-v> c<ESC>"+p
-imap <C-v> <C-r><C-o>+
+" https://vim.fandom.com/wiki/Accessing_the_system_clipboard
+set clipboard=unnamedplus
+" https://github.com/vim/vim/issues/5157
+vnoremap y y:call system("wl-copy", @")<cr>
+nnoremap p :let @"=substitute(system("wl-paste --no-newline"), '<C-v><C-m>', '', 'g')<cr>p
 
 " Fix mouse selection
 " https://stackoverflow.com/questions/5728259/how-to-clear-the-line-number-in-vim-when-copying
-se mouse+=a
+set mouse+=a
 
 " https://vi.stackexchange.com/questions/14357/moving-viminfo-file-to-vim-dir
 set viminfo='50,<1000,s100,:0,n~/vim/viminfo
 
+" https://vim.fandom.com/wiki/Highlight_unwanted_spaces#Highlighting_with_the_match_command
 highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$\|\t\+/
+match ExtraWhitespace /\s\+$\| \+\ze\t/
