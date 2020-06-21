@@ -14,10 +14,10 @@ interval=5
 label= 
 interval=5
 
-[wifi]
-instance=wlo1
+[internet]
+ETH_INSTANCE=eno1
+WIRELESS_INSTANCE=wlo1
 interval=5
-label= 
 
 [volume]
 markup=pango
