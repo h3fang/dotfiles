@@ -21,8 +21,8 @@ WIRELESS_INTERFACE="${WIRELESS_INSTANCE:-wlo1}"
 
 if [[ "$(cat /sys/class/net/$WIRELESS_INTERFACE/operstate)" = 'up' ]]; then
     QUALITY=$(grep $WIRELESS_INTERFACE /proc/net/wireless | awk '{ print int($3 * 100 / 70) }')
-    echo " $QUALITY%" # full text
-    echo " $QUALITY%" # short text
+    echo " $QUALITY%" # full text
+    echo " $QUALITY%" # short text
 
     # color
     if [[ $QUALITY -ge 80 ]]; then
@@ -47,7 +47,7 @@ fi
 
 #------------------------------------------------------------------------
 
-echo "  +  " # full text
-echo "  +  " # short text
+echo " " # full text
+echo " " # short text
 echo "#FF0000"
 
