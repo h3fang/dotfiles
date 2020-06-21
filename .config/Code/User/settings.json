@@ -39,6 +39,7 @@
     "C_Cpp.clang_format_style": "{BasedOnStyle: LLVM, IndentWidth: 4, ColumnLimit: 120, BreakBeforeBraces: Attach, AccessModifierOffset: -4, AllowShortIfStatementsOnASingleLine: WithoutElse,AllowShortBlocksOnASingleLine: Always}",
     "C_Cpp.intelliSenseCachePath": "~/.cache/vscode-cpptools",
     "C_Cpp.intelliSenseCacheSize": 500,
+    "C_Cpp.default.cppStandard": "c++17",
 
     // python
     "python.linting.pylintEnabled": false,
