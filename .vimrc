@@ -42,8 +42,8 @@ set hlsearch
 " https://vim.fandom.com/wiki/Accessing_the_system_clipboard
 set clipboard=unnamedplus
 " https://github.com/vim/vim/issues/5157
-vnoremap y y:call system("wl-copy", @")<cr>
-nnoremap p :let @"=substitute(system("wl-paste --no-newline"), '<C-v><C-m>', '', 'g')<cr>p
+" vnoremap y y:call system("wl-copy", @")<cr>
+" nnoremap p :let @"=substitute(system("wl-paste --no-newline"), '<C-v><C-m>', '', 'g')<cr>p
 
 " Fix mouse selection
 " https://stackoverflow.com/questions/5728259/how-to-clear-the-line-number-in-vim-when-copying
