@@ -20,7 +20,7 @@ alias music='mpv --volume=60 --shuffle --loop-playlist=inf --no-resume-playback 
 alias weather='curl -m 5 https://wttr.in?lang=zh'
 alias ncdu='ncdu --color dark'
 alias dot='/usr/bin/git --git-dir=$HOME/.config/dotfiles/ --work-tree=$HOME'
-alias miniconda='source ~/.local/miniconda3/bin/activate main'
+alias miniconda='source ~/.local/miniconda3/bin/activate ml'
 alias yaySc="yay -Sc --noconfirm"
 alias i3windows="i3-msg -t get_tree | jq | grep -P '\bclass\b' | awk '{print \$1 \" \" \$2}' | sed '/null,/d' | sort"
 alias swaywindows="swaymsg -t get_tree | jq | grep -P '\b(app_id|class)\b' | awk '{print \$1 \" \" \$2}' | sed '/null,/d' | sort"

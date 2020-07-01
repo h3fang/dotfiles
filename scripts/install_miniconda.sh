@@ -24,42 +24,24 @@ fi
 source ~/.local/miniconda3/bin/activate
 
 conda config --system --set changeps1 false
-conda config --system --set show_channel_urls true
-
-if [[ -n $USE_MIRROR ]]; then
-    conda config --system --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
-    # It's important to make pytoch on the top of the list, otherwise the pytorch package from main will be installed.
-    conda config --system --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch
-else
-    conda config --system --remove channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
-    conda config --system --remove channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch
-fi
 
 # update base
 conda update conda
 
-N_GPUS=$(lspci | grep -i nvidia | grep -i 3d | wc -l)
+# create environments
+for f in ~/.config/conda/*.yml; do
+    local e=$(basename -s .yml "$f")
+    read -p "remove existing and setup $e ? (y/[n]) " -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        conda remove -n "$e" --all
+        conda env create -f "$f"
 
-read -p "setup main? (y/[n]) " -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-    conda remove -n main --all
+        # use conda gcc_linux-64 instead of system gcc to avoid the mismatch of binutils between gcc tools
+        # https://wiki.gentoo.org/wiki/Binutils_2.32_upgrade_notes/elfutils_0.175:_unable_to_initialize_decompress_status_for_section_.debug_info
 
-    # create "main" environment with popular packages
-    # use conda gcc_linux-64 instead of system gcc to avoid the mismatch of binutils between gcc tools
-    # https://wiki.gentoo.org/wiki/Binutils_2.32_upgrade_notes/elfutils_0.175:_unable_to_initialize_decompress_status_for_section_.debug_info
-    conda create -n main numpy scipy pandas matplotlib seaborn scikit-learn tqdm pillow h5py xlrd shapely gcc_linux-64 cython
-    source ~/.local/miniconda3/bin/activate main
-
-    # pytorch
-    if [ $N_GPUS -gt 0 ]; then
-        conda install -n main pytorch cudatoolkit=10.2
-    else
-        conda install -n main pytorch cpuonly
+        # source ~/.local/miniconda3/bin/activate "$e"
+        # conda install -n "$e" gcc_linux-64
+        # conda deactivate
     fi
-
-    # gym, vispy
-    pip install gym vispy
-
-    conda deactivate
-fi
+done

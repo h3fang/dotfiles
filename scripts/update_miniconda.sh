@@ -8,25 +8,19 @@ RED="\e[38;2;255;0;0m"
 GREEN="\e[38;2;0;255;0m"
 CLR="\e[0m"
 
-for env in $(conda info -e | grep miniconda3 | awk '{print $1}'); do
-  echo -en "${GREEN}updating environment ${RED}${env}${GREEN} ? (y/[n])${CLR}"
+for f in ~/.config/conda/*.yml; do
+  e=$(basename -s .yml "$f")
+  echo -en "${GREEN}updating environment ${RED}${e}${GREEN} ? (y/[n])${CLR}"
   read -r
   if [[ $REPLY =~ ^[Yy]$ ]]; then
-    conda activate "$env"
-    # conda packages
-    conda update --all
-    # pip packages
-    for pkg in $(conda list | grep pypi$ | awk '{print $1}'); do
-      pip install --upgrade "$pkg"
-    done
-    conda deactivate
+    conda env update --prune --file "$f"
   fi
 done
 
-for env in $(conda info -e | grep miniconda3 | awk '{print $1}'); do
-  echo -e "${GREEN}cleaning environment ${RED}${env}${GREEN} ...${CLR}"
+for e in $(conda info -e | grep miniconda3 | awk '{print $1}'); do
+  echo -e "${GREEN}cleaning environment ${RED}${e}${GREEN} ...${CLR}"
   conda activate "$env"
-  conda clean -ay
+  conda clean -pty
   conda deactivate
 done
 

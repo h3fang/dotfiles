@@ -1,0 +1,20 @@
+name: ml
+dependencies:
+  - python=3.8
+  - numpy
+  - scipy
+  - matplotlib
+  - scikit-learn
+  - tqdm
+  - pillow
+  - pandas
+  - h5py
+  - xlrd
+  - pybind11
+  - cython
+  - pytorch
+  - cudatoolkit=10.2
+  - pip
+  - pip:
+    - gym
+
