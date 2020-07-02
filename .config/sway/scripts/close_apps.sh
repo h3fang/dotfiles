@@ -14,7 +14,7 @@ swaymsg [app_id="."] kill
 sleep 3
 
 # check remaining windows
-apps=$(swaymsg -t get_tree | grep -P "app_id|class" | awk '{print $2}' | tr -d ',"' | sed "/^null$/d" | sort)
+apps=$(swaymsg -t get_tree | jq '.. | select(.class? or .app_id?) | .app_id+.class ' | sort)
 n_apps=$(echo $apps | awk '{print NF}')
 if [[ $n_apps -gt 0 ]]; then
     notify-send -u critical "$(echo -e "$n_apps running application(s).\n$apps")"

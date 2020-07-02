@@ -12,7 +12,7 @@ i3-msg [class="."] kill
 sleep 3
 
 # check every window
-apps=$(i3-msg -t get_tree | jq | grep -P "class" | awk '{print $2}' | tr -d ',"' | sed "/^null$/d" | sort | sed '/^i3bar$/d')
+apps=$(i3-msg -t get_tree | jq '.. | select(.class? and .class != "i3bar").class' | sort)
 n_apps=$(echo $apps | awk '{print NF}')
 if [[ $n_apps -gt 0 ]]; then
     notify-send -u critical "$(echo -e "$n_apps running application(s).\n$apps")"
