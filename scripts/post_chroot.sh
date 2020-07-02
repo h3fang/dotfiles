@@ -95,3 +95,10 @@ sudo systemctl enable --now NetworkManager.service doh-client.service earlyoom.s
 
 # user backup service
 systemctl enable --now --user backup_borg.timer
+
+# mask useless gvfs components
+sudo systemctl mask gvfs-daemon.service || true
+sudo systemctl mask gvfs-metadata.service || true
+
+# disable gvfs automount for network
+sudo sed -i 's/^AutoMount=true$/AutoMount=false/' /usr/share/gvfs/mounts/network.mount || true
