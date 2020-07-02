@@ -24,6 +24,8 @@ fi
 source ~/.local/miniconda3/bin/activate
 
 conda config --system --set changeps1 false
+conda config --system --add create_default_packages flake8
+conda config --system --add create_default_packages black
 
 # update base
 conda update conda
