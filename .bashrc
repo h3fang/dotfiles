@@ -8,7 +8,7 @@
 alias cp2="rsync -ah --progress"
 alias free='free -h'
 alias df='df -h'
-alias ls='ls --color=auto -l'
+alias ls='ls --color=auto'
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias paclog='vim /var/log/pacman.log'
@@ -20,7 +20,7 @@ alias music='mpv --volume=60 --shuffle --loop-playlist=inf --no-resume-playback 
 alias weather='curl -m 5 https://wttr.in?lang=zh'
 alias ncdu='ncdu --color dark'
 alias dot='/usr/bin/git --git-dir=$HOME/.config/dotfiles/ --work-tree=$HOME'
-alias miniconda='source ~/.local/miniconda3/bin/activate ml'
+alias miniconda='source ~/.local/miniconda3/bin/activate $(ls ~/.local/miniconda3/envs | fzf)'
 alias yaySc="yay -Sc --noconfirm"
 alias i3windows="i3-msg -t get_tree | jq '.. | select( .class?) | {class: .class, title: .title}'"
 alias swaywindows="swaymsg -t get_tree | jq '.. | select( .class? or .app_id? ) | {class: .class, app_id: .app_id, title: .title}'"
@@ -65,8 +65,10 @@ export HISTSIZE=${HISTFILESIZE}  # increase history size (default is 500)
 export PROMPT_COMMAND='history -a; history -n'
 # if this is interactive shell, then bind hstr to Ctrl-r (for Vi mode check doc)
 if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\C-a hstr -- \C-j"'; fi
-# if this is interactive shell, then bind 'kill last command' to Ctrl-x k
-if [[ $- =~ .*i.* ]]; then bind '"\C-xk": "\C-a hstr -k \C-j"'; fi
 
 # Use bash-completion, if available
 [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && . /usr/share/bash-completion/bash_completion
+
+# fzf
+export FZF_DEFAULT_COMMAND='fd --type f --follow --exclude .git --exclude node_modules'
+export FZF_DEFAULT_OPTS="-1 --no-mouse --reverse --multi --inline-info"
