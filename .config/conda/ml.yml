@@ -12,9 +12,9 @@ dependencies:
   - xlrd
   - pybind11
   - cython
-  - pytorch
+  - black
+  - flake8
   - cudatoolkit=10.2
-  - pip
-  - pip:
-    - gym
+  - pytorch::pytorch
+  - conda-forge::gym
 
