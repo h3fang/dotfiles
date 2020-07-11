@@ -36,7 +36,7 @@ QUIET=true
 
 [kernel-version]
 interval=60
-LINUX_PKG=linux-zen
+LINUX_PKG=linux
 
 [date]
 command=date '+ %b %d %a  %H:%M'
