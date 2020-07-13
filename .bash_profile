@@ -15,6 +15,7 @@ start_i3wm() {
         /usr/bin/cp $X_SESSION_LOG ${X_SESSION_LOG}.old
     fi
 
+    export QT_AUTO_SCREEN_SCALE_FACTOR=0
     exec startx -- -keeptty > $X_SESSION_LOG 2>&1
 }
 
