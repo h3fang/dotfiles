@@ -32,7 +32,7 @@ start_sway() {
     XDG_SESSION_TYPE=wayland \
     QT_QPA_PLATFORM=xcb \
     QT_WAYLAND_FORCE_DPI=physical \
-    QT_FONT_DPI=144 \
+    QT_FONT_DPI=${SCREEN_DPI:-144} \
     SDL_VIDEODRIVER=wayland \
     _JAVA_AWT_WM_NONREPARENTING=1 \
     MOZ_ENABLE_WAYLAND=1 \
