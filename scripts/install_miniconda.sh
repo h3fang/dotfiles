@@ -48,7 +48,7 @@ conda update conda
 # create environments
 for f in ~/.config/conda/*.yml; do
     e=$(basename -s .yml "$f")
-    read -p "remove existing environment $e and setup again ? (y/[n]) " -r
+    read -p "remove (if exists) and create environment $e ? (y/[n]) " -r
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         conda remove -n "$e" --all
