@@ -24,10 +24,13 @@ yay -S ttf-hack ttf-roboto otf-font-awesome noto-fonts noto-fonts-cjk noto-fonts
 yay -S mesa pulseaudio
 
 # system tools
-yay -S htop gvim fd ncdu gedit fuseiso zip unzip unrar p7zip file-roller openssh openblas poppler-data mpv #gimp inkscape
+yay -S htop gvim fd ncdu zip unzip unrar p7zip file-roller openssh openblas poppler-data
+
+# multimedia
+yay -S mpv gimp inkscape
 
 # network
-yay -S networkmanager network-manager-applet dhclient ppp sstp-client transmission-gtk youtube-dl chromium
+yay -S netctl dhclient ppp sstp-client transmission-gtk youtube-dl chromium
 
 # DE/WM
 echo 'Install i3?'
@@ -35,7 +38,7 @@ select yn in "y" "n"; do
     case $yn in
         y)
             yay -S xorg-server xorg-xinit xorg-xrandr xorg-xinput xorg-xset xorg-xprop
-            yay -S i3-wm i3blocks i3lock-color numlockx compton feh xss-lock
+            yay -S i3-wm i3blocks i3lock-color numlockx picom feh xss-lock
             break;;
         n)  break;;
     esac
@@ -57,7 +60,7 @@ yay -S xfce4-terminal thunar thunar-volman gvfs udiskie rofi brightnessctl
 yay -S texlive-bibtexextra texlive-core texlive-formatsextra texlive-humanities texlive-langchinese texlive-latexextra texlive-pictures texlive-pstricks texlive-publishers texlive-science biber
 
 # programming
-yay -S python clang gdb cmake visual-studio-code-bin
+yay -S python clang gdb cmake code
 
 # academic
 yay -S zotero
@@ -66,7 +69,7 @@ yay -S zotero
 cd ~/projects
 git clone https://github.com/h3fang/AUR.git
 cd AUR
-for package_dir in notify-all-h3f earlyoom-h3f qpdfview-h3f libblockdev-h3f; do
+for package_dir in notify-all qpdfview libblockdev; do
     cd $package_dir
     PKGEXT=.pkg.tar makepkg -fsri
     cd ..
@@ -91,7 +94,7 @@ echo -e '[Service]\nLogLevelMax=notice' | sudo SYSTEMD_EDITOR=tee systemctl edit
 # earlyoom (requires notify-all)
 sudo sed -i 's|^EARLYOOM_ARGS=.*|EARLYOOM_ARGS="-m 5 -r 0 -N '/usr/bin/notify-all'"|' /etc/default/earlyoom
 
-sudo systemctl enable --now NetworkManager.service doh-client.service earlyoom.service
+sudo systemctl enable --now earlyoom.service
 
 # user backup service
 systemctl enable --now --user backup_borg.timer
@@ -102,3 +105,6 @@ sudo systemctl mask gvfs-metadata.service || true
 
 # disable gvfs automount for network
 sudo sed -i 's/^AutoMount=true$/AutoMount=false/' /usr/share/gvfs/mounts/network.mount || true
+
+# increase evince cache size
+gsettings set org.gnome.Evince page-cache-size 64

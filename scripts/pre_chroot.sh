@@ -1,6 +1,6 @@
 #!/bin/bash
 #########
-### assuming UEFI, *entire* /dev/sda disk (>100GiB), Intel CPU
+### assuming UEFI, *entire* /dev/sda disk (>100GiB), Intel microcode
 #########
 
 set -eEuo pipefail
