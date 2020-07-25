@@ -15,8 +15,8 @@ label=
 interval=5
 
 [internet]
-ETH_INSTANCE=eno1
-WIRELESS_INSTANCE=wlo1
+ETH_INSTANCE=eth0
+WIRELESS_INSTANCE=wlan0
 interval=5
 
 [volume]
