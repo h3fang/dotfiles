@@ -48,7 +48,7 @@ s_mirrors() {
 
 s_pacstrap() {
     echo "installing basic packages ..."
-    pacstrap /mnt base linux e2fsprogs dosfstools linux-firmware vim netctl dhclient # wpa_supplicant ppp ifplugd dialog
+    pacstrap /mnt base linux e2fsprogs dosfstools linux-firmware vim # iwd ppp
 }
 
 s_fstab() {

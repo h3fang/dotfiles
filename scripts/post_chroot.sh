@@ -30,7 +30,7 @@ yay -S htop gvim fd ncdu zip unzip unrar p7zip file-roller openssh openblas popp
 yay -S mpv gimp inkscape
 
 # network
-yay -S netctl dhclient ppp sstp-client transmission-gtk youtube-dl chromium
+yay -S transmission-gtk youtube-dl chromium
 
 # DE/WM
 echo 'Install i3?'
@@ -86,10 +86,6 @@ sudo rmmod pcspkr
 # at-spi2
 echo 'NO_AT_BRIDGE=1' | sudo tee -a /etc/environment
 echo 'NoExtract = usr/share/dbus-1/services/org.a11y.*' | sudo tee -a /etc/pacman.conf
-
-# adjust the log level for NetwokManager dhcp component, wpa_supplicant, doh-client
-echo -e '[logging]\nlevel=WARN\ndomains=DHCP' | sudo tee /etc/NetworkManager/conf.d/dhcp-logging.conf > /dev/null
-echo -e '[Service]\nLogLevelMax=notice' | sudo SYSTEMD_EDITOR=tee systemctl edit wpa_supplicant.service doh-client.service
 
 # earlyoom (requires notify-all)
 sudo sed -i 's|^EARLYOOM_ARGS=.*|EARLYOOM_ARGS="-m 5 -r 0 -N '/usr/bin/notify-all'"|' /etc/default/earlyoom
