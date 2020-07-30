@@ -13,11 +13,8 @@ conda update --all
 
 for f in ~/.config/conda/*.yml; do
   e=$(basename -s .yml "$f")
-  echo -en "${GREEN}updating environment ${RED}${e}${GREEN} ? (y/[n])${CLR}"
-  read -r
-  if [[ $REPLY =~ ^[Yy]$ ]]; then
-    conda env update --prune --file "$f"
-  fi
+  echo -e "${GREEN}updating environment ${RED}${e}${GREEN} ...${CLR}"
+  conda env update --prune --file "$f"
 done
 
 for e in $(conda info -e | grep miniconda3 | awk '{print $1}'); do
