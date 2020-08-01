@@ -23,7 +23,7 @@ done
 
 REPO=/home/$USER/backups
 PREFIX=arch-$(cat /etc/machine-id | head -c 6)-${USER}-home
-RCLONE_REMOTE=gdrv
+RCLONE_REMOTE=('googledrive' 'onedrive')
 
 function f_backup {
     borg create --compression auto,zstd,16 --stats --list --filter=AME \
@@ -87,7 +87,8 @@ function f_backup {
         /etc/udev/rules.d \
         /etc/systemd \
         /etc/smartdns \
-        /etc/default/earlyoom
+        /etc/default/earlyoom \
+        /etc/makepkg.conf
 
     # warn for abnormal delta size
     last_backup_info=$(borg info "$REPO" --last 1 | grep "This archive:")
@@ -110,8 +111,10 @@ function f_prune {
 }
 
 function f_sync {
-    echo -e "\nuploading ..."
-    rclone --stats-one-line -P --stats 1s --drive-use-trash=false sync "$REPO" ${RCLONE_REMOTE}:"$PREFIX"-borg -v --timeout=30s --fast-list --transfers=10
+    for remote in ${RCLONE_REMOTE[@]}; do
+        echo -e "\nuploading to ${remote} ..."
+        rclone --stats-one-line -P --stats 1s --drive-use-trash=false sync "$REPO" ${remote}:"$PREFIX"-borg -v --timeout=30s --fast-list --transfers=10
+    done
 }
 
 function ask_user {
