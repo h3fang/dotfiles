@@ -49,8 +49,19 @@ set clipboard=unnamedplus
 " https://stackoverflow.com/questions/5728259/how-to-clear-the-line-number-in-vim-when-copying
 set mouse+=a
 
-" https://vi.stackexchange.com/questions/14357/moving-viminfo-file-to-vim-dir
-set viminfo='50,<1000,s100,:0,n~/vim/viminfo
+" https://vim.fandom.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
+set viminfo='10,\"100,:20,%,n~/.vim/viminfo
+function! ResCur()
+  if line("'\"") <= line("$")
+    normal! g`"
+    return 1
+  endif
+endfunction
+
+augroup resCur
+  autocmd!
+  autocmd BufWinEnter * call ResCur()
+augroup END
 
 " https://vim.fandom.com/wiki/Highlight_unwanted_spaces#Highlighting_with_the_match_command
 highlight ExtraWhitespace ctermbg=red guibg=red
