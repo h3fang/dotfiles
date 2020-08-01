@@ -21,15 +21,14 @@ exec_always --no-startup-id feh --bg-fill --no-fehbg ~/Pictures/wallpapers/starr
 
 # autostart
 #exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id brightnessctl s 35%
 exec --no-startup-id picom
 exec --no-startup-id dunst
-exec --no-startup-id numlockx
-exec --no-startup-id xinput disable "SynPS/2 Synaptics TouchPad"
+exec --no-startup-id xinput disable $(xinput | pcregrep -o1 "Touchpad\s+id=(\d+)")
 exec --no-startup-id xset s 600 300 && xset dpms 300 600 660
 exec --no-startup-id xss-lock -- $Locker
-#exec --no-startup-id nm-applet
 #exec --no-startup-id udiskie -anT2
-exec --no-startup-id env GDK_DPI_SCALE=1.1 thunar --daemon
+exec --no-startup-id thunar --daemon
 #exec --no-startup-id fcitx5
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -232,7 +231,7 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 
-bindsym $mod+Pause mode "$mode_system"
+bindsym $mod+Insert mode "$mode_system"
 
 ######## others
 
