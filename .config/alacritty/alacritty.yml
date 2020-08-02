@@ -1,0 +1,8 @@
+background_opacity: 0.85
+selection:
+  save_to_clipboard: true
+font:
+  size: 8.0
+window:
+  dynamic_title: true
+
