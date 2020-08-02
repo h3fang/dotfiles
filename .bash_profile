@@ -53,6 +53,8 @@ export OPENBLAS_NUM_THREADS=$ncores
 export GOTO_NUM_THREADS=$ncores
 export OMP_NUM_THREADS=$ncores
 
+export XAUTHORITY=~/.cache/.Xauthority
+
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
     start_i3wm
 #elif [[ ! $DISPLAY && $XDG_VTNR -eq 2 ]]; then
