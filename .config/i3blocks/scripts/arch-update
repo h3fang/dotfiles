@@ -15,64 +15,15 @@
 
 from subprocess import check_output, CalledProcessError, TimeoutExpired
 from sys import stderr
-import argparse
-import os
-import re
 
+BASE_COLOR = "#00FF00"
+UPDATE_COLOR = "yellow"
 ERROR_COLOR = "red"
 
-def create_argparse():
-    def _default(name, default='', arg_type=str):
-        val = default
-        if name in os.environ:
-            val = os.environ[name]
-        return arg_type(val)
-
-    strbool = lambda s: s.lower() in ['t', 'true', '1']
-    strlist = lambda s: s.split()
-
-    parser = argparse.ArgumentParser(description='Check for pacman updates')
-    parser.add_argument(
-        '-b',
-        '--base_color',
-        default = _default('BASE_COLOR', "#00FF00"),
-        help='base color of the output(default=green)'
-    )
-    parser.add_argument(
-        '-u',
-        '--updates_available_color',
-        default = _default('UPDATE_COLOR', 'yellow'),
-        help='color of the output, when updates are available(default=yellow)'
-    )
-    parser.add_argument(
-        '-a',
-        '--aur',
-        action = 'store_const',
-        const = True,
-        default = _default('AUR', 'False', strbool),
-        help='Include AUR packages. Attn: yay must be installed'
-    )
-    parser.add_argument(
-        '-q',
-        '--quiet',
-        action = 'store_const',
-        const = True,
-        default = _default('QUIET', 'False', strbool),
-        help = 'Do not produce output when system is up to date'
-    )
-    parser.add_argument(
-        '-w',
-        '--watch',
-        nargs='*',
-        default = _default('WATCH', arg_type=strlist),
-        help='Explicitly watch for specified packages. '
-        'Listed elements are treated as regular expressions for matching.'
-    )
-    return parser.parse_args()
 
 def check_updates(cmd, callback, no_update_ret=None):
     try:
-        output = check_output(cmd, encoding="utf-8", timeout=30)
+        output = check_output(cmd, encoding="utf-8", timeout=15)
         return True, callback(output)
     except CalledProcessError as e:
         print(e, file=stderr)
@@ -84,46 +35,30 @@ def check_updates(cmd, callback, no_update_ret=None):
         print(e, file=stderr)
         return False, []
 
-def matching_updates(updates, watch_list):
-    matches = set()
-    for u in updates:
-        for w in watch_list:
-            if re.match(w, u):
-                matches.add(u)
-
-    return matches
-
 
 if __name__ == '__main__':
     message = "<span color='{0}'>{1}</span>+<span color='{2}'>{3}</span>"
-    args = create_argparse()
 
     repo_updated, repo_updates = check_updates(["checkupdates"], lambda o: [line.split(' ')[0] for line in o.split('\n') if line], 2)
-    aur_updated = True
-    aur_updates = []
-    if args.aur:
-        aur_updated, aur_updates = check_updates(["yay", "-Qua"], lambda o: [line for line in o.split('\n') if line])
+    aur_updated, aur_updates = check_updates(["yay", "-Qua"], lambda o: [line for line in o.split('\n') if line])
 
     repo_count = len(repo_updates)
     aur_count = len(aur_updates)
 
-    repo_color = args.base_color
-    aur_color = args.base_color
+    repo_color = BASE_COLOR
+    aur_color = BASE_COLOR
 
     if repo_count > 0:
-        repo_color = args.updates_available_color
+        repo_color = UPDATE_COLOR
     elif not repo_updated:
         repo_color = ERROR_COLOR
 
     if aur_count > 0:
-        aur_color = args.updates_available_color
+        aur_color = UPDATE_COLOR
     elif not aur_updated:
         aur_color = ERROR_COLOR
-
-    matches = matching_updates(repo_updates, args.watch)
-    if matches:
-        message += "*"
 
     message = message.format(repo_color, repo_count, aur_color, aur_count)
     print(message)
     print(message)
+

@@ -6,7 +6,7 @@ def get_city():
     c = os.getenv("LOCATION_CITY")
     if c is None:
         try:
-            r = requests.get(f'https://ipinfo.io', timeout=5)
+            r = requests.get(f'https://ipinfo.io', timeout=10)
             r.raise_for_status()
             return r.json()["city"]
         except:
@@ -27,7 +27,7 @@ def openweathermap(location):
         exit(2)
 
     try:
-        r = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={location}&units=metric&lang=zh_cn&appid={a}', timeout=5)
+        r = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={location}&units=metric&lang=zh_cn&appid={a}', timeout=10)
         r.raise_for_status()
         d = r.json()
         print(f"{d['name']} {d['weather'][0]['description']} {d['main']['temp']:.0f}℃")
@@ -39,7 +39,7 @@ if __name__ == '__main__':
     location = get_city()
 
     try:
-        r = requests.get(f"https://wttr.in/{location}?format=%l+%c+%t&lang=zh", timeout=5)
+        r = requests.get(f"https://wttr.in/{location}?format=%l+%c+%t&lang=zh", timeout=10)
     except:
         openweathermap(location)
     else:
