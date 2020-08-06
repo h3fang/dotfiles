@@ -26,10 +26,10 @@ def check_updates(cmd, callback, no_update_ret=None):
         output = check_output(cmd, encoding="utf-8", timeout=15)
         return True, callback(output)
     except CalledProcessError as e:
-        print(e, file=stderr)
         if no_update_ret and e.returncode == no_update_ret:
             return True, []
         else:
+            print(e, file=stderr)
             return False, []
     except Exception as e:
         print(e, file=stderr)
