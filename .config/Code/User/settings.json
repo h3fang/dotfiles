@@ -151,4 +151,5 @@
         "*.geojson": "json"
     },
     "cmake.configureOnOpen": false,
+    "git.autofetch": true,
 }
