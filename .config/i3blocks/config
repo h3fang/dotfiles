@@ -31,8 +31,7 @@ interval=20
 interval=3600
 markup=pango
 label= 
-AUR=true
-QUIET=true
+signal=2
 
 [kernel-version]
 interval=60
