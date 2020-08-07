@@ -22,11 +22,12 @@ exec_always --no-startup-id feh --bg-fill --no-fehbg ~/Pictures/wallpapers/starr
 # autostart
 #exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id brightnessctl s 35%
-exec --no-startup-id picom
+exec --no-startup-id picom -b
 exec --no-startup-id dunst
 exec --no-startup-id xinput disable $(xinput | pcregrep -o1 "Touchpad\s+id=(\d+)")
 exec --no-startup-id xset s 600 300 && xset dpms 300 600 660
 exec --no-startup-id xss-lock -- $Locker
+exec --no-startup-id thunar --daemon
 #exec --no-startup-id udiskie -anT2
 #exec --no-startup-id fcitx5
 
@@ -207,9 +208,9 @@ bindsym $mod+Print --release exec --no-startup-id "maim -g $(slop -n) -u ~/Pictu
 bindsym $mod+Shift+p fullscreen disable; floating enable; resize set 800 600; sticky enable; move window to position center;
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% && pkill -RTMIN+1 i3blocks #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% && pkill -RTMIN+1 i3blocks #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle && pkill -RTMIN+1 i3blocks # mute
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% && pkill -SIGRTMIN+1 i3blocks #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% && pkill -SIGRTMIN+1 i3blocks #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle && pkill -SIGRTMIN+1 i3blocks # mute
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +5%  # increase screen brightness
