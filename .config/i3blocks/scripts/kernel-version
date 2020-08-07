@@ -1,8 +1,13 @@
 #!/bin/bash
 
+# check if the kernel in use is updated
+
+LINUX_PKG=$(cat /usr/lib/modules/$(uname -r)/pkgbase)
+
 pkg_ver=$(pacman -Q ${LINUX_PKG:-linux} | awk '{print $2}')
 if [[ -z $pkg_ver || ! $(uname -r) =~ $pkg_ver ]]; then
     echo "kernel update"
     echo "kernel update"
     exit 33;
 fi
+

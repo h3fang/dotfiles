@@ -35,7 +35,6 @@ signal=2
 
 [kernel-version]
 interval=60
-LINUX_PKG=linux-zen
 
 [date]
 command=date '+ %b %d %a  %H:%M'
