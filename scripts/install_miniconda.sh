@@ -30,14 +30,12 @@ fi
 source "${MINICONDA_PATH}/bin/activate"
 
 conda config --system --set changeps1 false
-conda config --system --add create_default_packages flake8
-conda config --system --add create_default_packages black
 
 read -p "use SJTU anaconda mirror? (y/[n]) " -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     conda config --system --set show_channel_urls yes
-    conda config --system --add channels https://anaconda.mirrors.sjtug.sjtu.edu.cn/pkgs/main
+    conda config --system --add default_channels https://anaconda.mirrors.sjtug.sjtu.edu.cn/pkgs/main
     conda config --system --set custom_channels.pytorch https://anaconda.mirrors.sjtug.sjtu.edu.cn/cloud
     conda config --system --set custom_channels.conda-forge https://anaconda.mirrors.sjtug.sjtu.edu.cn/cloud
 fi
