@@ -11,10 +11,12 @@ dependencies:
   - h5py
   - xlrd
   - pybind11
+  - pymap3d
+  - shapely
   - cython
   - black
   - flake8
-  - cudatoolkit=10.2
+  - pytorch::cpuonly
   - pytorch::pytorch
   - conda-forge::gym
 
