@@ -1,16 +1,17 @@
 #!/bin/bash
 
 #ARCHISO_VER=$(date +%Y.%m.01)
-#~/scripts/download_and_verify_latest_iso.sh
+#~/scripts/download_and_verify_latest_iso.sh ~/VMs
 
-#qemu-img create -f qcow2 arch.qcow2 16G
+DISK_IMG=${HOME}/VMs/arch.qcow2
+#qemu-img create -f qcow2 "${DISK_IMG}" 20G
 
 qemu-system-x86_64 \
     -enable-kvm \
     -cpu host \
-    -smp $(nproc) \
-    -m 2048 \
+    -smp 4 \
+    -m 4G \
     -nic user,model=virtio \
-    -drive file=arch.qcow2,media=disk,if=virtio \
-#    -cdrom ~/Downloads/archlinux-${ARCHISO_VER}-x86_64.iso \
+    -drive file="${DISK_IMG}",media=disk,if=virtio \
+#    -cdrom ~/VMs/archlinux-${ARCHISO_VER}-x86_64.iso \
 #    -boot menu=on
