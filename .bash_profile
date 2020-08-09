@@ -39,6 +39,13 @@ start_sway() {
     exec sway --my-next-gpu-wont-be-nvidia > $SWAY_LOG 2>&1
 }
 
+export XDG_CONFIG_HOME=~/.config
+export XDG_CACHE_HOME=~/.cache
+export XDG_DATA_HOME=~/.local/share
+
+export XAUTHORITY=$XDG_CACHE_HOME/Xauthority
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
 
@@ -52,8 +59,6 @@ ncores=$(cat /proc/cpuinfo | grep -m 1 'cpu cores' | awk '{print $4}')
 export OPENBLAS_NUM_THREADS=$ncores
 export GOTO_NUM_THREADS=$ncores
 export OMP_NUM_THREADS=$ncores
-
-export XAUTHORITY=~/.cache/.Xauthority
 
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
     start_i3wm

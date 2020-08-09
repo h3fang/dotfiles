@@ -59,7 +59,7 @@ function f_backup {
         --exclude "sh:/home/$USER/**/__pycache__" \
         "${REPO}::{now:%Y-%m-%d_%H:%M:%S}" \
         ~/.config \
-        ~/.gnupg \
+        ~/.local/share/gnupg \
         ~/.local/share/keyrings \
         ~/.ssh \
         ~/scripts \
@@ -67,13 +67,11 @@ function f_backup {
         ~/projects \
         ~/Documents \
         ~/.gtkrc-2.0 \
-        ~/.gitconfig \
         ~/.bashrc \
         ~/.bash_profile \
         ~/.xinitrc \
         ~/.vimrc \
         ~/.gitignore \
-        ~/.latexmkrc \
         /etc/pacman.d/hooks \
         /etc/pacman.d/mirrorlist \
         /etc/pacman.conf \
