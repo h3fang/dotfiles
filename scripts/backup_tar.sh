@@ -29,24 +29,22 @@ tar -I "zstd -T0 -19" --exclude='.config/mpv/watch_later' \
     --exclude='projects/AUR/*/*/*' \
     --exclude='projects/Courses/**/*.pdf' \
     --exclude='projects/Courses/**/*.npz' \
+    --exclude='projects/blog/public' \
     --exclude='.~lock.*' \
     --exclude='**/__pycache__' \
     -cvf $ARCHIVE \
     .config \
-    .gnupg \
+    .local/share/gnupg \
     .local/share/keyrings \
     .ssh \
     projects \
     scripts \
     Pictures \
-    .gtkrc-2.0 \
-    .gitconfig \
     .bashrc \
     .bash_profile \
     .xinitrc \
     .vimrc \
-    .gitignore \
-    .latexmkrc
+    .gitignore
 
 echo
 read -p "Upload (y/[n])? " -n 1 -r

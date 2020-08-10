@@ -66,7 +66,6 @@ function f_backup {
         ~/Pictures \
         ~/projects \
         ~/Documents \
-        ~/.gtkrc-2.0 \
         ~/.bashrc \
         ~/.bash_profile \
         ~/.xinitrc \
