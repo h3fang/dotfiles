@@ -28,6 +28,7 @@ exec --no-startup-id xinput disable $(xinput | pcregrep -o1 "Touchpad\s+id=(\d+)
 exec --no-startup-id xset s 600 300 && xset dpms 300 600 660
 exec --no-startup-id xss-lock -- $Locker
 exec --no-startup-id thunar --daemon
+exec --no-startup-id networkd-notify
 #exec --no-startup-id udiskie -anT2
 #exec --no-startup-id fcitx5
 
