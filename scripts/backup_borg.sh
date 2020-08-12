@@ -85,7 +85,9 @@ function f_backup {
         /etc/systemd \
         /etc/smartdns \
         /etc/default/earlyoom \
-        /etc/makepkg.conf
+        /etc/makepkg.conf \
+        /boot/loader/loader.conf \
+        /boot/loader/entries
 
     # warn for abnormal delta size
     last_backup_info=$(borg info "$REPO" --last 1 | grep "This archive:")
