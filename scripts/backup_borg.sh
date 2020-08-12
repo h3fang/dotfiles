@@ -1,8 +1,8 @@
 #!/bin/bash
-# requires borg, notify-all, rclone (already setup)
+# requires borg, libnotify, rclone (already setup)
 
 set -eEuo pipefail
-trap 's=$?; echo "$0: Error on line $LINENO"; notify-all "$0: Error on line $LINENO";  exit $s' ERR
+trap 's=$?; echo "$0: Error on line $LINENO"; notify-send "$0: Error on line $LINENO";  exit $s' ERR
 
 O_BACKUP="ask"
 O_PRUNE="ask"
@@ -99,7 +99,7 @@ function f_backup {
         # delta smaller than 2 MB is fine
         if ! [[ $last_unit == "MB" && $(echo "$last_size<2" | bc -l) -eq 1 ]]; then
             echo "Abnormal last backup size: $last_size $last_unit"
-            notify-all -u critical "Abnormal last backup size: $last_size $last_unit"
+            notify-send -u critical "Abnormal last backup size: $last_size $last_unit"
             exit 2
         fi
     fi
