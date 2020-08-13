@@ -80,7 +80,6 @@ sudo udevadm control --reload
 sudo sed -i 's/^#MAKEFLAGS="-j2"$/MAKEFLAGS="-j\$(nproc)"/' /etc/makepkg.conf
 # not tested
 #sudo sed -i 's/-march=x86_64 -mtune=generic/-march=native/' /etc/makepkg.conf
-sudo sed -i 's/^PKGEXT='\''\.pkg\.tar\.xz'\''/PKGEXT='\''\.pkg\.tar'\''/' /etc/makepkg.conf
 
 # watchdogs
 # (manual) add 'nowatchdog' kernel parameter
