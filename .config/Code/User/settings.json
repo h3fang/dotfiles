@@ -9,7 +9,7 @@
     "workbench.colorTheme": "Default Light+",
     "workbench.colorCustomizations": {
         "[Default Light+]": {
-            "editor.background": "#efefef",
+            "editor.background": "#ececec",
             "tab.activeBackground": "#ccdccc"
         }
     },
@@ -63,7 +63,6 @@
     "latex-workshop.view.pdf.viewer": "external",
     "latex-workshop.view.pdf.external.viewer.command": "qpdfview",
     "latex-workshop.view.pdf.external.viewer.args": [
-        "--unique",
         "%PDF%"
     ],
     "latex-workshop.view.pdf.external.synctex.command": "qpdfview",
