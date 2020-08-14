@@ -51,7 +51,7 @@ function f_backup {
         --exclude "sh:/home/$USER/projects/**/.vscode/ipch" \
         --exclude "sh:/home/$USER/projects/AUR/*/*.tar.?z" \
         --exclude "sh:/home/$USER/projects/AUR/*/*.tar.bz2" \
-        --exclude "sh:/home/$USER/projects/AUR/*/*.pkg.tar" \
+        --exclude "sh:/home/$USER/projects/AUR/*/*.tar.zst" \
         --exclude "sh:/home/$USER/projects/AUR/*/*/*" \
         --exclude "sh:/home/$USER/projects/Courses/**/*.pdf" \
         --exclude "sh:/home/$USER/projects/Courses/**/*.npz" \

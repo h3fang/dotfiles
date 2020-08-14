@@ -11,7 +11,8 @@ rsync -ahv --delete --ignore-errors --delete-excluded \
     --exclude="projects/*/[rR]esults/**/*.npz" \
     --exclude="projects/AUR/*/*/*" \
     --exclude="projects/AUR/*/*.tar.?z" \
-    --exclude="projects/AUR/*/*.pkg.tar" \
+    --exclude="projects/AUR/*/*.tar.bz2" \
+    --exclude="projects/AUR/*/*.tar.zst" \
     --exclude=".cache" \
     --exclude=".nv" \
     --exclude=".gvfs" \
