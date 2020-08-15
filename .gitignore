@@ -9,6 +9,7 @@
 .local/
 .ipython/
 .jupyter/
+.mono/
 .mozilla/
 .npm/
 .nv/
@@ -29,6 +30,7 @@
 .config/chromium/
 .config/cef_user_data/
 .config/clash
+.config/conda/environments.txt
 .config/configstore/
 .config/dconf/
 .config/dotfiles/
@@ -58,6 +60,7 @@
 .config/QtProject.conf
 .config/systemd/user/timers.target.wants/
 .config/systemd/user/default.target.wants/
+.config/systemd/user/graphical.target.wants/
 .config/modprobed.db
 .config/modprobed-db.conf
 .config/unity3d/

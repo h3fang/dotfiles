@@ -66,3 +66,7 @@ augroup END
 " https://vim.fandom.com/wiki/Highlight_unwanted_spaces#Highlighting_with_the_match_command
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$\| \+\ze\t/
+
+au InsertEnter * silent execute "!echo -en \<esc>[5 q"
+au InsertLeave * silent execute "!echo -en \<esc>[2 q"
+
