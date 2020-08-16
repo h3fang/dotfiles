@@ -42,6 +42,7 @@
     "C_Cpp.default.cppStandard": "c++17",
 
     // python
+    "python.showStartPage": false,
     "python.condaPath": "~/.local/miniconda3/bin/conda",
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": true,
