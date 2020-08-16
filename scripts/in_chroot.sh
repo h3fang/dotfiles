@@ -71,7 +71,7 @@ title ArchLinux
 linux /vmlinuz-linux
 initrd /${Microcode}.img
 initrd /initramfs-linux.img
-options root=$RootUUID rw quiet nvidia-drm.modeset=1 nmi_watchdog=0 nowatchdog random.trust_cpu=on
+options root=$RootUUID rw quiet nmi_watchdog=0 audit=0 module.sig_enforce=1
 EOF
 }
 
