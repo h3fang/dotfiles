@@ -30,6 +30,7 @@ function f_backup {
         --exclude "/home/$USER/.config/mpv/watch_later" \
         --exclude "/home/$USER/.config/Atom" \
         --exclude "/home/$USER/.config/borg/security" \
+        --exclude "$HOME/.config/clash/*.mmdb" \
         --exclude "/home/$USER/.config/Code" \
         --exclude "/home/$USER/.config/Code - OSS" \
         --exclude "/home/$USER/.config/VSCodium" \
