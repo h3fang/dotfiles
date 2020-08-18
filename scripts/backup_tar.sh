@@ -46,12 +46,14 @@ tar -I "zstd -T0 -19" --exclude='.config/mpv/watch_later' \
     .vimrc \
     .gitignore
 
+ls -l "$ARCHIVE"
+
 echo
 read -p "Upload (y/[n])? " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     echo -e "\nuploading ..."
-    rclone --stats-one-line -P --stats 1s copy $ARCHIVE gdrv: -v --timeout=30s
+    rclone --stats-one-line -P --stats 1s copy $ARCHIVE googledrive: -v --timeout=30s
 fi
 
 echo -e "\nDone."
