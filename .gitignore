@@ -55,7 +55,8 @@
 .config/Thunar/
 .config/Trolltech.conf
 .config/transmission/
-.config/xfce4/
+.config/xfce4/xfconf/
+.config/xfce4/terminal/accels.scm
 .config/mimeapps.list
 .config/QtProject.conf
 .config/systemd/user/timers.target.wants/
