@@ -58,6 +58,7 @@ function f_backup {
         --exclude "sh:/home/$USER/projects/Courses/**/*.npz" \
         --exclude "/home/$USER/projects/blog/public" \
         --exclude "sh:/home/$USER/**/__pycache__" \
+        --exclude "sh:/home/$USER/Documents/wine" \
         "${REPO}::{now:%Y-%m-%d_%H:%M:%S}" \
         ~/.config \
         ~/.local/share/gnupg \

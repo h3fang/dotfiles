@@ -14,6 +14,7 @@
 .npm/
 .nv/
 .pki/
+.paradoxlauncher/
 .ssh/
 .vim/
 .vispy/
@@ -101,4 +102,4 @@ scripts/envs
 .esd_auth
 .Xauthority
 .gtkrc-2.0
-
+.pulse-cookie
