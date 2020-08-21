@@ -21,44 +21,46 @@ while [[ "$#" -gt 0 ]]; do
     esac
 done
 
-REPO=/home/$USER/backups
+REPO=$HOME/backups
 PREFIX=arch-$(cat /etc/machine-id | head -c 6)-${USER}-home
 RCLONE_REMOTE=('googledrive' 'onedrive')
 
 function f_backup {
     borg create --compression auto,zstd,16 --stats --list --filter=AME \
-        --exclude "/home/$USER/.config/mpv/watch_later" \
-        --exclude "/home/$USER/.config/Atom" \
-        --exclude "/home/$USER/.config/borg/security" \
+        --exclude "$HOME/.config/mpv/watch_later" \
+        --exclude "$HOME/.config/Atom" \
+        --exclude "$HOME/.config/borg/security" \
         --exclude "$HOME/.config/clash/*.mmdb" \
-        --exclude "/home/$USER/.config/Code" \
-        --exclude "/home/$USER/.config/Code - OSS" \
-        --exclude "/home/$USER/.config/VSCodium" \
-        --exclude "/home/$USER/.config/chromium" \
-        --exclude "/home/$USER/.config/libreoffice" \
-        --exclude "/home/$USER/.config/GIMP" \
-        --exclude "/home/$USER/.config/pulse" \
-        --exclude "/home/$USER/.config/QtProject/qtcreator/qbs" \
-        --exclude "/home/$USER/.config/QtProject/qtcreator/.helpcollection" \
-        --exclude "/home/$USER/.config/fcitx5/conf/cached_layouts" \
-        --exclude "/home/$USER/.config/ibus/bus" \
-        --exclude "/home/$USER/.config/menus" \
-        --exclude "/home/$USER/.config/transmission/resume" \
-        --exclude "/home/$USER/.config/transmission/dht.dat" \
-        --exclude "sh:/home/$USER/.ssh/known_hosts" \
-        --exclude "sh:/home/$USER/projects/**/[bB]uild" \
-        --exclude "sh:/home/$USER/projects/**/[dD]ata" \
-        --exclude "sh:/home/$USER/projects/**/[rR]esults" \
-        --exclude "sh:/home/$USER/projects/**/.vscode/ipch" \
-        --exclude "sh:/home/$USER/projects/AUR/*/*.tar.?z" \
-        --exclude "sh:/home/$USER/projects/AUR/*/*.tar.bz2" \
-        --exclude "sh:/home/$USER/projects/AUR/*/*.tar.zst" \
-        --exclude "sh:/home/$USER/projects/AUR/*/*/*" \
-        --exclude "sh:/home/$USER/projects/Courses/**/*.pdf" \
-        --exclude "sh:/home/$USER/projects/Courses/**/*.npz" \
-        --exclude "/home/$USER/projects/blog/public" \
-        --exclude "sh:/home/$USER/**/__pycache__" \
-        --exclude "sh:/home/$USER/Documents/wine" \
+        --exclude "$HOME/.config/Code" \
+        --exclude "$HOME/.config/Code - OSS" \
+        --exclude "$HOME/.config/VSCodium" \
+        --exclude "$HOME/.config/chromium" \
+        --exclude "$HOME/.config/libreoffice" \
+        --exclude "$HOME/.config/GIMP" \
+        --exclude "$HOME/.config/pulse" \
+        --exclude "$HOME/.config/QtProject/qtcreator/qbs" \
+        --exclude "$HOME/.config/QtProject/qtcreator/.helpcollection" \
+        --exclude "$HOME/.config/fcitx5/conf/cached_layouts" \
+        --exclude "$HOME/.config/ibus/bus" \
+        --exclude "$HOME/.config/menus" \
+        --exclude "$HOME/.config/transmission/resume" \
+        --exclude "$HOME/.config/transmission/dht.dat" \
+        --exclude "$HOME/.ssh/known_hosts" \
+        --exclude "sh:$HOME/projects/**/[bB]uild" \
+        --exclude "sh:$HOME/projects/**/[dD]ata" \
+        --exclude "sh:$HOME/projects/**/[rR]esults" \
+        --exclude "sh:$HOME/projects/**/.vscode/ipch" \
+        --exclude "sh:$HOME/projects/AUR/*/*.tar.?z" \
+        --exclude "sh:$HOME/projects/AUR/*/*.tar.bz2" \
+        --exclude "sh:$HOME/projects/AUR/*/*.tar.zst" \
+        --exclude "sh:$HOME/projects/AUR/*/*/*" \
+        --exclude "sh:$HOME/projects/AUR/*/pkg" \
+        --exclude "sh:$HOME/projects/AUR/*/src" \
+        --exclude "sh:$HOME/projects/Courses/**/*.pdf" \
+        --exclude "sh:$HOME/projects/Courses/**/*.npz" \
+        --exclude "sh:$HOME/**/__pycache__" \
+        --exclude "$HOME/projects/blog/public" \
+        --exclude "$HOME/Documents/wine" \
         "${REPO}::{now:%Y-%m-%d_%H:%M:%S}" \
         ~/.config \
         ~/.local/share/gnupg \
