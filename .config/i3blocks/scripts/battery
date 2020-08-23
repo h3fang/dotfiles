@@ -30,3 +30,6 @@ if status == "Discharging":
     elif percent <= 85:
         print("#A8FF00")
 
+if status == "Charging":
+    print("#00FF00")
+

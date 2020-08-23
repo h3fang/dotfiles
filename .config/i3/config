@@ -234,6 +234,7 @@ mode "$mode_system" {
 }
 
 bindsym $mod+Insert mode "$mode_system"
+bindsym $mod+b bar mode toggle
 
 ######## others
 

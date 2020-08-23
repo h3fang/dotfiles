@@ -26,7 +26,7 @@ if [[ "$(cat /sys/class/net/$WIRELESS_INTERFACE/operstate)" = 'up' ]]; then
 
     # color
     if [[ $QUALITY -ge 80 ]]; then
-        echo "#00FF00"
+        echo "#FFFFFF"
     elif [[ $QUALITY -ge 60 ]]; then
         echo "#FFF600"
     elif [[ $QUALITY -ge 40 ]]; then

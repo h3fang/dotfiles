@@ -16,7 +16,7 @@
 from subprocess import check_output, CalledProcessError, TimeoutExpired
 from sys import stderr
 
-BASE_COLOR = "#00FF00"
+BASE_COLOR = "white"
 UPDATE_COLOR = "yellow"
 ERROR_COLOR = "red"
 
