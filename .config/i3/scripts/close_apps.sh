@@ -19,4 +19,9 @@ if [[ $n_apps -gt 0 ]]; then
     exit 2
 fi
 
+pkill -x xss-lock -SIGINT
+pkill -f gnome-keyring-daemon
+pkill -fx systembus-notify
+pkill -fx "python3 /usr/bin/networkd-notify"
 udiskie-umount -ad
+
