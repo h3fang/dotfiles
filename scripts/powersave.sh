@@ -6,7 +6,7 @@ trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 
 function setup() {
     ### compositor
-    pkill compton || true
+    pkill picom || true
 
     ### backlight brightness
     brightnessctl s 10%
@@ -14,29 +14,30 @@ function setup() {
     ### manual mode for TLP
     sudo tlp bat
 
-    ### cpu hyperthread
-    for i in $(cat /sys/devices/system/cpu/cpu*/topology/thread_siblings_list | awk -F- '{print $2}' | sort -n | uniq); do
-        echo disabling hyperthread $i
-        echo 0 | sudo tee /sys/devices/system/cpu/cpu$i/online
-    done
+    ### disable CPU Turbo Boost (AMD / acpi-cpufreq)
+    echo 0 | sudo tee /sys/devices/system/cpu/cpufreq/boost
+
+    ### disable CPU SMT/HT
+    echo off | sudo tee /sys/devices/system/cpu/smt/control
 }
 
 function restore() {
     ### compositor
     if [[ -n $(pidof i3) ]]; then
-        i3-msg "exec --no-startup-id compton"
+        i3-msg "exec --no-startup-id picom"
     fi
 
     ### backlight brightness
-    brightnessctl s 30%
+    brightnessctl s 35%
 
     ### manual mode for TLP
     sudo tlp ac
 
-    ### cpu hyperthread
-    for i in /sys/devices/system/cpu/cpu*/online; do
-        echo 1 | sudo tee "${i}"
-    done
+    ### enable CPU Turbo Boost (AMD / acpi-cpufreq)
+    echo 1 | sudo tee /sys/devices/system/cpu/cpufreq/boost
+
+    ### enable CPU SMT/HT
+    echo on | sudo tee /sys/devices/system/cpu/smt/control
 }
 
 if [[ $1 == "on" ]]; then
@@ -44,3 +45,4 @@ if [[ $1 == "on" ]]; then
 elif [[ $1 == "off" ]]; then
     restore
 fi
+
