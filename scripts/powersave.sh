@@ -1,5 +1,5 @@
 #!/bin/bash
-# requires brightnessctl, tlp, python-undervolt
+# requires brightnessctl, tlp
 
 set -eEuo pipefail
 trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
@@ -12,17 +12,13 @@ function setup() {
     brightnessctl s 10%
 
     ### manual mode for TLP
-    tlp bat
-
-    ### undervolting Intel cpu
-    undervolt --core -100 --uncore -100 --analogio -100 --cache -100 --gpu -100
+    sudo tlp bat
 
     ### cpu hyperthread
-    cat /sys/devices/system/cpu/cpu*/topology/thread_siblings_list | \
-    awk -F, '{print $2}' | \
-    sort -n | \
-    uniq | \
-    ( while read X ; do echo disabling hyperthread $X ; echo 0 > /sys/devices/system/cpu/cpu$X/online ; done )
+    for i in $(cat /sys/devices/system/cpu/cpu*/topology/thread_siblings_list | awk -F- '{print $2}' | sort -n | uniq); do
+        echo disabling hyperthread $i
+        echo 0 | sudo tee /sys/devices/system/cpu/cpu$i/online
+    done
 }
 
 function restore() {
@@ -35,14 +31,11 @@ function restore() {
     brightnessctl s 30%
 
     ### manual mode for TLP
-    tlp ac
-
-    ### undervolting Intel cpu
-    undervolt --core 0 --uncore 0 --analogio 0 --cache 0 --gpu 0
+    sudo tlp ac
 
     ### cpu hyperthread
     for i in /sys/devices/system/cpu/cpu*/online; do
-        echo 1 > "${i}"
+        echo 1 | sudo tee "${i}"
     done
 }
 
