@@ -9,6 +9,10 @@ dependencies:
   - pybind11
   - pymap3d
   - shapely
+  - matplotlib
+  - scipy
+  - pytorch::cpuonly
+  - pytorch::pytorch
   - conda-forge::pyopengl
   - conda-forge::pyglet
   - conda-forge::vispy
