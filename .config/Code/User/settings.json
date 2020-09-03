@@ -1,5 +1,5 @@
 {
-    // Settings,
+    // Settings
     "workbench.startupEditor": "welcomePageInEmptyWorkbench",
     "workbench.settings.editor": "json",
     "workbench.settings.openDefaultSettings": true,
@@ -14,25 +14,22 @@
         }
     },
 
-    "window.zoomLevel": 0,
     "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}vscode",
-    "editor.fontFamily": "'Hack', 'Noto Sans Mono CJK', 'monospace', 'FontAwesome', 'Noto Color Emoji'",
+    "editor.fontFamily": "'Hack', 'Noto Sans Mono CJK', 'monospace', 'FontAwesome', 'Font Awesome 5 Free', 'Font Awesome 5 Brands', 'Noto Color Emoji'",
     "editor.fontSize": 16,
     "editor.wordWrap": "bounded",
     "editor.wordWrapColumn": 128,
-    "editor.tokenColorCustomizations": {
-        "[Quiet Light]": {
-            "comments": "#008000"
-        }
-    },
     "editor.minimap.showSlider": "always",
     "editor.minimap.renderCharacters": false,
     "terminal.external.linuxExec": "xfce4-terminal",
     "terminal.integrated.rendererType": "dom",
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 10000,
-    "git.confirmSync": false,
     "diffEditor.ignoreTrimWhitespace": false,
+
+    // git
+    "git.confirmSync": false,
+    "git.autofetch": true,
 
     // C/C++
     "C_Cpp.clang_format_path": "/usr/bin/clang-format",
@@ -146,10 +143,11 @@
         "text",
         "plaintext"
     ],
+
+    // misc.
     "bracket-pair-colorizer-2.colors": [],
     "files.associations": {
         "*.geojson": "json"
     },
     "cmake.configureOnOpen": false,
-    "git.autofetch": true,
 }
