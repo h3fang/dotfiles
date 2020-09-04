@@ -10,3 +10,5 @@
     di = diff
     dic = diff --cached
     ch = checkout
+[pull]
+    rebase = false
