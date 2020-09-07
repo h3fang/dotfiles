@@ -1,0 +1,12 @@
+configuration {
+    color-normal: "#ffffff, #004080, #f2f2f2, #4da1ff, #ffffff";
+    color-urgent: "#ffffff, #dc322f, #f2f2f2, #dc322f, #ffffff";
+    color-active: "#ffffff, #268bd2, #f2f2f2, #268bd2, #ffffff";
+    color-window: "#ffffff, #00baf6, #00baf6";
+    font: "monospace 12";
+    width: 40;
+    modi: "drun#run#window#keys";
+    show-icons: true;
+}
+
+/* vim:ft=css
