@@ -53,6 +53,7 @@ function f_backup {
         --exclude "sh:$HOME/projects/AUR/*/*.tar.?z" \
         --exclude "sh:$HOME/projects/AUR/*/*.tar.bz2" \
         --exclude "sh:$HOME/projects/AUR/*/*.tar.zst" \
+        --exclude "sh:$HOME/projects/AUR/*/*.AppImage" \
         --exclude "sh:$HOME/projects/AUR/*/*/*" \
         --exclude "sh:$HOME/projects/AUR/*/pkg" \
         --exclude "sh:$HOME/projects/AUR/*/src" \
