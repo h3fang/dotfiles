@@ -28,10 +28,12 @@ function run {
     -drive file="${DISK_IMG}",if=virtio \
     -nic user,model=virtio-net-pci,hostfwd=tcp::10022-:22 \
     -rtc base=localtime,clock=host \
-    -device intel-hda -device hda-duplex \
+    -audiodev pa,id=snd0 \
+    -device ich9-intel-hda -device hda-duplex,audiodev=snd0 \
     -vga virtio \
     -full-screen &
 }
+
 
 CMD=${1:-run}
 if [[ "$CMD" == "disk" ]]; then
