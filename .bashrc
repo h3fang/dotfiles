@@ -24,6 +24,7 @@ alias miniconda='source ~/.local/miniconda3/bin/activate $(echo -e "base\n$(ls ~
 alias yaySc="yay -Sc --noconfirm"
 alias i3windows="i3-msg -t get_tree | jq '.. | select( .class?) | {class: .class, title: .title}'"
 alias swaywindows="swaymsg -t get_tree | jq '.. | select( .class? or .app_id? ) | {class: .class, app_id: .app_id, title: .title}'"
+alias scripts='$(fd -t x . ~/scripts/ | fzf)'
 
 man() {
     LESS_TERMCAP_md=$'\e[01;31m' \
