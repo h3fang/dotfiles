@@ -26,6 +26,7 @@ tar -I "zstd -T0 -19" --exclude='.config/mpv/watch_later' \
     --exclude="projects/AUR/*/*.tar.?z" \
     --exclude="projects/AUR/*/*.tar.bz2" \
     --exclude="projects/AUR/*/*.tar.zst" \
+    --exclude="projects/AUR/*/*.zip" \
     --exclude='projects/AUR/*/*/*' \
     --exclude='projects/Courses/**/*.pdf' \
     --exclude='projects/Courses/**/*.npz' \
