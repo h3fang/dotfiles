@@ -10,7 +10,8 @@ dependencies:
   - pymap3d
   - shapely
   - matplotlib
-  - scipy
+  - pillow
+  - tqdm
   - pytorch::cpuonly
   - pytorch::pytorch
   - conda-forge::pyopengl
