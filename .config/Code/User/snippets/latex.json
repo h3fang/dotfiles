@@ -15,10 +15,10 @@
 	"Beamer template (Madrid theme)": {
 		"prefix": "beamer",
 		"body": [
-			"\\documentclass[aspectratio=169, compress]{beamer}",
+			"\\documentclass[aspectratio=169, 9pt]{beamer}",
 			"",
+			"\\usepackage{xcolor}",
 			"\\usepackage{lmodern}",
-			"\\usepackage{hyperref}",
 			"\\usepackage{amsmath,amssymb,amsfonts,bm}",
 			"\\usepackage{graphicx}",
 			"\\usepackage[ruled, vlined, linesnumbered]{algorithm2e}",
@@ -80,10 +80,10 @@
 	"Beamer template (metropolis theme)": {
 		"prefix": "beamer-metropolis",
 		"body": [
-			"\\documentclass[aspectratio=169, compress]{beamer}",
+			"\\documentclass[aspectratio=169, 9pt]{beamer}",
 			"",
+			"\\usepackage{xcolor}",
 			"\\usepackage{lmodern}",
-			"\\usepackage{hyperref}",
 			"\\usepackage{amsmath,amssymb,amsfonts,bm}",
 			"\\usepackage{graphicx}",
 			"\\usepackage[ruled, vlined, linesnumbered]{algorithm2e}",
@@ -111,7 +111,7 @@
 			"% progress bar line width",
 			"\\setlength{\\metropolis@titleseparator@linewidth}{1pt}",
 			"\\setlength{\\metropolis@progressonsectionpage@linewidth}{1pt}",
-			"\\setlength{\\metropolis@progressinheadfoot@linewidth}{1pt}",
+			"\\setlength{\\metropolis@progressinheadfoot@linewidth}{1.5pt}",
 			"\\makeatother",
 			"",
 			"% Information to be included in the title page",
