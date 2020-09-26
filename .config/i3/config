@@ -174,7 +174,7 @@ client.unfocused    #2075c7   #222222     #cfcfcf  #292d2e    #222222
 
 # i3bar
 bar {
-    mode hide
+#    mode hide
     status_command i3blocks
     colors {
         focused_workspace  #4c7899 #2075c7 #ffffff
