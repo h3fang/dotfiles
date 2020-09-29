@@ -15,7 +15,8 @@ function install {
     -drive file="${DISK_IMG}",index=0,media=disk,if=virtio \
     -nic user,model=virtio,hostfwd=tcp::10022-:22 \
     -rtc base=localtime,clock=host \
-    -device intel-hda -device hda-duplex \
+    -audiodev pa,id=pa0,server=/run/user/$UID/pulse/native \
+    -device intel-hda -device hda-duplex,audiodev=pa0 \
     -vga virtio \
     -drive file="${WIN10_IMG}",index=2,media=cdrom \
     -drive file="${VIRTIO_IMG}",index=3,media=cdrom
@@ -28,8 +29,8 @@ function run {
     -drive file="${DISK_IMG}",if=virtio \
     -nic user,model=virtio-net-pci,hostfwd=tcp::10022-:22 \
     -rtc base=localtime,clock=host \
-    -audiodev pa,id=snd0 \
-    -device ich9-intel-hda -device hda-duplex,audiodev=snd0 \
+    -audiodev pa,id=pa0,server=/run/user/$UID/pulse/native \
+    -device intel-hda -device hda-duplex,audiodev=pa0 \
     -vga virtio \
     -full-screen &
 }
