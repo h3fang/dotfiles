@@ -8,8 +8,8 @@
 alias cp2="rsync -ah --progress"
 alias free='free -h'
 alias df='df -h'
-alias ls='ls --color=auto'
-alias ll='ls -l --color=auto'
+alias ls='exa'
+alias ll='exa -l'
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias paclog='vim /var/log/pacman.log'
@@ -54,6 +54,7 @@ set_bash_ps1
 
 export VISUAL="vim"
 export LESSHISTFILE=/dev/null
+export EXA_COLORS='da=38;5;33'
 
 # HSTR configuration
 export HSTR_CONFIG=hicolor,raw-history-view       # get more colors
