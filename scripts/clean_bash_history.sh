@@ -11,7 +11,7 @@ sed -Ei '/PYTHONIOENCODING=UTF-8/d' ~/.bash_history
 sed -Ei '/^(sudo )?(pacman|yay|aurman|pikaur|pacaur) /d' ~/.bash_history
 
 # delete cd, rm, man, ls, etc.
-sed -Ei '/^(sudo )?(cd|rm|ls|ll|tree|cat|man|which|[pfe]?grep|cp|mv|fd|find|pip)( |$)/d' ~/.bash_history
+sed -Ei '/^(sudo )?(cd|rm|ls|ll|exa|tree|cat|bat|man|which|[pfe]?grep|cp|mv|fd|find|pip)( |$)/d' ~/.bash_history
 
 # curl, wget, youtube-dl
 sed -Ei '/^(sudo )?(curl|wget|youtube-dl) /d' ~/.bash_history
