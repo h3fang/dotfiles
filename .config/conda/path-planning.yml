@@ -12,6 +12,7 @@ dependencies:
   - matplotlib
   - pillow
   - tqdm
+  - pytest
   - pytorch::cpuonly
   - pytorch::pytorch
   - conda-forge::pyopengl
