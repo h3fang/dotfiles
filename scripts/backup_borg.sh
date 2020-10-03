@@ -1,5 +1,5 @@
 #!/bin/bash
-# requires borg, libnotify, rclone (already setup)
+# requires borg, libnotify, rclone
 
 set -eEuo pipefail
 trap 's=$?; echo "$0: Error on line $LINENO"; notify-send "$0: Error on line $LINENO";  exit $s' ERR
@@ -22,7 +22,7 @@ while [[ "$#" -gt 0 ]]; do
 done
 
 REPO=$HOME/backups
-PREFIX=arch-$(cat /etc/machine-id | head -c 6)-${USER}-home
+PREFIX=arch-home-${USER}-$(cat /etc/machine-id | head -c 6)
 RCLONE_REMOTE=('googledrive' 'onedrive')
 
 function f_backup {

@@ -1,9 +1,10 @@
 #!/bin/bash
+# requires rclone
 
 set -eEuo pipefail
 
-PREFIX=arch-$(cat /etc/machine-id | head -c 6)-${USER}-home
-ARCHIVE=~/${PREFIX}-$(date -I).tar.zst
+PREFIX=arch-home-${USER}-$(cat /etc/machine-id | head -c 6)
+ARCHIVE=~/${PREFIX}-$(date +"%F_%H-%M-%S").tar.zst
 
 tar -I "zstd -T0 -19" --exclude='.config/mpv/watch_later' \
     --exclude='.config/Atom' \
