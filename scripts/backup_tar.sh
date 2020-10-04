@@ -3,7 +3,7 @@
 
 set -eEuo pipefail
 
-PREFIX=arch-home-${USER}-$(cat /etc/machine-id | head -c 6)
+PREFIX=arch-home-${USER}-$(head -c 6 < /etc/machine-id)
 ARCHIVE=~/${PREFIX}-$(date +"%F_%H-%M-%S").tar.zst
 
 tar -I "zstd -T0 -19" --exclude='.config/mpv/watch_later' \
@@ -39,7 +39,7 @@ tar -I "zstd -T0 -19" --exclude='.config/mpv/watch_later' \
     --exclude='projects/blog/public' \
     --exclude='.~lock.*' \
     --exclude='**/__pycache__' \
-    -cvf $ARCHIVE \
+    -cvf "$ARCHIVE" \
     .config \
     .local/share/gnupg \
     .local/share/keyrings \
@@ -60,7 +60,7 @@ read -p "Upload (y/[n])? " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     echo -e "\nuploading ..."
-    rclone --stats-one-line -P --stats 1s copy $ARCHIVE googledrive: -v --timeout=30s
+    rclone --stats-one-line -P --stats 1s copy "$ARCHIVE" googledrive: -v --timeout=30s
 fi
 
 echo -e "\nDone."

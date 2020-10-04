@@ -22,7 +22,7 @@ while [[ "$#" -gt 0 ]]; do
 done
 
 REPO=$HOME/backups
-PREFIX=arch-home-${USER}-$(cat /etc/machine-id | head -c 6)
+PREFIX=arch-home-${USER}-$(head -c 6 < /etc/machine-id)
 RCLONE_REMOTE=('googledrive' 'onedrive')
 
 function f_backup {
@@ -119,9 +119,9 @@ function f_prune {
 }
 
 function f_sync {
-    for remote in ${RCLONE_REMOTE[@]}; do
+    for remote in "${RCLONE_REMOTE[@]}"; do
         echo -e "\nuploading to ${remote} ..."
-        rclone --stats-one-line -P --stats 1s --drive-use-trash=false sync "$REPO" ${remote}:"$PREFIX"-borg -v --timeout=30s --fast-list --transfers=10
+        rclone --stats-one-line -P --stats 1s --drive-use-trash=false sync "$REPO" "${remote}:${PREFIX}-borg" -v --timeout=30s --fast-list --transfers=10
     done
 }
 
