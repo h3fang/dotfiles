@@ -36,6 +36,8 @@ rsync -ahv --delete --ignore-errors --delete-excluded \
     ~ "$BACKUP_LOC"
 
 for target in /etc /boot/loader /mnt/win_data; do
-    rsync -ahv --delete --ignore-errors --delete-excluded "$target" "$BACKUP_LOC"
+    if [[ -d "$target" ]]; then
+        rsync -ahv --delete --ignore-errors --delete-excluded "$target" "$BACKUP_LOC"
+    fi
 done
 
