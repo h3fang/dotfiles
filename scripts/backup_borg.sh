@@ -47,6 +47,7 @@ function f_backup {
         --exclude "$HOME/.config/transmission/dht.dat" \
         --exclude "$HOME/.ssh/known_hosts" \
         --exclude "sh:$HOME/projects/**/[bB]uild" \
+        --exclude "sh:$HOME/projects/**/target" \
         --exclude "sh:$HOME/projects/**/[dD]ata" \
         --exclude "sh:$HOME/projects/**/[rR]esults" \
         --exclude "sh:$HOME/projects/**/.vscode/ipch" \
