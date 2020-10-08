@@ -38,6 +38,9 @@
     "C_Cpp.intelliSenseCacheSize": 500,
     "C_Cpp.default.cppStandard": "c++17",
 
+    // rust
+    "rust-client.disableRustup": true,
+
     // python
     "python.showStartPage": false,
     "python.condaPath": "~/.local/miniconda3/bin/conda",
