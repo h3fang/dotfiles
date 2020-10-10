@@ -8,7 +8,7 @@ if [[ $REPLY == "yes" ]]
 then
     udiskie-umount /dev/${usb_disk}1
     sudo wipefs --all /dev/${usb_disk}
-    sudo parted -s /dev/${usb_disk} mklabel gpt mkpart primary fat32 0% 100%
+    sudo parted -s /dev/${usb_disk} mklabel msdos mkpart primary fat32 0% 100%
     udiskie-umount /dev/${usb_disk}1
     sudo mkfs.fat -F 32 -n HEF /dev/${usb_disk}1
 fi
