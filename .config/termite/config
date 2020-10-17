@@ -1,0 +1,7 @@
+[options]
+scrollback_lines = 10000
+scrollbar = right
+cursor_blink = system
+
+[colors]
+foreground = #fafafa
