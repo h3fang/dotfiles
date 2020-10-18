@@ -5,3 +5,4 @@ cursor_blink = system
 
 [colors]
 foreground = #fafafa
+background = rgba(0, 0, 0, 0.9)
