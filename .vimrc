@@ -70,3 +70,5 @@ match ExtraWhitespace /\s\+$\| \+\ze\t/
 au InsertEnter * silent execute "!echo -en \<esc>[5 q"
 au InsertLeave * silent execute "!echo -en \<esc>[2 q"
 
+set ttymouse=sgr
+
