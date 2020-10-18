@@ -39,7 +39,7 @@ exec --no-startup-id /usr/share/doc/python-i3ipc/examples/disable-standby-fs.py
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id termite
+bindsym $mod+Return exec --no-startup-id xfce4-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
