@@ -13,8 +13,12 @@ dependencies:
   - pillow
   - tqdm
   - pytest
+  - pip
+  - pip:
+    - torchsummary
   - pytorch::cpuonly
   - pytorch::pytorch
   - conda-forge::pyopengl
   - conda-forge::pyglet
   - conda-forge::vispy
+  - conda-forge::catch2
