@@ -17,14 +17,14 @@ cd yay-bin
 makepkg -fsri
 
 # fonts
-yay -S ttf-hack ttf-roboto otf-font-awesome noto-fonts noto-fonts-cjk noto-fonts-emoji
+yay -S ttf-hack ttf-roboto ttf-nerd-fonts-symbols-mono noto-fonts noto-fonts-cjk noto-fonts-emoji
 
 # drivers
 yay -S mesa libva-mesa-driver vulkan-radeon pulseaudio
 
 # system tools
-yay -S --needed htop fd ncdu zip unzip zstd unrar p7zip file-roller openblas poppler-data man-db man-pages
-yay -S gnome-keyring neofetch borg xclip polkit-gnome
+yay -S --needed htop fd ncdu zip unzip zstd unrar p7zip file-roller openblas poppler-data man-db man-pages exa bat ntfs-3g
+yay -S gnome-keyring neofetch borg python-llfuse xclip polkit-gnome
 yay -S earlyooom systembus-notify
 yay -S gvim vim-airline
 
@@ -41,8 +41,8 @@ select yn in "y" "n"; do
         y)
             yay -S --needed xorg-server xorg-xinit xorg-xrandr xorg-xinput xorg-xset xorg-xprop
             yay -S --needed i3-wm i3blocks i3lock-color
-            yay -S --needed picom feh xss-lock dunst lxappearance-gtk3 papirus-icon-theme #numlockx
-            yay -S --needed python-requests acpi jq flameshot maim
+            yay -S --needed picom feh xss-lock dunst lxappearance-gtk3 papirus-icon-theme redshift #numlockx
+            yay -S --needed python-requests acpi jq flameshot maim python-i3ipc
             break;;
         n)  break;;
     esac
