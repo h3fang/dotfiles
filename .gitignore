@@ -37,6 +37,7 @@
 .config/dotfiles/
 .config/enchant/
 .config/fcitx5/
+.config/flameshot/flameshot.ini
 .config/gedit/
 .config/GIMP/
 .config/Google/
