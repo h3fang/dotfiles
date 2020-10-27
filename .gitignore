@@ -101,6 +101,8 @@ scripts/update_clash.py
 
 # special dotfiles
 .bash_history
+.zsh_history
+.zcompdump
 .esd_auth
 .Xauthority
 .gtkrc-2.0
