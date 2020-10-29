@@ -18,6 +18,7 @@ dependencies:
     - torchsummary
   - pytorch::cpuonly
   - pytorch::pytorch
+  - pytorch::torchvision
   - conda-forge::pyopengl
   - conda-forge::pyglet
   - conda-forge::vispy
