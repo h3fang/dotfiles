@@ -51,6 +51,7 @@ function f_backup {
         --exclude "sh:$HOME/projects/**/[dD]ata" \
         --exclude "sh:$HOME/projects/**/[rR]esults" \
         --exclude "sh:$HOME/projects/**/.vscode/ipch" \
+        --exclude "sh:$HOME/projects/**/*.so" \
         --exclude "sh:$HOME/projects/AUR/*/*.tar" \
         --exclude "sh:$HOME/projects/AUR/*/*.tar.gz" \
         --exclude "sh:$HOME/projects/AUR/*/*.tar.xz" \
