@@ -64,7 +64,7 @@ export OMP_NUM_THREADS=$ncores
 
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
     start_i3wm
-#elif [[ ! $DISPLAY && $XDG_VTNR -eq 2 ]]; then
-#    start_sway
+elif [[ ! $DISPLAY && $XDG_VTNR -eq 2 ]]; then
+    start_sway
 fi
 
