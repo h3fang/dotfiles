@@ -22,9 +22,9 @@ exec_always {
 }
 
 #exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-#exec nm-applet
 #exec udiskie -anT2
-exec env GDK_DPI_SCALE=1.1 thunar --daemon
+exec thunar --daemon
+exec gammastep
 exec dunst -font "monospace 12"
 
 ### Output configuration
@@ -51,7 +51,7 @@ exec swayidle -w \
 
 ### Input configuration
 
-input "2:7:SynPS/2_Synaptics_TouchPad" {
+input "1739:52656:PNP0C50:00_06CB:CDB0_Touchpad" {
     dwt enabled
     tap enabled
     natural_scroll enabled
@@ -218,7 +218,7 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 
-bindsym $mod+Pause mode "$mode_system"
+bindsym $mod+Insert mode "$mode_system"
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% && pkill -RTMIN+1 i3blocks #increase sound volume
@@ -230,7 +230,7 @@ bindsym XF86MonBrightnessUp exec brightnessctl s +5%  # increase screen brightne
 bindsym XF86MonBrightnessDown exec brightnessctl s 5%- # decrease screen brightness
 
 bindsym $mod+c exec chromium
-bindsym --release Print exec grim -g "$(slurp)" ~/Pictures/screenshot-"$(date -Is)".png
+bindsym --release $mod+Print exec grim -g "$(slurp)" ~/Pictures/screenshot-"$(date -Is)".png
 
 ### window colors
 # colorclass            border   background  text     indicator  child_border
@@ -243,7 +243,6 @@ client.unfocused        #2075c7  #222222     #cfcfcf  #292d2e    #222222
 bar {
     font pango:monospace 12
     position bottom
-    mode hide
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
