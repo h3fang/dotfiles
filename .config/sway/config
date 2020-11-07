@@ -6,10 +6,10 @@
 set $mod Mod4
 set $term xfce4-terminal
 # Note: it's recommended that you pass the final command to sway
-set $menu rofi -modi drun#run#window#keys -show drun -font "monospace 11" -width 40
+set $menu rofi -modi drun#run#window#keys -show drun -font "monospace 12" -width 40
 set $LOCK ~/.config/sway/scripts/lock.sh
 
-font pango:monospace 12
+font pango:Roboto 13
 
 ### Exec
 set $gnome-schema org.gnome.desktop.interface
