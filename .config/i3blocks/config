@@ -6,12 +6,12 @@ markup=pango
 interval=600
 
 [load_average]
-label= 
+label= 
 markup=pango
 interval=5
 
 [memory]
-label= 
+label= 
 interval=5
 
 [internet]
