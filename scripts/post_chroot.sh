@@ -24,7 +24,7 @@ yay -S mesa libva-mesa-driver vulkan-radeon pulseaudio
 
 # system tools
 yay -S --needed htop fd ncdu zip unzip zstd unrar p7zip file-roller openblas poppler-data man-db man-pages exa bat ntfs-3g
-yay -S gnome-keyring neofetch borg python-llfuse xclip polkit-gnome
+yay -S gnome-keyring neofetch borg python-llfuse polkit-gnome
 yay -S earlyooom systembus-notify
 yay -S gvim vim-airline
 
@@ -39,10 +39,10 @@ echo 'Install i3?'
 select yn in "y" "n"; do
     case $yn in
         y)
-            yay -S --needed xorg-server xorg-xinit xorg-xrandr xorg-xinput xorg-xset xorg-xprop
-            yay -S --needed i3-wm i3blocks i3lock-color
-            yay -S --needed picom feh xss-lock dunst lxappearance-gtk3 papirus-icon-theme redshift #numlockx
-            yay -S --needed python-requests acpi jq flameshot maim python-i3ipc
+            yay -S --needed xorg-server xorg-xinit xorg-xrandr xorg-xinput xorg-xset xorg-xprop \
+                i3-wm i3blocks i3lock-color \
+                picom feh xss-lock dunst lxappearance-gtk3 papirus-icon-theme gammastep \
+                python-requests acpi jq flameshot maim python-i3ipc xclip
             break;;
         n)  break;;
     esac
@@ -52,14 +52,16 @@ echo 'Install sway?'
 select yn in "y" "n"; do
     case $yn in
         y)
-            yay -S sway xorg-server-xwayland swaybg swayidle swaylock-effects-git i3blocks
+            yay -S --needed sway xorg-server-xwayland swaybg swayidle swaylock-effects-git i3blocks \
+                feh xss-lock dunst lxappearance-gtk3 papirus-icon-theme gammastep \
+                wl-clipboard grim slurp python-requests acpi jq
             break;;
         n)  break;;
     esac
 done
 
-yay -S xfce4-terminal thunar thunar-volman thunar-archive-plugin gvfs udiskie rofi brightnessctl fzf
-yay -S fcitx5 fcitx5-qt fcitx5-gtk fcitx5-chinese-addons fcitx5-pinyin-zhwiki
+yay -S --needed xfce4-terminal thunar thunar-volman thunar-archive-plugin gvfs udiskie rofi brightnessctl fzf
+yay -S --nedded fcitx5 fcitx5-qt fcitx5-gtk fcitx5-chinese-addons fcitx5-pinyin-zhwiki
 
 # Latex
 yay -S --needed texlive-bibtexextra texlive-core texlive-formatsextra texlive-humanities texlive-langchinese texlive-latexextra texlive-pictures texlive-pstricks texlive-publishers texlive-science biber
