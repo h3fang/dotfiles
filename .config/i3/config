@@ -162,6 +162,7 @@ client.unfocused    #2075c7   #222222     #cfcfcf  #292d2e    #222222
 
 # i3bar
 bar {
+    font pango:sans-serif 8
 #    mode hide
     bindsym button4 nop
     bindsym button5 nop
