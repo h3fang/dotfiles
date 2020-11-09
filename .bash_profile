@@ -37,7 +37,7 @@ start_sway() {
 
     XKB_DEFAULT_LAYOUT=us \
     XDG_SESSION_TYPE=wayland \
-    QT_QPA_PLATFORM=xcb \
+    QT_QPA_PLATFORM=wayland \
     QT_WAYLAND_FORCE_DPI=physical \
     QT_FONT_DPI=${SCREEN_DPI:-144} \
     SDL_VIDEODRIVER=wayland \
