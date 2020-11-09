@@ -22,7 +22,7 @@ exec_always ~/.config/sway/scripts/import-gsettings.sh \
 
 #exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #exec udiskie -anT2
-exec thunar --daemon
+exec env GDK_DPI_SCALE=0.9 thunar --daemon
 exec gammastep
 exec dunst -font "monospace 12"
 
