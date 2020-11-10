@@ -42,6 +42,6 @@ markup=pango
 interval=60
 
 [date]
-command=date '+ %b %d %a  %H:%M'
+command=date '+ %b %d %a %H:%M'
 interval=2
 
