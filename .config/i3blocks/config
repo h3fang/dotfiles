@@ -34,6 +34,11 @@ label=
 signal=2
 
 [kernel-version]
+markup=pango
+interval=60
+
+[systemd]
+markup=pango
 interval=60
 
 [date]

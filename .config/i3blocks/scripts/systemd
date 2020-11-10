@@ -1,0 +1,10 @@
+#!/bin/bash
+
+n_system=$(systemctl list-units --failed | grep failed | wc -l)
+n_user=$(systemctl --user list-units --failed | grep failed | wc -l)
+
+if [[ "$n_system" -gt "0" || "$n_user" -gt "0" ]]; then
+    echo "<span background='#dc143c' color='white'>$((n_system + n_user)) units failed</span>"
+    echo -e "$(systemctl list-units --failed | grep failed)\n$(systemctl list-units --failed | grep failed)"
+fi
+
