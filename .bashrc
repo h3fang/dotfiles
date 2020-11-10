@@ -5,6 +5,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+alias rm="trash-put"
 alias cp2="rsync -ah --progress"
 alias free='free -h'
 alias df='df -h'
