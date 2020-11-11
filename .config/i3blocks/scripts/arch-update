@@ -17,7 +17,7 @@ from subprocess import check_output, CalledProcessError, TimeoutExpired
 from sys import stderr
 
 BASE_COLOR = "white"
-UPDATE_COLOR = "yellow"
+UPDATE_COLOR = "lime"
 ERROR_COLOR = "red"
 
 
@@ -37,8 +37,6 @@ def check_updates(cmd, callback, no_update_ret=None):
 
 
 if __name__ == '__main__':
-    message = "<span color='{0}'>{1}</span>+<span color='{2}'>{3}</span>"
-
     repo_updated, repo_updates = check_updates(["checkupdates"], lambda o: [line.split(' ')[0] for line in o.split('\n') if line], 2)
     aur_updated, aur_updates = check_updates(["yay", "-Qua"], lambda o: [line for line in o.split('\n') if line])
 
@@ -58,7 +56,15 @@ if __name__ == '__main__':
     elif not aur_updated:
         aur_color = ERROR_COLOR
 
-    message = message.format(repo_color, repo_count, aur_color, aur_count)
+    message = f"<span color='{repo_color}'>{repo_count}</span>+<span color='{aur_color}'>{aur_count}</span>"
     print(message)
+
+    if repo_count > 5:
+        repo_updates = repo_updates[:5] + ["..."]
+    if aur_count > 5:
+        aur_updates = aur_updates[:5] + ["..."]
+
+    message = "\r".join(repo_updates + aur_updates)
+
     print(message)
 
