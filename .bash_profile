@@ -9,14 +9,14 @@ echo "$(tac ~/.bash_history | awk '!x[$0]++' | tac)" > ~/.bash_history
 
 start_i3wm() {
     if [[ -L "$GTK2_RC_FILES" ]]; then
-        rm "$GTK2_RC_FILES"
+        \rm "$GTK2_RC_FILES"
         ln -s "${GTK2_RC_FILES}-i3" "$GTK2_RC_FILES"
     fi
     X_LOG_DIR=~/.local/share/xorg
     mkdir -p $X_LOG_DIR
     X_SESSION_LOG=$X_LOG_DIR/xsession.$XDG_VTNR.log
     if [[ -f $X_SESSION_LOG ]]; then
-        /usr/bin/cp $X_SESSION_LOG ${X_SESSION_LOG}.old
+        \cp $X_SESSION_LOG ${X_SESSION_LOG}.old
     fi
 
     export QT_AUTO_SCREEN_SCALE_FACTOR=0
@@ -25,14 +25,14 @@ start_i3wm() {
 
 start_sway() {
     if [[ -L "$GTK2_RC_FILES" ]]; then
-        rm "$GTK2_RC_FILES"
+        \rm "$GTK2_RC_FILES"
         ln -s "${GTK2_RC_FILES}-sway" "$GTK2_RC_FILES"
     fi
     SWAY_LOG_DIR=~/.local/share/sway
     mkdir -p $SWAY_LOG_DIR
     SWAY_LOG=$SWAY_LOG_DIR/sway.$XDG_VTNR.log
     if [[ -f $SWAY_LOG ]]; then
-        /usr/bin/cp $SWAY_LOG ${SWAY_LOG}.old
+        \cp $SWAY_LOG ${SWAY_LOG}.old
     fi
 
     XKB_DEFAULT_LAYOUT=us \
