@@ -237,24 +237,8 @@ client.focused          #4c7899  #2075c7     #ffffff  #2e9ef4    #285577
 client.unfocused        #2075c7  #222222     #cfcfcf  #292d2e    #222222
 
 # Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
 bar {
-    font pango:monospace 12
-    position bottom
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command i3blocks
-
-    colors {
-        statusline #ffffff
-        background #000000
-        separator #cccccc
-        focused_workspace  #4c7899 #2075c7 #ffffff
-        inactive_workspace #333333 #222222 #aaaaaa
-        urgent_workspace   #2f343a #c00000 #ffffff
-    }
+    swaybar_command waybar
 }
 
 for_window [class="Chromium"] border none

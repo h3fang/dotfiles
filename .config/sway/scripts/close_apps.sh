@@ -22,9 +22,7 @@ if [[ $n_apps -gt 0 ]]; then
 fi
 
 # I don't know why it doesn't quit and causing problems on next login.
-#kill $(pidof gnome-keyring-daemon)
-# This is weird too, but it doen't happen on the other desktop.
-killall -s 9 i3blocks
+kill $(pidof gnome-keyring-daemon)
 
 # unmount
 udiskie-umount -ad
