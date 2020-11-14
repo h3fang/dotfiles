@@ -48,8 +48,11 @@
     "python.linting.flake8Enabled": true,
     "python.linting.flake8Args": ["--max-line-length=128", "--ignore=E266", "--verbose"],
     "python.formatting.provider": "black",
-    "python.formatting.blackArgs": ["--line-length", "128"],
-    "python.dataScience.askForKernelRestart": false,
+    "python.formatting.blackArgs": [
+        "--line-length",
+        "128"
+    ],
+    "jupyter.askForKernelRestart": false,
 
     // Privacy
     "telemetry.enableCrashReporter": false,
@@ -152,5 +155,4 @@
     "files.associations": {
         "*.geojson": "json"
     },
-    "cmake.configureOnOpen": false,
 }
