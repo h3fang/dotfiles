@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # check transmission
-if [[ $(pgrep transmission) ]]; then
+if [[ $(pgrep -f transmission) ]]; then
     notify-send -u critical "transmission is still running."
     exit 1
 fi
@@ -10,7 +10,7 @@ fi
 swaymsg [class="."] kill
 swaymsg [app_id="."] kill
 
-# wait a little while
+# wait for apps to quit
 sleep 3
 
 # check remaining windows
@@ -21,8 +21,8 @@ if [[ $n_apps -gt 0 ]]; then
     exit 2
 fi
 
-# I don't know why it doesn't quit and causing problems on next login.
 kill $(pidof gnome-keyring-daemon)
 
 # unmount
 udiskie-umount -ad
+
