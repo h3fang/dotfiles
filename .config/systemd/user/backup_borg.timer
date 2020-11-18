@@ -3,6 +3,7 @@ Description=Run ~/scripts/backup_borg.sh every 6 hours
 
 [Timer]
 OnCalendar=0/6:00:00
+RandomizedDelaySec=60
 Persistent=true
 Unit=backup_borg.service
 
