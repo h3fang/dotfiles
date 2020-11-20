@@ -211,6 +211,9 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle && pkill
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +5%  # increase screen brightness
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 5%- # decrease screen brightness
 
+# Caps Lock indicator
+bindsym --release Caps_Lock exec pkill -SIGRTMIN+3 i3blocks
+
 # power management
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (p) poweroff
 mode "$mode_system" {

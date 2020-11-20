@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+
+status=$(cat /sys/class/leds/*::capslock/brightness)
+if [[ "$status" == "1" ]]; then
+    echo "<span color='black' background='yellow'>Caps Lock</span>"
+fi
+

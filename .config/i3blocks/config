@@ -5,6 +5,11 @@ color=#F0F0F0
 markup=pango
 interval=600
 
+[capslock]
+markup=pango
+interval=once
+signal=3
+
 [load_average]
 label= 
 markup=pango
