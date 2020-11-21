@@ -76,6 +76,7 @@ window#waybar.chromium {
 #custom-weather,
 #custom-kernel,
 #custom-update,
+#custom-capslock,
 #tray,
 #mode,
 #idle_inhibitor,
@@ -145,6 +146,10 @@ label:focus {
 #idle_inhibitor.activated {
     background-color: #ecf0f1;
     color: #2d3436;
+}
+
+#custom-capslock {
+    background-color: yellow;
 }
 
 #mpd {

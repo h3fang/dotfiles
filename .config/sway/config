@@ -228,6 +228,9 @@ bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle && pkill -RTMIN+1 i3bloc
 bindsym XF86MonBrightnessUp exec brightnessctl s +5%  # increase screen brightness
 bindsym XF86MonBrightnessDown exec brightnessctl s 5%- # decrease screen brightness
 
+# Caps Lock indicator
+bindsym --release Caps_Lock exec pkill -SIGRTMIN+3 waybar
+
 bindsym $mod+c exec chromium
 bindsym --release $mod+Print exec grim -g "$(slurp)" ~/Pictures/screenshot-"$(date -Is)".png
 

@@ -6,7 +6,7 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["custom/weather", "idle_inhibitor", "pulseaudio", "network", "custom/kernel", "custom/systemd", "cpu", "memory", "battery", "custom/update", "clock", "tray"],
+    "modules-right": ["custom/weather", "idle_inhibitor", "custom/capslock", "pulseaudio", "network", "custom/kernel", "custom/systemd", "cpu", "memory", "battery", "custom/update", "clock", "tray"],
     // Modules configuration
     "sway/workspaces": {
          "disable-scroll": true,
@@ -121,5 +121,11 @@
         "interval": 3600,
         "signal": 2,
         "exec": "$HOME/.config/i3blocks/scripts/arch-update 2> /dev/null"
+    },
+    "custom/capslock": {
+        "format": "{}",
+        "interval": "once",
+        "signal": 3,
+        "exec": "$HOME/.config/i3blocks/scripts/capslock 2> /dev/null"
     }
 }
