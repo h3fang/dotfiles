@@ -5,6 +5,9 @@
     "workbench.settings.openDefaultSettings": true,
     "workbench.settings.useSplitJSON": true,
 
+    // explorer
+    "explorer.confirmDelete": false,
+
     // Editor
     "workbench.colorTheme": "Default Light+",
     "workbench.colorCustomizations": {
