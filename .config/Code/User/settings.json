@@ -12,7 +12,7 @@
     "workbench.colorTheme": "Default Light+",
     "workbench.colorCustomizations": {
         "[Default Light+]": {
-            "editor.background": "#ececec",
+            "editor.background": "#e7e7e7",
             "tab.activeBackground": "#ccdccc"
         }
     },
