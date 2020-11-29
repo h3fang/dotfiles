@@ -81,7 +81,14 @@ export PROMPT_COMMAND='history -a; history -n'
 if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\C-a hstr -- \C-j"'; fi
 
 # Use bash-completion, if available
-[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && . /usr/share/bash-completion/bash_completion
+if [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]]; then
+    . /usr/share/bash-completion/bash_completion
+    # completion for git alias
+    if [[ -f /usr/share/bash-completion/completions/git ]]; then
+        . /usr/share/bash-completion/completions/git
+        __git_complete dot __git_main
+    fi
+fi
 
 # fzf
 export FZF_DEFAULT_COMMAND='fd --type f --follow --exclude .git --exclude node_modules'
