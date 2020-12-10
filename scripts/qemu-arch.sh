@@ -13,5 +13,6 @@ qemu-system-x86_64 \
     -m 4G \
     -nic user,model=virtio \
     -drive file="${DISK_IMG}",media=disk,if=virtio \
+    -display gtk,gl=on \
 #    -cdrom ~/VMs/archlinux-${ARCHISO_VER}-x86_64.iso \
 #    -boot menu=on

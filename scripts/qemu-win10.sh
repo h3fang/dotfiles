@@ -31,6 +31,7 @@ function run {
     -rtc base=localtime,clock=host \
     -audiodev pa,id=pa0,server=/run/user/$UID/pulse/native \
     -device intel-hda -device hda-duplex,audiodev=pa0 \
+    -display gtk,gl=on \
     -vga virtio \
     -full-screen &
 }
