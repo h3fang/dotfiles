@@ -36,7 +36,7 @@
 
     // C/C++
     "C_Cpp.clang_format_path": "/usr/bin/clang-format",
-    "C_Cpp.clang_format_style": "{BasedOnStyle: LLVM, IndentWidth: 4, ColumnLimit: 120, BreakBeforeBraces: Attach, AccessModifierOffset: -4, AllowShortBlocksOnASingleLine: Empty}",
+    "C_Cpp.clang_format_style": "{BasedOnStyle: LLVM, IndentWidth: 4, ColumnLimit: 120, BreakBeforeBraces: Attach, AccessModifierOffset: -4, AllowShortIfStatementsOnASingleLine: Never,AllowShortBlocksOnASingleLine: Empty, AllowShortFunctionsOnASingleLine: Empty}",
     "C_Cpp.intelliSenseCachePath": "~/.cache/vscode-cpptools",
     "C_Cpp.intelliSenseCacheSize": 500,
     "C_Cpp.default.cppStandard": "c++17",
