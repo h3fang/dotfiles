@@ -6,7 +6,6 @@ BACKUP_LOC=/run/media/enigma/stash/backup/
 rsync -ahv --delete --ignore-errors --delete-excluded \
     --exclude="MATLAB" \
     --exclude="arch-${USER}-*.tar.zst" \
-    --exclude="projects/build" \
     --exclude="projects/*/[dD]ata" \
     --exclude="projects/*/[rR]esults/**/*.npz" \
     --exclude="projects/AUR/*/*/*" \
