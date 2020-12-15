@@ -1,6 +1,7 @@
 # hidden folders
 .conda/
 .cache/
+.designer/
 .gnupg/
 .googleearth/
 .icons/
