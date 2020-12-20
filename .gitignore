@@ -2,6 +2,7 @@
 .conda/
 .cache/
 .designer/
+.FeelUOwn/
 .gnupg/
 .googleearth/
 .icons/
