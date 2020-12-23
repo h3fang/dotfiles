@@ -98,6 +98,7 @@ function f_backup {
         /etc/default/earlyoom \
         /etc/makepkg.conf \
         /etc/X11/xorg.conf.d \
+        /etc/security/faillock.conf \
         /boot/loader/loader.conf \
         /boot/loader/entries
 
