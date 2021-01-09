@@ -10,6 +10,7 @@ set $menu rofi -modi drun#run#window#keys -show drun -font "monospace 12" -width
 set $LOCK ~/.config/sway/scripts/lock.sh
 
 font pango:Roboto 13
+titlebar_padding 2 2
 
 ### Exec
 set $gnome-schema org.gnome.desktop.interface
