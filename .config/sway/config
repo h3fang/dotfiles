@@ -56,6 +56,7 @@ input "type:touchpad" {
     tap enabled
     natural_scroll disabled
     middle_emulation enabled
+    scroll_method two_finger
     events disabled_on_external_mouse
 }
 
