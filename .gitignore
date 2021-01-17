@@ -38,7 +38,9 @@
 .config/dconf/
 .config/dotfiles/
 .config/enchant/
-.config/fcitx5/
+.config/fcitx/dbus/
+.config/fcitx5/crash.log
+.config/fcitx5/conf/cached_layouts
 .config/flameshot/flameshot.ini
 .config/gedit/
 .config/GIMP/
