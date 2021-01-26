@@ -20,6 +20,7 @@ start_i3wm() {
     fi
 
     export QT_AUTO_SCREEN_SCALE_FACTOR=0
+    export MOZ_X11_EGL=1
     exec startx -- -keeptty > $X_SESSION_LOG 2>&1
 }
 
