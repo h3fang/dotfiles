@@ -1,5 +1,5 @@
 #!/bin/bash
-# requires borg, libnotify, rclone
+# requires borg, libnotify, rclone, awk
 
 set -eEuo pipefail
 trap 's=$?; echo "$0: Error on line $LINENO"; notify-send "$0: Error on line $LINENO";  exit $s' ERR
@@ -22,7 +22,7 @@ while [[ "$#" -gt 0 ]]; do
 done
 
 REPO=$HOME/backups
-PREFIX=arch-home-${USER}-$(head -c 6 < /etc/machine-id)
+PREFIX=arch-home-${USER}-$(awk '{print substr($0,1,6); exit}' /etc/machine-id)
 RCLONE_REMOTE=('googledrive' 'onedrive')
 
 function f_backup {
@@ -102,14 +102,14 @@ function f_backup {
         /boot/loader/entries
 
     # warn for abnormal delta size
-    last_backup_info=$(borg info "$REPO" --last 1 | grep "This archive:")
+    last_backup_info=$(borg info "$REPO" --last 1 | awk '/This archive:/{print}')
     last_size=$(echo "$last_backup_info" | awk '{print $7}')
     last_unit=$(echo "$last_backup_info" | awk '{print $8}')
 
     # anything other than "kB", including "MB", "GB", or possibly "B" (I dont't know the complete list of uints in borg backup)
     if [[ $last_unit != "kB" ]]; then
         # delta smaller than 2 MB is fine
-        if ! [[ $last_unit == "MB" && $(echo "$last_size<2" | bc -l) -eq 1 ]]; then
+        if ! [[ $last_unit == "MB" && $(echo "$last_size" "2.0" | awk '{if ($1 <= $2) print 1;}') -eq 1 ]]; then
             echo "Abnormal last backup size: $last_size $last_unit"
             notify-send -u critical "Abnormal last backup size: $last_size $last_unit"
             exit 2
