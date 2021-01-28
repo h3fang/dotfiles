@@ -192,7 +192,6 @@ for_window [title="About Mozilla Firefox" class="firefox"] floating enable
 # assign apps to workspaces
 assign [class="Chromium"] $ws2
 assign [class="code"] $ws3
-assign [class="MATLAB R20*"] $ws4
 
 for_window [workspace=$ws3] layout tabbed
 
