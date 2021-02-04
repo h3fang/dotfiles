@@ -42,6 +42,7 @@
 .config/fcitx5/crash.log
 .config/fcitx5/conf/cached_layouts
 .config/flameshot/flameshot.ini
+.config/gammastep/config.ini
 .config/gedit/
 .config/GIMP/
 .config/Google/
