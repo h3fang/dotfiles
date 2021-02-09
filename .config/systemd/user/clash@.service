@@ -5,9 +5,7 @@ After=network.target
 [Service]
 Type=simple
 Restart=on-abort
-ExecStart=/usr/bin/clash -f %E/clash/%i.yaml
-StandardOutput=append:%E/clash/%i.log
-StandardError=inherit
+ExecStart=/usr/bin/clash -f %E/clash/%i.yaml > %E/clash/%i.log 2>&1
 
 [Install]
 WantedBy=default.target
