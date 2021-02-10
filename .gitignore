@@ -37,6 +37,7 @@
 .config/configstore/
 .config/dconf/
 .config/dotfiles/
+.config/Debauchee/Barrier.conf
 .config/enchant/
 .config/fcitx/dbus/
 .config/fcitx5/crash.log
