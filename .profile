@@ -1,7 +1,7 @@
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 [[ -f ~/scripts/envs ]] && . ~/scripts/envs
 
-[[ -f ~/.bash_history ]] && tac ~/.bash_history | awk '!x[$0]++' | tac > ~/.bash_history
+[[ -f ~/.bash_history ]] && echo "$(tac ~/.bash_history | awk '!x[$0]++' | tac)" > ~/.bash_history
 
 start_i3wm() {
     if [[ -L "$GTK2_RC_FILES" ]]; then
