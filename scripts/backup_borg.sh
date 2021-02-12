@@ -77,7 +77,8 @@ function f_backup {
         ~/projects \
         ~/Documents \
         ~/.bashrc \
-        ~/.bash_profile \
+        ~/.zshrc \
+        ~/.profile \
         ~/.xinitrc \
         ~/.vimrc \
         ~/.gitignore \

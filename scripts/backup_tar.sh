@@ -48,7 +48,8 @@ tar -I "zstd -T0 -19" --exclude='.config/mpv/watch_later' \
     scripts \
     Pictures \
     .bashrc \
-    .bash_profile \
+    .zshrc \
+    .profile \
     .xinitrc \
     .vimrc \
     .gitignore
