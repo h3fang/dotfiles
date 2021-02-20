@@ -8,7 +8,7 @@ set -eETu -o pipefail
 # change these accordingly
 clash_socks5=127.0.0.1:7891
 clash_dns=1053
-clash_cgroup="$(pcregrep -o1 '1:name=systemd:/(.*)' < /proc/$(pidof -s clash)/cgroup)"
+clash_cgroup=$(pcregrep -o1 '1:name=systemd:/(.*)' < /proc/"$(pidof -s clash)"/cgroup)
 
 # default should be fine
 tun_dev=clash0
@@ -33,7 +33,7 @@ restore() {
 trap 'echo "${LINENO}" "$BASH_COMMAND"' ERR
 trap restore EXIT
 
-ip tuntap add ${tun_dev} mode tun user $USER
+ip tuntap add ${tun_dev} mode tun user "$USER"
 ip link set ${tun_dev} up
 ip address replace ${tun_addr} dev ${tun_dev}
 ip route replace default dev ${tun_dev} table ${table_id}
