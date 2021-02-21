@@ -15,13 +15,12 @@ ENDC = '\033[0m'
 def filter_log(log_lines, keyword, maximum_output_entries):
     output = []
     signature = re.compile(fr"\b{keyword}\s+(\S+)\s+\([^)]+\)")
-    with open("/var/log/pacman.log", "rt") as f:
-        for ln in f.read().splitlines()[::-1]:
-            m = signature.search(ln)
-            if m is not None:
-                output.append(ln.replace(m.group(1), GREEN + m.group(1) + ENDC))
-                if len(output) >= maximum_output_entries:
-                    break
+    for ln in log_lines[::-1]:
+        m = signature.search(ln)
+        if m is not None:
+            output.append(ln.replace(m.group(1), GREEN + m.group(1) + ENDC))
+            if len(output) >= maximum_output_entries:
+                break
 
     return "\n".join(output[::-1])
 
