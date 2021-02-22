@@ -12,20 +12,20 @@ GREEN = '\033[92m'
 ENDC = '\033[0m'
 
 
-def filter_log(log_lines, keyword, maximum_output_entries):
+def filter_log(log_lines, keyword, max_entries):
     output = []
     signature = re.compile(fr"\b{keyword}\s+(\S+)\s+\([^)]+\)")
     for ln in log_lines[::-1]:
         m = signature.search(ln)
         if m is not None:
             output.append(ln.replace(m.group(1), GREEN + m.group(1) + ENDC))
-            if len(output) >= maximum_output_entries:
+            if len(output) >= max_entries:
                 break
 
     return "\n".join(output[::-1])
 
 
-def explicitly_installed(log_lines, maximum_output_entries):
+def explicitly_installed(log_lines, max_entries):
     explicit_pkgs = set(check_output("pacman -Qqe", shell=True, text=True).splitlines())
     installed = set()
     output = []
@@ -40,7 +40,7 @@ def explicitly_installed(log_lines, maximum_output_entries):
                 else:
                     installed.add(pkg)
                     output.append(ln.replace(m.group(1), GREEN + m.group(1) + ENDC))
-                    if len(output) >= maximum_output_entries:
+                    if len(output) >= max_entries:
                         break
 
     return "\n".join(output[::-1])
@@ -49,7 +49,7 @@ def explicitly_installed(log_lines, maximum_output_entries):
 def parse_args():
     parser = argparse.ArgumentParser(description='A tool to filter pacman log.')
     parser.add_argument(
-        "command",
+        "filter",
         default="a",
         const="all",
         nargs="?",
@@ -60,7 +60,7 @@ def parse_args():
             "a", "all",
             "r", "removed", "uninstalled"
         ],
-        help="command to execute, default %(default)s",
+        help="filter to apply, default %(default)s",
     )
     parser.add_argument(
         "-n",
@@ -73,25 +73,25 @@ def parse_args():
 
 def main():
     args = parse_args()
-    command = args.command
-    maximum_output_entries = args.n
+    ft = args.filter
+    max_entries = args.n
     log_file = "/var/log/pacman.log"
-    if command == "a" or command == "all":
+    if ft == "a" or ft == "all":
         try:
             run(["vim", log_file])
-        except :
+        except OSError:
             run(["cat", log_file])
         return
     with open(log_file, "rt") as f:
         log_lines = f.read().splitlines()
-    if command == "e" or command == "explicitly":
-        print(explicitly_installed(log_lines, maximum_output_entries))
-    elif command == "u" or command == "upgraded":
-        print(filter_log(log_lines, "upgraded", maximum_output_entries))
-    elif command == "i" or command == "installed":
-        print(filter_log(log_lines, "installed", maximum_output_entries))
-    elif command == "r" or command == "removed" or command == "uninstalled":
-        print(filter_log(log_lines, "removed", maximum_output_entries))
+    if ft == "e" or ft == "explicitly":
+        print(explicitly_installed(log_lines, max_entries))
+    elif ft == "u" or ft == "upgraded":
+        print(filter_log(log_lines, "upgraded", max_entries))
+    elif ft == "i" or ft == "installed":
+        print(filter_log(log_lines, "installed", max_entries))
+    elif ft == "r" or ft == "removed" or ft == "uninstalled":
+        print(filter_log(log_lines, "removed", max_entries))
 
 
 if __name__ == "__main__":
