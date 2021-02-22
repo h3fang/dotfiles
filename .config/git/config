@@ -12,3 +12,5 @@
     ch = checkout
 [pull]
     rebase = false
+[init]
+	defaultBranch = main
