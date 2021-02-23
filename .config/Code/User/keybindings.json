@@ -1,9 +1,15 @@
 // Place your key bindings in this file to overwrite the defaults
 [
     {
-        "key": "alt+p",
+        "key": "ctrl+alt+e",
         "command": "python.execInTerminal",
         "when": "editorFocus && editorLangId == python"
+    },
+    {
+        "key": "ctrl+alt+e",
+        "command": "workbench.action.tasks.runTask",
+        "args": "glslviewer",
+        "when": "editorFocus && editorLangId == glsl"
     },
     {
         "key": "ctrl+,",
