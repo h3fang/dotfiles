@@ -29,6 +29,7 @@
 .zoom/
 
 # .config folder
+.config/blender/
 .config/borg/
 .config/chromium/
 .config/cef_user_data/
