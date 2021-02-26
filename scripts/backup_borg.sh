@@ -27,6 +27,7 @@ RCLONE_REMOTE=('googledrive' 'onedrive')
 
 function f_backup {
     borg create --compression auto,zstd,16 --stats --list --filter=AME \
+        --exclude "$HOME/.config/blender/*/scripts/addons/BlenderGIS-*/" \
         --exclude "$HOME/.config/mpv/watch_later" \
         --exclude "$HOME/.config/Atom" \
         --exclude "$HOME/.config/borg/security" \
