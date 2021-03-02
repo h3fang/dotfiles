@@ -13,8 +13,6 @@ font pango:Roboto 13
 titlebar_padding 2 2
 
 ### Exec
-set $gnome-schema org.gnome.desktop.interface
-
 exec_always ~/.config/sway/scripts/import-gsettings.sh
 
 #exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
