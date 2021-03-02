@@ -2,7 +2,7 @@
 
 set -e
 
-yay -Rns $(pacman -Qq wine dxvk)
+yay -Rns $(pacman -Qq wine dxvk) wine-mono wine-gecko winetricks
 
 # delete wine related files
 rm -rf "$WINEPREFIX" \
