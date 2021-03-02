@@ -228,7 +228,7 @@ bindsym XF86MonBrightnessDown exec brightnessctl s 5%- # decrease screen brightn
 # Caps Lock indicator
 bindsym --release Caps_Lock exec pkill -SIGRTMIN+3 waybar
 
-bindsym $mod+c exec chromium
+bindsym $mod+c exec firefox
 bindsym --release $mod+Print exec grim -g "$(slurp)" ~/Pictures/screenshot-"$(date -Is)".png
 
 ### window colors
