@@ -57,6 +57,7 @@
 .config/Kingsoft/
 .config/mpv/watch_later/
 .config/menus/
+.config/parallel/tmp/
 .config/pulse/
 .config/qpdfview/qpdfview.conf
 .config/QtProject/
