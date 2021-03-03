@@ -1,9 +1,7 @@
 #!/bin/bash
-# requires trash-cli
+# requires trash-cli, profile-cleaner
 
 # remove garbage files
-# clean browser profiles
-
 trash-put \
     ~/.local/share/recently-used.xbel* \
     ~/.local/share/gegl-*/ \
@@ -19,6 +17,17 @@ trash-put \
     ~/.cache/jedi/ \
     ~/.cache/pip/
 
-~/scripts/browser-vacuum.sh
+# remove useless entries in .bash_history
 ~/scripts/clean_bash_history.sh
+
+# clean browser profiles
+for browser in firefox chromium; do
+    for pid in $(pidof "$browser"); do
+        echo "waiting for $browser process $pid to close ..."
+        tail --pid=$pid -f /dev/null
+    done
+done
+
+profile-cleaner f
+profile-cleaner c
 
