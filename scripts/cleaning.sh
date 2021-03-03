@@ -1,15 +1,24 @@
 #!/bin/bash
+# requires trash-cli
 
-#### steps
-# remove folders under ~/.config/Code/User/workspaceStorage/
-# remove folders under ~/.config/Code/User/*Cache/
-# remove ~/.cache/bazel/
-# run ~/scripts/rmshit.py
-# run ~/scripts/browser-vacuum.sh
+# remove garbage files
+# clean browser profiles
 
-rm -rf ~/.config/Code/User/workspaceStorage/
-rm -rf ~/.config/Code/User/*Cache/
-rm -rf ~/.cache/bazel/
-python ~/scripts/rmshit.py
+trash-put \
+    ~/.local/share/recently-used.xbel* \
+    ~/.local/share/gegl-*/ \
+    ~/.cache/thumbnails \
+    ~/.cache/chromium \
+    ~/.config/mpv/watch_later \
+    ~/.config/Code/User/workspaceStorage/ \
+    ~/.config/Code/User/*Cache/ \
+    ~/.cache/babl/ \
+    ~/.cache/bazel/ \
+    ~/.cache/g-ir-scanner/ \
+    ~/.cache/gstreamer-*/ \
+    ~/.cache/jedi/ \
+    ~/.cache/pip/
+
 ~/scripts/browser-vacuum.sh
+~/scripts/clean_bash_history.sh
 
