@@ -1,7 +1,12 @@
-[[ -f ~/.bashrc ]] && . ~/.bashrc
-[[ -f ~/scripts/envs ]] && . ~/scripts/envs
+# bash or zsh
+if [[ -n "$BASH_VERSION" ]]; then
+    [[ -f ~/.bashrc ]] && . ~/.bashrc
+    [[ -f ~/.bash_history ]] && echo "$(tac ~/.bash_history | awk '!x[$0]++' | tac)" > ~/.bash_history
+elif [[ -n "$ZSH_VERSION" ]]; then
+    [[ -f ~/.zshrc ]] && . ~/.zshrc
+fi
 
-[[ -f ~/.bash_history ]] && echo "$(tac ~/.bash_history | awk '!x[$0]++' | tac)" > ~/.bash_history
+[[ -f ~/scripts/envs ]] && . ~/scripts/envs
 
 start_i3wm() {
     if [[ -L "$GTK2_RC_FILES" ]]; then
