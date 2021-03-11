@@ -75,19 +75,20 @@
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "tooltip-format": "{ifname} {essid}",
         "format-wifi": "  {signalStrength}%",
-        "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
-        "format-linked": "{ifname} (No IP) ",
+        "format-ethernet": "",
+        "format-linked": " {ifname} (No IP)",
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "tooltip-format": "{format-source}",
-        "format": "{icon} {volume}%",
+        "tooltip-format": "{format_source}",
+        "format": "{icon} {volume}% {format_source}",
         "format-bluetooth": "{icon} {volume}%",
         "format-bluetooth-muted": " {icon}",
-        "format-muted": " {volume}%",
-        "format-source": " {volume}%",
+        "format-muted": " {volume}% {format_source}",
+        //"format-source": " {volume}%",
+        "format-source": "",
         "format-source-muted": "",
         "format-icons": {
             "headphone": "",
