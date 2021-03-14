@@ -64,7 +64,7 @@ export SSH_AUTH_SOCK
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
-export SDL_IM_MODULE=DEFAULT=fcitx
+export SDL_IM_MODULE=fcitx
 
 export ELECTRON_TRASH=gio
 
