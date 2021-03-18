@@ -5,7 +5,9 @@ After=network.target
 [Service]
 Type=simple
 Restart=on-abort
-ExecStart=/usr/bin/clash -f %E/clash/%i.yaml > %E/clash/%i.log 2>&1
+ExecStartPre=-/usr/bin/rm "%E/clash/%i.log"
+ExecStart=/usr/bin/clash -f "%E/clash/%i.yaml"
+StandardOutput=file:%E/clash/%i.log
 
 [Install]
 WantedBy=default.target
