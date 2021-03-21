@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# requires: checkupdates (pacman-contrib), yay
+# requires: yay
 
 # modified from https://github.com/vivien/i3blocks-contrib/tree/master/arch-update
 # format: {official repo packages count}+{AUR packages count}{* if matches WATCH}
@@ -13,7 +13,8 @@
 #
 # i3blocks blocklet script to see the available updates of pacman and the AUR
 
-from subprocess import check_output, CalledProcessError, TimeoutExpired
+from os import getenv
+from subprocess import check_output
 from sys import stderr
 
 BASE_COLOR = "white"
@@ -21,50 +22,37 @@ UPDATE_COLOR = "lime"
 ERROR_COLOR = "red"
 
 
-def check_updates(cmd, callback, no_update_ret=None):
+def check_updates(cmd):
     try:
         output = check_output(cmd, encoding="utf-8", timeout=15)
-        return True, callback(output)
-    except CalledProcessError as e:
-        if no_update_ret and e.returncode == no_update_ret:
-            return True, []
-        else:
-            print(e, file=stderr)
-            return False, []
+        updates = [line for line in output.split('\n') if line]
+        color = UPDATE_COLOR if len(updates) > 0 else BASE_COLOR
+        return True, updates, color
     except Exception as e:
         print(e, file=stderr)
-        return False, []
+        return False, [], ERROR_COLOR
 
 
 if __name__ == '__main__':
-    repo_updated, repo_updates = check_updates(["checkupdates"], lambda o: [line.split(' ')[0] for line in o.split('\n') if line], 2)
-    aur_updated, aur_updates = check_updates(["yay", "-Qua"], lambda o: [line for line in o.split('\n') if line])
+    repo_updated, repo_updates, repo_color = check_updates(["yay", "-Qu", "--repo"])
+    aur_updated, aur_updates, aur_color = check_updates(["yay", "-Qua"])
 
     repo_count = len(repo_updates)
     aur_count = len(aur_updates)
 
-    repo_color = BASE_COLOR
-    aur_color = BASE_COLOR
-
-    if repo_count > 0:
-        repo_color = UPDATE_COLOR
-    elif not repo_updated:
-        repo_color = ERROR_COLOR
-
-    if aur_count > 0:
-        aur_color = UPDATE_COLOR
-    elif not aur_updated:
-        aur_color = ERROR_COLOR
-
     message = f"<span color='{repo_color}'>{repo_count}</span>+<span color='{aur_color}'>{aur_count}</span>"
     print(message)
 
-    if repo_count > 5:
-        repo_updates = repo_updates[:5] + ["..."]
-    if aur_count > 5:
-        aur_updates = aur_updates[:5] + ["..."]
+    if repo_count + aur_count > 0:
+        if repo_count > 5:
+            repo_updates = repo_updates[:5] + ["..."]
+        if aur_count > 5:
+            aur_updates = aur_updates[:5] + ["..."]
 
-    message = "\r".join(repo_updates + aur_updates)
+        details = "\r".join(repo_updates + aur_updates)
 
-    print(message)
+        print(details)
+
+        if getenv("BLOCK_BUTTON") is not None:
+            check_output(["/usr/bin/notify-send", "Available system update(s):", details])
 
