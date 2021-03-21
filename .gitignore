@@ -58,6 +58,7 @@
 .config/mpv/watch_later/
 .config/menus/
 .config/parallel/tmp/
+.config/psd/.psd.conf
 .config/pulse/
 .config/qpdfview/qpdfview.conf
 .config/QtProject/
