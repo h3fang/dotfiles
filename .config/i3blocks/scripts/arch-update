@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# requires: yay
+# requires: pacman-contrib, yay, libnotify
 
 # modified from https://github.com/vivien/i3blocks-contrib/tree/master/arch-update
 # format: {official repo packages count}+{AUR packages count}{* if matches WATCH}
@@ -14,7 +14,7 @@
 # i3blocks blocklet script to see the available updates of pacman and the AUR
 
 from os import getenv
-from subprocess import check_output
+from subprocess import check_output, CalledProcessError
 from sys import stderr
 
 BASE_COLOR = "white"
@@ -22,19 +22,24 @@ UPDATE_COLOR = "lime"
 ERROR_COLOR = "red"
 
 
-def check_updates(cmd):
+def check_updates(cmd, no_update_ret=None):
     try:
         output = check_output(cmd, encoding="utf-8", timeout=15)
         updates = [line for line in output.split('\n') if line]
         color = UPDATE_COLOR if len(updates) > 0 else BASE_COLOR
         return True, updates, color
+    except CalledProcessError as e:
+        if e.returncode == no_update_ret:
+            return True, [], BASE_COLOR
+        else:
+            return False, [], ERROR_COLOR
     except Exception as e:
         print(e, file=stderr)
         return False, [], ERROR_COLOR
 
 
 if __name__ == '__main__':
-    repo_updated, repo_updates, repo_color = check_updates(["yay", "-Qu", "--repo"])
+    repo_updated, repo_updates, repo_color = check_updates(["checkupdates"], 2)
     aur_updated, aur_updates, aur_color = check_updates(["yay", "-Qua"])
 
     repo_count = len(repo_updates)
