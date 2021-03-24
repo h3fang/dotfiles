@@ -86,6 +86,7 @@ function f_backup {
         /etc/pacman.d/hooks \
         /etc/pacman.d/mirrorlist \
         /etc/pacman.conf \
+        /etc/iwd/main.conf \
         /etc/mkinitcpio.d \
         /etc/mkinitcpio.conf \
         /etc/tlp.d \
