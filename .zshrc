@@ -6,11 +6,13 @@ PROMPT="%F{39}┌── [ %F{197}\${CONDA_DEFAULT_ENV:+\$CONDA_DEFAULT_ENV }%F{3
 └── %# "
 
 autoload -Uz compinit
-compinit
+mkdir -p "$XDG_CACHE_HOME/zsh" || true
+compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 
 setopt AUTO_CD
 
-HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
+mkdir -p "$XDG_DATA_HOME/zsh" || true
+HISTFILE=${XDG_DATA_HOME}/zsh/history
 setopt EXTENDED_HISTORY
 SAVEHIST=10000
 HISTSIZE=10000
