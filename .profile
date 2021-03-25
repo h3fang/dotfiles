@@ -1,4 +1,4 @@
-# bash or zsh
+### bash or zsh
 if [[ -n "$BASH_VERSION" ]]; then
     [[ -f ~/.bashrc ]] && . ~/.bashrc
     [[ -f ~/.bash_history ]] && echo "$(tac ~/.bash_history | awk '!x[$0]++' | tac)" > ~/.bash_history
@@ -6,8 +6,10 @@ elif [[ -n "$ZSH_VERSION" ]]; then
     [[ -f ~/.zshrc ]] && . ~/.zshrc
 fi
 
+### custom environment variables
 [[ -f ~/scripts/envs ]] && . ~/scripts/envs
 
+### WM start up functions
 start_i3wm() {
     if [[ -L "$GTK2_RC_FILES" ]]; then
         \rm "$GTK2_RC_FILES"
@@ -49,6 +51,7 @@ start_sway() {
     exec sway > "$SWAY_LOG" 2>&1
 }
 
+### XDG Base Directory
 export XDG_CONFIG_HOME=~/.config
 export XDG_CACHE_HOME=~/.cache
 export XDG_DATA_HOME=~/.local/share
@@ -60,9 +63,11 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 
+### keyring
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
 
+### fcitx5
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
@@ -70,11 +75,13 @@ export SDL_IM_MODULE=fcitx
 
 export ELECTRON_TRASH=gio
 
+### openblas
 ncores=$(grep -m 1 'cpu cores' /proc/cpuinfo | awk '{print $4}')
 export OPENBLAS_NUM_THREADS=$ncores
 export GOTO_NUM_THREADS=$ncores
 export OMP_NUM_THREADS=$ncores
 
+### Window Manager
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
     start_i3wm
 elif [[ ! $DISPLAY && $XDG_VTNR -eq 2 ]]; then
