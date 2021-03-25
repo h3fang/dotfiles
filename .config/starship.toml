@@ -1,0 +1,14 @@
+add_newline = false
+
+
+[directory]
+format = "[█](fg:39) [$path]($style)[$read_only]($read_only_style) "
+
+[time]
+disabled = false
+
+[status]
+disabled = false
+style = "bg:red"
+format = '[\[$status\]]($style) '
+

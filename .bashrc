@@ -46,22 +46,6 @@ man() {
     command man "$@"
 }
 
-set_bash_ps1() {
-    local B="\[\033[38;5;39m\]" # blue
-    local R="\[\033[38;5;197m\]" # red
-    local P="\[\033[38;5;201m\]" # purple
-    local G="\[\033[38;5;10m\]" # green
-    local Y="\[\033[38;5;11m\]" # yellow
-
-    local uhc="$B"
-    [[ -n $SSH_CLIENT ]] && uhc="$Y"
-
-    #PS1='[\u@\h \W]\$ '
-    PS1="${B}┌── [ ${R}\${CONDA_DEFAULT_ENV:+\$CONDA_DEFAULT_ENV }${uhc}\u @ \h ${P}\t ${G}\w ${B}]\n${B}└── \\$ \[$(tput sgr0)\]"
-}
-
-set_bash_ps1
-
 export VISUAL="vim"
 export LESSHISTFILE=/dev/null
 export EXA_COLORS='da=38;5;33'
@@ -90,3 +74,7 @@ fi
 # fzf
 export FZF_DEFAULT_COMMAND='fd --type f --follow --exclude .git --exclude node_modules'
 export FZF_DEFAULT_OPTS="-1 --no-mouse --reverse --multi --inline-info"
+
+# starship
+eval "$(starship init bash)"
+
