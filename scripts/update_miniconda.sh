@@ -9,7 +9,7 @@ GREEN="\e[38;2;0;255;0m"
 CLR="\e[0m"
 
 echo -e "${GREEN}updating environment ${RED}base${GREEN} ...${CLR}"
-conda update --all -y
+conda update conda -y
 
 for f in ~/.config/conda/*.yml; do
   e=$(basename -s .yml "$f")
