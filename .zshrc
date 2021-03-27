@@ -1,9 +1,7 @@
 export EDITOR='vim'
 export LESSHISTFILE=/dev/null
 
-setopt prompt_subst
-PROMPT="%F{39}┌── [ %F{197}\${CONDA_DEFAULT_ENV:+\$CONDA_DEFAULT_ENV }%F{39}%n @ %m %F{201}%* %F{40}%~ %F{39}]
-└── %# "
+eval "$(starship init zsh)"
 
 autoload -Uz compinit
 mkdir -p "$XDG_CACHE_HOME/zsh" || true
