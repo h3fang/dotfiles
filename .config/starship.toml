@@ -1,14 +1,41 @@
 add_newline = false
+format = """
+[┌─ ](fg:39)\
+$username\
+$hostname\
+$conda\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$time\
+$cmd_duration\
+$line_break\
+[└─ ](fg:39)\
+$status\
+$shlvl\
+$character
+"""
 
+[conda]
+format = "[$symbol$environment]($style) "
+style = "bold 197"
+ignore_base = false
 
 [directory]
-format = "[█](fg:39) [$path]($style)[$read_only]($read_only_style) "
+truncation_length=0
+style = "bold 10"
 
-[time]
+[shlvl]
 disabled = false
 
 [status]
 disabled = false
-style = "bg:red"
-format = '[\[$status\]]($style) '
+style = "bg:197"
+format = '[$status]($style) '
+
+[time]
+disabled = false
+format = "[$time]($style) "
 
