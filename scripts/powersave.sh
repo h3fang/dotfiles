@@ -15,7 +15,9 @@ function setup() {
     sudo tlp bat
 
     ### disable CPU Turbo Boost (AMD / acpi-cpufreq)
-    echo 0 | sudo tee /sys/devices/system/cpu/cpufreq/boost
+    if [[ -f /sys/devices/system/cpu/cpufreq/boost ]]; then
+        echo 0 | sudo tee /sys/devices/system/cpu/cpufreq/boost
+    fi
 
     ### disable CPU SMT/HT
     echo off | sudo tee /sys/devices/system/cpu/smt/control
@@ -34,7 +36,9 @@ function restore() {
     sudo tlp ac
 
     ### enable CPU Turbo Boost (AMD / acpi-cpufreq)
-    echo 1 | sudo tee /sys/devices/system/cpu/cpufreq/boost
+    if [[ -f /sys/devices/system/cpu/cpufreq/boost ]]; then
+        echo 1 | sudo tee /sys/devices/system/cpu/cpufreq/boost
+    fi
 
     ### enable CPU SMT/HT
     echo on | sudo tee /sys/devices/system/cpu/smt/control
