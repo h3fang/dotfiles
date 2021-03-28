@@ -127,7 +127,7 @@ function f_prune {
 function f_sync {
     for remote in "${RCLONE_REMOTE[@]}"; do
         echo -e "\nuploading to ${remote} ..."
-        rclone -P --drive-use-trash=false sync "$REPO" "${remote}:${PREFIX}-borg" --timeout=30s --fast-list --transfers=10
+        rclone --drive-use-trash=false sync "$REPO" "${remote}:${PREFIX}-borg" --timeout=30s --fast-list --transfers=10
     done
 }
 
