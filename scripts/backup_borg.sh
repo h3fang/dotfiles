@@ -1,5 +1,5 @@
 #!/bin/bash
-# requires borg, libnotify, rclone, awk
+# requires borg, libsecret, libnotify, rclone, awk
 
 set -eEuo pipefail
 trap 's=$?; echo "$0: Error on line $LINENO"; notify-send "$0: Error on line $LINENO";  exit $s' ERR
@@ -21,8 +21,9 @@ while [[ "$#" -gt 0 ]]; do
     esac
 done
 
-REPO=$HOME/backups
-PREFIX=arch-home-${USER}-$(awk '{print substr($0,1,6); exit}' /etc/machine-id)
+export BORG_REPO=$HOME/.local/share/backup
+export BORG_PASSCOMMAND="secret-tool lookup borgrepo default"
+REMOTE_DIR=arch-home-${USER}-$(awk '{print substr($0,1,6); exit}' /etc/machine-id)
 RCLONE_REMOTE=('googledrive' 'onedrive')
 
 function f_backup {
@@ -68,7 +69,7 @@ function f_backup {
         --exclude "sh:$HOME/projects/Courses/**/*.npz" \
         --exclude "sh:$HOME/**/__pycache__" \
         --exclude "$HOME/projects/blog/public" \
-        "${REPO}::{now:%Y-%m-%d_%H:%M:%S}" \
+        "::{now:%Y-%m-%d_%H-%M-%S}" \
         ~/.config \
         ~/.local/share/gnupg \
         ~/.local/share/keyrings \
@@ -105,7 +106,7 @@ function f_backup {
         /boot/loader/entries
 
     # warn for abnormal delta size
-    last_backup_info=$(borg info "$REPO" --last 1 | awk '/This archive:/{print}')
+    last_backup_info=$(borg info --last 1 | awk '/This archive:/{print}')
     last_size=$(echo "$last_backup_info" | awk '{print $7}')
     last_unit=$(echo "$last_backup_info" | awk '{print $8}')
 
@@ -121,13 +122,13 @@ function f_backup {
 }
 
 function f_prune {
-    borg prune -v --list --keep-within=10d --keep-daily=30 --keep-weekly=4 --keep-monthly=4 --save-space "$REPO"
+    borg prune -v --list --keep-within=10d --keep-daily=30 --keep-weekly=4 --keep-monthly=4 --save-space
 }
 
 function f_sync {
     for remote in "${RCLONE_REMOTE[@]}"; do
         echo -e "\nuploading to ${remote} ..."
-        rclone --drive-use-trash=false sync "$REPO" "${remote}:${PREFIX}-borg" --timeout=30s --fast-list --transfers=10
+        rclone --drive-use-trash=false sync "$BORG_REPO" "${remote}:${REMOTE_DIR}" --timeout=30s --fast-list --transfers=10
     done
 }
 
@@ -145,6 +146,12 @@ function ask_user {
     fi
 }
 
+if [[ ! -d $BORG_REPO ]]; then
+    echo "repo $BORG_REPO not initialized"
+    exit 3
+fi
+
 ask_user $O_BACKUP "Create a new archive?" f_backup
 ask_user $O_PRUNE "Prune archives?" f_prune
 ask_user $O_SYNC "Sync to cloud storage?" f_sync
+
