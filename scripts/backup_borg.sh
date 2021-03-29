@@ -28,17 +28,17 @@ RCLONE_REMOTE=('googledrive' 'onedrive')
 
 function f_backup {
     borg create --compression auto,zstd,16 --stats --list --filter=AME \
-        --exclude "$HOME/.config/blender/*/scripts/addons/BlenderGIS-*/" \
-        --exclude "$HOME/.config/mpv/watch_later" \
-        --exclude "$HOME/.config/Atom" \
+        --exclude "$HOME/.config/blender/*/scripts/addons" \
         --exclude "$HOME/.config/borg/security" \
+        --exclude "$HOME/.config/cef_user_data/Dictionaries" \
         --exclude "$HOME/.config/clash/*.mmdb" \
         --exclude "$HOME/.config/Code" \
         --exclude "$HOME/.config/Code - OSS" \
-        --exclude "$HOME/.config/VSCodium" \
         --exclude "$HOME/.config/chromium" \
         --exclude "$HOME/.config/libreoffice" \
+        --exclude "$HOME/.config/mpv/watch_later" \
         --exclude "$HOME/.config/GIMP" \
+        --exclude "$HOME/.config/parallel/tmp" \
         --exclude "$HOME/.config/pulse" \
         --exclude "$HOME/.config/QtProject/qtcreator/qbs" \
         --exclude "$HOME/.config/QtProject/qtcreator/.helpcollection" \
