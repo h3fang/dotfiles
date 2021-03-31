@@ -41,7 +41,7 @@ tar -I "zstd -T0 -19" --exclude='.config/mpv/watch_later' \
     --exclude='**/__pycache__' \
     -cvf "$ARCHIVE" \
     .config \
-    .local/share/gnupg \
+    .gnupg \
     .local/share/keyrings \
     .ssh \
     projects \

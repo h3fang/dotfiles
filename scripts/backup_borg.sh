@@ -71,7 +71,7 @@ function f_backup {
         --exclude "$HOME/projects/blog/public" \
         "::{now:%Y-%m-%d_%H-%M-%S}" \
         ~/.config \
-        ~/.local/share/gnupg \
+        ~/.gnupg \
         ~/.local/share/keyrings \
         ~/.ssh \
         ~/scripts \
