@@ -68,8 +68,10 @@ export TEXMFVAR=$XDG_CACHE_HOME/texlive/texmf-var
 export TEXMFCONFIG=$XDG_CONFIG_HOME/texlive/texmf-config
 
 ### keyring
-eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
-export SSH_AUTH_SOCK
+export $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+
+### GPG
+export GPG_TTY=$(tty)
 
 ### fcitx5
 export GTK_IM_MODULE=fcitx
