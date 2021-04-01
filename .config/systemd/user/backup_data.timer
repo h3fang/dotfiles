@@ -1,11 +1,11 @@
 [Unit]
-Description=Run ~/scripts/backup_borg.sh every 6 hours
+Description=Backup data files periodically.
 
 [Timer]
 OnCalendar=0/6:00:00
 RandomizedDelaySec=60
 Persistent=true
-Unit=backup_borg.service
+Unit=backup_data.service
 
 [Install]
 WantedBy=timers.target

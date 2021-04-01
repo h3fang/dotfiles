@@ -1,0 +1,11 @@
+[Unit]
+Description=Backup zotero data files periodically.
+
+[Timer]
+OnCalendar=0/7:00:00
+RandomizedDelaySec=60
+Persistent=true
+Unit=backup_zotero.service
+
+[Install]
+WantedBy=timers.target

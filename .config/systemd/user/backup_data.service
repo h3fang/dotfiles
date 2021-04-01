@@ -1,0 +1,10 @@
+[Unit]
+Description=Backup data files.
+After=multi-user.target
+
+[Service]
+Type=simple
+Environment="http_proxy=socks5://127.0.0.1:7891"
+Environment="https_proxy=socks5://127.0.0.1:7891"
+ExecStart=%h/scripts/backup_data.sh --backup --prune --sync
+
