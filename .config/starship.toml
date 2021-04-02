@@ -14,7 +14,6 @@ $cmd_duration\
 $line_break\
 [└─ ](fg:39)\
 $status\
-$shlvl\
 $character
 """
 
@@ -26,9 +25,6 @@ ignore_base = false
 [directory]
 truncation_length=0
 style = "bold 10"
-
-[shlvl]
-disabled = false
 
 [status]
 disabled = false
