@@ -66,6 +66,8 @@ export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
 export TEXMFHOME=$XDG_DATA_HOME/texmf
 export TEXMFVAR=$XDG_CACHE_HOME/texlive/texmf-var
 export TEXMFCONFIG=$XDG_CONFIG_HOME/texlive/texmf-config
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
 
 ### keyring
 export $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
