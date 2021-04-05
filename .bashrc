@@ -61,14 +61,10 @@ export PROMPT_COMMAND='history -a; history -n'
 # if this is interactive shell, then bind hstr to Ctrl-r (for Vi mode check doc)
 if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\C-a hstr -- \C-j"'; fi
 
-# Use bash-completion, if available
-if [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]]; then
-    . /usr/share/bash-completion/bash_completion
-    # completion for git alias
-    if [[ -f /usr/share/bash-completion/completions/git ]]; then
-        . /usr/share/bash-completion/completions/git
-        __git_complete dot __git_main
-    fi
+# completion for git alias
+if [[ -r /usr/share/bash-completion/completions/git ]]; then
+    . /usr/share/bash-completion/completions/git
+    __git_complete dot __git_main
 fi
 
 # fzf
