@@ -3,7 +3,7 @@ Description=Backup zotero data files.
 After=multi-user.target
 
 [Service]
-Type=simple
+Type=oneshot
 Environment="http_proxy=socks5://127.0.0.1:7891"
 Environment="https_proxy=socks5://127.0.0.1:7891"
 ExecStart=%h/scripts/backup_zotero.sh
