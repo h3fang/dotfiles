@@ -1,6 +1,6 @@
 [Unit]
 Description=Backup data files.
-After=multi-user.target
+After=default.target
 
 [Service]
 Type=oneshot
