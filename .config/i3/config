@@ -21,7 +21,7 @@ exec_always --no-startup-id feh --bg-fill --no-fehbg ~/Pictures/wallpapers/starr
 
 # autostart
 #exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id brightnessctl s 35%
+exec --no-startup-id brightnessctl s 45%
 exec --no-startup-id picom -b
 exec --no-startup-id dunst
 exec --no-startup-id xinput disable $(xinput | pcregrep -o1 "Touchpad\s+id=(\d+)")
@@ -183,14 +183,13 @@ for_window [window_type="menu"] floating enable
 for_window [class="Chromium"] border none
 for_window [class="firefox"] border none
 for_window [class="Pavucontrol"] floating enable
-for_window [class="MATLAB R20*"] layout tabbed
 for_window [class="Nm-connection-editor"] floating enable
 for_window [title="Preferences$"] floating enable
 for_window [title="Zotero Item Selector" class="Chromium"] floating enable; resize set 800 px 400 px; move position center;
 for_window [title="About Mozilla Firefox" class="firefox"] floating enable
 
 # assign apps to workspaces
-assign [class="Chromium"] $ws2
+assign [class="firefox"] $ws2
 assign [class="code"] $ws3
 
 for_window [workspace=$ws3] layout tabbed
