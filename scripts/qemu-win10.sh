@@ -10,8 +10,7 @@ function create_disk {
 
 function install {
     qemu-system-x86_64 -m 4G -smp 4 -enable-kvm \
-    -nodefaults \
-    -cpu host \
+    -cpu host,hv_relaxed,hv_spinlocks=0x1fff,hv_vapic,hv_time \
     -drive file="${DISK_IMG}",index=0,media=disk,if=virtio \
     -nic user,model=virtio,hostfwd=tcp::10022-:22 \
     -rtc base=localtime,clock=host \
@@ -24,13 +23,13 @@ function install {
 
 function run {
     qemu-system-x86_64 -m 4G -smp 4 -enable-kvm \
-    -nodefaults \
-    -cpu host \
+    -cpu host,hv_relaxed,hv_spinlocks=0x1fff,hv_vapic,hv_time \
     -drive file="${DISK_IMG}",if=virtio \
     -nic user,model=virtio-net-pci,hostfwd=tcp::10022-:22 \
     -rtc base=localtime,clock=host \
     -audiodev pa,id=pa0,server=/run/user/$UID/pulse/native \
     -device intel-hda -device hda-duplex,audiodev=pa0 \
+    -device usb-ehci,id=ehci -device usb-host,bus=ehci.0,hostbus=1,hostaddr=3 \
     -display gtk,gl=on \
     -vga virtio \
     -full-screen &
