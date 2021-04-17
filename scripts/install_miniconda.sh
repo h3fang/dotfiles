@@ -22,7 +22,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 
     # silent install to $MINICONDA_PATH
     MINICONDA_FILE=$(mktemp)
-    curl -o "$MINICONDA_FILE" "$INSTALLER_URL"
+    curl -Lo "$MINICONDA_FILE" "$INSTALLER_URL"
     bash "$MINICONDA_FILE" -b -p "$MINICONDA_PATH"
     rm "$MINICONDA_FILE"
 fi
