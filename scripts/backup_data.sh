@@ -58,6 +58,7 @@ function f_backup {
         --exclude "sh:$HOME/projects/AUR/*/*.tar" \
         --exclude "sh:$HOME/projects/AUR/*/*.tar.gz" \
         --exclude "sh:$HOME/projects/AUR/*/*.tar.xz" \
+        --exclude "sh:$HOME/projects/AUR/*/*.txz" \
         --exclude "sh:$HOME/projects/AUR/*/*.tar.bz2" \
         --exclude "sh:$HOME/projects/AUR/*/*.tar.zst" \
         --exclude "sh:$HOME/projects/AUR/*/*.zip" \
