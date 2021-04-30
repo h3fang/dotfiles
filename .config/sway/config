@@ -15,12 +15,6 @@ titlebar_padding 2 2
 ### Exec
 exec_always ~/.config/sway/scripts/import-gsettings.sh
 
-# https://github.com/swaywm/sway/wiki#gtk-applications-take-20-seconds-to-start
-# https://github.com/swaywm/sway/issues/5732
-exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
-exec hash dbus-update-activation-environment 2>/dev/null && \
-     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
-
 #exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #exec udiskie -anT2
 exec thunar --daemon
