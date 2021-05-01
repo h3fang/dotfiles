@@ -93,6 +93,7 @@ function f_backup {
         /etc/pacman.d/mirrorlist \
         /etc/pacman.conf \
         /etc/iwd/main.conf \
+        /etc/wpa_supplicant \
         /etc/mkinitcpio.d \
         /etc/mkinitcpio.conf \
         /etc/tlp.d \
