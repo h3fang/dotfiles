@@ -1,4 +1,5 @@
 #!/bin/bash
+# requires sway, jq, libnotify, udiskie
 
 # check transmission
 if [[ $(pgrep -f transmission) ]]; then
@@ -18,11 +19,18 @@ apps=$(swaymsg -t get_tree | jq '.. | select(.class? or .app_id?) | .app_id+.cla
 n_apps=$(echo $apps | awk '{print NF}')
 if [[ $n_apps -gt 0 ]]; then
     notify-send -u critical "$(echo -e "$n_apps running application(s).\n$apps")"
-    exit 2
+    exit 1
 fi
 
-kill $(pidof gnome-keyring-daemon)
+# check backgroud programs
+pkill -f gnome-keyring-daemon || true
+pkill -f systembus-notify || true
+pkill -f networkd-notify || true
 
 # unmount
-udiskie-umount -ad
+sync
+if ! udiskie-umount -ad; then
+    notify-send -u critical 'failed to run "udiskie-umount -ad"'
+    exit 1
+fi
 
