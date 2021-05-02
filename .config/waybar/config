@@ -68,30 +68,26 @@
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
-    "battery#bat2": {
-        "bat": "BAT2"
-    },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "tooltip-format": "{ifname} {essid}",
         "format-wifi": "  {signalStrength}%",
         "format-ethernet": "",
         "format-linked": " {ifname} (No IP)",
-        "format-disconnected": "Disconnected ⚠",
+        "format-disconnected": "Disconnected",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "tooltip-format": "{format_source}",
-        "format": "{icon} {volume}% {format_source}",
+        "scroll-step": 5, // %, can be a float
+        "format": "{icon} {volume}%",
+        "format-alt": "{format_source}",
         "format-bluetooth": "{icon} {volume}%",
         "format-bluetooth-muted": " {icon}",
-        "format-muted": " {volume}% {format_source}",
-        //"format-source": " {volume}%",
-        "format-source": "",
-        "format-source-muted": "",
+        "format-muted": " {volume}%",
+        "format-source": " {volume}%",
+        "format-source-muted": " {volume}%",
         "format-icons": {
-            "headphone": "",
+            "headphone": "",
             "hands-free": "",
             "headset": "",
             "phone": "",
