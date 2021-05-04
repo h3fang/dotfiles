@@ -26,6 +26,7 @@ if [[ -e /dev/fd/${XSS_SLEEP_LOCK_FD:--1} ]]; then
     trap kill_i3lock TERM INT
 
     i3lock "${i3lock_options[@]}" {XSS_SLEEP_LOCK_FD}<&-
+    sleep 1
 
     exec {XSS_SLEEP_LOCK_FD}<&-
 
@@ -35,6 +36,7 @@ if [[ -e /dev/fd/${XSS_SLEEP_LOCK_FD:--1} ]]; then
 else
     trap 'kill %%' TERM INT
     i3lock -n "${i3lock_options[@]}" &
+    sleep 1
     wait
 fi
 
