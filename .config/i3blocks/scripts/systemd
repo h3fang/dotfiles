@@ -5,7 +5,7 @@ from os import getenv
 from subprocess import run, PIPE
 
 output = run("systemctl list-units --failed; systemctl --user list-units --failed", shell=True, stdout=PIPE, timeout=5).stdout.decode("utf-8")
-p = re.compile('\w+\.\w+')
+p = re.compile('\S+\.\w+')
 failed = [p.search(line).group() for line in output.split("\n") if "failed" in line]
 
 if len(failed) > 0:
