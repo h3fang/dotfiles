@@ -93,7 +93,11 @@ sudo rmmod pcspkr
 
 # at-spi2
 echo 'NO_AT_BRIDGE=1' | sudo tee -a /etc/environment
+echo 'NoExtract = etc/xdg/autostart/at-spi-dbus-bus.desktop usr/lib/at-spi-bus-launcher usr/lib/systemd/user/at-spi-dbus-bus.service' | sudo tee -a /etc/pacman.conf
 echo 'NoExtract = usr/share/dbus-1/services/org.a11y.*' | sudo tee -a /etc/pacman.conf
+
+# dunst
+echo 'NoExtract   = usr/lib/systemd/user/dunst.service usr/share/dbus-1/services/org.knopwob.dunst.service' | sudo tee -a /etc/pacman.conf
 
 # earlyoom
 sudo systemctl enable --now earlyoom.service
