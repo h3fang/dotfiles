@@ -1,7 +1,9 @@
 #!/bin/bash
 
-WIN10_IMG=${HOME}/VMs/"Win10_2004_Chinese(Simplified)_x64.iso"
-VIRTIO_IMG=${HOME}/VMs/virtio-win-0.1.171.iso
+set -eu
+
+WIN10_IMG=$(fd -e iso Win10 "$HOME/VMs" | head -n1)
+VIRTIO_IMG=$(fd -e iso virtio-win "$HOME/VMs" | head -n1)
 DISK_IMG=${HOME}/VMs/win10.qcow2
 
 function create_disk {
@@ -12,13 +14,14 @@ function install {
     qemu-system-x86_64 -m 4G -smp 8 -enable-kvm \
     -cpu host,hv_relaxed,hv_spinlocks=0x1fff,hv_vapic,hv_time \
     -drive file="${DISK_IMG}",index=0,media=disk,if=virtio \
-    -nic user,model=virtio,hostfwd=tcp::10022-:22 \
+    -drive file="${WIN10_IMG}",index=2,media=cdrom \
+    -drive file="${VIRTIO_IMG}",index=3,media=cdrom \
+    -nic user,model=virtio-net-pci \
     -rtc base=localtime,clock=host \
     -audiodev pa,id=snd0 \
     -device ich9-intel-hda -device hda-micro,audiodev=snd0 \
-    -vga virtio \
-    -drive file="${WIN10_IMG}",index=2,media=cdrom \
-    -drive file="${VIRTIO_IMG}",index=3,media=cdrom
+    -display gtk,gl=on \
+    -vga virtio &
 }
 
 function run {
@@ -42,5 +45,7 @@ elif [[ "$CMD" == "install" ]]; then
     install
 elif [[ "$CMD" == "run" ]]; then
     run
+else
+    echo "Usage: $(basename $0) disk|install|[run]"
 fi
 
