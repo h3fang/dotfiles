@@ -14,8 +14,8 @@ VER=$(date +%Y.%m.01)
 
 echo "Downloading latest arch iso to $DDIR ..."
 
-curl -O https://mirrors.sjtug.sjtu.edu.cn/archlinux/iso/"$VER"/archlinux-"$VER"-x86_64.iso
-curl -O https://mirrors.sjtug.sjtu.edu.cn/archlinux/iso/"$VER"/archlinux-"$VER"-x86_64.iso.sig
+curl -LO https://mirrors.sjtug.sjtu.edu.cn/archlinux/iso/"$VER"/archlinux-"$VER"-x86_64.iso
+curl -LO https://mirrors.sjtug.sjtu.edu.cn/archlinux/iso/"$VER"/archlinux-"$VER"-x86_64.iso.sig
 
 pacman-key -v archlinux-"$VER"-x86_64.iso.sig
 
