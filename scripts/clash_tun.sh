@@ -60,5 +60,5 @@ iptables -t nat -A OUTPUT -p udp --dport 53 -j REDIRECT --to-ports ${clash_dns}
 iptables -t mangle -A OUTPUT -j CLASH
 
 ulimit -n 65535
-tun2socks -device ${tun_dev} -proxy socks5://${clash_socks5_addr}:${clash_socks5_port}
+tun2socks -device ${tun_dev} -proxy socks5://${clash_socks5_addr}:${clash_socks5_port} -loglevel warn
 
