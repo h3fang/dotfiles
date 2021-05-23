@@ -35,7 +35,7 @@ setup() {
 
 remove() {
     yay -Rns wine-staging wine-mono wine-gecko winetricks dxvk-bin
-    yay -Rns $(pacman -Qqttd | grep '^lib32-')
+    yay -Rns $(pacman -Qqttd | grep '^lib32-') || true
     yay -Rns lib32-mesa || true
 
     # delete wine related files
