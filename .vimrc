@@ -8,8 +8,8 @@ set runtimepath^=$XDG_CONFIG_HOME/vim
 set runtimepath+=$XDG_DATA_HOME/vim
 set runtimepath+=$XDG_CONFIG_HOME/vim/after
 
-set packpath^=$XDG_DATA_HOME/vim,$XDG_CONFIG_HOME/vim
-set packpath+=$XDG_CONFIG_HOME/vim/after,$XDG_DATA_HOME/vim/after
+set packpath^=$XDG_DATA_HOME/vim
+set packpath+=$XDG_DATA_HOME/vim/after
 
 let g:netrw_home = $XDG_DATA_HOME."/vim"
 call mkdir($XDG_DATA_HOME."/vim/spell", 'p', 0700)
@@ -95,4 +95,7 @@ match ExtraWhitespace /\s\+$\| \+\ze\t/
 
 au InsertEnter * silent execute "!echo -en \<esc>[5 q"
 au InsertLeave * silent execute "!echo -en \<esc>[2 q"
+
+" for lightline plugin
+set laststatus=2
 
