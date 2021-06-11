@@ -2,7 +2,7 @@
 
 # Dependencies: i3lock-color
 
-i3lock_options=(-t -e --blur=20 --indicator --clock --pass-media-keys --date-str="%a  %F" --date-color=ffffffff --time-color=ffffffff --ring-color=2075c7ff --time-font=monospace)
+i3lock_options=(-t -e --blur=30 --indicator --clock --pass-media-keys --date-str="%a  %F" --date-color=ffffffff --time-color=ffffffff --ring-color=2075c7ff --time-font=monospace)
 
 pre_lock() {
     killall -SIGUSR1 dunst

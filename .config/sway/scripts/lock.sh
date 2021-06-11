@@ -10,4 +10,4 @@ if [[ $1 != "force" ]]; then
     fi
 fi
 
-swaylock -f --screenshots --clock --indicator --effect-blur 20x3 --datestr="%a %F" --ring-color=2075c7ff --font=monospace -fel --indicator-radius 150
+swaylock -f --screenshots --clock --indicator --effect-blur 30x3 --datestr="%a %F" --ring-color=2075c7ff --font=monospace -fel --indicator-radius 150
