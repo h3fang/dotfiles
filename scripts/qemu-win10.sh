@@ -19,11 +19,10 @@ function install {
     -nic user,model=virtio-net-pci \
     -rtc base=localtime,clock=host \
     -audiodev pa,id=snd0 \
-    -device ich9-intel-hda -device hda-micro,audiodev=snd0 \
-    -display gtk,gl=on \
-    -vga virtio &
+    -device ich9-intel-hda -device hda-micro,audiodev=snd0 &
 }
 
+    #-display gtk,gl=on \
 function run {
     qemu-system-x86_64 -m 4G -smp $(nproc) -enable-kvm \
     -cpu host,hv_relaxed,hv_spinlocks=0x1fff,hv_vapic,hv_time \
@@ -32,9 +31,7 @@ function run {
     -rtc base=localtime,clock=host \
     -audiodev pa,id=snd0 \
     -device ich9-intel-hda -device hda-micro,audiodev=snd0 \
-    -device usb-ehci,id=ehci -device usb-host,bus=ehci.0,vendorid=0x04f2,productid=0xb6cb \
-    -display gtk,gl=on \
-    -vga virtio &
+    -device usb-ehci,id=ehci -device usb-host,bus=ehci.0,vendorid=0x04f2,productid=0xb6cb &
 }
 
 
