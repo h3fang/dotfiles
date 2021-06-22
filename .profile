@@ -90,9 +90,9 @@ export GOTO_NUM_THREADS=$ncores
 export OMP_NUM_THREADS=$ncores
 
 ### Window Manager
-if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+if [[ ! $DISPLAY && $XDG_VTNR -eq 2 ]]; then
     start_i3wm
-elif [[ ! $DISPLAY && $XDG_VTNR -eq 2 ]]; then
+elif [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
     start_sway
 fi
 
