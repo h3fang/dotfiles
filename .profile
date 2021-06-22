@@ -90,9 +90,9 @@ export GOTO_NUM_THREADS=$ncores
 export OMP_NUM_THREADS=$ncores
 
 ### Window Manager
-if [[ ! $DISPLAY && $XDG_VTNR -eq 2 ]]; then
+if [[ "$(tty)" = "/dev/tty2" ]]; then
     start_i3wm
-elif [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+elif [[ "$(tty)" = "/dev/tty1" ]]; then
     start_sway
 fi
 
