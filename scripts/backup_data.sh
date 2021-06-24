@@ -87,7 +87,6 @@ function f_backup {
         ~/.zshrc \
         ~/.profile \
         ~/.xinitrc \
-        ~/.vimrc \
         ~/.gitignore \
         /etc/pacman.d/hooks \
         /etc/pacman.d/mirrorlist \
