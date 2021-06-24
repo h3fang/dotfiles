@@ -5,6 +5,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+alias vim="nvim"
 alias rm="trash-put"
 alias cp2="rsync -ah --progress"
 alias free='free -h'
@@ -45,7 +46,7 @@ man() {
     command man "$@"
 }
 
-export VISUAL="vim"
+export VISUAL="nvim"
 export LESSHISTFILE=/dev/null
 export EXA_COLORS='da=38;5;33'
 
