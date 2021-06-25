@@ -77,15 +77,13 @@ function f_backup {
         ~/.local/share/fcitx5 \
         ~/.local/share/keyrings \
         ~/.local/share/systemd \
-        ~/.local/share/zsh \
         ~/.ssh \
         ~/scripts \
         ~/Pictures \
         ~/projects \
         ~/Documents \
         ~/.bashrc \
-        ~/.zshrc \
-        ~/.profile \
+        ~/.bash_profile \
         ~/.xinitrc \
         ~/.gitignore \
         /etc/pacman.d/hooks \
