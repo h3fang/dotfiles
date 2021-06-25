@@ -5,25 +5,27 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias vim="nvim"
-alias rm="trash-put"
-alias cp2="rsync -ah --progress"
-alias free='free -h'
-alias df='df -h'
-alias ls='exa'
-alias ll='exa -l'
+# alias
 alias cat='bat -pp'
+alias cp2='rsync -ah --progress'
+alias df='df -h'
 alias diff='diff --color=auto'
-alias grep='grep --color=auto'
-alias paclog='~/scripts/paclog.py'
-alias music='mpv --volume=60 --shuffle --loop-playlist=inf --no-resume-playback --audio-display=no ~/Music/'
-alias weather='curl -m 5 "https://wttr.in/${LOCATION_CITY}?lang=zh&format=v2"'
-alias ncdu='ncdu --color dark'
 alias dot='/usr/bin/git --git-dir=$HOME/.config/dotfiles/ --work-tree=$HOME'
+alias free='free -h'
+alias grep='grep --color=auto'
+alias ll='exa -l'
+alias ls='exa'
 alias miniconda='source ~/.local/miniconda3/bin/activate $(echo -e "base\n$(ls ~/.local/miniconda3/envs)" | fzf)'
-alias yaySc="yay -Sc --noconfirm"
+alias music='mpv --volume=60 --shuffle --loop-playlist=inf --no-resume-playback --audio-display=no ~/Music/'
+alias ncdu='ncdu --color dark'
+alias paclog='~/scripts/paclog.py'
+alias rm='trash-put'
 alias scripts='$(fd -t x . ~/scripts/ | fzf)'
+alias vim='nvim'
+alias weather='curl -m 5 "https://wttr.in/${LOCATION_CITY}?lang=zh&format=v2"'
+alias yaySc='yay -Sc --noconfirm'
 
+# functions
 windows() {
     if ! command -v pgrep > /dev/null ; then
         echo "pgrep could not be found"
@@ -45,10 +47,6 @@ man() {
     LESS_TERMCAP_us=$'\e[01;32m' \
     command man "$@"
 }
-
-export VISUAL="nvim"
-export LESSHISTFILE=/dev/null
-export EXA_COLORS='da=38;5;33'
 
 # HSTR configuration
 export HSTR_CONFIG=hicolor,raw-history-view       # get more colors
