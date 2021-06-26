@@ -1,13 +1,10 @@
 # hidden folders
 .conda/
 .cache/
-.designer/
-.FeelUOwn/
 .gnupg/
 .googleearth/
 .icons/
 .keras/
-.theano/
 .local/
 .ipython/
 .jupyter/
@@ -18,12 +15,10 @@
 .pki/
 .paradoxlauncher/
 .ssh/
-.vim/
 .vispy/
 .vscode/
 .vscode-oss/
 .zotero/
-.wine/
 .steam*
 .x-plane/
 .zoom/
@@ -87,13 +82,8 @@
 .config/Code/User/workspaceStorage/
 .config/Code/User/globalStorage/
 
-.config/VSCodium/*
-!.config/VSCodium/User/
-.config/VSCodium/User/workspaceStorage/
-.config/VSCodium/User/globalStorage/
 
 # common folders
-backups/
 Desktop/
 Documents/
 Downloads/
@@ -110,9 +100,4 @@ scripts/update_clash.py
 
 # special dotfiles
 .bash_history
-.zsh_history
-.zcompdump
-.esd_auth
-.Xauthority
-.gtkrc-2.0
-.pulse-cookie
+
