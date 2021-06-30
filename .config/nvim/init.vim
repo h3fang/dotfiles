@@ -45,3 +45,7 @@ call plug#end()
 " By the way, -- INSERT -- is unnecessary anymore because the mode information is displayed in lightline statusline.
 set noshowmode
 
+" Workaround for vim/neovim resize bug
+" https://github.com/neovim/neovim/issues/11330#issuecomment-723667383
+autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID"
+
