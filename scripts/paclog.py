@@ -77,11 +77,15 @@ def main():
     max_entries = args.n
     log_file = "/var/log/pacman.log"
     if ft == "a" or ft == "all":
-        try:
-            run(["vim", log_file])
-        except OSError:
-            run(["cat", log_file])
-        return
+        candidates = ["vim", "nvim", "bat", "cat"]
+        for program in candidates:
+            try:
+                run([program, log_file])
+                return
+            except OSError:
+                continue
+        print(f"Non of {candidates} found to open the log file.")
+        exit(1)
     with open(log_file, "rt") as f:
         log_lines = f.read().splitlines()
     if ft == "e" or ft == "explicitly":
