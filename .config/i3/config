@@ -212,6 +212,11 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 5%- # decreas
 # Caps Lock indicator
 bindsym --release Caps_Lock exec pkill -SIGRTMIN+3 i3blocks
 
+# dunst
+bindsym $mod+Ctrl+comma exec dunstctl history-pop
+bindsym $mod+Ctrl+period exec dunstctl close
+bindsym $mod+Ctrl+slash exec dunstctl close-all
+
 # power management
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (p) poweroff
 mode "$mode_system" {

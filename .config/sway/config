@@ -230,6 +230,11 @@ bindsym XF86MonBrightnessDown exec brightnessctl s 5%- # decrease screen brightn
 # Caps Lock indicator
 bindsym --release Caps_Lock exec pkill -SIGRTMIN+3 waybar
 
+# dunst
+bindsym $mod+Ctrl+comma exec dunstctl history-pop
+bindsym $mod+Ctrl+period exec dunstctl close
+bindsym $mod+Ctrl+slash exec dunstctl close-all
+
 bindsym $mod+c exec firefox
 bindsym --release $mod+Print exec grim -g "$(slurp)" ~/Pictures/screenshot-"$(date -Is)".png
 
