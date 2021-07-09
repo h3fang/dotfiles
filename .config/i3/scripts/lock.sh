@@ -5,12 +5,12 @@
 i3lock_options=(-t -e --blur=30 --indicator --clock --pass-media-keys --date-str="%a  %F" --date-color=ffffffff --time-color=ffffffff --ring-color=2075c7ff --time-font=monospace)
 
 pre_lock() {
-    killall -SIGUSR1 dunst
+    dunstctl set-paused true
     pkill -x picom
 }
 
 post_lock() {
-    killall -SIGUSR2 dunst
+    dunstctl set-paused false
     picom -b
 }
 

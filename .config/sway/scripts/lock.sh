@@ -10,4 +10,8 @@ if [[ $1 != "force" ]]; then
     fi
 fi
 
+dunstctl set-paused true
+
 swaylock -f --screenshots --clock --indicator --effect-blur 30x3 --datestr="%a %F" --ring-color=2075c7ff --font=monospace -fel --indicator-radius 150
+
+dunstctl set-paused false
