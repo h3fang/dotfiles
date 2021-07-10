@@ -5,6 +5,9 @@
     "workbench.settings.openDefaultSettings": true,
     "workbench.settings.useSplitJSON": true,
 
+    // workspace trust
+    "security.workspace.trust.enabled": false,
+
     // explorer
     "explorer.confirmDelete": false,
 
