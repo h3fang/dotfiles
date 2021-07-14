@@ -249,7 +249,6 @@ bar {
 }
 
 for_window [class="Chromium"] border none
-for_window [class="Firefox"] border none
 for_window [app_id="firefox"] border none
 for_window [class="netease-cloud-music"] border none; floating enable
 
@@ -258,9 +257,8 @@ for_window [window_role="task_dialog"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 for_window [class="Pavucontrol"] floating enable
-for_window [class="Nm-connection-editor"] floating enable
-for_window [title="Preferences$"] floating enable
-for_window [title="Zotero Item Selector" class="Chromium"] floating enable; resize set 800 px 400 px; move position center;
+for_window [title="Preferences"] floating enable
+for_window [title="Zotero Item Selector"] border normal; floating enable; resize set 800 px 600 px; move position center;
 
 # inhibit swayidle
 for_window [class="mpv"] inhibit_idle focus
@@ -268,7 +266,7 @@ for_window [class="^.*"] inhibit_idle fullscreen
 for_window [app_id="^.*"] inhibit_idle fullscreen
 
 # assign apps to workspaces
-assign [class="Chromium"] $ws2
+assign [app_id="firefox"] $ws2
 assign [class="Code"] $ws3
 
 for_window [workspace=$ws3] layout tabbed
