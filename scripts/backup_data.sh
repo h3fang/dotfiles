@@ -99,6 +99,7 @@ function f_backup {
         /etc/modprobe.d \
         /etc/modules-load.d \
         /etc/udev/rules.d \
+        /etc/sway \
         /etc/systemd \
         /etc/smartdns \
         /etc/default/earlyoom \
