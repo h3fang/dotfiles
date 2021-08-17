@@ -24,6 +24,7 @@ alias scripts='$(fd -t x . ~/scripts/ | fzf)'
 alias vim='nvim'
 alias weather='curl -m 5 "https://wttr.in/${LOCATION_CITY}?lang=zh&format=v2"'
 alias yaySc='yay -Sc --noconfirm'
+alias wifi='wpa_cli -i $(ls /sys/class/ieee80211/*/device/net/ | fzf) select_network $(wpa_cli -i wlan0 list_networks | tail -n +2 | fzf | awk "{print $1}")'
 
 # functions
 windows() {
