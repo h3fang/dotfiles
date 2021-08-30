@@ -45,6 +45,7 @@ else
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'kyazdani42/nvim-tree.lua'
     Plug 'romgrk/barbar.nvim'
+    Plug 'tpope/vim-commentary'
     call plug#end()
 
     " Status line (-- INSERT --) is unnecessary lightline is enabled.
