@@ -31,6 +31,7 @@
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 10000,
     "diffEditor.ignoreTrimWhitespace": false,
+    "editor.bracketPairColorization.enabled": true,
 
     // git
     "git.confirmSync": false,
@@ -155,7 +156,6 @@
     ],
 
     // misc.
-    "bracket-pair-colorizer-2.colors": [],
     "files.associations": {
         "*.geojson": "json"
     },
