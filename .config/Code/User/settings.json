@@ -47,7 +47,6 @@
     "rust-client.disableRustup": true,
 
     // python
-    "python.showStartPage": false,
     "python.condaPath": "~/.local/miniconda3/bin/conda",
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": true,
@@ -57,7 +56,6 @@
         "--line-length",
         "128"
     ],
-    "jupyter.askForKernelRestart": false,
 
     // Privacy
     "telemetry.enableCrashReporter": false,
@@ -68,17 +66,7 @@
     "workbench.enableExperiments": false,
 
     // Latex
-    "latex-workshop.view.pdf.viewer": "external",
-    "latex-workshop.view.pdf.external.viewer.command": "qpdfview",
-    "latex-workshop.view.pdf.external.viewer.args": [
-        "--unique",
-        "%PDF%"
-    ],
-    "latex-workshop.view.pdf.external.synctex.command": "qpdfview",
-    "latex-workshop.view.pdf.external.synctex.args": [
-        "--unique",
-        "%PDF%#src:%TEX%:%LINE%:0"
-    ],
+    "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.latex.outDir": "%DIR%/build",
     "latex-workshop.latex.autoClean.run": "onFailed",
     "latex-workshop.latex.recipes": [
