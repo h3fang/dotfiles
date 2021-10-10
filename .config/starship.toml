@@ -20,6 +20,8 @@ $status\
 $character
 """
 
+right_format = """$all"""
+
 [conda]
 format = "[$symbol$environment]($style) "
 style = "bold 197"

@@ -12,6 +12,6 @@
 #### FIGURE
 ## See http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure
 figure.figsize   : 12, 6.75      ## figure size in inches
-figure.dpi       : 144          ## figure dots per inch
+figure.dpi       : 96          ## figure dots per inch
 #figure.autolayout : True       ## `tight_layout`
 font.size : 12
