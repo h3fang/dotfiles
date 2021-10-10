@@ -20,6 +20,7 @@
         }
     },
 
+    "window.menuBarVisibility": "toggle",
     "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}vscode",
     "editor.fontFamily": "'Hack', 'Noto Sans Mono CJK', 'monospace', 'FontAwesome', 'Font Awesome 5 Free', 'Font Awesome 5 Brands', 'Noto Color Emoji'",
     "editor.fontSize": 16,
@@ -28,6 +29,7 @@
     "editor.minimap.showSlider": "always",
     "editor.minimap.renderCharacters": false,
     "terminal.external.linuxExec": "xfce4-terminal",
+    "terminal.integrated.inheritEnv": false,
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 10000,
     "diffEditor.ignoreTrimWhitespace": false,
@@ -43,9 +45,6 @@
     "C_Cpp.intelliSenseCacheSize": 1024,
     "C_Cpp.default.cppStandard": "c++17",
 
-    // rust
-    "rust-client.disableRustup": true,
-
     // python
     "python.condaPath": "~/.local/miniconda3/bin/conda",
     "python.linting.pylintEnabled": false,
@@ -58,8 +57,7 @@
     ],
 
     // Privacy
-    "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false,
+    "telemetry.telemetryLevel": "off",
     "update.mode": "none",
     "extensions.ignoreRecommendations": true,
     "workbench.settings.enableNaturalLanguageSearch": false,
