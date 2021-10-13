@@ -39,6 +39,9 @@
     "git.confirmSync": false,
     "git.autofetch": true,
 
+    // rust
+    "rust-analyzer.server.path": "/usr/bin/rust-analyzer",
+
     // C/C++
     "C_Cpp.clang_format_path": "/usr/bin/clang-format",
     "C_Cpp.clang_format_style": "{BasedOnStyle: LLVM, IndentWidth: 4, ColumnLimit: 120, BreakBeforeBraces: Attach, AccessModifierOffset: -4, AllowShortIfStatementsOnASingleLine: Never,AllowShortBlocksOnASingleLine: Empty, AllowShortFunctionsOnASingleLine: Empty}",
