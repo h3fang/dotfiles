@@ -42,6 +42,7 @@
 .config/gammastep/config.ini
 .config/gedit/
 .config/GIMP/
+.config/godot/
 .config/Google/
 .config/gtk-2.0/
 .config/gtk-3.0/
