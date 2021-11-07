@@ -50,13 +50,11 @@
 
     // python
     "python.condaPath": "~/.local/miniconda3/bin/conda",
-    "python.linting.pylintEnabled": false,
-    "python.linting.flake8Enabled": true,
-    "python.linting.flake8Args": ["--max-line-length=128", "--ignore=E266", "--verbose"],
     "python.formatting.provider": "black",
-    "python.formatting.blackArgs": [
-        "--line-length",
-        "128"
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": [
+        "--extend-ignore=E203",
+        "--max-line-length=88",
     ],
 
     // Privacy
