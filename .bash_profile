@@ -80,6 +80,7 @@ start_sway() {
     # MOZ_DBUS_REMOTE https://mastransky.wordpress.com/2020/03/16/wayland-x11-how-to-run-firefox-in-mixed-environment/
     XKB_DEFAULT_LAYOUT=us \
     XDG_SESSION_TYPE=wayland \
+    XDG_CURRENT_DESKTOP=sway \
     QT_QPA_PLATFORM=wayland \
     QT_WAYLAND_FORCE_DPI=physical \
     QT_AUTO_SCREEN_SCALE_FACTOR=0 \
