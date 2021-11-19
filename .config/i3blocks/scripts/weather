@@ -2,6 +2,10 @@
 
 import os,requests
 
+
+error = "<span color='red'>{}</span>"
+
+
 def get_city():
     c = os.getenv("LOCATION_CITY")
     if c is None:
@@ -10,20 +14,25 @@ def get_city():
             r.raise_for_status()
             return r.json()["city"]
         except:
-            return ""
+            print(error.format("location"))
+            exit(1)
     else:
         return c
 
+
+def wttrin(location):
+    r = requests.get(f"https://wttr.in/{location}?format=%l+%c+%t&lang=zh", timeout=10)
+    r.raise_for_status()
+    if "°C" in r.text:
+        print(r.text.rstrip().replace("+", ""))
+    else:
+        raise RuntimeError("invalid response, no tempreture data")
+
+
 def openweathermap(location):
-    msg = "<span color='red'>{}</span>"
-
-    if location == "":
-        print(msg.format("location"))
-        exit(1)
-
     a = os.getenv("OWM_AID")
     if a is None:
-        print(msg.format("app_id"))
+        print(error.format("app_id"))
         exit(2)
 
     try:
@@ -32,18 +41,15 @@ def openweathermap(location):
         d = r.json()
         print(f"{d['name']} {d['weather'][0]['description']} {d['main']['temp']:.0f}℃")
     except Exception as e:
-        print(msg.format(type(e).__name__))
+        print(error.format(type(e).__name__))
         exit(3)
+
 
 if __name__ == '__main__':
     location = get_city()
 
     try:
-        r = requests.get(f"https://wttr.in/{location}?format=%l+%c+%t&lang=zh", timeout=10)
+        wttrin(location)
     except:
         openweathermap(location)
-    else:
-        if r and "°C" in r.text:
-            print(r.text.rstrip().replace("+", ""))
-        else:
-            openweathermap(location)
+
