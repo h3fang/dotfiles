@@ -48,9 +48,11 @@
 .config/gtk-3.0/
 .config/ibus/bus/
 .config/inkscape/
-.config/libreoffice/
+.config/Joplin/
+.config/joplin-desktop/
 .config/kingsoft.conf
 .config/Kingsoft/
+.config/libreoffice/
 .config/mpv/watch_later/
 .config/menus/
 .config/parallel/tmp/

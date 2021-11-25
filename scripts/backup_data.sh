@@ -35,6 +35,7 @@ function f_backup {
         --exclude "$HOME/.config/Code" \
         --exclude "$HOME/.config/Code - OSS" \
         --exclude "$HOME/.config/chromium" \
+        --exclude "$HOME/.config/Joplin" \
         --exclude "$HOME/.config/libreoffice" \
         --exclude "$HOME/.config/mpv/watch_later" \
         --exclude "$HOME/.config/GIMP" \
