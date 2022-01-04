@@ -242,6 +242,7 @@ bindsym $mod+Ctrl+slash exec dunstctl close-all
 
 bindsym $mod+c exec firefox
 bindsym --release $mod+Print exec grim -g "$(slurp)" ~/Pictures/screenshot-"$(date -Is)".png
+bindsym $mod+Shift+p fullscreen disable; floating enable; resize set 800 600; sticky enable; move window to position center;
 
 ### window colors
 # colorclass            border   background  text     indicator  child_border
@@ -273,9 +274,11 @@ for_window [app_id="^.*"] inhibit_idle fullscreen
 # assign apps to workspaces
 assign [app_id="firefox"] $ws2
 assign [class="Code"] $ws3
+assign [app_id="Code"] $ws3
 
 for_window [workspace=$ws3] layout tabbed
 
 focus_follows_mouse no
+tiling_drag disable
 
 include /etc/sway/config.d/*
