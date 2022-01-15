@@ -2,9 +2,9 @@
 
 # check if the kernel in use is updated
 
-pkg_ver=$(pacman -Q ${LINUX_PKG:-linux} | awk '{print $2}')
-if [[ -z $pkg_ver || ! $(uname -r) =~ $pkg_ver ]]; then
+pkg_ver=$(uname -r)
+if [[ ! -d "/usr/lib/modules/${pkg_ver}" ]]; then
     echo "<span background='#DC143C'>kernel update</span>"
-    echo $(grep "$LINUX_PKG" /var/log/pacman.log | grep "$pkg_ver")
+    echo $(grep "$pkg_ver" /var/log/pacman.log)
 fi
 
