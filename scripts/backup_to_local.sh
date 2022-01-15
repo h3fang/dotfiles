@@ -20,6 +20,7 @@ rsync -ahv --delete --delete-excluded \
     --exclude=".config/Code/User/workspaceStorage" \
     --exclude=".config/Code/User/globalStorage" \
     --exclude=".config/Code/logs" \
+    --exclude=".config/draw.io" \
     --exclude=".vscode" \
     ~ "$BACKUP_LOC"
 
