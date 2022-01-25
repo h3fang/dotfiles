@@ -1,10 +1,10 @@
-background_opacity: 0.90
 selection:
   save_to_clipboard: true
 font:
   size: 13.0
 window:
   dynamic_title: true
+  opacity: 0.9
 colors:
   # Default colors
   primary:
