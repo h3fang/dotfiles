@@ -22,6 +22,7 @@ exec dunst
 exec networkd-notify
 exec systembus-notify
 exec gammastep
+exec fcitx5 -d
 
 ### Output configuration
 #
