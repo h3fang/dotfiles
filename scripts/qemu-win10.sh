@@ -7,7 +7,7 @@ VIRTIO_IMG=$(fd -e iso virtio-win "$HOME/VMs" | head -n1)
 DISK_IMG=${HOME}/VMs/win10.qcow2
 
 function create_disk {
-    qemu-img create -f qcow2 "${DISK_IMG}" 20G
+    qemu-img create -f qcow2 "${DISK_IMG}" 50G
 }
 
 function install {
