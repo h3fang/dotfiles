@@ -19,5 +19,8 @@ sed -Ei '/^(sudo )?(curl|wget|youtube-dl) /d' ~/.bash_history
 # delete vim commands
 sed -Ei '/^(sudo )?(vim|nvim) /d' ~/.bash_history
 
+# delete cargo test subcommands
+sed -Ei '/^cargo t /d' ~/.bash_history
+
 # list top 10 commands
-awk '{print $1}' .bash_history | sort | uniq -c | sort -n | tail -10
+awk '{print $1}' ~/.bash_history | sort | uniq -c | sort -n | tail -10
