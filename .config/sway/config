@@ -27,7 +27,7 @@ exec fcitx5 -d
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/Pictures/wallpapers/starry_sky.jpg fill
+output * bg ~/Pictures/wallpapers/current fill
 #
 # Example configuration:
 #
