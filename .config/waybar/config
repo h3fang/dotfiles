@@ -13,6 +13,7 @@
     //     "all-outputs": true,
     },
     "sway/window": {
+        "icon": false,
         "max-length": 48
     },
     "sway/mode": {
