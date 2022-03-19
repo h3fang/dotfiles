@@ -60,7 +60,8 @@ start_i3wm() {
     fi
 
     export XDG_SESSION_TYPE=x11
-    export QT_AUTO_SCREEN_SCALE_FACTOR=0
+    #export QT_AUTO_SCREEN_SCALE_FACTOR=1
+    export QT_SCALE_FACTOR=0.5
     export MOZ_X11_EGL=1
     exec startx -- -keeptty > "$X_SESSION_LOG" 2>&1
 }
