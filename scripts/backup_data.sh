@@ -106,7 +106,6 @@ function f_backup {
         /etc/udev/rules.d \
         /etc/sway \
         /etc/systemd \
-        /etc/smartdns \
         /etc/default/earlyoom \
         /etc/makepkg.conf \
         /etc/X11/xorg.conf.d \
