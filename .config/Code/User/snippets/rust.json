@@ -17,6 +17,8 @@
 		"body": [
 			"pub struct Solution;",
 			"",
+			"$0",
+			"",
 			"#[cfg(test)]",
 			"mod tests {",
 			"    use super::*;",
