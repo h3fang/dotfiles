@@ -3,7 +3,7 @@ Description=A rule based proxy in Go.
 After=network.target
 
 [Service]
-Type=simple
+Type=exec
 Restart=on-abort
 ExecStartPre=-/usr/bin/rm "%E/clash/%i.log"
 ExecStart=/usr/bin/clash -f "%E/clash/%i.yaml"
