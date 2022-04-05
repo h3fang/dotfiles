@@ -54,6 +54,7 @@
 .config/kingsoft.conf
 .config/Kingsoft/
 .config/libreoffice/
+.config/Mailspring/
 .config/mpv/watch_later/
 .config/menus/
 .config/parallel/tmp/
@@ -77,6 +78,7 @@
 .config/modprobed-db.conf
 .config/unity3d/
 .config/zoomus.conf
+.config/Unknown Organization/cajviewer.conf
 .config/Unknown Organization/zoom.conf
 .config/TabNine/
 

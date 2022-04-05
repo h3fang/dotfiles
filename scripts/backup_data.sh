@@ -38,6 +38,7 @@ function f_backup {
         --exclude "$HOME/.config/draw.io" \
         --exclude "$HOME/.config/Joplin" \
         --exclude "$HOME/.config/libreoffice" \
+        --exclude "$HOME/.config/Mailspring" \
         --exclude "$HOME/.config/mpv/watch_later" \
         --exclude "$HOME/.config/GIMP" \
         --exclude "$HOME/.config/parallel/tmp" \
