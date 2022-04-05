@@ -42,9 +42,6 @@ if empty(glob(stdpath('data') . '/site/autoload/plug.vim'))
 else
     call plug#begin(stdpath('data') . '/plugged')
     Plug 'itchyny/lightline.vim'
-    Plug 'kyazdani42/nvim-web-devicons'
-    Plug 'kyazdani42/nvim-tree.lua'
-    Plug 'romgrk/barbar.nvim'
     Plug 'tpope/vim-commentary'
     call plug#end()
 
