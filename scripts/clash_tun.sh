@@ -5,10 +5,23 @@ set -eETu -o pipefail
 
 trap 'echo "ERROR on line: ${LINENO}", command: "$BASH_COMMAND"' ERR
 
+clear_iptables() {
+    iptables -F
+    iptables -X
+    iptables -t nat -F
+    iptables -t nat -X
+    iptables -t mangle -F
+    iptables -t mangle -X
+    iptables -P INPUT ACCEPT
+    iptables -P FORWARD ACCEPT
+    iptables -P OUTPUT ACCEPT
+}
+
 restore() {
     set +eET
     echo resetting ...
-    systemctl restart iptables.service
+    clear_iptables
+    systemctl stop iptables.service
     ip rule delete fwmark ${fwmark}
     ip link set ${tun_dev} down
     ip link delete ${tun_dev}
@@ -41,6 +54,9 @@ ip address replace ${tun_addr} dev ${tun_dev}
 ip route replace default dev ${tun_dev} table ${table_id}
 ip rule add fwmark ${fwmark} lookup ${table_id}
 sysctl net.ipv4.conf.${tun_dev}.rp_filter=0
+sysctl net.ipv4.conf.all.rp_filter=0
+
+systemctl start iptables.service
 
 iptables -t mangle -N CLASH
 iptables -t mangle -A CLASH -d 0.0.0.0/8 -j RETURN
@@ -51,7 +67,8 @@ iptables -t mangle -A CLASH -d 172.16.0.0/12 -j RETURN
 iptables -t mangle -A CLASH -d 192.168.0.0/16 -j RETURN
 iptables -t mangle -A CLASH -d 224.0.0.0/4 -j RETURN
 iptables -t mangle -A CLASH -d 240.0.0.0/4 -j RETURN
-iptables -t mangle -A CLASH -j MARK --set-mark ${fwmark}
+iptables -t mangle -A CLASH -p tcp -j MARK --set-mark ${fwmark}
+iptables -t mangle -A CLASH -p udp -j MARK --set-mark ${fwmark}
 
 iptables -t mangle -A PREROUTING -j CLASH
 
@@ -60,5 +77,5 @@ iptables -t nat -A OUTPUT -p udp --dport 53 -j REDIRECT --to-ports ${clash_dns}
 iptables -t mangle -A OUTPUT -j CLASH
 
 ulimit -n 65535
-tun2socks -device ${tun_dev} -proxy socks5://${clash_socks5_addr}:${clash_socks5_port} -loglevel warn
+tun2socks -device ${tun_dev} -proxy socks5://${clash_socks5_addr}:${clash_socks5_port} -loglevel warning
 
