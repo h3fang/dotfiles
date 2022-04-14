@@ -17,7 +17,7 @@ set $CloseApps ~/.config/i3/scripts/close_apps.sh
 font pango:monospace 7.5
 
 # wallpaper
-exec_always --no-startup-id feh --bg-fill --no-fehbg ~/Pictures/wallpapers/starry_sky.jpg
+exec_always --no-startup-id feh --bg-fill --no-fehbg ~/Pictures/wallpapers/current
 
 # autostart
 #exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -186,6 +186,7 @@ for_window [class="Nm-connection-editor"] floating enable
 for_window [title="Preferences$"] floating enable
 for_window [title="Zotero Item Selector" class="Chromium"] floating enable; resize set 800 px 400 px; move position center;
 for_window [title="About Mozilla Firefox" class="firefox"] floating enable
+for_window [title="加入会议 — 腾讯会议" class="wemeetapp"] floating enable
 
 # assign apps to workspaces
 assign [class="firefox"] $ws2
