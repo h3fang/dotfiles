@@ -115,12 +115,12 @@ input * {
     set $ws1 "1 "
     set $ws2 "2 "
     set $ws3 "3 "
-    set $ws4 "4 "
-    set $ws5 "5 "
-    set $ws6 "6 "
-    set $ws7 "7 "
-    set $ws8 "8 "
-    set $ws9 "9 "
+    set $ws4 "4 "
+    set $ws5 "5 "
+    set $ws6 "6 "
+    set $ws7 "7 "
+    set $ws8 "8 "
+    set $ws9 "9 "
     set $ws10 "10 "
 
     # switch to workspace
@@ -266,6 +266,8 @@ for_window [window_type="menu"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [title="Preferences"] floating enable
 for_window [title="Zotero Item Selector"] border normal; floating enable; resize set 800 px 600 px; move position center;
+for_window [app_id="firefox" title="About Mozilla Firefox"] floating enable
+
 
 # inhibit swayidle
 for_window [class="mpv"] inhibit_idle focus
