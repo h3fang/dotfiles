@@ -40,8 +40,8 @@
     "git.autofetch": true,
 
     // rust
-    "rust-analyzer.server.path": "/usr/bin/rust-analyzer",
-    "crates.localCargoIndexHash": "mirrors.sjtug.sjtu.edu.cn/git/crates.io-index-1ecc6299db9ec823",
+    // "rust-analyzer.server.path": "/usr/bin/rust-analyzer",
+    "crates.localCargoIndexHash": "mirrors.sjtug.sjtu.edu.cn-4f7dbcce21e258a2",
 
     // C/C++
     "C_Cpp.clang_format_path": "/usr/bin/clang-format",
@@ -118,6 +118,7 @@
         "convolutional",
         "dataset",
         "discretize",
+        "discretized",
         "elsevier",
         "ensembling",
         "frobenius",
