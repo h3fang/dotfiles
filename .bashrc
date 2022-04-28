@@ -57,7 +57,7 @@ export HISTSIZE=${HISTFILESIZE}  # increase history size (default is 500)
 # ensure synchronization between Bash memory and history file
 export PROMPT_COMMAND='history -a; history -n'
 
-source /usr/share/doc/mcfly/mcfly.bash
+source /usr/share/fzf/key-bindings.bash
 
 # completion for git alias
 if [[ -r /usr/share/bash-completion/completions/git ]]; then
