@@ -19,10 +19,8 @@ export XDG_CACHE_HOME=~/.cache
 export XDG_DATA_HOME=~/.local/share
 
 export XAUTHORITY="$XDG_CACHE_HOME"/Xauthority
-export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
-export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export GOPATH="$XDG_DATA_HOME"/go
 export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
 export TEXMFHOME=$XDG_DATA_HOME/texmf
