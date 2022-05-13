@@ -41,7 +41,7 @@
 
     // rust
     // "rust-analyzer.server.path": "/usr/bin/rust-analyzer",
-    "crates.localCargoIndexHash": "mirrors.sjtug.sjtu.edu.cn-4f7dbcce21e258a2",
+    "crates.localCargoIndexHash": "mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd",
 
     // C/C++
     "C_Cpp.clang_format_path": "/usr/bin/clang-format",
