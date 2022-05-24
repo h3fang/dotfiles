@@ -45,7 +45,7 @@
 
     // C/C++
     "C_Cpp.clang_format_path": "/usr/bin/clang-format",
-    "C_Cpp.clang_format_style": "{BasedOnStyle: LLVM, IndentWidth: 4, ColumnLimit: 120, BreakBeforeBraces: Attach, AccessModifierOffset: -4, AllowShortIfStatementsOnASingleLine: Never,AllowShortBlocksOnASingleLine: Empty, AllowShortFunctionsOnASingleLine: Empty}",
+    "C_Cpp.clang_format_style": "{BasedOnStyle: LLVM, IndentWidth: 4, ColumnLimit: 100, BreakBeforeBraces: Attach, AccessModifierOffset: -4, AllowShortIfStatementsOnASingleLine: Never,AllowShortBlocksOnASingleLine: Empty, AllowShortFunctionsOnASingleLine: Empty}",
     "C_Cpp.intelliSenseCacheSize": 1024,
     "C_Cpp.default.cppStandard": "c++17",
 
@@ -109,39 +109,6 @@
                 "%DOC%"
             ]
         }
-    ],
-
-    // spell checker
-    "cSpell.userWords": [
-        "autoencoder",
-        "backend",
-        "convolutional",
-        "dataset",
-        "discretize",
-        "discretized",
-        "elsevier",
-        "ensembling",
-        "frobenius",
-        "hyperparameters",
-        "jacobian",
-        "laplacian",
-        "metaheuristic",
-        "nonlinearly",
-        "overdetermined",
-        "overfit",
-        "raphson",
-        "stochasticity",
-        "toeplitz",
-        "voxel",
-        "waypoint"
-    ],
-    "cSpell.diagnosticLevel": "Information",
-    "cSpell.enabledLanguageIds": [
-        "latex",
-        "markdown",
-        "git-commit",
-        "text",
-        "plaintext"
     ],
 
     // misc.
