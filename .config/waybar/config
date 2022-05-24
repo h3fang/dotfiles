@@ -17,7 +17,7 @@
         "max-length": 48
     },
     "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
+        "format": "<span foreground=\"red\" background=\"#202020\">{}</span>"
     },
     "idle_inhibitor": {
         "format": "{icon}",
@@ -96,7 +96,6 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
     },
     "custom/weather": {
         "format": "{}",
