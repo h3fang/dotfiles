@@ -242,7 +242,8 @@ bindsym $mod+Ctrl+period exec dunstctl close
 bindsym $mod+Ctrl+slash exec dunstctl close-all
 
 bindsym $mod+c exec firefox
-bindsym --release $mod+Print exec grim -g "$(slurp)" ~/Pictures/screenshot-"$(date -Is)".png
+bindsym --release $mod+Print exec grim -g "$(slurp)" ~/Pictures/screenshots/"$(date -Is)".png
+bindsym --release $mod+Shift+Print exec grim ~/Pictures/screenshots/"$(date -Is)".png
 bindsym $mod+Shift+p fullscreen disable; floating enable; resize set 800 600; sticky enable; move window to position center;
 
 ### window colors
@@ -267,6 +268,7 @@ for_window [class="Pavucontrol"] floating enable
 for_window [title="Preferences"] floating enable
 for_window [title="Zotero Item Selector"] border normal; floating enable; resize set 800 px 600 px; move position center;
 for_window [app_id="firefox" title="About Mozilla Firefox"] floating enable
+for_window [app_id="thunar" title="File Operation Progress"] floating enable
 
 
 # inhibit swayidle
