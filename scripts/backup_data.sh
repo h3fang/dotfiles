@@ -78,11 +78,11 @@ function f_backup {
         --exclude "$HOME/projects/blog/public" \
         "::{now:%Y-%m-%d_%H-%M-%S}" \
         ~/.config \
-        ~/.gnupg \
         ~/.local/share/bash-completion \
         ~/.local/share/fcitx5 \
         ~/.local/share/keyrings \
         ~/.local/share/systemd \
+        ~/.local/share/gnupg \
         ~/.ssh \
         ~/scripts \
         ~/Pictures \
