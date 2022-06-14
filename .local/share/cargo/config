@@ -11,6 +11,6 @@ registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git"
 [target.x86_64-unknown-linux-gnu]
 linker = "/usr/bin/clang"
 rustflags = [
-    "-C", "link-arg=-fuse-ld=lld",
+    "-C", "link-arg=-fuse-ld=/usr/bin/mold",
 ]
 
