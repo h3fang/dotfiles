@@ -27,7 +27,7 @@ sway="sway xorg-server-xwayland swaybg swayidle swaylock-effects-git i3blocks fe
 de_tools="xfce4-terminal alacritty thunar thunar-volman thunar-archive-plugin gvfs udiskie rofi brightnessctl fzf"
 im="fcitx5 fcitx5-qt fcitx5-gtk fcitx5-chinese-addons fcitx5-pinyin-zhwiki"
 latex="texlive-bibtexextra texlive-core texlive-formatsextra texlive-humanities texlive-langchinese texlive-latexextra texlive-pictures texlive-pstricks texlive-publishers texlive-science biber"
-programming="python clang gdb cmake rustup tokei cargo-watch cargo-flamegraph visual-studio-code-bin godot"
+programming="python clang gdb cmake rustup mold tokei cargo-watch cargo-flamegraph visual-studio-code-bin godot"
 academic="zotero-bin"
 
 yay -S --needed "$fonts $drivers $system_tools $multimedia $network $sway $de_tools $im $latex $programming $academic"
