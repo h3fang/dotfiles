@@ -12,6 +12,6 @@ fi
 
 dunstctl set-paused true
 
-swaylock -f --screenshots --clock --indicator --effect-blur 30x3 --datestr="%a %F" --ring-color=2075c7ff --font=monospace -fel --indicator-radius 150
+~/.config/sway/scripts/swaylock-blur -fel --indicator-radius 150 --ring-color=2075c7ff --font monospace --font-size 32
 
 dunstctl set-paused false

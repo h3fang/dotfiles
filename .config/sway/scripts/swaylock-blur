@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+# requires sway (swaymsg), swaylock, grim, imagemagick (convert)
+
+from subprocess import check_output, check_call
+import tempfile
+import os
+import sys
+import json
+
+r = check_output(["swaymsg", "-t", "get_outputs"])
+r = json.loads(r)
+outputs = [o["name"] for o in r]
+images = [tempfile.mktemp() for _ in outputs]
+lockcmd = ["swaylock"]
+
+# take the screenshots
+for output,image in zip(outputs, images):
+    check_call(["grim", "-o", output, image])
+    check_call(["convert", image, "-blur", "0x64", image])
+    lockcmd.extend(["-i", output+":"+image])
+
+# lock the screen
+lockcmd.extend(sys.argv[1:])
+check_call(lockcmd)
+
+# cleanup
+for img in images:
+    os.remove(img)
