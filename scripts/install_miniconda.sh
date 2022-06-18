@@ -31,13 +31,14 @@ source "${MINICONDA_PATH}/bin/activate"
 
 conda config --system --set changeps1 false
 
-read -p "use SJTU anaconda mirror? (y/[n]) " -r
+read -p "use tsinghua anaconda mirror? (y/[n]) " -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     conda config --system --set show_channel_urls yes
-    conda config --system --add default_channels https://anaconda.mirrors.sjtug.sjtu.edu.cn/pkgs/main
-    conda config --system --set custom_channels.pytorch https://anaconda.mirrors.sjtug.sjtu.edu.cn/cloud
-    conda config --system --set custom_channels.conda-forge https://anaconda.mirrors.sjtug.sjtu.edu.cn/cloud
+    conda config --system --add channels defaults
+    conda config --system --add default_channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    conda config --system --set custom_channels.pytorch https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+    conda config --system --set custom_channels.conda-forge https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
 fi
 
 # update base
