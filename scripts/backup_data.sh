@@ -50,6 +50,7 @@ function f_backup {
         --exclude "$HOME/.config/menus" \
         --exclude "$HOME/.config/transmission/resume" \
         --exclude "$HOME/.config/transmission/dht.dat" \
+        --exclude "$HOME/.config/unity3d" \
         --exclude "$HOME/.ssh/known_hosts" \
         --exclude "sh:$HOME/projects/**/build-*" \
         --exclude "sh:$HOME/projects/**/[bB]uild" \
