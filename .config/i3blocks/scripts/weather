@@ -20,15 +20,6 @@ def get_city():
         return c
 
 
-def wttrin(location):
-    r = requests.get(f"https://wttr.in/{location}?format=%l+%c+%t&lang=zh", timeout=10)
-    r.raise_for_status()
-    if "°C" in r.text:
-        print(r.text.rstrip().replace("+", ""))
-    else:
-        raise RuntimeError("invalid response, no tempreture data")
-
-
 def openweathermap(location):
     a = os.getenv("OWM_AID")
     if a is None:
@@ -36,10 +27,22 @@ def openweathermap(location):
         exit(2)
 
     try:
-        r = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={location}&units=metric&lang=zh_cn&appid={a}', timeout=10)
+        r = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={location}&units=metric&lang=zh_cn&appid={a}', timeout=5)
         r.raise_for_status()
         d = r.json()
         print(f"{d['name']} {d['weather'][0]['description']} {d['main']['temp']:.0f}℃")
+        details = [
+                    f"Feels Like: {d['main']['feels_like']:.0f}℃",
+                    f"Pressure: {d['main']['pressure']} hPa",
+                    f"Humidity: {d['main']['humidity']}%",
+                    f"Visibility: {d['visibility']} m",
+                    f"Cloudiness: {d['clouds']['all']}%",
+                    f"Wind Speed: {d['wind']['speed']} m/s",
+                    f"Wind Direction: {d['wind']['deg']} degree",
+                ]
+        if "gust" in d["wind"]:
+            details.append(f"Wind Gust: {d['wind']['gust']} m/s")
+        print("\r".join(details))
     except Exception as e:
         print(error.format(type(e).__name__))
         exit(3)
@@ -47,9 +50,5 @@ def openweathermap(location):
 
 if __name__ == '__main__':
     location = get_city()
-
-    try:
-        wttrin(location)
-    except:
-        openweathermap(location)
+    openweathermap(location)
 
