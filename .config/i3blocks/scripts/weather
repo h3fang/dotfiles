@@ -1,54 +1,126 @@
 #!/usr/bin/python3
 
-import os,requests
+import os
+import requests
 
 
-error = "<span color='red'>{}</span>"
+OWM = "OWM_AID"
+QWEATHER = "QWEATHER_KEY"
+ERROR = "<span color='red'>{}</span>"
 
 
 def get_city():
     c = os.getenv("LOCATION_CITY")
     if c is None:
         try:
-            r = requests.get(f'https://ipinfo.io', timeout=10)
+            r = requests.get("https://ipinfo.io", timeout=10)
             r.raise_for_status()
             return r.json()["city"]
-        except:
-            print(error.format("location"))
-            exit(1)
+        except Exception:
+            return None
     else:
         return c
 
 
+def qweather(location):
+    key = os.getenv(QWEATHER)
+    if key is None:
+        raise RuntimeError(f"{QWEATHER} not specified")
+
+    r = requests.get(
+        f"https://geoapi.qweather.com/v2/city/lookup?location={location}&key={key}",
+        timeout=5,
+    )
+    r.raise_for_status()
+    r = r.json()
+    location_id = r["location"][0]["id"]
+
+    r = requests.get(
+        f"https://devapi.qweather.com/v7/weather/now?key={key}&location={location_id}",
+        timeout=5,
+    )
+    r.raise_for_status()
+    d = r.json()
+
+    n = d["now"]
+    summary = f"{location} {n['text']} {n['temp']}℃"
+    details = [
+        f"Feels Like: {n['feelsLike']}℃",
+        f"Pressure: {n['pressure']} hPa",
+        f"Humidity: {n['humidity']}%",
+        f"Visibility: {n['vis']} km",
+        f"Wind Speed: {n['windSpeed']} km/h",
+        f"Wind Direction: {n['wind360']} degree",
+    ]
+    if "cloud" in n:
+        details.append(f"Cloudiness: {n['cloud']}%")
+    return summary, details
+
+
 def openweathermap(location):
-    a = os.getenv("OWM_AID")
+    a = os.getenv(OWM)
     if a is None:
-        print(error.format("app_id"))
-        exit(2)
+        raise RuntimeError(f"{OWM} not specified")
 
-    try:
-        r = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={location}&units=metric&lang=zh_cn&appid={a}', timeout=5)
-        r.raise_for_status()
-        d = r.json()
-        print(f"{d['name']} {d['weather'][0]['description']} {d['main']['temp']:.0f}℃")
-        details = [
-                    f"Feels Like: {d['main']['feels_like']:.0f}℃",
-                    f"Pressure: {d['main']['pressure']} hPa",
-                    f"Humidity: {d['main']['humidity']}%",
-                    f"Visibility: {d['visibility']} m",
-                    f"Cloudiness: {d['clouds']['all']}%",
-                    f"Wind Speed: {d['wind']['speed']} m/s",
-                    f"Wind Direction: {d['wind']['deg']} degree",
-                ]
-        if "gust" in d["wind"]:
-            details.append(f"Wind Gust: {d['wind']['gust']} m/s")
-        print("\r".join(details))
-    except Exception as e:
-        print(error.format(type(e).__name__))
-        exit(3)
+    url = "https://api.openweathermap.org/data/2.5/weather"
+    r = requests.get(
+        f"{url}?q={location}&units=metric&lang=zh_cn&appid={a}",
+        timeout=5,
+    )
+    r.raise_for_status()
+    d = r.json()
+    summary = f"{d['name']} {d['weather'][0]['description']} {d['main']['temp']:.0f}℃"
+    details = [
+        f"Feels Like: {d['main']['feels_like']:.0f}℃",
+        f"Pressure: {d['main']['pressure']} hPa",
+        f"Humidity: {d['main']['humidity']}%",
+        f"Visibility: {d['visibility']} m",
+        f"Cloudiness: {d['clouds']['all']}%",
+        f"Wind Speed: {d['wind']['speed']} m/s",
+        f"Wind Direction: {d['wind']['deg']} degree",
+    ]
+    if "gust" in d["wind"]:
+        details.append(f"Wind Gust: {d['wind']['gust']} m/s")
+    return summary, details
 
 
-if __name__ == '__main__':
+def main():
     location = get_city()
-    openweathermap(location)
+    if location is None:
+        print(ERROR.format("Location"))
+        return
 
+    summary = ""
+    details = ["qweather"]
+    try:
+        summary, d = qweather(location)
+        details += d
+    except RuntimeError:
+        details.append("key")
+    except Exception as e:
+        details.append(type(e).__name__)
+
+    if len(summary) > 0:
+        print(summary)
+        print("\r".join(details))
+        return
+
+    details.append("\ropenweathermap")
+    try:
+        summary, d = openweathermap(location)
+        details += d
+    except RuntimeError:
+        details.append("app_id")
+    except Exception as e:
+        details.append(type(e).__name__)
+
+    if len(summary) > 0:
+        print(summary)
+    else:
+        print(ERROR.format("Error"))
+
+    print("\r".join(details))
+
+
+if __name__ == "__main__":
+    main()

@@ -1,16 +1,12 @@
 {
-    // "layer": "top", // Waybar at top layer
     "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 32, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
-    // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
     "modules-right": ["custom/weather", "idle_inhibitor", "custom/capslock", "pulseaudio", "network", "custom/kernel", "custom/systemd", "cpu", "memory", "battery", "custom/update", "clock", "tray"],
-    // Modules configuration
     "sway/workspaces": {
          "disable-scroll": true,
-    //     "all-outputs": true,
+         "all-outputs": true,
     },
     "sway/window": {
         "icon": false,
@@ -31,7 +27,6 @@
         "spacing": 10
     },
     "clock": {
-        // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
@@ -41,19 +36,6 @@
     },
     "memory": {
         "format": " {}%"
-    },
-    "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{icon} {temperatureC}°C",
-        "format-icons": ["", "", ""]
-    },
-    "backlight": {
-        // "device": "acpi_video1",
-        "format": "{icon} {percent}%",
-        "format-icons": ["", ""]
     },
     "battery": {
         "states": {
@@ -99,30 +81,29 @@
     },
     "custom/weather": {
         "format": "{}",
-        "max-length": 20,
         "interval": 300,
-        "exec": "$HOME/.config/i3blocks/scripts/weather 2> /dev/null"
+        "exec": "$HOME/.config/i3blocks/scripts/weather 2>/dev/null"
     },
     "custom/kernel": {
         "format": "{}",
         "interval": 60,
-        "exec": "$HOME/.config/i3blocks/scripts/kernel-version 2> /dev/null"
+        "exec": "$HOME/.config/i3blocks/scripts/kernel-version 2>/dev/null"
     },
     "custom/systemd": {
         "format": "{}",
         "interval": 60,
-        "exec": "$HOME/.config/i3blocks/scripts/systemd 2> /dev/null"
+        "exec": "$HOME/.config/i3blocks/scripts/systemd 2>/dev/null"
     },
     "custom/update": {
         "format": " {}",
         "interval": 3600,
         "signal": 2,
-        "exec": "$HOME/.config/i3blocks/scripts/arch-update 2> /dev/null"
+        "exec": "$HOME/.config/i3blocks/scripts/arch-update 2>/dev/null"
     },
     "custom/capslock": {
         "format": "{}",
         "interval": "once",
         "signal": 3,
-        "exec": "$HOME/.config/i3blocks/scripts/capslock 2> /dev/null"
+        "exec": "$HOME/.config/i3blocks/scripts/capslock 2>/dev/null"
     }
 }
