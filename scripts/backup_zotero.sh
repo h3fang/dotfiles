@@ -7,7 +7,7 @@ trap 's=$?; echo "$0: Error on line $LINENO"; notify-send "$0: Error on line $LI
 export BORG_REPO=$HOME/.local/share/backups/zotero
 export BORG_PASSCOMMAND="secret-tool lookup borgrepo default"
 REMOTE_DIR=Zotero
-RCLONE_REMOTE=('googledrive' 'onedrive' 'box')
+RCLONE_REMOTE=('googledrive' 'onedrive')
 
 
 if pgrep zotero-bin ; then

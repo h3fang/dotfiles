@@ -24,7 +24,7 @@ done
 export BORG_REPO=$HOME/.local/share/backups/data
 export BORG_PASSCOMMAND="secret-tool lookup borgrepo default"
 REMOTE_DIR=arch-home-${USER}-$(awk '{print substr($0,1,6); exit}' /etc/machine-id)
-RCLONE_REMOTE=('googledrive' 'onedrive' 'box')
+RCLONE_REMOTE=('googledrive' 'onedrive')
 
 function f_backup {
     borg create --compression auto,zstd,16 --stats --list --filter=AME \
