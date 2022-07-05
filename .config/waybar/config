@@ -3,7 +3,7 @@
     "height": 32, // Waybar height (to be removed for auto height)
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["custom/weather", "idle_inhibitor", "custom/capslock", "pulseaudio", "network", "custom/kernel", "custom/systemd", "cpu", "memory", "battery", "custom/update", "clock", "tray"],
+    "modules-right": ["custom/weather", "idle_inhibitor", "custom/capslock", "pulseaudio", "network", "custom/kernel", "custom/systemd", "battery", "custom/update", "clock", "tray"],
     "sway/workspaces": {
          "disable-scroll": true,
          "all-outputs": true,

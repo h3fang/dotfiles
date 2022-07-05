@@ -10,15 +10,6 @@ markup=pango
 interval=once
 signal=3
 
-[load_average]
-label= 
-markup=pango
-interval=5
-
-[memory]
-label= 
-interval=5
-
 [internet]
 ETH_INSTANCE=eth0
 WIRELESS_INSTANCE=wlan0
