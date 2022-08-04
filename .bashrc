@@ -18,13 +18,12 @@ alias ls='exa'
 alias miniconda='source ~/.local/miniconda3/bin/activate $(echo -e "base\n$(ls ~/.local/miniconda3/envs)" | fzf)'
 alias music='mpv --volume=60 --shuffle --loop-playlist=inf --no-resume-playback --audio-display=no ~/Music/'
 alias ncdu='ncdu --color dark'
-alias paclog='~/scripts/paclog.py'
 alias rm='trash-put'
-alias scripts='$(fd -t x . ~/scripts/ | fzf)'
 alias vim='nvim'
 alias weather='curl -m 5 "https://wttr.in/${LOCATION_CITY}?lang=zh&format=v2"'
 alias yaySc='yay -Sc --noconfirm'
 alias wifi='wpa_cli -i $(ls /sys/class/ieee80211/*/device/net/ | fzf) select_network $(wpa_cli -i wlan0 list_networks | tail -n +2 | fzf | awk "{print $1}")'
+alias gitgc='git reflog expire --expire=now --all && git gc --prune=now'
 
 # functions
 windows() {
