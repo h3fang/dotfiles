@@ -265,10 +265,10 @@ for_window [window_role="task_dialog"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 for_window [class="Pavucontrol"] floating enable
-for_window [title="Preferences"] floating enable
-for_window [title="Zotero Item Selector"] border normal; floating enable; resize set 800 px 600 px; move position center;
-for_window [app_id="firefox" title="About Mozilla Firefox"] floating enable
-for_window [app_id="thunar" title="File Operation Progress"] floating enable
+for_window [title="^Preferences$"] floating enable
+for_window [title="^Zotero Item Selector$"] border normal; floating enable; resize set 800 px 600 px; move position center;
+for_window [app_id="firefox" title="^About Mozilla Firefox$"] floating enable
+for_window [app_id="thunar" title="^File Operation Progress$"] floating enable
 
 
 # inhibit swayidle
