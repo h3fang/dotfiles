@@ -48,6 +48,10 @@ eval $(/usr/bin/gnome-keyring-daemon --start)
 export GNOME_KEYRING_CONTROL
 export SSH_AUTH_SOCK
 
+# Qt
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export QT_FONT_DPI=96
+
 ### WM start up functions
 start_i3wm() {
     if [[ -L "$GTK2_RC_FILES" ]]; then
@@ -62,9 +66,6 @@ start_i3wm() {
     fi
 
     export XDG_SESSION_TYPE=x11
-    export QT_AUTO_SCREEN_SCALE_FACTOR=0
-    export QT_SCALE_FACTOR=1
-    export QT_FONT_DPI=96
     export MOZ_X11_EGL=1
     exec startx -- -keeptty > "$X_SESSION_LOG" 2>&1
 }
@@ -87,7 +88,6 @@ start_sway() {
     XDG_CURRENT_DESKTOP=sway \
     QT_QPA_PLATFORM=wayland \
     QT_WAYLAND_FORCE_DPI=physical \
-    QT_AUTO_SCREEN_SCALE_FACTOR=0 \
     SDL_VIDEODRIVER=wayland \
     _JAVA_AWT_WM_NONREPARENTING=1 \
     MOZ_ENABLE_WAYLAND=1 \
