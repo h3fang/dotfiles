@@ -26,6 +26,7 @@
     "editor.minimap.renderCharacters": false,
     "terminal.external.linuxExec": "xfce4-terminal",
     "terminal.integrated.shellIntegration.enabled": false,
+    "terminal.integrated.persistentSessionReviveProcess": "never",
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 10000,
     "diffEditor.ignoreTrimWhitespace": false,
