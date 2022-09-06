@@ -86,7 +86,7 @@ start_sway() {
     XKB_DEFAULT_LAYOUT=us \
     XDG_SESSION_TYPE=wayland \
     XDG_CURRENT_DESKTOP=sway \
-    QT_QPA_PLATFORM=wayland \
+    QT_QPA_PLATFORM="wayland;xcb" \
     QT_WAYLAND_FORCE_DPI=physical \
     SDL_VIDEODRIVER=wayland \
     _JAVA_AWT_WM_NONREPARENTING=1 \
