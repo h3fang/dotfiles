@@ -230,8 +230,10 @@ bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle # toggle mu
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle # toggle mic
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec brightnessctl s +5%  # increase screen brightness
-bindsym XF86MonBrightnessDown exec brightnessctl s 5%- # decrease screen brightness
+set $get_brightness brightnessctl i | pcregrep -o1 "Current brightness:.*\((.*)%\)"
+set $notify_brightness notify-send -h string:x-dunst-stack-tag:brightness "Brightness" -h int:value:"$($get_brightness)"
+bindsym XF86MonBrightnessUp exec brightnessctl s +5% && $notify_brightness
+bindsym XF86MonBrightnessDown exec brightnessctl s 5%- && $notify_brightness
 
 # Caps Lock indicator
 bindsym --release Caps_Lock exec pkill -SIGRTMIN+3 waybar
