@@ -1,3 +1,4 @@
 #!/bin/sh
-paplay ~/.config/dunst/notification_sound.ogg &
-
+if [ "$DUNST_STACK_TAG" != "brightness" ]; then
+    paplay ~/.config/dunst/notification_sound.ogg &
+fi

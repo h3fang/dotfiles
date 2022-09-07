@@ -12,7 +12,7 @@
 
     sort = false
 
-    font = "Monospace 12"
+    font = "Monospace 7"
 
     markup = full
 
