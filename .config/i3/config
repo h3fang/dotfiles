@@ -9,232 +9,51 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-# variables
+### variables
+
 set $mod Mod4
-set $Locker ~/.config/i3/scripts/lock.sh
-set $CloseApps ~/.config/i3/scripts/close_apps.sh
+set $term xfce4-terminal
+set $menu rofi -modi drun#run#window#keys -show drun -font "monospace 12" -width 40
+set $lock ~/.config/i3/scripts/lock.sh
+set $close_apps ~/.config/i3/scripts/close_apps.sh
+set $exit i3-msg exit
+set $nagbar i3-nagbar
+
+### options
 
 font pango:monospace 7.5
+focus_follows_mouse no
+
+### exec
 
 # wallpaper
 exec_always --no-startup-id feh --bg-fill --no-fehbg ~/Pictures/wallpapers/current
 
 # autostart
 #exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id brightnessctl s 45%
+#exec --no-startup-id udiskie -anT2
 exec --no-startup-id picom -b
-exec --no-startup-id dunst
+exec --no-startup-id dunst -conf ~/.config/dunst/dunstrc-i3
 exec --no-startup-id xinput disable $(xinput | pcregrep -o1 "Touchpad\s+id=(\d+)")
 exec --no-startup-id xset s 600 && xset dpms 300 600 660
-exec --no-startup-id xss-lock -l -n ~/.config/i3/scripts/dim-screen.sh -- $Locker
+exec --no-startup-id xss-lock -l -n ~/.config/i3/scripts/dim-screen.sh -- $lock
 exec --no-startup-id thunar --daemon
 exec --no-startup-id networkd-notify
 exec --no-startup-id systembus-notify
-exec --no-startup-id "sleep 3; fcitx5 -d"
-exec --no-startup-id "sleep 5; gammastep"
-#exec --no-startup-id udiskie -anT2
+exec --no-startup-id fcitx5 -d
+exec --no-startup-id gammastep
 
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+### key bindings
 
-# start a terminal
-bindsym $mod+Return exec --no-startup-id xfce4-terminal
+include ~/.config/sway/config.d/01-key-bindings-and-workspace-rules
 
-# kill focused window
-bindsym $mod+Shift+q kill
-
-# start program launcher
-bindsym $mod+d exec rofi -show drun
-
-# change focus
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
-# move focused window
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
-# split in horizontal orientation
-bindsym $mod+h split h
-
-# split in vertical orientation
-bindsym $mod+v split v
-
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
-
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
-
-# focus the parent container
-#bindsym $mod+a focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
-
-set $ws1 "1 "
-set $ws2 "2 "
-set $ws3 "3 "
-set $ws4 "4 "
-set $ws5 "5 "
-set $ws6 "6 "
-set $ws7 "7 "
-set $ws8 "8 "
-set $ws9 "9 "
-set $ws10 "10 "
-
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
-
-# switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
-
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-bindsym $mod+r mode "resize"
-
-######## styling
-
-# window colors
-#                   border    background  text     indicator
-client.focused      #4c7899   #2075c7     #ffffff  #2e9ef4    #285577
-client.unfocused    #2075c7   #222222     #cfcfcf  #292d2e    #222222
-
-# i3bar
-bar {
-    font pango:sans-serif 7.5
-#    mode hide
-    bindsym button4 nop
-    bindsym button5 nop
-    status_command i3blocks
-    colors {
-        focused_workspace  #4c7899 #2075c7 #ffffff
-        inactive_workspace #333333 #222222 #aaaaaa
-        urgent_workspace   #2f343a #c00000 #ffffff
-    }
-}
-
-######## window/workspace rules
-
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="task_dialog"] floating enable
-for_window [window_type="dialog"] floating enable
-for_window [window_type="menu"] floating enable
-for_window [class="Chromium"] border none
-for_window [class="firefox"] border none
-for_window [class="Pavucontrol"] floating enable
-for_window [class="Nm-connection-editor"] floating enable
-for_window [title="Preferences$"] floating enable
-for_window [title="Zotero Item Selector" class="Chromium"] floating enable; resize set 800 px 400 px; move position center;
-for_window [title="About Mozilla Firefox" class="firefox"] floating enable
-for_window [title="加入会议" class="wemeetapp"] floating enable
-
-# assign apps to workspaces
-assign [class="firefox"] $ws2
-assign [class="code"] $ws3
-
-for_window [workspace=$ws3] layout tabbed
-
-######## custom key bindings
-
-bindsym $mod+c exec --no-startup-id firefox
-bindsym $mod+Print --release exec --no-startup-id "maim -s -u ~/Pictures/screenshot-$(date -Is).png"
-bindsym $mod+Shift+p fullscreen disable; floating enable; resize set 800 600; sticky enable; move window to position center;
-
-# Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -SIGRTMIN+1 i3blocks #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && pkill -SIGRTMIN+1 i3blocks #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -SIGRTMIN+1 i3blocks # toggle mute
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle # toggle mic
-
-# Sreen brightness controls
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +5%  # increase screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 5%- # decrease screen brightness
+# Screenshot
+bindsym $mod+Print --release exec --no-startup-id "maim -s -u ~/Pictures/screenshots/$(date -Is).png"
 
 # Caps Lock indicator
 bindsym --release Caps_Lock exec pkill -SIGRTMIN+3 i3blocks
 
-# dunst
-bindsym $mod+Ctrl+comma exec dunstctl history-pop
-bindsym $mod+Ctrl+period exec dunstctl close
-bindsym $mod+Ctrl+slash exec dunstctl close-all
-
-# power management
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (p) poweroff
-mode "$mode_system" {
-    bindsym l exec --no-startup-id $Locker, mode "default"
-    bindsym e exec --no-startup-id $CloseApps && i3-msg exit, mode "default"
-    bindsym s exec --no-startup-id systemctl suspend, mode "default"
-    bindsym h exec --no-startup-id systemctl hibernate, mode "default"
-    bindsym r exec --no-startup-id $CloseApps && systemctl reboot, mode "default"
-    bindsym p exec --no-startup-id $CloseApps && systemctl poweroff -i, mode "default"
-
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
 ## Manual management of external displays
-# Set the shortcuts and what they do
 set $mode_display Ext Screen (h) HDMI ON, (o) HDMI OFF
 mode "$mode_display" {
     bindsym h exec --no-startup-id xrandr --output HDMI-1 --auto --right-of eDP-1, mode "default"
@@ -247,10 +66,19 @@ mode "$mode_display" {
 # Declare here the shortcut to bring the display selection menu
 bindsym $mod+x mode "$mode_display"
 
-bindsym $mod+Insert mode "$mode_system"
-bindsym $mod+b bar mode toggle
+### styling
 
-######## others
+bar {
+    font pango:sans-serif 7.5
+    bindsym button4 nop
+    bindsym button5 nop
+    status_command i3blocks
+    colors {
+        focused_workspace  #4c7899 #2075c7 #ffffff
+        inactive_workspace #333333 #222222 #aaaaaa
+        urgent_workspace   #2f343a #c00000 #ffffff
+    }
+}
 
-# disble focus follow mouse
-focus_follows_mouse no
+# window rules
+include ~/.config/sway/config.d/02-window-rules

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Dependencies: i3lock-color
+# Dependencies: i3lock-color, dunst (dunstctl)
 
 i3lock_options=(-t -e --blur=30 --indicator --clock --pass-media-keys --date-str="%a  %F" --date-color=ffffffff --time-color=ffffffff --ring-color=2075c7ff --time-font=monospace)
 
