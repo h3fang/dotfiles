@@ -36,7 +36,7 @@ exec --no-startup-id picom -b
 exec --no-startup-id dunst -conf ~/.config/dunst/dunstrc-i3
 exec --no-startup-id xinput disable $(xinput | pcregrep -o1 "Touchpad\s+id=(\d+)")
 exec --no-startup-id xset s 600 && xset dpms 300 600 660
-exec --no-startup-id xss-lock -l -n ~/.config/i3/scripts/dim-screen.sh -- $lock
+exec --no-startup-id xss-lock -l -- $lock
 exec --no-startup-id thunar --daemon
 exec --no-startup-id networkd-notify
 exec --no-startup-id systembus-notify
