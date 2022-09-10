@@ -21,7 +21,7 @@ set $nagbar i3-nagbar
 
 ### options
 
-font pango:monospace 7.5
+font pango:monospace 7
 focus_follows_mouse no
 
 ### exec
@@ -69,7 +69,7 @@ bindsym $mod+x mode "$mode_display"
 ### styling
 
 bar {
-    font pango:sans-serif 7.5
+    font pango:sans-serif 7
     bindsym button4 nop
     bindsym button5 nop
     status_command i3blocks
