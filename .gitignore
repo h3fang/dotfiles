@@ -1,27 +1,18 @@
 # hidden folders
 .conda/
 .cache/
-.gnupg/
-.googleearth/
-.icons/
-.keras/
 .local/
-.ipython/
-.jupyter/
-.mono/
 .mozilla/
 .npm/
-.nv/
 .pki/
 .paradoxlauncher/
 .ssh/
 .vispy/
 .vscode/
-.vscode-oss/
-.zotero/
-.steam*
+.steam/
 .x-plane/
 .zoom/
+.zotero/
 
 # .config folder
 .config/blender/
@@ -30,7 +21,6 @@
 .config/cef_user_data/
 .config/clash
 .config/conda/environments.txt
-.config/configstore/
 .config/dconf/
 .config/dotfiles/
 .config/draw.io/
@@ -39,49 +29,44 @@
 .config/fcitx/dbus/
 .config/fcitx5/crash.log
 .config/fcitx5/conf/cached_layouts
-.config/flameshot/flameshot.ini
 .config/gammastep/config.ini
-.config/gedit/
 .config/GIMP/
 .config/godot/
-.config/Google/
 .config/gtk-2.0/
 .config/gtk-3.0/
-.config/ibus/bus/
+.config/ibus/
 .config/inkscape/
 .config/Joplin/
 .config/joplin-desktop/
 .config/kingsoft.conf
 .config/Kingsoft/
 .config/libreoffice/
-.config/Mailspring/
-.config/mpv/watch_later/
 .config/menus/
+.config/mimeapps.list
+.config/modprobed.db
+.config/modprobed-db.conf
+.config/mpv/watch_later/
 .config/parallel/tmp/
 .config/psd/.psd.conf
 .config/pulse/
 .config/qpdfview/qpdfview.conf
 .config/QtProject/
-.config/rclone/
-.config/Thunar/
-.config/Trolltech.conf
-.config/transmission/
-.config/xfce4/xfconf/
-.config/xfce4/terminal/accels.scm
-.config/mimeapps.list
 .config/QtProject.conf
+.config/rclone/
 .config/systemd/user/timers.target.wants/
 .config/systemd/user/default.target.wants/
 .config/systemd/user/graphical.target.wants/
 .config/systemd/user/update_clash.*
-.config/modprobed.db
-.config/modprobed-db.conf
+.config/Thunar/
+.config/Trolltech/
+.config/Trolltech.conf
+.config/transmission/
 .config/unity3d/
-.config/zoomus.conf
 .config/Unknown Organization/cajviewer.conf
 .config/Unknown Organization/zoom.conf
-.config/Unknown Organization/zoom .conf
-.config/TabNine/
+.config/xfce4/xfconf/
+.config/xfce4/terminal/accels.scm
+.config/zoomus.conf
 
 # .config/Code folder
 .config/Code/*
@@ -89,7 +74,6 @@
 .config/Code/User/workspaceStorage/
 .config/Code/User/globalStorage/
 .config/Code/User/History/
-
 
 # common folders
 Desktop/
@@ -108,4 +92,6 @@ scripts/update_clash.py
 
 # special dotfiles
 .bash_history
+.steampath
+.steampid
 
