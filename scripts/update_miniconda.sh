@@ -2,6 +2,7 @@
 
 set -e
 
+# shellcheck source=/dev/null
 source ~/.local/miniconda3/bin/activate
 
 RED="\e[38;2;255;0;0m"
@@ -19,7 +20,7 @@ done
 
 for e in $(conda info -e | grep miniconda3 | awk '{print $1}'); do
   echo -e "${GREEN}cleaning environment ${RED}${e}${GREEN} ...${CLR}"
-  conda activate "$env"
+  conda activate "$e"
   conda clean -pty
   conda deactivate
 done

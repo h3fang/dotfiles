@@ -22,9 +22,9 @@ restore() {
     echo resetting ...
     clear_iptables
     systemctl stop iptables.service
-    ip rule delete fwmark ${fwmark}
-    ip link set ${tun_dev} down
-    ip link delete ${tun_dev}
+    ip rule delete fwmark "${fwmark}"
+    ip link set "${tun_dev}" down
+    ip link delete "${tun_dev}"
 }
 
 trap restore EXIT
@@ -34,9 +34,6 @@ trap restore EXIT
 # default should be fine
 tun_dev=clash0
 tun_addr=172.31.255.253/30
-tun2socks_addr=172.31.255.254
-tun2socks_gateway=172.31.255.253
-tun2socks_mask=255.255.255.252
 table_id=127
 fwmark=127
 

@@ -1,7 +1,12 @@
 #!/bin/bash
 
 set -eEuo pipefail
-trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
+error_exit() {
+    s=$?
+    echo "$0: Error on line $LINENO"
+    exit $s
+}
+trap error_exit ERR
 
 setup() {
     # should be fine if it is already enabled
@@ -12,15 +17,15 @@ setup() {
     sudo pacman -Syu
 
     yay -S --needed wine-staging wine-gecko wine-mono winetricks dxvk-bin lib32-mesa
-    sudo pacman -S --asdeps --needed $(pacman -Si wine-staging | sed -n '/^Opt/,/^Conf/p' | sed '$d' | sed 's/^Opt.*://g' | sed 's/^\s*//g' | tr '\n' ' ')
+    sudo pacman -S --asdeps --needed "$(pacman -Si wine-staging | sed -n '/^Opt/,/^Conf/p' | sed '$d' | sed 's/^Opt.*://g' | sed 's/^\s*//g' | tr '\n' ' ')"
 
     # initialize wine prefix
     wineboot -u
     if pgrep wineboot; then
-        tail --pid=$(pgrep wineboot) -f /dev/null
+        tail --pid="$(pgrep wineboot)" -f /dev/null
     fi
     if pgrep wineserver; then
-        tail --pid=$(pgrep wineserver) -f /dev/null
+        tail --pid="$(pgrep wineserver)" -f /dev/null
     fi
     sleep 3
 
@@ -30,7 +35,7 @@ setup() {
 
 remove() {
     yay -Rns wine-staging wine-mono wine-gecko winetricks dxvk-bin
-    yay -Rns $(pacman -Qqttd | grep '^lib32-') || true
+    yay -Rns "$(pacman -Qqttd | grep '^lib32-')" || true
     yay -Rns lib32-mesa || true
 
     # delete wine related files

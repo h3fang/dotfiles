@@ -15,7 +15,7 @@ sleep 3
 
 # check remaining windows
 apps=$(i3-msg -t get_tree | jq '.. | select(.class? and .class != "i3bar").class' | sort)
-n_apps=$(echo $apps | awk '{print NF}')
+n_apps=$(echo "$apps" | awk '{print NF}')
 if [[ $n_apps -gt 0 ]]; then
     notify-send -u critical "$(echo -e "$n_apps running application(s).\n$apps")"
     exit 1

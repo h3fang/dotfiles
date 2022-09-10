@@ -1,15 +1,20 @@
 #!/bin/bash
 
 set -eEuo pipefail
-trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
+error_exit() {
+    s=$?
+    echo "$0: Error on line $LINENO: $BASH_COMMAND"
+    exit $s
+}
+trap error_exit ERR
 
 sudo pacman -Syu --needed base-devel git
 
 # dotfiles
-mkdir -p $HOME/.config
-git clone --bare https://github.com/h3fang/dotfiles $HOME/.config/dotfiles
+mkdir -p "$HOME"/.config
+git clone --bare https://github.com/h3fang/dotfiles "$HOME"/.config/dotfiles
 # Be careful! This will overwrite existing files.
-/usr/bin/git --git-dir=$HOME/.config/dotfiles/ --work-tree=$HOME checkout -f
+/usr/bin/git --git-dir="$HOME"/.config/dotfiles/ --work-tree="$HOME" checkout -f
 
 # AUR helper
 cd /tmp
@@ -22,8 +27,8 @@ drivers="mesa libva-mesa-driver vulkan-radeon pulseaudio"
 system_tools="htop fd ncdu zip unzip zstd unrar p7zip file-roller openblas poppler-data man-db man-pages exa bat ntfs-3g gnome-keyring neofetch borg python-llfuse polkit-gnome earlyoom systembus-notify neovim tlp bash-completion duf dog"
 multimedia="mpv gimp inkscape blender"
 network="transmission-gtk youtube-dl firefox openssh openbsd-netcat rclone rsync"
-i3="xorg-server xorg-xinit xorg-xrandr xorg-xinput xorg-xset xorg-xprop i3-wm i3blocks i3lock-color picom feh xss-lock dunst lxappearance papirus-icon-theme python-requests acpi jq maim python-i3ipc xclip"
-sway="sway xorg-server-xwayland swaybg swayidle swaylock-effects-git i3blocks feh dunst lxappearance papirus-icon-theme wl-clipboard wf-recorder grim slurp python-requests acpi jq"
+#i3="xorg-server xorg-xinit xorg-xrandr xorg-xinput xorg-xset xorg-xprop i3-wm i3blocks i3lock-color picom feh xss-lock dunst lxappearance-gtk3 papirus-icon-theme python-requests acpi jq maim python-i3ipc xclip"
+sway="sway xorg-server-xwayland swaybg swayidle swaylock-effects-git i3blocks feh dunst lxappearance-gtk3 papirus-icon-theme wl-clipboard wf-recorder grim slurp python-requests acpi jq"
 de_tools="xfce4-terminal alacritty thunar thunar-volman thunar-archive-plugin gvfs udiskie rofi brightnessctl fzf"
 im="fcitx5 fcitx5-qt fcitx5-gtk fcitx5-chinese-addons fcitx5-pinyin-zhwiki"
 latex="texlive-bibtexextra texlive-core texlive-formatsextra texlive-humanities texlive-langchinese texlive-latexextra texlive-pictures texlive-pstricks texlive-publishers texlive-science biber"

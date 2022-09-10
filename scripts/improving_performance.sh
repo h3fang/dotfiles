@@ -9,7 +9,7 @@
 # sysctl
 # https://wiki.archlinux.org/index.php/Sysctl
 # https://wiki.archlinux.org/index.php/Swap#Performance
-echo | sudo tee /etc/sysctl.d/99-sysctl.conf <<EOF
+sudo tee /etc/sysctl.d/99-sysctl.conf <<EOF
 net.core.netdev_max_backlog = 100000
 net.core.netdev_budget = 50000
 net.core.netdev_budget_usecs = 5000
@@ -65,7 +65,7 @@ sudo sysctl --system
 
 # I/O scheduler
 # https://wiki.archlinux.org/index.php/Improving_performance#Changing_I/O_scheduler
-echo | sudo tee /etc/udev/rules.d/60-ioschedulers.rules <<EOF
+sudo tee /etc/udev/rules.d/60-ioschedulers.rules <<EOF
 # set scheduler for NVMe
 ACTION=="add|change", KERNEL=="nvme[0-9]*", ATTR{queue/scheduler}="none"
 # set scheduler for SSD and eMMC

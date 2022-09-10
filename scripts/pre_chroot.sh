@@ -4,7 +4,12 @@
 #########
 
 set -eEuo pipefail
-trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
+error_exit() {
+    s=$?
+    echo "$0: Error on line $LINENO: $BASH_COMMAND"
+    exit $s
+}
+trap error_exit ERR
 
 s_uefi() {
     echo "checking UEFI ..."
@@ -42,8 +47,8 @@ s_mounting() {
 
 s_mirrors() {
     echo "setting mirrors ..."
-    echo "$(echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch' | cat - /etc/pacman.d/mirrorlist)" > /etc/pacman.d/mirrorlist
-    echo "$(echo 'Server = https://mirrors.sjtug.sjtu.edu.cn/archlinux/$repo/os/$arch' | cat - /etc/pacman.d/mirrorlist)" > /etc/pacman.d/mirrorlist
+    echo "Server = https://mirrors.sjtug.sjtu.edu.cn/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
+    echo "Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/\$repo/os/\$arch" >> /etc/pacman.d/mirrorlist
 }
 
 s_pacstrap() {

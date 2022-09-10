@@ -2,7 +2,12 @@
 # requires brightnessctl, tlp
 
 set -eEuo pipefail
-trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
+error_exit() {
+    s=$?
+    echo "$0: Error on line $LINENO: $BASH_COMMAND"
+    exit $s
+}
+trap error_exit ERR
 
 function setup() {
     ### compositor

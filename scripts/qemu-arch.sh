@@ -14,7 +14,7 @@ function install {
     -m 4G \
     -nic user,model=virtio \
     -drive file="${DISK_IMG}",media=disk,if=virtio \
-    -cdrom ~/VMs/archlinux-${ARCHISO_VER}-x86_64.iso \
+    -cdrom ~/VMs/archlinux-"${ARCHISO_VER}"-x86_64.iso \
     -boot menu=on
 }
 
@@ -33,9 +33,9 @@ function run {
 if [[ $# -eq 0 || $1 == "run" ]]; then
     run
 elif [[ $1 == "install" ]]; then
-    init
+    install
 else
-    echo "Usage: $(basename $0) [run|install]"
+    echo "Usage: $(basename "$0") [run|install]"
     exit 1
 fi
 

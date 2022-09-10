@@ -24,7 +24,7 @@ trash-put \
 for browser in firefox chromium; do
     for pid in $(pidof "$browser"); do
         echo "waiting for $browser process $pid to close ..."
-        tail --pid=$pid -f /dev/null
+        tail --pid="$pid" -f /dev/null
     done
 done
 

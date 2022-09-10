@@ -2,7 +2,13 @@
 # requires borg, libsecret, libnotify, rclone, awk
 
 set -eEuo pipefail
-trap 's=$?; echo "$0: Error on line $LINENO"; notify-send "$0: Error on line $LINENO";  exit $s' ERR
+error_exit() {
+    s=$?
+    echo "$0: Error on line $LINENO"
+    notify-send "$0: Error on line $LINENO"
+    exit $s
+}
+trap error_exit ERR
 
 O_BACKUP="ask"
 O_PRUNE="ask"

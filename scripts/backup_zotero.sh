@@ -2,7 +2,13 @@
 # requires borg, libsecret, libnotify, rclone
 
 set -eEuo pipefail
-trap 's=$?; echo "$0: Error on line $LINENO"; notify-send "$0: Error on line $LINENO";  exit $s' ERR
+error_exit() {
+    s=$?
+    echo "$0: Error on line $LINENO"
+    notify-send "$0: Error on line $LINENO"
+    exit $s
+}
+trap error_exit ERR
 
 export BORG_REPO=$HOME/.local/share/backups/zotero
 export BORG_PASSCOMMAND="secret-tool lookup borgrepo default"

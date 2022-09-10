@@ -27,6 +27,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     rm "$MINICONDA_FILE"
 fi
 
+# shellcheck source=/dev/null
 source "${MINICONDA_PATH}/bin/activate"
 
 conda config --system --set changeps1 false

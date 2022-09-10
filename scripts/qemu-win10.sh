@@ -11,7 +11,7 @@ function create_disk {
 }
 
 function install {
-    qemu-system-x86_64 -m 6G -cpu host -smp $(nproc) -enable-kvm \
+    qemu-system-x86_64 -m 6G -cpu host -smp "$(nproc)" -enable-kvm \
     -drive file="${DISK_IMG}",index=0,media=disk,if=virtio \
     -drive file="${WIN10_IMG}",index=2,media=cdrom \
     -drive file="${VIRTIO_IMG}",index=3,media=cdrom \
@@ -22,7 +22,7 @@ function install {
 }
 
 function run {
-    qemu-system-x86_64 -m 6G -cpu host -smp $(nproc) -enable-kvm \
+    qemu-system-x86_64 -m 6G -cpu host -smp "$(nproc)" -enable-kvm \
     -drive file="${DISK_IMG}",if=virtio \
     -nic user,model=virtio-net-pci,hostfwd=tcp::10022-:22 \
     -rtc base=localtime,clock=host \
@@ -40,7 +40,7 @@ elif [[ "$CMD" == "install" ]]; then
 elif [[ "$CMD" == "run" ]]; then
     run
 else
-    echo "Usage: $(basename $0) disk|install|[run]"
+    echo "Usage: $(basename "$0") disk|install|[run]"
 fi
 
 
