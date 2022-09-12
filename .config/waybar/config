@@ -3,7 +3,7 @@
     "height": 32, // Waybar height (to be removed for auto height)
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["custom/weather", "idle_inhibitor", "custom/capslock", "pulseaudio", "network", "custom/kernel", "custom/systemd", "battery", "custom/update", "clock", "tray"],
+    "modules-right": ["custom/weather", "idle_inhibitor", "custom/capslock", "pulseaudio", "network", "battery", "custom/kernel", "custom/systemd", "custom/update", "clock", "tray"],
     "sway/workspaces": {
          "disable-scroll": true,
          "all-outputs": true,
@@ -53,11 +53,13 @@
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "tooltip-format": "{ifname} {essid}",
+        "tooltip-format-ethernet": "Interface: {ifname}\nUpload: {bandwidthUpBytes}\nDownload: {bandwidthDownBytes}",
+        "tooltip-format-wifi": "Interface: {ifname}\nSSID: {essid}\nStrength: {signaldBm} dBm\nFrequency: {frequency} GHz\nUpload: {bandwidthUpBytes}\nDownload: {bandwidthDownBytes}",
+        "tooltip-format-disconnected": "",
         "format-wifi": "  {signalStrength}%",
         "format-ethernet": "",
         "format-linked": " {ifname} (No IP)",
-        "format-disconnected": "Disconnected",
+        "format-disconnected": "",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {

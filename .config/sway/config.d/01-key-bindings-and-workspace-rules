@@ -156,10 +156,10 @@ bindsym $mod+c exec --no-startup-id firefox
 bindsym $mod+Shift+p fullscreen disable; floating enable; resize set 800 600; sticky enable; move window to position center;
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -SIGRTMIN+1 i3blocks #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && pkill -SIGRTMIN+1 i3blocks #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -SIGRTMIN+1 i3blocks # toggle mute
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle # toggle mic
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -SIGRTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && pkill -SIGRTMIN+1 i3blocks
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -SIGRTMIN+1 i3blocks
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Sreen brightness controls
 set $notify_brightness notify-send -u low -h string:x-dunst-stack-tag:brightness 'Brightness' -h int:value:"`brightnessctl i | pcregrep -o1 'Current brightness:.*\((.*)%\)'`"

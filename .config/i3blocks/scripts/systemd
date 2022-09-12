@@ -9,7 +9,7 @@ p = re.compile('\S+\.\w+')
 failed = [p.search(line).group() for line in output.split("\n") if "failed" in line]
 
 if len(failed) > 0:
-    print(f"<span background='#dc143c' color='white'>{len(failed)} units failed</span>")
+    print(f"<span background='#dc143c' color='white'> {len(failed)}</span>")
     summary = '\r'.join(failed)
     print(summary)
     if getenv("BLOCK_BUTTON") is not None:
