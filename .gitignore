@@ -47,6 +47,7 @@
 .config/modprobed-db.conf
 .config/mpv/watch_later/
 .config/parallel/tmp/
+.config/pavucontrol.ini
 .config/psd/.psd.conf
 .config/pulse/
 .config/qpdfview/qpdfview.conf
