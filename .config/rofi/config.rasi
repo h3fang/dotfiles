@@ -1,7 +1,7 @@
 configuration {
     font: "monospace 12";
     width: 40;
-    modi: "drun#run#window#keys";
+    modi: "drun";
     show-icons: true;
 }
 
