@@ -45,18 +45,3 @@ fi
 # update base
 conda update conda
 
-# create environments
-for f in ~/.config/conda/*.yml; do
-    e=$(basename -s .yml "$f")
-    read -p "remove (if exists) and create environment $e ? (y/[n]) " -r
-    echo
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-        conda remove -n "$e" --all
-        conda env create -f "$f"
-
-        # use conda gcc_linux-64 instead of system gcc to avoid the mismatch of binutils between gcc tools
-        # https://wiki.gentoo.org/wiki/Binutils_2.32_upgrade_notes/elfutils_0.175:_unable_to_initialize_decompress_status_for_section_.debug_info
-
-        # conda install -n "$e" gcc_linux-64
-    fi
-done
