@@ -10,7 +10,6 @@ for_window [window_type="menu"] floating enable
 for_window [class="Chromium"] border none
 for_window [class="firefox"] border none
 for_window [class="netease-cloud-music"] border none; floating enable
-for_window [class="Pavucontrol"] floating enable
 for_window [title="^Preferences$"] floating enable
 for_window [title="^Zotero Item Selector$" class="Chromium"] floating enable; resize set 800 px 400 px; move position center;
 for_window [title="^About Mozilla Firefox$" class="firefox"] floating enable
