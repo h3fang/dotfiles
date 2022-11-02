@@ -58,6 +58,3 @@ if __name__ == '__main__':
 
         print(details)
 
-        if getenv("BLOCK_BUTTON") is not None:
-            check_output(["/usr/bin/notify-send", "Available system update(s):", details])
-
