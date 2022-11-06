@@ -10,27 +10,10 @@ error_exit() {
 }
 trap error_exit ERR
 
-O_BACKUP="ask"
-O_PRUNE="ask"
-O_SYNC="ask"
-
-while [[ "$#" -gt 0 ]]; do
-    case "$1" in
-        --backup) O_BACKUP="yes"; shift;;
-        --no-backup) O_BACKUP="no"; shift;;
-        --prune) O_PRUNE="yes"; shift;;
-        --no-prune) O_PRUNE="no"; shift;;
-        --sync) O_SYNC="yes"; shift;;
-        --no-sync) O_SYNC="no"; shift;;
-        --) shift; break;;
-        *) echo "Unknown option: $1"; exit 1;;
-    esac
-done
-
 export BORG_REPO=$HOME/.local/share/backups/data
 export BORG_PASSCOMMAND="secret-tool lookup borgrepo default"
 REMOTE_DIR=arch-home-${USER}-$(awk '{print substr($0,1,6); exit}' /etc/machine-id)
-RCLONE_REMOTE=('googledrive' 'onedrive')
+RCLONE_REMOTES=('googledrive' 'onedrive' 'tera')
 
 function f_backup {
     borg create --compression auto,zstd,16 --stats --list --filter=AME \
@@ -142,32 +125,19 @@ function f_prune {
 }
 
 function f_sync {
-    for remote in "${RCLONE_REMOTE[@]}"; do
-        echo -e "\nuploading to ${remote} ..."
+    for remote in "${RCLONE_REMOTES[@]}"; do
+        echo "syncing with ${remote} ..."
         rclone --drive-use-trash=false sync "$BORG_REPO" "${remote}:${REMOTE_DIR}" --timeout=30s --fast-list --transfers=10
     done
 }
 
-function ask_user {
-    if [[ $1 == "yes" ]]; then
-        $3
-    elif [[ $1 == "ask" ]]; then
-        echo -e -n "\e[38;5;201m"
-        echo -n "$2 (y/[n])"
-        echo -e -n '\e[0;0m'
-        read -r
-        if [[ $REPLY =~ ^[Yy]$ ]]; then
-            $3
-        fi
-    fi
-}
-
 if [[ ! -d $BORG_REPO ]]; then
-    echo "repo $BORG_REPO not initialized"
-    exit 3
+    echo "Repo $BORG_REPO doesn't exist."
+    notify-send -u critical "Backup data" "Repo $BORG_REPO doesn't exist."
+    exit 1
 fi
 
-ask_user $O_BACKUP "Create a new archive?" f_backup
-ask_user $O_PRUNE "Prune archives?" f_prune
-ask_user $O_SYNC "Sync to cloud storage?" f_sync
+f_backup
+f_prune
+f_sync
 

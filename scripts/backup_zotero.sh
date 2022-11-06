@@ -13,12 +13,18 @@ trap error_exit ERR
 export BORG_REPO=$HOME/.local/share/backups/zotero
 export BORG_PASSCOMMAND="secret-tool lookup borgrepo default"
 REMOTE_DIR=Zotero
-RCLONE_REMOTE=('googledrive' 'onedrive')
-
+RCLONE_REMOTES=('googledrive' 'onedrive' 'tera')
 
 if pgrep zotero-bin ; then
+    echo "Zotero is still running."
     notify-send -u critical "Backup zotero" "Zotero is still running."
     exit 1
+fi
+
+if [[ ! -d $BORG_REPO ]]; then
+    echo "Repo $BORG_REPO doesn't exist."
+    notify-send -u critical "Backup zotero" "Repo $BORG_REPO doesn't exist."
+    exit 2
 fi
 
 borg create --compression auto,zstd,16 --stats --list --filter=AME \
@@ -30,8 +36,8 @@ borg create --compression auto,zstd,16 --stats --list --filter=AME \
 
 borg prune -v --list --keep-within=3d --keep-daily=10 --keep-weekly=3 --keep-monthly=3 --save-space
 
-for remote in "${RCLONE_REMOTE[@]}"; do
-    echo -e "\nsyncing zotero with ${remote} ..."
+for remote in "${RCLONE_REMOTES[@]}"; do
+    echo "syncing with ${remote} ..."
     rclone --drive-use-trash=false sync "$BORG_REPO" "${remote}:${REMOTE_DIR}" --timeout=30s --fast-list --transfers=10
 done
 
