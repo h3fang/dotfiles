@@ -17,17 +17,16 @@ setup() {
     sudo pacman -Syu
 
     yay -S --needed wine-staging wine-gecko wine-mono winetricks dxvk-bin lib32-mesa
-    sudo pacman -S --asdeps --needed "$(pacman -Si wine-staging | sed -n '/^Opt/,/^Conf/p' | sed '$d' | sed 's/^Opt.*://g' | sed 's/^\s*//g' | tr '\n' ' ')"
+    sudo pacman -S --asdeps --needed "$(pacman -Qi wine-staging | sed -n '/^Opt/,/^Conf/p' | sed '$d' | sed 's/^Opt.*://g' | sed 's/^\s*//g' | tr '\n' ' ')"
 
     # initialize wine prefix
     wineboot -u
-    if pgrep wineboot; then
-        tail --pid="$(pgrep wineboot)" -f /dev/null
-    fi
-    if pgrep wineserver; then
-        tail --pid="$(pgrep wineserver)" -f /dev/null
-    fi
-    sleep 3
+    for process in wineboot wineserver; do
+        pid=$(pgrep "$process")
+        if [[ -n "$pid" ]]; then
+            tail --pid="$pid" -f /dev/null
+        fi
+    done
 
     # dxvk
     setup_dxvk install --symlink
