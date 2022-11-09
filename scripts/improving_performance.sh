@@ -73,9 +73,16 @@ EOF
 sudo sysctl --system
 
 ### makepkg
-sudo sed -i 's/^#MAKEFLAGS="-j2"$/MAKEFLAGS="-j\$(nproc)"/' /etc/makepkg.conf
-# not tested
-#sudo sed -i 's/-march=x86_64 -mtune=generic/-march=native/' /etc/makepkg.conf
+
+# https://wiki.archlinux.org/title/Makepkg#Building_optimized_binaries
+# (manual) edit /etc/makepkg.conf
+# CFLAGS="-march=native -O2 -pipe -fno-plt"
+# CXXFLAGS="${CFLAGS}"
+# RUSTFLAGS="-C opt-level=2 -C target-cpu=native"
+
+# https://wiki.archlinux.org/title/Makepkg#Improving_compile_times
+# (manual) edit /etc/makepkg.conf
+# MAKEFLAGS="-j$(nproc)"
 
 ### watchdogs
 # (manual) add 'nowatchdog' kernel parameter
