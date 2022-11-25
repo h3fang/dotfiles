@@ -17,7 +17,7 @@ def walk_dir(root, cmd: str):
         if cmd == "update" or cmd == "clean" or cmd == "check":
             run(["cargo", cmd], cwd=last)
         elif cmd == "outdated":
-            run(["cargo", "outdated", "-R"], cwd=last)
+            run(["cargo", "outdated", "-Rw"], cwd=last)
 
 
 def main():
