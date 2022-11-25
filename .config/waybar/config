@@ -6,7 +6,6 @@
     "modules-right": ["custom/weather", "idle_inhibitor", "custom/capslock", "pulseaudio", "network", "battery", "custom/kernel", "custom/systemd", "custom/update", "clock", "tray"],
     "sway/workspaces": {
          "disable-scroll": true,
-         "all-outputs": true,
     },
     "sway/window": {
         "icon": false,
