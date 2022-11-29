@@ -178,4 +178,10 @@ assign [class="Chromium"] $ws2
 assign [class="firefox"] $ws2
 assign [class="Code"] $ws3
 
+# disable mouse wheel / touchpad movements in tabbed title bars
+bindsym button4 nop
+bindsym button5 nop
+bindsym button6 nop
+bindsym button7 nop
+
 # vim: ft=i3config
