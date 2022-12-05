@@ -1,13 +1,11 @@
 # hidden folders
 .conda/
 .cache/
-.local/
 .mozilla/
 .npm/
 .pki/
 .paradoxlauncher/
 .ssh/
-.vispy/
 .vscode/
 .steam/
 .x-plane/
@@ -76,6 +74,14 @@
 .config/Code/User/workspaceStorage/
 .config/Code/User/globalStorage/
 .config/Code/User/History/
+
+# .local/share folder
+.local/*
+!.local/share/
+.local/share/*
+!.local/share/cargo/
+.local/share/cargo/*
+!.local/share/cargo/config.toml
 
 # common folders
 Desktop/
