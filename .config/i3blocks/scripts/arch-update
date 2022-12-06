@@ -1,21 +1,16 @@
 #!/usr/bin/env python3
 
-# requires: pacman-contrib, yay, libnotify
+# requires: pacman-contrib, yay, libnotify, python-filelock
 
 # modified from https://github.com/vivien/i3blocks-contrib/tree/master/arch-update
-# format: {official repo packages count}+{AUR packages count}{* if matches WATCH}
-# use yay for AUR check
-# add timeout for subprocess calls
+# output format: {official repo packages count}+{AUR packages count}
 
-#
-# Copyright (C) 2017 Marcel Patzwahl
-# Licensed under the terms of the GNU GPL v3 only.
-#
-# i3blocks blocklet script to see the available updates of pacman and the AUR
 
 from os import getenv
 from subprocess import check_output, CalledProcessError
 from sys import stderr
+
+from filelock import FileLock
 
 BASE_COLOR = "white"
 UPDATE_COLOR = "lime"
@@ -39,7 +34,11 @@ def check_updates(cmd, no_update_ret=None):
 
 
 if __name__ == '__main__':
-    repo_updated, repo_updates, repo_color = check_updates(["checkupdates"], 2)
+    # multiple instances will contend for the db.lock and fail
+    # temporary workaround for https://github.com/Alexays/Waybar/issues/368
+    with FileLock("/tmp/arch_update_checkupdates.lock"):
+        repo_updated, repo_updates, repo_color = check_updates(["checkupdates"], 2)
+
     aur_updated, aur_updates, aur_color = check_updates(["yay", "-Qua"])
 
     repo_count = len(repo_updates)
