@@ -33,5 +33,6 @@ ShortcutsNoMenukey=TRUE
 ShortcutsNoMnemonics=TRUE
 ShortcutsNoHelpkey=TRUE
 FontName=Hack 13
-ScrollingOnOutput=FALSE
+MiscRightClickAction=TERMINAL_RIGHT_CLICK_ACTION_CONTEXT_MENU
+ColorPalette=rgb(0,0,0);rgb(189,0,19);rgb(0,170,0);rgb(170,85,0);rgb(9,82,235);rgb(187,8,187);rgb(7,187,187);rgb(170,170,170);rgb(85,85,85);rgb(255,85,85);rgb(85,255,85);rgb(255,255,85);rgb(0,146,255);rgb(255,85,255);rgb(85,255,255);rgb(255,255,255)
 
