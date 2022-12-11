@@ -44,6 +44,7 @@
 .config/modprobed.db
 .config/modprobed-db.conf
 .config/mpv/watch_later/
+.config/nvim/plugin/packer_compiled.lua
 .config/parallel/tmp/
 .config/pavucontrol.ini
 .config/psd/.psd.conf
