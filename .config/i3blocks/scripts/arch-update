@@ -20,11 +20,12 @@ def check_updates(cmd, no_update_ret=None):
         output = check_output(cmd, encoding="utf-8", timeout=15)
         updates = [line for line in output.split("\n") if line]
         color = UPDATE_COLOR if len(updates) > 0 else BASE_COLOR
-        return True, updates, color
+        return updates, color
     except CalledProcessError as e:
         if e.returncode == no_update_ret:
             return [], BASE_COLOR
         else:
+            print(e, file=stderr)
             return [], ERROR_COLOR
     except Exception as e:
         print(e, file=stderr)
