@@ -32,9 +32,9 @@ windows() {
         return 1
     fi
     if pgrep -x sway > /dev/null ; then
-        swaymsg -t get_tree | jq -r '..|objects|select(has("shell"))|{shell: .shell, name: .name, app_id: .app_id, class: .window_properties.class}'
+        swaymsg -t get_tree | jq -r '..|objects|select(has("shell"))|{shell: .shell, name: .name, app_id: .app_id, window_properties: .window_properties}'
     elif pgrep -x i3 > /dev/null ; then
-        i3-msg -t get_tree | jq -r '.. | select( .class?) | {class: .class, title: .title}'
+        i3-msg -t get_tree | jq -r '..|objects|select(has("window_properties"))|.window_properties'
     fi
 }
 
