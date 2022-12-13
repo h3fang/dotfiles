@@ -1,6 +1,6 @@
 {
-	"buildDir": "/home/h3f/.cache/yay",
-	"absdir": "/home/h3f/.cache/yay/abs",
+	"buildDir": "$HOME/.cache/yay",
+	"absdir": "$HOME/.cache/yay/abs",
 	"editor": "",
 	"editorflags": "",
 	"makepkgbin": "makepkg",
