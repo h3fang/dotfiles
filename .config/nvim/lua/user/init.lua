@@ -75,7 +75,15 @@ local config = {
   -- augroups/autocommands and custom filetypes also this just pure lua so
   -- anything that doesn't fit in the normal config locations above can go here
   polish = function()
-
+    -- highlight trailing white spaces
+    -- https://vim.fandom.com/wiki/Highlight_unwanted_spaces#Highlighting_with_the_match_command
+    vim.cmd([[
+      hi ExtraWhitespace ctermbg=red guibg=red
+      match ExtraWhitespace /\s\+$/
+      autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+      autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+      autocmd BufWinLeave * call clearmatches()
+    ]])
   end,
 }
 return config
