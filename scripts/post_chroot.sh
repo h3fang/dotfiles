@@ -22,20 +22,23 @@ git clone https://aur.archlinux.org/yay-bin.git --depth=1
 cd yay-bin
 makepkg -fsric
 
+pacman="pacman-contrib rebuild-detector"
+shell="zsh zsh-completions zsh-syntax-highlighting zsh-autosuggestions"
 fonts="ttf-hack ttf-roboto ttf-nerd-fonts-symbols-mono otf-font-awesome noto-fonts noto-fonts-cjk noto-fonts-emoji"
-drivers="mesa libva-mesa-driver vulkan-radeon pulseaudio"
-system_tools="htop fd ncdu zip unzip zstd unrar p7zip file-roller openblas poppler-data man-db man-pages exa bat ntfs-3g gnome-keyring neofetch borg python-llfuse polkit-gnome earlyoom systembus-notify neovim tlp bash-completion duf dog"
+drivers="mesa libva-mesa-driver vulkan-radeon"
+audio="pipewire pipewire-pulse pipewire-alsa wireplumber"
+system_tools="htop fd ncdu zip unzip zstd unrar p7zip file-roller openblas poppler-data man-db man-pages exa bat ripgrep gnome-keyring neofetch borg python-llfuse polkit-gnome earlyoom systembus-notify neovim tlp duf dog trash-cli"
 multimedia="mpv gimp inkscape blender"
-network="transmission-gtk youtube-dl firefox openssh openbsd-netcat rclone rsync"
+network="iwd transmission-gtk firefox openssh openbsd-netcat rclone rsync"
 #i3="xorg-server xorg-xinit xorg-xrandr xorg-xinput xorg-xset xorg-xprop i3-wm i3blocks i3lock-color picom feh xss-lock dunst lxappearance-gtk3 papirus-icon-theme python-requests acpi jq maim python-i3ipc xclip"
-sway="sway xorg-server-xwayland swaybg swayidle swaylock-effects-git i3blocks feh dunst lxappearance-gtk3 papirus-icon-theme wl-clipboard wf-recorder grim slurp python-requests acpi jq"
-de_tools="xfce4-terminal alacritty thunar thunar-volman thunar-archive-plugin gvfs udiskie rofi brightnessctl fzf"
+sway="sway xorg-server-xwayland swaybg swayidle swaylock-effects-git waybar rofi-lbonn-wayland feh dunst lxappearance-gtk3 papirus-icon-theme wl-clipboard wf-recorder grim slurp python-requests acpi jq"
+de_tools="xfce4-terminal thunar thunar-volman thunar-archive-plugin gvfs udiskie brightnessctl fzf"
 im="fcitx5 fcitx5-qt fcitx5-gtk fcitx5-chinese-addons fcitx5-pinyin-zhwiki"
 latex="texlive-bibtexextra texlive-core texlive-formatsextra texlive-humanities texlive-langchinese texlive-latexextra texlive-pictures texlive-pstricks texlive-publishers texlive-science biber"
-programming="python clang gdb cmake rustup mold tokei cargo-watch cargo-flamegraph visual-studio-code-bin godot"
+programming="python pyright clang gdb cmake rustup rust-analyzer mold tokei cargo-cache cargo-watch cargo-flamegraph visual-studio-code-bin godot"
 academic="zotero-bin"
 
-yay -S --needed "$fonts $drivers $system_tools $multimedia $network $sway $de_tools $im $latex $programming $academic"
+yay -S --needed "$pacman $shell $fonts $drivers $audio $system_tools $multimedia $network $sway $de_tools $im $latex $programming $academic"
 
 ### self-maintained AUR packages
 mkdir -p ~/projects
