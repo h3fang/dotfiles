@@ -38,8 +38,8 @@ output HDMI-A-1 resolution 3840x2160 position 1920 0 scale 2
 ### Idle configuration
 exec swayidle -w \
     timeout 300 "$lock" \
-    timeout 600 'swaymsg "output * dpms off"' \
-        resume 'swaymsg "output * dpms on"' \
+    timeout 600 'swaymsg "output * power off"' \
+        resume 'swaymsg "output * power on"' \
     before-sleep "$lock"
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
