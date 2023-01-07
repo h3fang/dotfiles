@@ -1,4 +1,7 @@
 local config = {
+  header = {
+    "AstroNvim",
+  },
   -- Extend LSP configuration
   lsp = {
     -- enable servers that you already have installed without mason
