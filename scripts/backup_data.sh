@@ -78,8 +78,7 @@ function f_backup {
         ~/Pictures \
         ~/projects \
         ~/Documents \
-        ~/.bashrc \
-        ~/.bash_profile \
+        ~/.zshenv \
         ~/.xinitrc \
         ~/.gitignore \
         /etc/pacman.d/hooks \
