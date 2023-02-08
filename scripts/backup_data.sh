@@ -68,7 +68,6 @@ function f_backup {
         --exclude "$HOME/projects/blog/public" \
         "::{now:%Y-%m-%d_%H-%M-%S}" \
         ~/.config \
-        ~/.local/share/bash-completion \
         ~/.local/share/fcitx5 \
         ~/.local/share/keyrings \
         ~/.local/share/systemd \
@@ -80,7 +79,6 @@ function f_backup {
         ~/Documents \
         ~/.zshenv \
         ~/.xinitrc \
-        ~/.gitignore \
         /etc/pacman.d/hooks \
         /etc/pacman.d/mirrorlist \
         /etc/pacman.conf \
@@ -89,12 +87,11 @@ function f_backup {
         /etc/mkinitcpio.d \
         /etc/mkinitcpio.conf \
         /etc/tlp.d \
-        /etc/tlp.conf \
         /etc/sysctl.d \
         /etc/modprobe.d \
         /etc/modules-load.d \
         /etc/udev/rules.d \
-        /etc/sway \
+        /etc/sway/config.d \
         /etc/systemd \
         /etc/default/earlyoom \
         /etc/makepkg.conf \
