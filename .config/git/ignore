@@ -1,14 +1,12 @@
 # hidden folders
 .conda/
 .cache/
+.dotnet/
 .mozilla/
-.npm/
 .pki/
-.paradoxlauncher/
 .ssh/
 .vscode/
 .steam/
-.x-plane/
 .zoom/
 .zotero/
 
