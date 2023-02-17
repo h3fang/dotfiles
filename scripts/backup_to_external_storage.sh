@@ -3,18 +3,19 @@
 set -euo pipefail
 
 DEV=$1
-BACKUP_DIR=/mnt/vault/backup
+MOUNT_DIR=/mnt/vault
+BACKUP_DIR="${MOUNT_DIR}/backup"
 
 sudo cryptsetup open "$DEV" vault
 
-if [[ ! -d /mnt/vault ]]; then
-    sudo mkdir /mnt/vault
-    sudo chown "$USER":"$USER" /mnt/vault
+if [[ ! -d "$MOUNT_DIR" ]]; then
+    sudo mkdir "$MOUNT_DIR"
+    sudo chown "$USER":"$USER" "$MOUNT_DIR"
 fi
 
-sudo mount /dev/mapper/vault /mnt/vault
+sudo mount /dev/mapper/vault "$MOUNT_DIR"
 
-if [[ ! -d /mnt/vault/backup ]]; then
+if [[ ! -d "$BACKUP_DIR" ]]; then
     mkdir "$BACKUP_DIR"
 fi
 
@@ -48,11 +49,11 @@ rsync -ahv --delete --delete-excluded \
 
 for target in /etc /boot/loader /var/lib/iwd /var/log/pacman.log ; do
     if [[ -d "$target" ]]; then
-        rsync -ahv --delete --ignore-errors --delete-excluded "$target" "$BACKUP_DIR"
+        sudo rsync -ahv --delete --ignore-errors --delete-excluded "$target" "$BACKUP_DIR"
     fi
 done
 
-sudo umount /mnt/vault
+sudo umount "$MOUNT_DIR"
 sudo cryptsetup close vault
 udisksctl power-off -b "$DEV"
 
