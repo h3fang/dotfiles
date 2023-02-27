@@ -1,5 +1,6 @@
-# zcompdump
+# completion
 
+setopt complete_aliases
 autoload -Uz compinit
 mkdir -p "$XDG_CACHE_HOME/zsh"
 compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
@@ -87,6 +88,8 @@ bindkey -e
 bindkey -M emacs "${terminfo[khome]}" beginning-of-line
 bindkey -M emacs "${terminfo[kend]}"  end-of-line
 bindkey -M emacs "${terminfo[kdch1]}" delete-char
+
+# sources
 
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
