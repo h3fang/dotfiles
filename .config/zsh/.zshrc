@@ -88,6 +88,7 @@ bindkey -e
 bindkey -M emacs "${terminfo[khome]}" beginning-of-line
 bindkey -M emacs "${terminfo[kend]}"  end-of-line
 bindkey -M emacs "${terminfo[kdch1]}" delete-char
+bindkey -M emacs '^U' backward-kill-line
 
 # sources
 
