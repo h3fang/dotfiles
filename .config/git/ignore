@@ -51,6 +51,7 @@
 .config/QtProject/
 .config/QtProject.conf
 .config/rclone/
+.config/RSS Guard 4/
 .config/systemd/user/timers.target.wants/
 .config/systemd/user/default.target.wants/
 .config/systemd/user/graphical.target.wants/
@@ -60,7 +61,7 @@
 .config/Trolltech.conf
 .config/transmission/
 .config/unity3d/
-.config/Unknown Organization/cajviewer.conf
+.config/Unknown Organization/cajviewer*.conf
 .config/Unknown Organization/zoom.conf
 .config/xfce4/xfconf/
 .config/xfce4/terminal/accels.scm
