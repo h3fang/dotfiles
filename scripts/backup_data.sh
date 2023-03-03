@@ -37,6 +37,7 @@ function f_backup {
         --exclude "$HOME/.config/fcitx5/conf/cached_layouts" \
         --exclude "$HOME/.config/ibus/bus" \
         --exclude "$HOME/.config/menus" \
+        --exclude "$HOME/.config/RSS Guard 4" \
         --exclude "$HOME/.config/transmission/resume" \
         --exclude "$HOME/.config/transmission/dht.dat" \
         --exclude "$HOME/.config/unity3d" \
