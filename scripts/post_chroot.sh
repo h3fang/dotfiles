@@ -24,7 +24,7 @@ makepkg -fsric
 
 pacman="pacman-contrib rebuild-detector"
 shell="zsh zsh-completions zsh-syntax-highlighting zsh-autosuggestions"
-fonts="ttf-hack ttf-roboto ttf-nerd-fonts-symbols-mono otf-font-awesome noto-fonts noto-fonts-cjk noto-fonts-emoji"
+fonts="ttf-hack-nerd ttf-roboto ttf-nerd-fonts-symbols-mono otf-font-awesome noto-fonts noto-fonts-cjk noto-fonts-emoji"
 drivers="mesa libva-mesa-driver vulkan-radeon"
 audio="pipewire pipewire-pulse pipewire-alsa wireplumber"
 system_tools="htop fd ncdu zip unzip zstd unrar p7zip file-roller openblas poppler-data man-db man-pages exa bat ripgrep gnome-keyring neofetch borg python-llfuse polkit-gnome earlyoom systembus-notify neovim tlp duf dog trash-cli"
