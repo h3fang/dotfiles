@@ -18,7 +18,7 @@
     },
     "window.menuBarVisibility": "toggle",
     "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}vscode",
-    "editor.fontFamily": "'Hack Nerd Font Mono', 'Noto Sans Mono CJK', 'monospace', 'FontAwesome', 'Font Awesome 6 Free', 'Font Awesome 6 Brands', 'Noto Color Emoji'",
+    "editor.fontFamily": "'Hack Nerd Font Mono', 'Noto Sans Mono CJK', 'monospace', 'Noto Color Emoji'",
     "editor.fontSize": 16,
     "editor.wordWrap": "bounded",
     "editor.wordWrapColumn": 128,
