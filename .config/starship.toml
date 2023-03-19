@@ -12,15 +12,13 @@ $git_branch\
 $git_commit\
 $git_state\
 $git_status\
-$time\
-$cmd_duration\
 $line_break\
 [└─ ](fg:39)\
 $status\
 $character
 """
 
-right_format = """$all"""
+right_format = """$time$cmd_duration$c$rust$python"""
 
 [conda]
 format = "[$symbol$environment]($style) "
@@ -39,4 +37,8 @@ format = '[$status]($style) '
 [time]
 disabled = false
 format = "[$time]($style) "
+
+[cmd_duration]
+min_time = 0
+show_milliseconds = true
 
