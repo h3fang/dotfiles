@@ -58,12 +58,20 @@ local config = {
       config = function()
         require("nvim-lastplace").setup {
           lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
-          lastplace_ignore_filetype = { "gitcommit", "gitrebase", "svn", "hgcommit", "alpha", "mason", "toggleterm", "lazy" },
+          lastplace_ignore_filetype = {
+            "gitcommit",
+            "gitrebase",
+            "svn",
+            "hgcommit",
+            "alpha",
+            "mason",
+            "toggleterm",
+            "lazy",
+          },
           lastplace_open_folds = true,
         }
       end,
     },
-
     {
       "johnfrankmorgan/whitespace.nvim",
       config = function()
@@ -77,7 +85,7 @@ local config = {
     {
       "L3MON4D3/LuaSnip",
       config = function(plugin, opts)
-        require "plugins.configs.luasnip" (plugin, opts)
+        require "plugins.configs.luasnip"(plugin, opts)
         require("luasnip.loaders.from_vscode").lazy_load { paths = { "./lua/user/snippets" } }
       end,
     },
@@ -86,12 +94,12 @@ local config = {
       event = { "BufRead Cargo.toml" },
       requires = { { "nvim-lua/plenary.nvim" } },
       config = function() require("crates").setup() end,
+      lazy = false,
     },
   },
   -- This function is run last and is a good place to configuring
   -- augroups/autocommands and custom filetypes also this just pure lua so
   -- anything that doesn't fit in the normal config locations above can go here
-  polish = function()
-  end,
+  polish = function() end,
 }
 return config
