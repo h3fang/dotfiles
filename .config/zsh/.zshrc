@@ -90,9 +90,11 @@ bindkey -M emacs "${terminfo[kend]}"  end-of-line
 bindkey -M emacs "${terminfo[kdch1]}" delete-char
 bindkey -M emacs '^U' backward-kill-line
 
-# sources
-
 source /usr/share/fzf/key-bindings.zsh
+bindkey -r '^T'
+
+# plugins
+
 source /usr/share/fzf/completion.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
