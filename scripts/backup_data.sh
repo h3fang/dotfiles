@@ -20,7 +20,6 @@ function f_backup {
         --exclude "$HOME/.config/blender/*/scripts/addons" \
         --exclude "$HOME/.config/borg/security" \
         --exclude "$HOME/.config/cef_user_data/Dictionaries" \
-        --exclude "$HOME/.config/clash/*.mmdb" \
         --exclude "$HOME/.config/Code" \
         --exclude "$HOME/.config/Code - OSS" \
         --exclude "$HOME/.config/chromium" \
@@ -80,6 +79,7 @@ function f_backup {
         ~/Documents \
         ~/.zshenv \
         ~/.xinitrc \
+        /etc/clash/*.{sh,py,yaml} \
         /etc/pacman.d/hooks \
         /etc/pacman.d/mirrorlist \
         /etc/pacman.conf \

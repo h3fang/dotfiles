@@ -55,7 +55,6 @@
 .config/systemd/user/timers.target.wants/
 .config/systemd/user/default.target.wants/
 .config/systemd/user/graphical.target.wants/
-.config/systemd/user/update_clash.*
 .config/Thunar/
 .config/Trolltech/
 .config/Trolltech.conf
@@ -96,7 +95,6 @@ Zotero/
 
 # special scripts
 scripts/envs
-scripts/update_clash.py
 
 # special dotfiles
 .bash_history
