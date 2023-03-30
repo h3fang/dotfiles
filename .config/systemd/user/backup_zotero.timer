@@ -2,9 +2,9 @@
 Description=Backup zotero data files periodically.
 
 [Timer]
-OnCalendar=0/7:00:00
-RandomizedDelaySec=60
-Persistent=true
+OnStartupSec=300
+OnUnitActiveSec=21600
+RandomizedDelaySec=30
 Unit=backup_zotero.service
 
 [Install]

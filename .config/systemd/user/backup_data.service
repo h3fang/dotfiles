@@ -1,9 +1,8 @@
 [Unit]
 Description=Backup data files.
-After=default.target
 
 [Service]
 Type=simple
-Environment="https_proxy=socks5://127.0.0.1:7891"
+ExecStartPre=/bin/bash -c '! /usr/bin/systemctl is-active --user --quiet sync_backup.service'
 ExecStart=%h/scripts/backup_data.sh
 

@@ -1,11 +1,11 @@
 [Unit]
-Description=Backup data files periodically.
+Description=Sync backup with cloud storage
 
 [Timer]
-OnStartupSec=300
+OnStartupSec=600
 OnUnitActiveSec=21600
 RandomizedDelaySec=30
-Unit=backup_data.service
+Unit=sync_backup.service
 
 [Install]
 WantedBy=timers.target
