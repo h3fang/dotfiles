@@ -25,7 +25,7 @@ setopt HIST_VERIFY
 
 # corrections
 
-setopt CORRECT_ALL
+setopt CORRECT
 
 # alias
 
