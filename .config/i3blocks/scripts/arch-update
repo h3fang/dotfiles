@@ -42,7 +42,7 @@ if __name__ == "__main__":
     finally:
         fcntl.flock(fd, fcntl.LOCK_UN)
 
-    aur_updates, aur_color = check_updates(["yay", "-Qua"])
+    aur_updates, aur_color = check_updates(["yay", "-Qua"], 1)
 
     repo_count = len(repo_updates)
     aur_count = len(aur_updates)
