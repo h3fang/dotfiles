@@ -1,5 +1,6 @@
 {
 	"buildDir": "$HOME/.cache/yay",
+	"answerupgrade": "None",
 	"answerdiff": "All",
 	"removemake": "yes",
 	"rpc": false
