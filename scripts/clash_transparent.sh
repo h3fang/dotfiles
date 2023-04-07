@@ -93,3 +93,6 @@ sysctl net.ipv4.conf.all.route_localnet=1
 iptables -t nat -A PREROUTING -p icmp -d 198.18.0.1/16 -j DNAT --to-destination 127.0.0.1
 iptables -t nat -A OUTPUT -p icmp -d 198.18.0.1/16 -j DNAT --to-destination 127.0.0.1
 
+while true; do
+    sleep 60
+done
