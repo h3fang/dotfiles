@@ -3,5 +3,6 @@
 	"answerupgrade": "None",
 	"answerdiff": "All",
 	"removemake": "yes",
-	"rpc": false
+	"nocombinedupgrade": true,
+	"rpc": true
 }
