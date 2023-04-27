@@ -17,7 +17,6 @@ export XDG_DATA_HOME=~/.local/share
 export XDG_STATE_HOME=~/.local/state
 
 export XAUTHORITY="$XDG_CACHE_HOME"/Xauthority
-export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export GOPATH="$XDG_DATA_HOME"/go
@@ -51,15 +50,11 @@ export QT_FONT_DPI=96
 
 ### Window Manager
 start_i3wm() {
-    if [[ -L "$GTK2_RC_FILES" ]]; then
-        \rm "$GTK2_RC_FILES"
-        \ln -s "${GTK2_RC_FILES}-i3" "$GTK2_RC_FILES"
-    fi
     X_LOG_DIR=~/.local/share/xorg
-    \mkdir -p "$X_LOG_DIR"
+    mkdir -p "$X_LOG_DIR"
     X_SESSION_LOG=$X_LOG_DIR/xsession.$XDG_VTNR.log
     if [[ -f $X_SESSION_LOG ]]; then
-        \cp "$X_SESSION_LOG" "${X_SESSION_LOG}.old"
+        cp "$X_SESSION_LOG" "${X_SESSION_LOG}.old"
     fi
 
     export XDG_SESSION_TYPE=x11
@@ -68,15 +63,11 @@ start_i3wm() {
 }
 
 start_sway() {
-    if [[ -L "$GTK2_RC_FILES" ]]; then
-        \rm "$GTK2_RC_FILES"
-        \ln -s "${GTK2_RC_FILES}-sway" "$GTK2_RC_FILES"
-    fi
     SWAY_LOG_DIR=~/.local/share/sway
-    \mkdir -p $SWAY_LOG_DIR
+    mkdir -p $SWAY_LOG_DIR
     SWAY_LOG=$SWAY_LOG_DIR/sway.$XDG_VTNR.log
     if [[ -f $SWAY_LOG ]]; then
-        \cp "$SWAY_LOG" "${SWAY_LOG}.old"
+        cp "$SWAY_LOG" "${SWAY_LOG}.old"
     fi
 
     # MOZ_DBUS_REMOTE https://mastransky.wordpress.com/2020/03/16/wayland-x11-how-to-run-firefox-in-mixed-environment/
