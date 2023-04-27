@@ -22,6 +22,7 @@
 .config/draw.io/
 .config/Debauchee/Barrier.conf
 .config/enchant/
+.config/evince/
 .config/fcitx/dbus/
 .config/fcitx5/crash.log
 .config/fcitx5/conf/cached_layouts
