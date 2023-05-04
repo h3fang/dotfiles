@@ -35,7 +35,7 @@
     "git.confirmSync": false,
     "git.autofetch": true,
     // rust
-    "rust-analyzer.server.path": "/usr/bin/rust-analyzer",
+    "rust-analyzer.server.path": "/usr/lib/rustup/bin/rust-analyzer",
     "crates.localCargoIndexHash": "mirrors.tuna.tsinghua.edu.cn-2eab394af869c8a2",
     // C/C++
     "C_Cpp.clang_format_path": "/usr/bin/clang-format",
