@@ -27,14 +27,14 @@ shell="zsh zsh-completions zsh-syntax-highlighting zsh-autosuggestions"
 fonts="ttf-hack-nerd ttf-roboto ttf-nerd-fonts-symbols-mono otf-font-awesome noto-fonts noto-fonts-cjk noto-fonts-emoji"
 drivers="mesa libva-mesa-driver vulkan-radeon"
 audio="pipewire pipewire-pulse pipewire-alsa wireplumber"
-system_tools="htop fd ncdu zip unzip zstd unrar p7zip file-roller openblas poppler-data man-db man-pages exa bat ripgrep gnome-keyring neofetch borg python-llfuse polkit-gnome earlyoom systembus-notify neovim tlp duf dog trash-cli"
+system_tools="htop fd ncdu zip unzip zstd unrar p7zip file-roller openblas blas-openblas poppler-data man-db man-pages exa bat ripgrep gnome-keyring neofetch borg python-llfuse polkit-gnome earlyoom systembus-notify neovim tlp duf dog trash-cli"
 multimedia="mpv gimp inkscape blender"
 network="iwd transmission-gtk firefox openssh openbsd-netcat rclone rsync"
 #i3="xorg-server xorg-xinit xorg-xrandr xorg-xinput xorg-xset xorg-xprop i3-wm i3blocks i3lock-color picom feh xss-lock dunst lxappearance-gtk3 papirus-icon-theme python-requests acpi jq maim python-i3ipc xclip"
 sway="sway xorg-server-xwayland swaybg swayidle swaylock-effects-git waybar rofi-lbonn-wayland feh dunst lxappearance-gtk3 papirus-icon-theme wl-clipboard wf-recorder grim slurp python-requests acpi jq"
 de_tools="xfce4-terminal thunar thunar-volman thunar-archive-plugin gvfs udiskie brightnessctl fzf"
 im="fcitx5 fcitx5-qt fcitx5-gtk fcitx5-chinese-addons fcitx5-pinyin-zhwiki"
-latex="texlive-bibtexextra texlive-core texlive-formatsextra texlive-humanities texlive-langchinese texlive-latexextra texlive-pictures texlive-pstricks texlive-publishers texlive-science biber"
+latex="texlive-meta texlive-langchinese biber"
 programming="python pyright clang gdb cmake rustup mold tokei cargo-cache cargo-watch cargo-flamegraph visual-studio-code-bin godot"
 academic="zotero-bin"
 
@@ -70,9 +70,10 @@ sudo sed -i '/NoExtract/a NoExtract  = usr\/lib\/systemd\/user\/dunst.service us
 # earlyoom
 sudo systemctl enable --now earlyoom.service
 
-# user backup service
+# backup services
 systemctl enable --now --user backup_data.timer
 systemctl enable --now --user backup_zotero.timer
+sudo systemctl enable --now backup_system.timer
 
 # mask useless gvfs components
 # sudo systemctl mask gvfs-daemon.service || true
