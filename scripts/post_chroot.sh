@@ -92,6 +92,9 @@ sudo sed -i 's/^AutoMount=true$/AutoMount=false/' /usr/share/gvfs/mounts/network
 # increase evince cache size
 gsettings set org.gnome.Evince page-cache-size 128
 
+# disable "recently used" in file manager
+gsettings set org.gnome.desktop.privacy remember-recent-files false
+
 # enable doulble tap as click
 sudo tee /etc/X11/xorg.conf.d/30-touchpad.conf <<EOF
 Section "InputClass"
