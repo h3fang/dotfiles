@@ -34,9 +34,9 @@
     // git
     "git.confirmSync": false,
     "git.autofetch": true,
+    "git.openRepositoryInParentFolders": "never",
     // rust
     "rust-analyzer.server.path": "/usr/bin/rust-analyzer",
-    "crates.localCargoIndexHash": "mirrors.tuna.tsinghua.edu.cn-2eab394af869c8a2",
     // C/C++
     "C_Cpp.clang_format_path": "/usr/bin/clang-format",
     "C_Cpp.clang_format_style": "{BasedOnStyle: LLVM, IndentWidth: 4, ColumnLimit: 100, BreakBeforeBraces: Attach, AccessModifierOffset: -4, AllowShortIfStatementsOnASingleLine: Never,AllowShortBlocksOnASingleLine: Empty, AllowShortFunctionsOnASingleLine: Empty}",
@@ -44,11 +44,9 @@
     "C_Cpp.default.cppStandard": "c++17",
     // python
     "python.condaPath": "~/.local/miniconda3/bin/conda",
-    "python.formatting.provider": "black",
-    "python.linting.flake8Enabled": true,
-    "python.linting.flake8Args": [
-        "--extend-ignore=E203",
-        "--max-line-length=88",
+    "pylint.args": [
+        "--disable=C0111",
+        "--max-line-length=120"
     ],
     // Privacy
     "telemetry.telemetryLevel": "off",
