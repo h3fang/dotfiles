@@ -11,16 +11,15 @@
 .zotero/
 
 # .config folder
+.config/audacity/
 .config/blender/
 .config/borg/
 .config/chromium/
 .config/cef_user_data/
-.config/clash
 .config/conda/environments.txt
 .config/dconf/
 .config/dotfiles/
 .config/draw.io/
-.config/Debauchee/Barrier.conf
 .config/enchant/
 .config/evince/
 .config/fcitx/dbus/
@@ -36,24 +35,21 @@
 .config/Joplin/
 .config/joplin-desktop/
 .config/kingsoft.conf
-.config/Kingsoft/
+.config/[kK]ingsoft/
 .config/libreoffice/
 .config/menus/
 .config/mimeapps.list
-.config/modprobed.db
-.config/modprobed-db.conf
 .config/mpv/watch_later/
 .config/nvim/
 .config/parallel/tmp/
 .config/pavucontrol.ini
-.config/psd/.psd.conf
+.config/pipewire/
 .config/pulse/
 .config/qBittorrent/
-.config/qpdfview/qpdfview.conf
 .config/QtProject/
 .config/QtProject.conf
 .config/rclone/
-.config/RSS Guard 4/
+.config/systemd/user/sockets.target.wants/
 .config/systemd/user/timers.target.wants/
 .config/systemd/user/default.target.wants/
 .config/systemd/user/graphical.target.wants/
@@ -64,7 +60,6 @@
 .config/Unknown Organization/cajviewer*.conf
 .config/Unknown Organization/zoom.conf
 .config/xfce4/xfconf/
-.config/xfce4/terminal/accels.scm
 .config/zoom.conf
 .config/zoomus.conf
 

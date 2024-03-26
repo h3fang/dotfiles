@@ -4,6 +4,7 @@ local config = wezterm.config_builder()
 config.font = wezterm.font_with_fallback{
   'Hack Nerd Font Mono',
   'Noto Sans Symbols 2',
+  'monospace',
 }
 
 config.font_size = 13.0

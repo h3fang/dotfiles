@@ -24,7 +24,7 @@
     "editor.wordWrapColumn": 128,
     "editor.minimap.showSlider": "always",
     "editor.minimap.renderCharacters": false,
-    "terminal.external.linuxExec": "xfce4-terminal",
+    "terminal.external.linuxExec": "wezterm",
     "terminal.integrated.shellIntegration.enabled": false,
     "terminal.integrated.persistentSessionReviveProcess": "never",
     "files.autoSave": "afterDelay",
