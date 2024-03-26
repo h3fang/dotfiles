@@ -63,7 +63,6 @@ button:hover {
 #custom-kernel,
 #custom-systemd,
 #custom-update,
-#custom-capslock,
 #tray,
 #mode,
 #idle_inhibitor {
@@ -110,11 +109,15 @@ label:focus {
     color: #2d3436;
 }
 
-#custom-capslock {
-    background-color: yellow;
-}
-
 #custom-systemd {
     background-color: #dc143c;
 }
+
+#keyboard-state label.locked {
+    color: red;
+    border-right: 1px solid #666;
+    padding: 0 3px;
+    background-color: yellow;
+}
+
 

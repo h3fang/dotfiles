@@ -3,9 +3,9 @@
     "height": 32, // Waybar height (to be removed for auto height)
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["custom/weather", "idle_inhibitor", "custom/capslock", "pulseaudio", "network", "battery", "custom/kernel", "custom/systemd", "custom/update", "clock", "tray"],
+    "modules-right": ["custom/weather", "idle_inhibitor", "keyboard-state", "pulseaudio", "network", "battery", "custom/kernel", "custom/systemd", "custom/update", "clock", "tray"],
     "sway/workspaces": {
-         "disable-scroll": true,
+         "disable-scroll": true
     },
     "sway/window": {
         "icon": false,
@@ -15,6 +15,7 @@
         "format": "<span foreground=\"red\" background=\"#202020\">{}</span>"
     },
     "idle_inhibitor": {
+        "start-activated": true,
         "format": "{icon}",
         "format-icons": {
             "activated": "",
@@ -26,7 +27,7 @@
         "spacing": 10
     },
     "clock": {
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
@@ -46,12 +47,9 @@
         "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
         "format-alt": "{icon} {time}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
     "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
         "tooltip-format-ethernet": "Interface: {ifname}\nUpload: {bandwidthUpBytes}\nDownload: {bandwidthDownBytes}",
         "tooltip-format-wifi": "Interface: {ifname}\nSSID: {essid}\nStrength: {signaldBm} dBm\nFrequency: {frequency} GHz\nUpload: {bandwidthUpBytes}\nDownload: {bandwidthDownBytes}",
         "tooltip-format-disconnected": "",
@@ -78,33 +76,39 @@
             "portable": "",
             "car": "",
             "default": ["", "", ""]
+        }
+    },
+    "keyboard-state": {
+        "capslock": true,
+        "format": {
+            "capslock": "{icon}"
         },
+        "format-icons": {
+            "locked": "CAPS",
+            "unlocked": ""
+        }
     },
     "custom/weather": {
         "format": "{}",
         "interval": 300,
-        "exec": "$HOME/.config/i3blocks/scripts/weather 2>/dev/null"
+        "exec": "$HOME/.config/waybar/scripts/weather 2>/dev/null"
     },
     "custom/kernel": {
         "format": "{}",
         "interval": 60,
-        "exec": "$HOME/.config/i3blocks/scripts/kernel-version 2>/dev/null"
+        "exec": "$HOME/.config/waybar/scripts/kernel-version 2>/dev/null"
     },
     "custom/systemd": {
         "format": "{}",
         "interval": 60,
-        "exec": "$HOME/.config/i3blocks/scripts/systemd 2>/dev/null"
+        "exec": "$HOME/.config/waybar/scripts/systemd 2>/dev/null"
     },
     "custom/update": {
         "format": " {}",
         "interval": 3600,
         "signal": 2,
-        "exec": "$HOME/.config/i3blocks/scripts/arch-update 2>/dev/null"
-    },
-    "custom/capslock": {
-        "format": "{}",
-        "interval": "once",
-        "signal": 3,
-        "exec": "$HOME/.config/i3blocks/scripts/capslock 2>/dev/null"
+        "exec": "$HOME/.config/waybar/scripts/arch-update 2>/dev/null"
     }
 }
+
+// vim: ft=json

@@ -1,27 +1,14 @@
-# Read `man 5 sway` for a complete reference.
-
 ### Variables
-# Logo key. Use Mod1 for Alt.
+
 set $mod Mod4
-set $term xfce4-terminal
-set $menu rofi -show drun
 set $lock ~/.config/sway/scripts/lock.sh
 set $close_apps ~/.config/sway/scripts/close_apps.sh
 set $exit swaymsg exit
-set $nagbar swaynag
-
-### Options
-
-font pango:Roboto 12.5
-focus_follows_mouse no
-tiling_drag disable
-titlebar_padding 2 2
 
 ### Exec
-exec_always ~/.config/sway/scripts/import-gsettings.sh
 
-#exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-#exec udiskie -anT2
+exec_always ~/.config/sway/scripts/import-gsettings.sh
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec thunar --daemon
 exec dunst
 exec networkd-notify
@@ -29,81 +16,40 @@ exec systembus-notify
 exec gammastep
 exec fcitx5 -d
 
-### Output configuration
-output * bg ~/Pictures/wallpapers/current fill
+### Bar
 
-output eDP-1 resolution 1920x1080 position 0 0
-output HDMI-A-1 resolution 3840x2160 position 1920 0 scale 2
+bar {
+    swaybar_command waybar
+}
+
+### Output configuration
+
+output * bg ~/Pictures/wallpapers/current fill
+output HDMI-A-1 resolution 2560x1440 position 0 0
 
 ### Idle configuration
+
 exec swayidle -w \
     timeout 300 "$lock" \
     timeout 600 'swaymsg "output * power off"' \
         resume 'swaymsg "output * power on"' \
     before-sleep "$lock"
 
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
-
 ### Input configuration
 
 input "type:touchpad" {
-    dwt enabled
-    tap enabled
     natural_scroll disabled
-    middle_emulation enabled
-    scroll_method two_finger
     events disabled_on_external_mouse
 }
 
-#input "type:mouse" {
-#    # disable mouse acceleration (enabled by default; to set it manually, use "adaptive" instead of "flat")
-#    accel_profile "flat"
-#    # set mouse sensitivity (between -1 and 1)
-#    pointer_accel 0.5
-#}
-
 input "type:keyboard" {
     xkb_numlock enabled
-    xkb_capslock disabled
 }
 
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
+### Includes
 
-### Key bindings
-
-include ~/.config/sway/config.d/01-key-bindings-and-workspace-rules
-
-# Caps Lock indicator
-bindsym --release Caps_Lock exec pkill -SIGRTMIN+3 waybar
-
-# Screenshot
-bindsym --release $mod+Print exec grim -g "$(slurp)" ~/Pictures/screenshots/"$(date -Is)".png
-bindsym --release $mod+Shift+Print exec grim ~/Pictures/screenshots/"$(date -Is)".png
-
-### styling
-
-bar {
-    swaybar_command waybar
-}
-
-# window/workspace rules
-include ~/.config/sway/config.d/02-window-rules
-
-for_window [app_id="firefox"] border none
-
-for_window [app_id="firefox" title="^About Mozilla Firefox$"] floating enable
-for_window [app_id="thunar" title="^File Operation Progress$"] floating enable
-
-# inhibit swayidle
-for_window [class="mpv"] inhibit_idle focus
-for_window [class="^.*"] inhibit_idle fullscreen
-for_window [app_id="^.*"] inhibit_idle fullscreen
-
-# assign apps to workspaces
-assign [app_id="firefox"] $ws2
-assign [app_id="Code"] $ws3
+include ~/.config/sway/config.d/01-key-bindings.conf
+include ~/.config/sway/config.d/02-rules.conf
+include ~/.config/sway/config.d/03-styling.conf
 
 include /etc/sway/config.d/*

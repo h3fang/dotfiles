@@ -1,11 +1,16 @@
 #!/usr/bin/python3
 import subprocess as sp
 import os,re
-from pathlib import Path
 
 bat_num = int(os.getenv("BAT_NUMBER", "0"))
 bat_info = sp.run(f"acpi -b | grep 'Battery {bat_num}'", shell=True, capture_output=True).stdout.decode('utf-8')
-status, percent, time = re.match(f"Battery {bat_num}: " + r"(\w+), (\d+)%,? ?(\d+\:\d+)?\:?(\d+)?", bat_info).groups()[:3]
+m = re.match(f"Battery {bat_num}: " + r"(\w+), (\d+)%,? ?(\d+\:\d+)?\:?(\d+)?", bat_info)
+if m is None:
+    print("Err")
+    print("Regex didn't match")
+    print("#FF0000")
+    exit(33)
+status, percent, time = m.groups()[:3]
 percent = int(percent)
 
 if status == "Discharging":

@@ -27,10 +27,3 @@ pkill -f gnome-keyring-daemon || true
 pkill -f systembus-notify || true
 pkill -f networkd-notify || true
 
-# unmount
-sync
-if ! udiskie-umount -ad; then
-    notify-send -u critical 'failed to run "udiskie-umount -ad"'
-    exit 1
-fi
-

@@ -40,27 +40,18 @@ export SDL_IM_MODULE=fcitx
 export ELECTRON_TRASH=gio
 
 ### keyring
-eval $(/usr/bin/gnome-keyring-daemon --start)
-export GNOME_KEYRING_CONTROL
-export SSH_AUTH_SOCK
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR"/gcr/ssh
 
 # Qt
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export QT_FONT_DPI=96
 
-### Window Manager
-start_i3wm() {
-    X_LOG_DIR=~/.local/share/xorg
-    mkdir -p "$X_LOG_DIR"
-    X_SESSION_LOG=$X_LOG_DIR/xsession.$XDG_VTNR.log
-    if [[ -f $X_SESSION_LOG ]]; then
-        cp "$X_SESSION_LOG" "${X_SESSION_LOG}.old"
-    fi
+# SDL
+# export SDL_VIDEODRIVER="wayland,x11"
+export SDL_VIDEODRIVER=x11
+export SDL_AUDIODRIVER=pipewire
 
-    export XDG_SESSION_TYPE=x11
-    export MOZ_X11_EGL=1
-    exec startx -- -keeptty > "$X_SESSION_LOG" 2>&1
-}
+### Window Manager
 
 start_sway() {
     SWAY_LOG_DIR=~/.local/share/sway
@@ -70,22 +61,16 @@ start_sway() {
         cp "$SWAY_LOG" "${SWAY_LOG}.old"
     fi
 
-    # MOZ_DBUS_REMOTE https://mastransky.wordpress.com/2020/03/16/wayland-x11-how-to-run-firefox-in-mixed-environment/
-    XKB_DEFAULT_LAYOUT=us \
     XDG_SESSION_TYPE=wayland \
     XDG_CURRENT_DESKTOP=sway \
     QT_QPA_PLATFORM="wayland;xcb" \
     QT_WAYLAND_FORCE_DPI=physical \
-    SDL_VIDEODRIVER=wayland \
     _JAVA_AWT_WM_NONREPARENTING=1 \
-    MOZ_ENABLE_WAYLAND=1 \
-    MOZ_DBUS_REMOTE=1 \
+    MOZ_ENABLE_WAYLAND=0 \
     exec sway > "$SWAY_LOG" 2>&1
 }
 
-if [[ "$(tty)" = "/dev/tty2" ]]; then
-    start_i3wm
-elif [[ "$(tty)" = "/dev/tty1" ]]; then
+if [[ "$(tty)" = "/dev/tty1" ]]; then
     start_sway
 fi
 
