@@ -26,7 +26,7 @@ sed -i '/^#zh_CN.UTF-8 UTF-8/ s/^#//' /etc/locale.gen
 locale-gen
 echo 'LANG=en_US.UTF-8' > /etc/locale.conf
 echo 'LC_PAPER=zh_CN.UTF-8' >> /etc/locale.conf
-echo 'a4' >> /etc/papersize
+echo 'A4' >> /etc/papersize
 
 cat > /etc/hostname <<EOF
 $HostName
