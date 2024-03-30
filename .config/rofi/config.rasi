@@ -3,6 +3,7 @@ configuration {
     width: 40;
     modi: "drun";
     show-icons: true;
+    terminal: "wezterm";
 }
 
 @theme "Arc"

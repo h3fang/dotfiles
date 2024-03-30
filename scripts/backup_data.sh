@@ -23,7 +23,7 @@ fi
 borg create --compression auto,zstd,16 --stats --list --filter=AME \
     --exclude "$HOME/.config/blender/*/scripts/addons" \
     --exclude "$HOME/.config/borg/security" \
-    --exclude "$HOME/.config/cef_user_data/Dictionaries" \
+    --exclude "$HOME/.config/cef_user_data" \
     --exclude "$HOME/.config/Code" \
     --exclude "$HOME/.config/Code - OSS" \
     --exclude "$HOME/.config/chromium" \
@@ -75,15 +75,13 @@ borg create --compression auto,zstd,16 --stats --list --filter=AME \
     ~/.local/share/cargo/config.toml \
     ~/.local/share/fcitx5 \
     ~/.local/share/keyrings \
-    ~/.local/share/systemd \
     ~/.local/share/gnupg \
     ~/.ssh \
     ~/scripts \
     ~/Pictures \
     ~/projects \
     ~/Documents \
-    ~/.zshenv \
-    ~/.xinitrc
+    ~/.zshenv
 
 # warn for abnormal delta size
 last_backup_info=$(borg info --last 1 | awk '/This archive:/{print}')

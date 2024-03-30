@@ -37,13 +37,12 @@ pacman="pacman-contrib rebuild-detector"
 shell="zsh zsh-completions zsh-syntax-highlighting zsh-autosuggestions"
 fonts="ttf-hack-nerd ttf-roboto ttf-nerd-fonts-symbols-mono otf-font-awesome noto-fonts noto-fonts-cjk noto-fonts-emoji"
 drivers="mesa mesa-vdpau vulkan-radeon"
-audio="pipewire pipewire-pulse pipewire-alsa wireplumber"
-system_tools="htop fd ncdu unrar p7zip file-roller openblas blas-openblas poppler-data man-db man-pages exa bat ripgrep gnome-keyring neofetch borg python-llfuse polkit-gnome earlyoom systembus-notify neovim duf dog trash-cli"
-multimedia="mpv gimp inkscape blender"
+audio="pipewire pipewire-pulse wireplumber"
+system_tools="htop fd ncdu unrar p7zip file-roller openblas blas-openblas poppler-data man-db man-pages exa bat ripgrep gnome-keyring neofetch borg python-llfuse polkit-gnome systembus-notify neovim duf dog trash-cli"
+multimedia="mpv loupe gimp inkscape blender"
 network="qbittorrent firefox profile-cleaner openssh openbsd-netcat rclone rsync"
-#i3="xorg-server xorg-xinit xorg-xrandr xorg-xinput xorg-xset xorg-xprop i3-wm i3blocks i3lock-color picom feh xss-lock dunst lxappearance-gtk3 papirus-icon-theme python-requests acpi jq maim python-i3ipc xclip"
-sway="sway xorg-xwayland swaybg swayidle waybar rofi-lbonn-wayland feh dunst papirus-icon-theme wl-clipboard wf-recorder grim slurp python-requests acpi jq"
-de_tools="wezterm thunar thunar-volman gvfs udiskie brightnessctl fzf"
+sway="sway xorg-xwayland swaybg swayidle waybar rofi-lbonn-wayland dunst papirus-icon-theme wl-clipboard wf-recorder grim slurp python-requests acpi jq"
+de_tools="wezterm nautilus nautilus-open-any-terminal gvfs udiskie brightnessctl fzf"
 im="fcitx5 fcitx5-qt fcitx5-gtk fcitx5-chinese-addons fcitx5-pinyin-zhwiki"
 latex="texlive-meta texlive-langchinese biber"
 programming="python pyright clang gdb cmake rustup mold tokei cargo-cache cargo-watch cargo-flamegraph visual-studio-code-bin godot"
@@ -64,17 +63,10 @@ cd ~/projects
 echo 'blacklist pcspkr' | sudo tee /etc/modprobe.d/nobeep.conf
 sudo rmmod pcspkr || true
 
-# earlyoom
-sudo systemctl enable --now earlyoom.service
-
 # backup services
 #systemctl enable --now --user backup_data.timer
 #systemctl enable --now --user backup_zotero.timer
 #sudo systemctl enable --now backup_system.timer
-
-# mask useless gvfs components
-# sudo systemctl mask gvfs-daemon.service || true
-# sudo systemctl mask gvfs-metadata.service || true
 
 # mask systemd components
 sudo systemctl mask systemd-homed.service systemd-journald-audit.socket
@@ -91,4 +83,7 @@ gsettings set org.gnome.Evince page-cache-size 128
 
 # disable "recently used" in file manager
 gsettings set org.gnome.desktop.privacy remember-recent-files false
+
+# set default terminal
+gsettings set org.gnome.desktop.default-applications.terminal exec wezterm
 

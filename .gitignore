@@ -53,13 +53,11 @@
 .config/systemd/user/timers.target.wants/
 .config/systemd/user/default.target.wants/
 .config/systemd/user/graphical.target.wants/
-.config/Thunar/
 .config/Trolltech/
 .config/Trolltech.conf
 .config/unity3d/
 .config/Unknown Organization/cajviewer*.conf
 .config/Unknown Organization/zoom.conf
-.config/xfce4/xfconf/
 .config/zoom.conf
 .config/zoomus.conf
 
