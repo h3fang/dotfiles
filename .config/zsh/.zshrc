@@ -30,8 +30,6 @@ setopt CORRECT
 # alias
 
 alias cat='bat -pp'
-alias cp2='rsync -ah --progress'
-alias df='df -h'
 alias diff='diff --color=auto'
 alias dot='/usr/bin/git --git-dir=$HOME/.config/dotfiles/ --work-tree=$HOME'
 alias free='free -h'
@@ -43,7 +41,7 @@ alias music='mpv --volume=60 --shuffle --loop-playlist=inf --no-resume-playback 
 alias ncdu='ncdu --color dark'
 alias rm='trash-put'
 alias vim='nvim'
-alias weather='curl -m 5 "https://wttr.in/${LOCATION_CITY}?lang=zh&format=v2"'
+alias weather='curl -m 5 "https://wttr.in/${LOCATION_CITY}?lang=zh"'
 alias yaySc='yay -Sc --noconfirm'
 alias gitgc='git reflog expire --expire=now --all && git gc --prune=now'
 
