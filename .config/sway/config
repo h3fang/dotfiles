@@ -24,7 +24,7 @@ bar {
 ### Output configuration
 
 output * bg ~/Pictures/wallpapers/current fill
-output HDMI-A-1 resolution 2560x1440 position 0 0
+output HDMI-A-1 mode 2560x1440@144Hz position 0 0
 
 ### Idle configuration
 
