@@ -2,7 +2,7 @@ local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
 config.font = wezterm.font_with_fallback{
-  'Hack Nerd Font Mono',
+  'Hack Nerd Font',
   'Noto Sans Symbols 2',
   'monospace',
 }
