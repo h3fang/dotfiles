@@ -3,7 +3,6 @@ Description=Sync backup with cloud storage.
 
 [Service]
 Type=simple
-Environment="https_proxy=socks5://127.0.0.1:7891"
 ExecStartPre=/bin/bash -c '! /usr/bin/systemctl is-active --user --quiet backup_data.service'
 ExecStartPre=/bin/bash -c '! /usr/bin/systemctl is-active --user --quiet backup_zotero.service'
 ExecStart=%h/scripts/sync_backup.sh
