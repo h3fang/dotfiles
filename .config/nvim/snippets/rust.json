@@ -1,0 +1,21 @@
+{
+	"LeetCode Solution": {
+		"prefix": "leetcode",
+		"body": [
+			"pub struct Solution;",
+			"",
+			"$0",
+			"",
+			"#[cfg(test)]",
+			"mod tests {",
+			"    use super::*;",
+			"",
+			"    #[test]",
+			"    fn case1() {",
+			"",
+			"    }",
+			"}"
+		],
+		"description": "LeetCode solution template"
+	}
+}

@@ -40,7 +40,6 @@
 .config/menus/
 .config/mimeapps.list
 .config/mpv/watch_later/
-.config/nvim/
 .config/parallel/tmp/
 .config/pavucontrol.ini
 .config/pipewire/
