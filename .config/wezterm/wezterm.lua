@@ -1,5 +1,6 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
+local act = wezterm.action
 
 config.font = wezterm.font_with_fallback({
   "Hack Nerd Font",
@@ -24,6 +25,23 @@ for _, v in ipairs(keys) do
     table.insert(config.keys, v)
   end
 end
+
+config.mouse_bindings = {
+  -- Change the default click behavior so that it only selects
+  -- text and doesn't open hyperlinks
+  {
+    event = { Up = { streak = 1, button = "Left" } },
+    mods = "NONE",
+    action = act.CompleteSelection("ClipboardAndPrimarySelection"),
+  },
+
+  -- and make CTRL-Click open hyperlinks
+  {
+    event = { Up = { streak = 1, button = "Left" } },
+    mods = "CTRL",
+    action = act.OpenLinkAtMouseCursor,
+  },
+}
 
 config.colors = {
   -- The default text color
