@@ -66,7 +66,7 @@ start_sway() {
     QT_QPA_PLATFORM="wayland;xcb" \
     QT_WAYLAND_FORCE_DPI=physical \
     _JAVA_AWT_WM_NONREPARENTING=1 \
-    MOZ_ENABLE_WAYLAND=0 \
+    MOZ_ENABLE_WAYLAND=1 \
     exec sway > "$SWAY_LOG" 2>&1
 }
 
