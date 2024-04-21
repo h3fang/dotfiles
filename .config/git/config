@@ -3,6 +3,7 @@
     name = Fang He
 [core]
     autocrlf = input
+    pager = delta
 [alias]
     st = status
     co = commit
@@ -14,3 +15,6 @@
     rebase = false
 [init]
     defaultBranch = main
+[delta]
+    navigate = true
+    side-by-side = true

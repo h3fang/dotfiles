@@ -8,7 +8,7 @@ error_exit() {
 }
 trap error_exit ERR
 
-sudo pacman -Syu --needed base-devel git
+sudo pacman -Syu --needed base-devel git git-delta
 
 # dotfiles
 mkdir -p "$HOME"/.config
