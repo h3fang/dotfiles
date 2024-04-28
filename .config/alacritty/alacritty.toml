@@ -1,0 +1,49 @@
+[font]
+size = 13.0
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[selection]
+save_to_clipboard = true
+
+[window]
+dynamic_title = true
+opacity = 0.9
+
+[keyboard]
+bindings = [
+  { key = "PageUp", mods = "Shift", mode = "~Alt", action = "ScrollPageUp" },
+  { key = "PageDown", mods = "Shift", mode = "~Alt", action = "ScrollPageDown" },
+  { key = "Home", mods = "Shift", mode = "~Alt", action = "ScrollToTop" },
+  { key = "End", mods = "Shift", mode = "~Alt", action = "ScrollToBottom" },
+]
+
+[colors.primary]
+background = '#000000'
+foreground = '#ffffff'
+
+[colors.cursor]
+text = "#000000"
+cursor = "#1a8fff"
+
+[colors.normal]
+black   = '#0d0d0d'
+red     = '#FF301B'
+green   = '#A0E521'
+yellow  = '#FFC620'
+blue    = '#1BA6FA'
+magenta = '#8763B8'
+cyan    = '#21DEEF'
+white   = '#EBEBEB'
+
+[colors.bright]
+black   = '#6D7070'
+red     = '#FF4352'
+green   = '#B8E466'
+yellow  = '#FFD750'
+blue    = '#1BA6FA'
+magenta = '#A578EA'
+cyan    = '#73FBF1'
+white   = '#FEFEF8'
