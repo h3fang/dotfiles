@@ -85,5 +85,5 @@ gsettings set org.gnome.Evince page-cache-size 128
 gsettings set org.gnome.desktop.privacy remember-recent-files false
 
 # set default terminal
-gsettings set org.gnome.desktop.default-applications.terminal exec wezterm
+gsettings set org.gnome.desktop.default-applications.terminal exec alacritty
 

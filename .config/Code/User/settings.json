@@ -24,7 +24,7 @@
     "editor.wordWrapColumn": 128,
     "editor.minimap.showSlider": "always",
     "editor.minimap.renderCharacters": false,
-    "terminal.external.linuxExec": "/usr/bin/wezterm",
+    "terminal.external.linuxExec": "alacritty",
     "terminal.integrated.shellIntegration.enabled": false,
     "terminal.integrated.persistentSessionReviveProcess": "never",
     "terminal.integrated.copyOnSelection": true,
