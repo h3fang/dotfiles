@@ -17,7 +17,7 @@ ActivateKeys=
 DeactivateKeys=
 
 [Hotkey/TriggerKeys]
-0=Control+Shift+space
+0=Control+Shift+Alt+space
 
 [Hotkey/AltTriggerKeys]
 0=Shift+Shift_R
