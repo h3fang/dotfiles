@@ -20,6 +20,16 @@ bindings = [
   { key = "End", mods = "Shift", mode = "~Alt", action = "ScrollToBottom" },
 ]
 
+[[hints.enabled]]
+binding = { key = "U", mods = "Control|Shift" }
+action = "Copy"
+hyperlinks = true
+mouse.enabled = true
+mouse.mods = "Control"
+post_processing = true
+persist = false
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩‘]+"
+
 [colors.primary]
 background = '#000000'
 foreground = '#ffffff'
