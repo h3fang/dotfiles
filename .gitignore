@@ -48,6 +48,7 @@
 .config/QtProject/
 .config/QtProject.conf
 .config/rclone/
+.config/sway/config.d/00-output.conf
 .config/systemd/user/sockets.target.wants/
 .config/systemd/user/timers.target.wants/
 .config/systemd/user/default.target.wants/

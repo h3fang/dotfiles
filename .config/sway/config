@@ -24,7 +24,6 @@ bar {
 ### Output configuration
 
 output * bg ~/Pictures/wallpapers/current fill
-output DP-1 mode 2560x1440@144Hz position 0 0
 
 ### Idle configuration
 
@@ -47,6 +46,7 @@ input "type:keyboard" {
 
 ### Includes
 
+include ~/.config/sway/config.d/00-output.conf
 include ~/.config/sway/config.d/01-key-bindings.conf
 include ~/.config/sway/config.d/02-rules.conf
 include ~/.config/sway/config.d/03-styling.conf
