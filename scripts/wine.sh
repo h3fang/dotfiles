@@ -16,17 +16,11 @@ setup() {
     # update first to fetch multilib database
     sudo pacman -Syu
 
-    yay -S --needed wine-staging wine-gecko wine-mono winetricks dxvk-bin lib32-mesa
-    sudo pacman -S --asdeps --needed "$(pacman -Qi wine-staging | sed -n '/^Opt/,/^Conf/p' | sed '$d' | sed 's/^Opt.*://g' | sed 's/^\s*//g' | tr '\n' ' ')"
+    yay -S --needed wine-staging wine-gecko wine-mono winetricks dxvk-bin lib32-mesa expac
+    sudo pacman -S --asdeps --needed $(expac -S '%o' wine-staging)
 
     # initialize wine prefix
     wineboot -u
-    for process in wineboot wineserver; do
-        pid=$(pgrep "$process")
-        if [[ -n "$pid" ]]; then
-            tail --pid="$pid" -f /dev/null
-        fi
-    done
 
     # dxvk
     setup_dxvk install --symlink
