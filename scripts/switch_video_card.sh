@@ -2,12 +2,11 @@
 # Note: the name of the laptop display might be different under different kernels (e.g. eDP-1-1 for linux 5.2 and eDP-1 for linux-lts 4.19), double check it
 
 set -eEuo pipefail
-error_exit() {
-    s=$?
-    echo "$0: Error on line $LINENO: $BASH_COMMAND"
-    exit $s
+failure() {
+    echo "line: $1 command: $2"
+    exit $3
 }
-trap error_exit ERR
+trap 'failure ${LINENO} "$BASH_COMMAND" $?' ERR
 
 F_X11_CONF="/etc/X11/xorg.conf"
 F_NV_OUTPUTCLASS="/etc/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf"

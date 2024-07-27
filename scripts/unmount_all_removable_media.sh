@@ -3,12 +3,11 @@
 # no extra dependency
 
 set -eEuo pipefail
-error_exit() {
-    s=$?
-    echo "$0: Error on line $LINENO"
-    exit $s
+failure() {
+    echo "line: $1 command: $2"
+    exit $3
 }
-trap error_exit ERR
+trap 'failure ${LINENO} "$BASH_COMMAND" $?' ERR
 
 if [[ -x $(command -v udiskie-umount) ]]; then
     udiskie-umount -ad

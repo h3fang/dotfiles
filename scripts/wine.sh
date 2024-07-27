@@ -1,12 +1,11 @@
 #!/bin/bash
 
 set -eEuo pipefail
-error_exit() {
-    s=$?
-    echo "$0: Error on line $LINENO"
-    exit $s
+failure() {
+    echo "line: $1 command: $2"
+    exit $3
 }
-trap error_exit ERR
+trap 'failure ${LINENO} "$BASH_COMMAND" $?' ERR
 
 setup() {
     # should be fine if it is already enabled
@@ -20,6 +19,7 @@ setup() {
     sudo pacman -S --asdeps --needed $(expac -S '%o' wine-staging)
 
     # initialize wine prefix
+    mkdir -p $WINEPREFIX
     wineboot -u
 
     # dxvk

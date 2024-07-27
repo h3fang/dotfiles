@@ -2,14 +2,12 @@
 # requires borg, libsecret, libnotify, awk
 
 set -eEuo pipefail
-function error_exit {
-    s=$?
-    msg="$0: Error on line $(caller)"
-    echo "$msg"
-    notify-send "Backup" "$msg"
-    exit $s
+failure() {
+    echo "line: $1 command: $2"
+    notify-send "Backup data failed" "line: $1 command: $2"
+    exit $3
 }
-trap error_exit ERR
+trap 'failure ${LINENO} "$BASH_COMMAND" $?' ERR
 
 export BORG_REPO="/backup/$USER/data"
 export BORG_PASSCOMMAND="secret-tool lookup borgrepo default"

@@ -1,12 +1,11 @@
 #!/bin/bash
 
 set -eEuo pipefail
-error_exit() {
-    s=$?
-    echo "$0: Error on line $LINENO: $BASH_COMMAND"
-    exit $s
+failure() {
+    echo "line: $1 command: $2"
+    exit $3
 }
-trap error_exit ERR
+trap 'failure ${LINENO} "$BASH_COMMAND" $?' ERR
 
 sudo pacman -Syu --needed base-devel git git-delta
 
