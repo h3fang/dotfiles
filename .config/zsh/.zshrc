@@ -87,6 +87,8 @@ bindkey -M emacs "${terminfo[khome]}" beginning-of-line
 bindkey -M emacs "${terminfo[kend]}"  end-of-line
 bindkey -M emacs "${terminfo[kdch1]}" delete-char
 bindkey -M emacs '^U' backward-kill-line
+bindkey "^[[1;5D" backward-word
+bindkey "^[[1;5C" forward-word
 
 source /usr/share/fzf/key-bindings.zsh
 bindkey -r '^T'
