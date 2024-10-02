@@ -76,10 +76,5 @@
         "default": "right",
         "jupyter-notebook": "left"
     },
-    "[html]": {
-        "editor.defaultFormatter": "vscode.html-language-features"
-    },
-    "[javascript]": {
-        "editor.defaultFormatter": "vscode.typescript-language-features"
-    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
 }
