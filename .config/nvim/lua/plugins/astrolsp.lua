@@ -9,7 +9,7 @@ return {
     opts.servers = opts.servers or {}
     vim.list_extend(opts.servers, {
       "rust_analyzer",
-      "pyright",
+      "ruff",
     })
   end,
 }
