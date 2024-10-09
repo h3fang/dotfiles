@@ -50,10 +50,7 @@
     "C_Cpp.default.cppStandard": "c++17",
     // python
     "python.condaPath": "~/.local/miniconda3/bin/conda",
-    "pylint.args": [
-        "--disable=C0111",
-        "--max-line-length=120"
-    ],
+    "ruff.lineLength": 120,
     // Privacy
     "telemetry.telemetryLevel": "off",
     "update.mode": "none",
@@ -81,7 +78,7 @@
         "editor.defaultFormatter": "rust-lang.rust-analyzer"
     },
     "[python]": {
-        "editor.defaultFormatter": "ms-python.black-formatter"
+        "editor.defaultFormatter": "charliermarsh.ruff"
     },
     "[toml]": {
         "editor.defaultFormatter": "tamasfe.even-better-toml"
