@@ -41,7 +41,6 @@ alias music='mpv --volume=60 --shuffle --loop-playlist=inf --no-resume-playback 
 alias ncdu='ncdu --color dark'
 alias rm='trash-put'
 alias vim='nvim'
-alias weather='curl -m 5 "https://wttr.in/${LOCATION_CITY}?lang=zh"'
 alias yaySc='yay -Sc --noconfirm'
 alias gitgc='git reflog expire --expire=now --all && git gc --prune=now'
 
