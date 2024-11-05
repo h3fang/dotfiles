@@ -5,6 +5,17 @@ set $lock ~/.config/sway/scripts/lock.sh
 set $close_apps ~/.config/sway/scripts/close_apps.sh
 set $exit swaymsg exit
 
+set $ws1 "1 "
+set $ws2 "2 "
+set $ws3 "3 "
+set $ws4 "4 "
+set $ws5 "5 "
+set $ws6 "6 "
+set $ws7 "7 "
+set $ws8 "8 "
+set $ws9 "9 "
+set $ws10 "10 "
+
 ### Exec
 
 exec_always ~/.config/sway/scripts/import-gsettings.sh
