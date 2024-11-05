@@ -53,6 +53,7 @@
 .config/systemd/user/timers.target.wants/
 .config/systemd/user/default.target.wants/
 .config/systemd/user/graphical.target.wants/
+.config/transmission/
 .config/Trolltech/
 .config/Trolltech.conf
 .config/unity3d/
@@ -60,6 +61,7 @@
 .config/Unknown Organization/zoom.conf
 .config/user-dirs.dirs
 .config/user-dirs.locale
+.config/xfce4/
 .config/zoom.conf
 .config/zoomus.conf
 
