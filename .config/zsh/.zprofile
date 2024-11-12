@@ -39,8 +39,11 @@ export SDL_IM_MODULE=fcitx
 # Electron trash
 export ELECTRON_TRASH=gio
 
-### keyring
+# keyring
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR"/gcr/ssh
+
+# GTK
+export GTK_A11Y=none
 
 # Qt
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
