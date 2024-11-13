@@ -43,6 +43,7 @@ export ELECTRON_TRASH=gio
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR"/gcr/ssh
 
 # GTK
+export NO_AT_BRIDGE=1
 export GTK_A11Y=none
 
 # Qt
