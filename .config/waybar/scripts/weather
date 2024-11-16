@@ -9,19 +9,6 @@ QWEATHER = "QWEATHER_KEY"
 ERROR = "<span color='red'>{}</span>"
 
 
-def get_city():
-    c = os.getenv("LOCATION_CITY")
-    if c is None:
-        try:
-            r = requests.get("https://ipinfo.io", timeout=10)
-            r.raise_for_status()
-            return r.json()["city"]
-        except Exception:
-            return None
-    else:
-        return c
-
-
 def qweather(location):
     key = os.getenv(QWEATHER)
     if key is None:
@@ -33,6 +20,7 @@ def qweather(location):
     )
     r.raise_for_status()
     r = r.json()
+    location_name = r["location"][0]["name"]
     location_id = r["location"][0]["id"]
 
     r = requests.get(
@@ -43,7 +31,7 @@ def qweather(location):
     d = r.json()
 
     n = d["now"]
-    summary = f"{location} {n['text']} {n['temp']}℃"
+    summary = f"{location_name} {n['text']} {n['temp']}℃"
     details = [
         f"Feels Like: {n['feelsLike']}℃",
         f"Pressure: {n['pressure']} hPa",
@@ -51,6 +39,7 @@ def qweather(location):
         f"Visibility: {n['vis']} km",
         f"Wind Speed: {n['windSpeed']} km/h",
         f"Wind Direction: {n['wind360']} degree",
+        f"Observation Time: {n['obsTime']}",
     ]
     if "cloud" in n:
         details.append(f"Cloudiness: {n['cloud']}%")
@@ -85,7 +74,7 @@ def openweathermap(location):
 
 
 def main():
-    location = get_city()
+    location = os.getenv("LOCATION_CITY")
     if location is None:
         print(ERROR.format("Location"))
         return
@@ -95,24 +84,20 @@ def main():
     try:
         summary, d = qweather(location)
         details += d
-    except RuntimeError:
-        details.append("key")
+    except RuntimeError as e:
+        details.append(str(e))
     except Exception as e:
         details.append(type(e).__name__)
 
-    if len(summary) > 0:
-        print(summary)
-        print("\r".join(details))
-        return
-
-    details.append("\ropenweathermap")
-    try:
-        summary, d = openweathermap(location)
-        details += d
-    except RuntimeError:
-        details.append("app_id")
-    except Exception as e:
-        details.append(type(e).__name__)
+    if len(summary) == 0:
+        details.append("\ropenweathermap")
+        try:
+            summary, d = openweathermap(location)
+            details += d
+        except RuntimeError as e:
+            details.append(str(e))
+        except Exception as e:
+            details.append(type(e).__name__)
 
     if len(summary) > 0:
         print(summary)
