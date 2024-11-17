@@ -2,6 +2,8 @@
 
 import os
 import requests
+import fcntl
+import time
 
 
 OWM = "OWM_AID"
@@ -73,7 +75,7 @@ def openweathermap(location):
     return summary, details
 
 
-def main():
+def update():
     location = os.getenv("LOCATION_CITY")
     if location is None:
         print(ERROR.format("Location"))
@@ -98,14 +100,26 @@ def main():
             details.append(str(e))
         except Exception as e:
             details.append(type(e).__name__)
-
-    if len(summary) > 0:
-        print(summary)
-    else:
-        print(ERROR.format("Error"))
-
-    print("\r".join(details))
+    if len(summary) == 0:
+        summary = ERROR.format("Error")
+    details = "\r".join(details)
+    return f"{summary}\n{details}"
 
 
 if __name__ == "__main__":
-    main()
+    # temporary workaround for https://github.com/Alexays/Waybar/issues/368
+    with open("/tmp/waybar_weather.lock", "w+", encoding="utf-8") as f:
+        fcntl.flock(f, fcntl.LOCK_EX)
+
+        t = f.readline().rstrip()
+        now = int(time.time())
+
+        if len(t) == 0 or now - int(t) > 120:
+            lines = update()
+            f.write(f"{now}\n{lines}")
+        else:
+            lines = f.read()
+
+        print(lines)
+
+        fcntl.flock(f, fcntl.LOCK_UN)
