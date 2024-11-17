@@ -35,14 +35,11 @@ def check_updates(cmd, no_update_ret=None):
 if __name__ == "__main__":
     # multiple instances will contend for the db.lock and fail
     # temporary workaround for https://github.com/Alexays/Waybar/issues/368
-    fd = open("/tmp/arch_update_checkupdates.lock", "wb")
-    try:
+    with open("/tmp/arch_update_checkupdates.lock", "wb") as fd:
         fcntl.flock(fd, fcntl.LOCK_EX)
         repo_updates, repo_color = check_updates(["checkupdates"], 2)
-    finally:
+        aur_updates, aur_color = check_updates(["yay", "-Qua"], 1)
         fcntl.flock(fd, fcntl.LOCK_UN)
-
-    aur_updates, aur_color = check_updates(["yay", "-Qua"], 1)
 
     repo_count = len(repo_updates)
     aur_count = len(aur_updates)
