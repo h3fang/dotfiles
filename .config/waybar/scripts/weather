@@ -92,7 +92,7 @@ def update():
         details.append(type(e).__name__)
 
     if len(summary) == 0:
-        details.append("\ropenweathermap")
+        details.append("openweathermap")
         try:
             summary, d = openweathermap(location)
             details += d
@@ -108,7 +108,7 @@ def update():
 
 if __name__ == "__main__":
     # temporary workaround for https://github.com/Alexays/Waybar/issues/368
-    with open("/tmp/waybar_weather.lock", "w+", encoding="utf-8") as f:
+    with open("/tmp/waybar_weather.lock", "w+", newline="\n", encoding="utf-8") as f:
         fcntl.flock(f, fcntl.LOCK_EX)
 
         t = f.readline().rstrip()
