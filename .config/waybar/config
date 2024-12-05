@@ -91,7 +91,7 @@
     "custom/weather": {
         "format": "{}",
         "interval": 300,
-        "exec": "$HOME/.config/waybar/scripts/weather 2>/dev/null"
+        "exec": "source $HOME/.config/waybar/envs && $HOME/.config/waybar/scripts/weather 2>/dev/null"
     },
     "custom/kernel": {
         "format": "{}",

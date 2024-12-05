@@ -1,5 +1,4 @@
 ### environment variables
-[[ -f ~/scripts/envs ]] && source ~/scripts/envs
 
 export VISUAL='nvim'
 export EDITOR='nvim'

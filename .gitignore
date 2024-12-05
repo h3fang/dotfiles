@@ -62,6 +62,7 @@
 .config/Unknown Organization/zoom.conf
 .config/user-dirs.dirs
 .config/user-dirs.locale
+.config/waybar/envs
 .config/xfce4/
 .config/zoom.conf
 .config/zoomus.conf
@@ -91,9 +92,6 @@ projects/
 Videos/
 VMs/
 Zotero/
-
-# special scripts
-scripts/envs
 
 # special dotfiles
 .bash_history
