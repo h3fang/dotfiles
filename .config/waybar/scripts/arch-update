@@ -9,6 +9,7 @@
 from subprocess import check_output, CalledProcessError
 from sys import stderr
 import fcntl
+import time
 
 BASE_COLOR = "white"
 UPDATE_COLOR = "lime"
@@ -32,15 +33,9 @@ def check_updates(cmd, no_update_ret=None):
         return [], ERROR_COLOR
 
 
-if __name__ == "__main__":
-    # multiple instances will contend for the db.lock and fail
-    # temporary workaround for https://github.com/Alexays/Waybar/issues/368
-    with open("/tmp/arch_update_checkupdates.lock", "wb") as fd:
-        fcntl.flock(fd, fcntl.LOCK_EX)
-        repo_updates, repo_color = check_updates(["checkupdates"], 2)
-        aur_updates, aur_color = check_updates(["yay", "-Qua"], 1)
-        fcntl.flock(fd, fcntl.LOCK_UN)
-
+def update():
+    repo_updates, repo_color = check_updates(["checkupdates"], 2)
+    aur_updates, aur_color = check_updates(["yay", "-Qua"], 1)
     repo_count = len(repo_updates)
     aur_count = len(aur_updates)
 
@@ -49,7 +44,6 @@ if __name__ == "__main__":
         + "+"
         + f"<span color='{aur_color}'>{aur_count}</span>"
     )
-    print(message)
 
     if repo_count + aur_count > 0:
         if repo_count > 5:
@@ -59,4 +53,29 @@ if __name__ == "__main__":
 
         details = "\r".join(repo_updates + aur_updates)
 
-        print(details)
+        message += "\n"
+        message += details
+
+    return message
+
+
+if __name__ == "__main__":
+    # multiple instances will contend for the db.lock and fail
+    # temporary workaround for https://github.com/Alexays/Waybar/issues/368
+    with open(
+        "/tmp/waybar_arch_update.lock", "w+", newline="\n", encoding="utf-8"
+    ) as f:
+        fcntl.flock(f, fcntl.LOCK_EX)
+
+        t = f.readline().rstrip()
+        now = int(time.time())
+
+        if len(t) == 0 or now - int(t) > 120:
+            lines = update()
+            f.write(f"{now}\n{lines}")
+        else:
+            lines = f.read()
+
+        print(lines)
+
+        fcntl.flock(f, fcntl.LOCK_UN)
