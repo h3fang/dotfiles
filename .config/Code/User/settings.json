@@ -14,7 +14,8 @@
         "[Default Light+]": {
             "editor.background": "#e7e7e7",
             "tab.activeBackground": "#ccdccc"
-        }
+        },
+        "editorBracketMatch.border": "#a00"
     },
     "window.menuBarVisibility": "toggle",
     "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}vscode",
