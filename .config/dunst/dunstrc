@@ -5,7 +5,7 @@
 
     width = 300
     height = 150
-    offset = 50x50
+    offset = (50, 50)
     origin = top-right
 
     scale = 1
