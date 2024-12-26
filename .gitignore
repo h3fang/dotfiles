@@ -55,6 +55,7 @@
 .config/systemd/user/default.target.wants/
 .config/systemd/user/graphical.target.wants/
 .config/transmission/
+.config/Thunar/accels.scm
 .config/Trolltech/
 .config/Trolltech.conf
 .config/unity3d/
