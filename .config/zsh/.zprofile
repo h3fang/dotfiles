@@ -50,8 +50,6 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export QT_FONT_DPI=96
 
 # SDL
-# export SDL_VIDEODRIVER="wayland,x11"
-export SDL_VIDEODRIVER=x11
 export SDL_AUDIODRIVER=pipewire
 
 ### Window Manager
@@ -65,7 +63,7 @@ start_sway() {
     fi
 
     XDG_SESSION_TYPE=wayland \
-    XDG_CURRENT_DESKTOP=sway \
+    XDG_CURRENT_DESKTOP="sway:wlroots" \
     QT_QPA_PLATFORM="wayland;xcb" \
     QT_WAYLAND_FORCE_DPI=physical \
     _JAVA_AWT_WM_NONREPARENTING=1 \
