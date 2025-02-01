@@ -11,6 +11,17 @@ QWEATHER = "QWEATHER_KEY"
 ERROR = "<span color='red'>{}</span>"
 
 
+def get_air_quality(location: str, key: str):
+    r = requests.get(
+        f"https://devapi.qweather.com/v7/air/now?location={location}&key={key}",
+        timeout=5,
+    )
+    r.raise_for_status()
+    r = r.json()
+    index = r["now"]
+    return f"AQI: {index['aqi']}({index['category']})"
+
+
 def qweather(location):
     key = os.getenv(QWEATHER)
     if key is None:
@@ -22,8 +33,9 @@ def qweather(location):
     )
     r.raise_for_status()
     r = r.json()
-    location_name = r["location"][0]["name"]
-    location_id = r["location"][0]["id"]
+    loc = r["location"][0]
+    location_name = loc["name"]
+    location_id = loc["id"]
 
     r = requests.get(
         f"https://devapi.qweather.com/v7/weather/now?key={key}&location={location_id}",
@@ -45,6 +57,7 @@ def qweather(location):
     ]
     if "cloud" in n:
         details.append(f"Cloudiness: {n['cloud']}%")
+    details.append(get_air_quality(location_id, key))
     return summary, details
 
 
