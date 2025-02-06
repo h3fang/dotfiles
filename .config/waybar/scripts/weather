@@ -95,7 +95,7 @@ def update():
         return
 
     summary = ""
-    details = ["qweather"]
+    details = ["<b>qweather</b>"]
     try:
         summary, d = qweather(location)
         details += d
@@ -105,7 +105,7 @@ def update():
         details.append(type(e).__name__)
 
     if len(summary) == 0:
-        details.append("openweathermap")
+        details.append("<b>openweathermap</b>")
         try:
             summary, d = openweathermap(location)
             details += d
