@@ -1,6 +1,6 @@
 {
-    "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 32, // Waybar height (to be removed for auto height)
+    "position": "bottom",
+    "height": 32,
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
     "modules-right": ["custom/weather", "idle_inhibitor", "keyboard-state", "pulseaudio", "network", "battery", "custom/kernel", "custom/systemd", "custom/update", "clock", "tray"],
@@ -28,7 +28,12 @@
     },
     "clock": {
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "format-alt": "{:%Y-%m-%d}",
+        "calendar": {
+            "format": {
+                "today": "<span color='#66aaff'><b><u>{}</u></b></span>"
+            }
+        }
     },
     "cpu": {
         "format": " {usage}%",
