@@ -9,6 +9,8 @@ return {
       "c",
       "rust",
       "python",
+      "json",
+      "jsonc",
     })
   end,
 }
