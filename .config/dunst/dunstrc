@@ -4,7 +4,7 @@
     enable_posix_regex = false
 
     width = 300
-    height = 150
+    height = (0, 200)
     offset = (50, 50)
     origin = top-right
 
