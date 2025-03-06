@@ -9,7 +9,7 @@
     // explorer
     "explorer.confirmDelete": false,
     // Editor
-    "workbench.colorTheme": "Default Light+",
+    "workbench.colorTheme": "Default Dark+",
     "workbench.colorCustomizations": {
         "[Default Light+]": {
             "editor.background": "#e7e7e7",
@@ -17,6 +17,8 @@
         },
         "editorBracketMatch.border": "#a00"
     },
+    "window.customTitleBarVisibility": "never",
+    "window.titleBarStyle": "native",
     "window.menuBarVisibility": "toggle",
     "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}vscode",
     "editor.fontFamily": "'Hack Nerd Font Mono', 'Noto Sans Mono CJK', 'monospace', 'Noto Color Emoji'",
@@ -51,7 +53,9 @@
     "C_Cpp.default.cppStandard": "c++17",
     // python
     "python.condaPath": "~/.local/miniconda3/bin/conda",
-    "ruff.path": ["/usr/bin/ruff"],
+    "ruff.path": [
+        "/usr/bin/ruff"
+    ],
     "ruff.lineLength": 120,
     // Privacy
     "telemetry.telemetryLevel": "off",
@@ -64,6 +68,10 @@
     "latex-workshop.latex.outDir": "%DIR%/build",
     "latex-workshop.latex.autoClean.run": "onFailed",
     "latex-workshop.latex.recipe.default": "lastUsed",
+    // typst
+    "tinymist.formatterMode": "typstyle",
+    // svelte
+    "svelte.enable-ts-plugin": true,
     // misc.
     "files.associations": {
         "*.geojson": "json"
@@ -75,18 +83,4 @@
         "default": "right",
         "jupyter-notebook": "left"
     },
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "[rust]": {
-        "editor.defaultFormatter": "rust-lang.rust-analyzer"
-    },
-    "[python]": {
-        "editor.defaultFormatter": "charliermarsh.ruff"
-    },
-    "[toml]": {
-        "editor.defaultFormatter": "tamasfe.even-better-toml"
-    },
-    "[svelte]": {
-        "editor.defaultFormatter": "svelte.svelte-vscode"
-    },
-    "svelte.enable-ts-plugin": true,
 }
