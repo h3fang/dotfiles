@@ -64,11 +64,6 @@
     "extensions.ignoreRecommendations": true,
     "workbench.settings.enableNaturalLanguageSearch": false,
     "workbench.enableExperiments": false,
-    // Latex
-    "latex-workshop.view.pdf.viewer": "tab",
-    "latex-workshop.latex.outDir": "%DIR%/build",
-    "latex-workshop.latex.autoClean.run": "onFailed",
-    "latex-workshop.latex.recipe.default": "lastUsed",
     // typst
     "tinymist.formatterMode": "typstyle",
     // svelte
