@@ -17,6 +17,7 @@
         },
         "editorBracketMatch.border": "#a00"
     },
+    "workbench.panel.defaultLocation": "right",
     "window.customTitleBarVisibility": "never",
     "window.titleBarStyle": "native",
     "window.menuBarVisibility": "toggle",
