@@ -52,6 +52,8 @@ export QT_FONT_DPI=96
 # SDL
 export SDL_AUDIODRIVER=pipewire
 
+systemctl --user import-environment XDG_CONFIG_HOME XDG_CACHE_HOME XDG_DATA_HOME XDG_STATE_HOME
+
 ### Window Manager
 
 start_sway() {
