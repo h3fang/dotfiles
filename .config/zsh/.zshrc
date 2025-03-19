@@ -47,10 +47,6 @@ alias gitgc='git reflog expire --expire=now --all && git gc --prune=now'
 # functions
 
 windows() {
-    if ! command -v pgrep > /dev/null ; then
-        echo "pgrep could not be found"
-        return 1
-    fi
     if pgrep -x sway > /dev/null ; then
         swaymsg -t get_tree | jq -r '..|objects|select(has("shell"))|{shell: .shell, name: .name, app_id: .app_id, window_properties: .window_properties}'
     elif pgrep -x i3 > /dev/null ; then
