@@ -1,9 +1,11 @@
 #!/usr/bin/python3
 
 import fcntl
+import json
 import os
 import time
 import traceback
+from pathlib import Path
 
 import requests
 
@@ -22,17 +24,31 @@ def get_air_quality(location: str, s: requests.Session) -> str:
     return f"AQI: {index['aqi']}({index['category']})"
 
 
-def get_location_id(location: str, s: requests.Session) -> tuple[str, str]:
+def get_location_id(location: str, s: requests.Session) -> str:
+    ids = {}
+    file = Path("/tmp/qweather_loc")
+    if file.exists():
+        with file.open() as f:
+            ids = json.load(f)
+
+            if location in ids:
+                return ids[location]
+
     r = s.get(
         f"https://geoapi.qweather.com/v2/city/lookup?location={location}",
         timeout=5,
     )
     r.raise_for_status()
     r = r.json()
-    if r["code"] != 200:
+    if int(r["code"]) != 200:
         raise RuntimeError(f"Geoapi returned code: {r['code']}")
-    loc = r["location"][0]
-    return loc["name"], loc["id"]
+    loc_id = r["location"][0]["id"]
+    ids[location] = loc_id
+
+    with file.open(mode="w") as f:
+        json.dump(ids, f)
+
+    return loc_id
 
 
 def qweather(location):
@@ -43,7 +59,7 @@ def qweather(location):
     s = requests.Session()
     s.headers.update({"X-QW-Api-Key": key})
 
-    location_name, location_id = get_location_id(location, s)
+    location_id = get_location_id(location, s)
 
     r = s.get(
         f"https://devapi.qweather.com/v7/weather/now?location={location_id}",
@@ -53,7 +69,7 @@ def qweather(location):
     d = r.json()
 
     n = d["now"]
-    summary = f"{location_name} {n['text']} {n['temp']}℃"
+    summary = f"{location} {n['text']} {n['temp']}℃"
     details = [
         f"Feels Like: {n['feelsLike']}℃",
         f"Pressure: {n['pressure']} hPa",
