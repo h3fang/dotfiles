@@ -40,14 +40,14 @@ audio="pipewire pipewire-pulse wireplumber"
 system_tools="htop fd ncdu unrar 7zip file-roller openblas blas-openblas poppler-data man-db man-pages eza bat ripgrep gnome-keyring fastfetch borg python-llfuse polkit-gnome systembus-notify neovim duf dog trash-cli"
 multimedia="mpv loupe gimp inkscape blender"
 network="transmission-gtk firefox profile-cleaner openssh openbsd-netcat rclone rsync"
-sway="sway xorg-xwayland swaybg swayidle waybar rofi-wayland dunst papirus-icon-theme wl-clipboard wf-recorder grim slurp satty python-requests acpi jq"
-de_tools="alacritty thunar thunar-volman gvfs udiskie brightnessctl fzf"
+sway="sway xorg-xwayland swaybg swayidle xdg-desktop-portal xdg-desktop-portal-wlr waybar python-requests python-pyjwt python-cryptography rofi-wayland dunst papirus-icon-theme wl-clipboard wf-recorder grim slurp satty acpi jq"
+de_tools="alacritty thunar thunar-volman thunar-archive-plugin gvfs udiskie brightnessctl fzf"
 im="fcitx5 fcitx5-qt fcitx5-gtk fcitx5-chinese-addons fcitx5-pinyin-zhwiki"
-latex="texlive-meta texlive-langchinese biber"
+typst="typst"
 programming="python clang gdb cmake rustup mold tokei cargo-cache cargo-outdated visual-studio-code-bin godot"
 academic="zotero-bin"
 
-yay -S --needed "$pacman $shell $fonts $drivers $audio $system_tools $multimedia $network $sway $de_tools $im $latex $programming $academic"
+yay -S --needed "$pacman $shell $fonts $drivers $audio $system_tools $multimedia $network $sway $de_tools $im $typst $programming $academic"
 
 
 ### self-maintained AUR packages
