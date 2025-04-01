@@ -7,15 +7,32 @@ import time
 import traceback
 from pathlib import Path
 
+import jwt
 import requests
 
-QWEATHER = "QWEATHER_KEY"
+HOST = "https://ne6r6qvt3g.re.qweatherapi.com"
 ERROR = "<span color='red'>{}</span>"
+
+
+def json_web_token() -> str:
+    private_key = ""
+    path = Path().home() / ".ssh/qweather.pem"
+    with path.open(mode="rt") as f:
+        private_key = f.read()
+
+    payload = {
+        "iat": int(time.time()) - 30,
+        "exp": int(time.time()) + 600,
+        "sub": "48TNTYGG4T",
+    }
+    headers = {"kid": "TBPQJBJ2NH"}
+
+    return jwt.encode(payload, private_key, algorithm="EdDSA", headers=headers)
 
 
 def get_air_quality(location: str, s: requests.Session) -> str:
     r = s.get(
-        f"https://devapi.qweather.com/v7/air/now?location={location}",
+        f"{HOST}/v7/air/now?location={location}",
         timeout=5,
     )
     r.raise_for_status()
@@ -35,12 +52,12 @@ def get_location_id(location: str, s: requests.Session) -> str:
                 return ids[location]
 
     r = s.get(
-        f"https://geoapi.qweather.com/v2/city/lookup?location={location}",
+        f"{HOST}/geo/v2/city/lookup?location={location}",
         timeout=5,
     )
     r.raise_for_status()
     r = r.json()
-    if int(r["code"]) != 200:
+    if "code" in r and int(r["code"]) != 200:
         raise RuntimeError(f"Geoapi returned code: {r['code']}")
     loc_id = r["location"][0]["id"]
     ids[location] = loc_id
@@ -52,17 +69,13 @@ def get_location_id(location: str, s: requests.Session) -> str:
 
 
 def qweather(location):
-    key = os.getenv(QWEATHER)
-    if key is None:
-        raise RuntimeError(f"{QWEATHER} not specified")
-
     s = requests.Session()
-    s.headers.update({"X-QW-Api-Key": key})
+    s.headers.update({"Authorization": f"Bearer {json_web_token()}"})
 
     location_id = get_location_id(location, s)
 
     r = s.get(
-        f"https://devapi.qweather.com/v7/weather/now?location={location_id}",
+        f"{HOST}/v7/weather/now?location={location_id}",
         timeout=5,
     )
     r.raise_for_status()
