@@ -5,9 +5,10 @@ import json
 import os
 import time
 import traceback
+from base64 import urlsafe_b64encode
 from pathlib import Path
+from subprocess import check_output
 
-import jwt
 import requests
 
 HOST = "https://ne6r6qvt3g.re.qweatherapi.com"
@@ -15,19 +16,34 @@ ERROR = "<span color='red'>{}</span>"
 
 
 def json_web_token() -> str:
-    private_key = ""
-    path = Path().home() / ".ssh/qweather.pem"
-    with path.open(mode="rt") as f:
-        private_key = f.read()
+    headers = urlsafe_b64encode(
+        json.dumps({"alg": "EdDSA", "kid": "TBPQJBJ2NH"}).encode()
+    )
 
-    payload = {
-        "iat": int(time.time()) - 30,
-        "exp": int(time.time()) + 600,
-        "sub": "48TNTYGG4T",
-    }
-    headers = {"kid": "TBPQJBJ2NH"}
+    t = int(time.time())
+    payload = urlsafe_b64encode(
+        json.dumps(
+            {
+                "iat": t - 30,
+                "exp": t + 600,
+                "sub": "48TNTYGG4T",
+            }
+        ).encode()
+    )
 
-    return jwt.encode(payload, private_key, algorithm="EdDSA", headers=headers)
+    header_payload = headers + b"." + payload
+    temp = Path(f"/tmp/qweather-jwt-{t}")
+    with temp.open(mode="wb") as f:
+        f.write(header_payload)
+
+    private_key = Path().home() / ".ssh/qweather.pem"
+    sig = check_output(
+        f"openssl pkeyutl -sign -inkey {private_key} -rawin -in {temp}",
+        shell=True,
+    )
+    sig = urlsafe_b64encode(sig)
+    temp.unlink()
+    return (header_payload + b"." + sig).decode()
 
 
 def get_air_quality(location: str, s: requests.Session) -> str:
