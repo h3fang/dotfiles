@@ -59,7 +59,7 @@ def get_air_quality(location: str, s: requests.Session) -> str:
 
 def get_location_id(location: str, s: requests.Session) -> str:
     ids = {}
-    file = Path("/tmp/qweather_loc")
+    file = Path("/tmp/qweather-loc")
     if file.exists():
         with file.open() as f:
             ids = json.load(f)
@@ -136,7 +136,7 @@ def update() -> str:
 
 if __name__ == "__main__":
     # temporary workaround for https://github.com/Alexays/Waybar/issues/368
-    with open("/tmp/waybar_weather.lock", "w+", newline="\n", encoding="utf-8") as f:
+    with open("/tmp/waybar-weather.lock", "w+", newline="\n", encoding="utf-8") as f:
         fcntl.flock(f, fcntl.LOCK_EX)
 
         t = f.readline().rstrip()

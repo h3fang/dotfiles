@@ -63,7 +63,7 @@ if __name__ == "__main__":
     # multiple instances will contend for the db.lock and fail
     # temporary workaround for https://github.com/Alexays/Waybar/issues/368
     with open(
-        "/tmp/waybar_arch_update.lock", "w+", newline="\n", encoding="utf-8"
+        "/tmp/waybar-arch-update.lock", "w+", newline="\n", encoding="utf-8"
     ) as f:
         fcntl.flock(f, fcntl.LOCK_EX)
 
