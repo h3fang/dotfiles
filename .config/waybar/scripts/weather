@@ -79,7 +79,7 @@ def get_location_id(location: str, s: requests.Session) -> str:
     return loc_id
 
 
-def qweather() -> tuple[str, list[str]]:
+def qweather() -> tuple[str, str]:
     global HOST
     HOST = os.environ["QWEATHER_HOST"]
     location = os.environ["QWEATHER_LOC"]
@@ -98,35 +98,34 @@ def qweather() -> tuple[str, list[str]]:
 
     n = d["now"]
     summary = f"{location} {n['text']} {n['temp']}℃"
-    details = [
-        f"Feels Like: {n['feelsLike']}℃",
-        f"Pressure: {n['pressure']} hPa",
-        f"Humidity: {n['humidity']}%",
-        f"Visibility: {n['vis']} km",
-        f"Wind Speed: {n['windSpeed']} km/h",
-        f"Wind Direction: {n['wind360']} degree",
-        f"Observation Time: {n['obsTime']}",
-    ]
+    details = (
+        f"Feels Like: {n['feelsLike']}℃\n"
+        + f"Pressure: {n['pressure']} hPa\n"
+        + f"Humidity: {n['humidity']}%\n"
+        + f"Visibility: {n['vis']} km\n"
+        + f"Wind Speed: {n['windSpeed']} km/h\n"
+        + f"Wind Direction: {n['wind360']} degree\n"
+        + f"Observation Time: {n['obsTime']}\n"
+    )
+
     if "cloud" in n:
-        details.append(f"Cloudiness: {n['cloud']}%")
-    details.append(get_air_quality(location_id, s))
+        details += f"Cloudiness: {n['cloud']}%\n"
+    details += get_air_quality(location_id, s)
     return summary, details
 
 
 def update() -> str:
     summary = ""
-    details = []
+    details = ""
 
     try:
         summary, d = qweather()
-        details += d
+        details = d
     except Exception:
-        exception = traceback.format_exc()
         summary = "<span color='red'>Error</span>"
-        details += exception.split("\n")
+        details = traceback.format_exc()
 
-    details = "\r".join(details)
-    return f"{summary}\n{details}"
+    return json.dumps({"text": summary, "tooltip": details})
 
 
 if __name__ == "__main__":
@@ -138,11 +137,11 @@ if __name__ == "__main__":
         now = int(time.time())
 
         if len(t) == 0 or now - int(t) > 120:
-            lines = update()
-            f.write(f"{now}\n{lines}")
+            output = update()
+            f.write(f"{now}\n{output}")
         else:
-            lines = f.read()
+            output = f.read()
 
-        print(lines)
+        print(output)
 
         fcntl.flock(f, fcntl.LOCK_UN)
