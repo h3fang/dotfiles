@@ -11,25 +11,21 @@ from subprocess import check_output
 
 import requests
 
-HOST = "https://ne6r6qvt3g.re.qweatherapi.com"
-ERROR = "<span color='red'>{}</span>"
+HOST = ""
 
 
 def json_web_token() -> str:
-    headers = urlsafe_b64encode(
-        json.dumps({"alg": "EdDSA", "kid": "TBPQJBJ2NH"}).encode()
-    )
+    kid = os.environ["QWEATHER_KID"]
+    sub = os.environ["QWEATHER_SUB"]
+    headers = urlsafe_b64encode(json.dumps({"alg": "EdDSA", "kid": kid}).encode())
 
     t = int(time.time())
-    payload = urlsafe_b64encode(
-        json.dumps(
-            {
-                "iat": t - 30,
-                "exp": t + 600,
-                "sub": "48TNTYGG4T",
-            }
-        ).encode()
-    )
+    payload = {
+        "iat": t - 30,
+        "exp": t + 600,
+        "sub": sub,
+    }
+    payload = urlsafe_b64encode(json.dumps(payload).encode())
 
     header_payload = headers + b"." + payload
     temp = Path(f"/tmp/qweather-jwt-{t}")
@@ -63,7 +59,6 @@ def get_location_id(location: str, s: requests.Session) -> str:
     if file.exists():
         with file.open() as f:
             ids = json.load(f)
-
             if location in ids:
                 return ids[location]
 
@@ -84,7 +79,11 @@ def get_location_id(location: str, s: requests.Session) -> str:
     return loc_id
 
 
-def qweather(location):
+def qweather() -> tuple[str, list[str]]:
+    global HOST
+    HOST = os.environ["QWEATHER_HOST"]
+    location = os.environ["LOCATION_CITY"]
+
     s = requests.Session()
     s.headers.update({"Authorization": f"Bearer {json_web_token()}"})
 
@@ -115,21 +114,17 @@ def qweather(location):
 
 
 def update() -> str:
-    location = os.getenv("LOCATION_CITY")
-    if location is None:
-        return ERROR.format("Location")
-
     summary = ""
-    details = ["<b>qweather</b>"]
+    details = []
+
     try:
-        summary, d = qweather(location)
+        summary, d = qweather()
         details += d
     except Exception:
         exception = traceback.format_exc()
+        summary = "<span color='red'>Error</span>"
         details += exception.split("\n")
 
-    if len(summary) == 0:
-        summary = ERROR.format("Error")
     details = "\r".join(details)
     return f"{summary}\n{details}"
 
