@@ -82,7 +82,7 @@ def get_location_id(location: str, s: requests.Session) -> str:
 def qweather() -> tuple[str, list[str]]:
     global HOST
     HOST = os.environ["QWEATHER_HOST"]
-    location = os.environ["LOCATION_CITY"]
+    location = os.environ["QWEATHER_LOC"]
 
     s = requests.Session()
     s.headers.update({"Authorization": f"Bearer {json_web_token()}"})
