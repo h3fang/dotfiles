@@ -119,8 +119,7 @@ def update() -> str:
     details = ""
 
     try:
-        summary, d = qweather()
-        details = d
+        summary, details = qweather()
     except Exception:
         summary = "<span color='red'>Error</span>"
         details = traceback.format_exc()
