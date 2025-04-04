@@ -1,17 +1,14 @@
 #!/usr/bin/env python3
 
 import re
-from os import getenv
-from subprocess import run, PIPE
+from subprocess import check_output
 
-output = run("systemctl list-units --failed; systemctl --user list-units --failed", shell=True, stdout=PIPE, timeout=5).stdout.decode("utf-8")
-p = re.compile('\S+\.\w+')
+cmd = "systemctl list-units --failed; systemctl --user list-units --failed"
+output = check_output(cmd, shell=True, timeout=5).decode()
+p = re.compile(r"\S+\.\w+")
 failed = [p.search(line).group() for line in output.split("\n") if "failed" in line]
 
 if len(failed) > 0:
     print(f"<span background='#dc143c' color='white'> {len(failed)}</span>")
-    summary = '\r'.join(failed)
+    summary = "\r".join(failed)
     print(summary)
-    if getenv("BLOCK_BUTTON") is not None:
-        run(["/usr/bin/notify-send", "Failed services", summary], check=True)
-
