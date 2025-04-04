@@ -3,60 +3,53 @@
 # requires: pacman-contrib, yay
 
 # modified from https://github.com/vivien/i3blocks-contrib/tree/master/arch-update
-# output format: {official repo packages count}+{AUR packages count}
+# output format:  {official repo packages count}+{AUR packages count}
 
 
-from subprocess import check_output, CalledProcessError
-from sys import stderr
 import fcntl
+import json
 import time
+import traceback
+from subprocess import CalledProcessError, check_output
 
 BASE_COLOR = "white"
 UPDATE_COLOR = "lime"
 ERROR_COLOR = "red"
 
 
-def check_updates(cmd, no_update_ret=None):
+def check_updates(cmd: str, no_update_ret: int, limit=5) -> tuple[int, str, str]:
     try:
-        output = check_output(cmd, encoding="utf-8", timeout=15)
+        output = check_output(cmd, shell=True, timeout=15).decode()
         updates = [line for line in output.split("\n") if line]
-        color = UPDATE_COLOR if len(updates) > 0 else BASE_COLOR
-        return updates, color
+        count = len(updates)
+        updates = "\n".join(updates[:limit])
+        if count > limit:
+            updates += "\n..."
+        color = UPDATE_COLOR if count > 0 else BASE_COLOR
+        return count, updates, color
     except CalledProcessError as e:
         if e.returncode == no_update_ret:
-            return [], BASE_COLOR
+            return 0, "", BASE_COLOR
         else:
-            print(e, file=stderr)
-            return [], ERROR_COLOR
-    except Exception as e:
-        print(e, file=stderr)
-        return [], ERROR_COLOR
+            content = traceback.format_exc(limit=3)
+            return 0, content, ERROR_COLOR
+    except Exception:
+        content = traceback.format_exc(limit=3)
+        return 0, content, ERROR_COLOR
 
 
-def update():
-    repo_updates, repo_color = check_updates(["checkupdates"], 2)
-    aur_updates, aur_color = check_updates(["yay", "-Qua"], 1)
-    repo_count = len(repo_updates)
-    aur_count = len(aur_updates)
+def update() -> str:
+    repo_count, repo_updates, repo_color = check_updates("checkupdates", 2)
+    aur_count, aur_updates, aur_color = check_updates("yay -Qua", 1)
 
-    message = (
-        f"<span color='{repo_color}'>{repo_count}</span>"
-        + "+"
-        + f"<span color='{aur_color}'>{aur_count}</span>"
-    )
+    summary = f" <span color='{repo_color}'>{repo_count}</span>+<span color='{aur_color}'>{aur_count}</span>"
 
-    if repo_count + aur_count > 0:
-        if repo_count > 5:
-            repo_updates = repo_updates[:5] + ["..."]
-        if aur_count > 5:
-            aur_updates = aur_updates[:5] + ["..."]
+    if len(repo_updates) == 0 and len(aur_updates) == 0:
+        details = "Up to date"
+    else:
+        details = f"{repo_updates}\n{aur_updates}".strip("\n")
 
-        details = "\r".join(repo_updates + aur_updates)
-
-        message += "\n"
-        message += details
-
-    return message
+    return json.dumps({"text": summary, "tooltip": details})
 
 
 if __name__ == "__main__":
@@ -71,11 +64,11 @@ if __name__ == "__main__":
         now = int(time.time())
 
         if len(t) == 0 or now - int(t) > 120:
-            lines = update()
-            f.write(f"{now}\n{lines}")
+            output = update()
+            f.write(f"{now}\n{output}")
         else:
-            lines = f.read()
+            output = f.read()
 
-        print(lines)
+        print(output)
 
         fcntl.flock(f, fcntl.LOCK_UN)

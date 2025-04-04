@@ -94,25 +94,21 @@
         }
     },
     "custom/weather": {
-        "format": "{}",
         "interval": 300,
         "return-type": "json",
         "exec": "source $HOME/.config/waybar/envs && $HOME/.config/waybar/scripts/weather 2>/dev/null"
     },
     "custom/kernel": {
-        "format": "{}",
         "interval": 60,
         "exec": "$HOME/.config/waybar/scripts/kernel-version 2>/dev/null"
     },
     "custom/systemd": {
-        "format": "{}",
         "interval": 60,
         "exec": "$HOME/.config/waybar/scripts/systemd 2>/dev/null"
     },
     "custom/update": {
-        "format": " {}",
         "interval": 3600,
-        "signal": 2,
+        "return-type": "json",
         "exec": "$HOME/.config/waybar/scripts/arch-update 2>/dev/null"
     }
 }
