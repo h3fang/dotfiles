@@ -31,10 +31,10 @@ def check_updates(cmd: str, no_update_ret: int, limit=5) -> tuple[int, str, str]
         if e.returncode == no_update_ret:
             return 0, "", BASE_COLOR
         else:
-            content = traceback.format_exc(limit=3)
+            content = "\n".join(traceback.format_tb(e.__traceback__))
             return 0, content, ERROR_COLOR
-    except Exception:
-        content = traceback.format_exc(limit=3)
+    except Exception as e:
+        content = "\n".join(traceback.format_tb(e.__traceback__))
         return 0, content, ERROR_COLOR
 
 

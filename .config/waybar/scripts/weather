@@ -120,9 +120,9 @@ def update() -> str:
 
     try:
         summary, details = qweather()
-    except Exception:
-        summary = "<span color='red'>Error</span>"
-        details = traceback.format_exc(limit=3)
+    except Exception as e:
+        summary = f"<span color='red'>{type(e).__name__}</span>"
+        details = "\n".join(traceback.format_tb(e.__traceback__))
 
     return json.dumps({"text": summary, "tooltip": details})
 
