@@ -5,6 +5,7 @@
 pkg_ver=$(uname -r)
 if [[ ! -d "/usr/lib/modules/${pkg_ver}" ]]; then
     echo "<span background='#DC143C'>kernel update</span>"
-    echo $(grep "$pkg_ver" /var/log/pacman.log)
+    ver=$(echo "$pkg_ver" | cut -d- -f1)
+    echo $(grep "upgraded linux\S* (${ver}\S* -> " /var/log/pacman.log)
 fi
 
