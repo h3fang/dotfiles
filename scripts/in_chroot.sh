@@ -32,7 +32,9 @@ cat > /etc/hosts <<EOF
 ::1 localhost
 EOF
 
+sed -i "s/PRESETS=('default' 'fallback')/PRESETS=('default')/" /etc/mkinitcpio.d/linux-zen.preset
 mkinitcpio -P
+
 echo "setting root password..."
 passwd root
 useradd -m -G wheel -s /usr/bin/zsh $UserName
