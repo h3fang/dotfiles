@@ -32,7 +32,7 @@ cat > /etc/hosts <<EOF
 ::1 localhost
 EOF
 
-mkinitcpio -p linux
+mkinitcpio -P
 echo "setting root password..."
 passwd root
 useradd -m -G wheel -s /usr/bin/zsh $UserName
