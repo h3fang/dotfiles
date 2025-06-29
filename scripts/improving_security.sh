@@ -7,20 +7,20 @@
 
 # Hardware vulnerabilities
 # https://wiki.archlinux.org/title/Security#Hardware_vulnerabilities
-grep -r . /sys/devices/system/cpu/vulnerabilities/
+lscpu
 
 ### Kernel
 
 # https://wiki.archlinux.org/title/Security#Restricting_access_to_kernel_pointers_in_the_proc_filesystem
 # This will break some perf commands when used by non-root users.
-sudo tee /etc/sysctl.d/51-kptr-restrict.conf <<EOF
-kernel.kptr_restrict = 1
-EOF
+# sudo tee /etc/sysctl.d/51-kptr-restrict.conf <<EOF
+# kernel.kptr_restrict = 1
+# EOF
 
 # https://wiki.archlinux.org/title/Security#Restricting_module_loading
-sudo tee /etc/sysctl.d/51-kexec-restrict.conf <<EOF
-kernel.kexec_load_disabled = 1
-EOF
+# sudo tee /etc/sysctl.d/51-kexec-restrict.conf <<EOF
+# kernel.kexec_load_disabled = 1
+# EOF
 
 # Restricting module loading
 # https://wiki.archlinux.org/title/Security#Restricting_module_loading
