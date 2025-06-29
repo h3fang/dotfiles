@@ -25,6 +25,7 @@ export TEXMFVAR="$XDG_CACHE_HOME"/texlive/texmf-var
 export TEXMFCONFIG="$XDG_CONFIG_HOME/"texlive/texmf-config
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export DOTNET_CLI_HOME="$XDG_DATA_HOME"/dotnet
 
 # GPG
 export GPG_TTY="$(tty)"
