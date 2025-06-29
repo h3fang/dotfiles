@@ -162,15 +162,15 @@ sudo rmmod pcspkr || true
 
 # gnome-keyring and ssh keys
 if ! grep -q "auth       optional     pam_gnome_keyring.so" /etc/pam.d/login; then
-    sudo sed -i '/auth       include      system-local-login/{s/.*/&\nauth       optional     pam_gnome_keyring.so/}' /etc/pam.d/login
+    sudo sed -i '/auth       include      system-local-login/a auth       optional     pam_gnome_keyring.so' /etc/pam.d/login
 fi
 
 if ! grep -q "session    optional     pam_gnome_keyring.so auto_start" /etc/pam.d/login; then
-    sudo sed -i '/session    include      system-local-login/{s/.*/&\nsession    optional     pam_gnome_keyring.so auto_start/}' /etc/pam.d/login
+    sudo sed -i '/session    include      system-local-login/a session    optional     pam_gnome_keyring.so auto_start' /etc/pam.d/login
 fi
 
 if ! grep -q "password   optional     pam_gnome_keyring.so" /etc/pam.d/login; then
-    sudo sed -i '/password   include      system-local-login/{s/.*/&\npassword   optional     pam_gnome_keyring.so/}' /etc/pam.d/login
+    sudo sed -i '/password   include      system-local-login/a password   optional     pam_gnome_keyring.so' /etc/pam.d/login
 fi
 systemctl --user enable --now gcr-ssh-agent.socket
 
