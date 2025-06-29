@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+
+from pathlib import Path
 from subprocess import check_call
 import re
 
@@ -12,10 +15,11 @@ def get_mirror_url() -> str:
     raise RuntimeError("/etc/pacman.d/mirrorlist doesn't contain a valid mirror")
 
 
+dir = Path().home() / "Downloads"
 url = get_mirror_url() + "iso/latest"
 file = "archlinux-x86_64.iso"
 
 for f in [file, file + ".sig"]:
-    check_call(f"curl -Lo $HOME/Downloads/{f} {url}/{f}", shell=True)
+    check_call(["curl", "-Lo", dir / f, f"{url}/{f}"])
 
-check_call(f"pacman-key -v $HOME/Downloads/{file}.sig", shell=True)
+check_call(["pacman-key", "-v", dir / f"{file}.sig"])
