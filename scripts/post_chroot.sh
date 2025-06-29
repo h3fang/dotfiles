@@ -185,7 +185,7 @@ sudo systemctl mask systemd-homed.service systemd-journald-audit.socket
 
 sudo tee /etc/systemd/network/20-wired.network > /dev/null <<EOF
 [Match]
-Name=en*
+Type=ether
 
 [Link]
 RequiredForOnline=routable
@@ -196,7 +196,7 @@ EOF
 
 sudo tee /etc/systemd/network/25-wireless.network > /dev/null <<EOF
 [Match]
-Name=wl*
+Type=wlan
 
 [Link]
 RequiredForOnline=routable
