@@ -212,8 +212,8 @@ sudo tee /etc/systemd/system/systemd-networkd-wait-online.service.d/wait-for-any
 ExecStart=/usr/lib/systemd/systemd-networkd-wait-online --any
 EOF
 
-sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 sudo systemctl enable systemd-networkd.service systemd-resolved.service
+sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 
 # disable gvfs automount for network
 sudo sed -i 's/^AutoMount=true$/AutoMount=false/' /usr/share/gvfs/mounts/network.mount || true
