@@ -52,6 +52,10 @@ export QT_FONT_DPI=96
 # SDL
 export SDL_AUDIODRIVER=pipewire
 
+# rust
+export RUSTUP_DIST_SERVER=https://rsproxy.cn
+export PATH="$PATH:$CARGO_HOME/bin"
+
 systemctl --user import-environment XDG_CONFIG_HOME XDG_CACHE_HOME XDG_DATA_HOME XDG_STATE_HOME
 
 ### Window Manager
