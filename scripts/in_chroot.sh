@@ -6,7 +6,7 @@
 set -eEuo pipefail
 failure() {
     echo "line: $1 command: $2"
-    exit $3
+    exit "$3"
 }
 trap 'failure ${LINENO} "$BASH_COMMAND" $?' ERR
 
@@ -14,7 +14,10 @@ HostName=arch
 UserName=h3f
 RootUUID=$(blkid /dev/nvme0n1p2 | awk '{print $5}')
 
-pacman -S --needed base-devel git git-delta git-lfs zsh zsh-syntax-highlighting zsh-autosuggestions zsh-completions neovim
+pacman -S --needed base-devel \
+    git git-delta git-lfs \
+    zsh zsh-syntax-highlighting zsh-autosuggestions zsh-completions \
+    neovim
 
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 hwclock --systohc
@@ -40,7 +43,7 @@ passwd root
 useradd -m -G wheel -s /usr/bin/zsh $UserName
 echo "setting $UserName password..."
 passwd $UserName
-echo "$UserName ALL=(ALL:ALL) ALL" >> /etc/sudoers.d/$UserName
+echo "$UserName ALL=(ALL:ALL) ALL" >> "/etc/sudoers.d/$UserName"
 
 Microcode=""
 echo 'Microcode?'

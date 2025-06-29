@@ -3,7 +3,7 @@
 set -eEuo pipefail
 failure() {
     echo "line: $1 command: $2"
-    exit $3
+    exit "$3"
 }
 trap 'failure ${LINENO} "$BASH_COMMAND" $?' ERR
 
@@ -16,10 +16,10 @@ setup() {
     sudo pacman -Syu
 
     yay -S --needed wine-staging wine-gecko wine-mono winetricks dxvk-bin lib32-mesa expac
-    sudo pacman -S --asdeps --needed $(expac -S '%o' wine-staging)
+    sudo pacman -S --asdeps --needed "$(expac -S '%o' wine-staging)"
 
     # initialize wine prefix
-    mkdir -p $WINEPREFIX
+    mkdir -p "$WINEPREFIX"
     wineboot -u
 
     # dxvk

@@ -5,7 +5,7 @@ set -eEuo pipefail
 failure() {
     echo "line: $1 command: $2"
     notify-send "Backup data failed" "line: $1 command: $2"
-    exit $3
+    exit "$3"
 }
 trap 'failure ${LINENO} "$BASH_COMMAND" $?' ERR
 
