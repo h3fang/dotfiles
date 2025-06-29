@@ -35,6 +35,11 @@ cat > /etc/hosts <<EOF
 ::1 localhost
 EOF
 
+cat > /etc/mkinitcpio.conf.d/compression.conf <<EOF
+COMPRESSION="zstd"
+COMPRESSION_OPTIONS=(-T0)
+EOF
+
 sed -i "s/PRESETS=('default' 'fallback')/PRESETS=('default')/" /etc/mkinitcpio.d/linux-zen.preset
 mkinitcpio -P
 
@@ -56,16 +61,18 @@ done
 
 bootctl --path=/boot install
 
-cat > /etc/pacman.d/hooks/100-systemd-boot.hook <<EOF
+mkdir -p /etc/pacman.d/hooks
+
+cat > /etc/pacman.d/hooks/95-systemd-boot.hook <<EOF
 [Trigger]
 Type = Package
 Operation = Upgrade
 Target = systemd
 
 [Action]
-Description = Updating systemd-boot
+Description = Gracefully upgrading systemd-boot...
 When = PostTransaction
-Exec = /usr/bin/bootctl update
+Exec = /usr/bin/systemctl restart systemd-boot-update.service
 EOF
 
 cat > /boot/loader/loader.conf <<EOF
