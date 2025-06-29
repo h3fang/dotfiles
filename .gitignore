@@ -1,13 +1,11 @@
 # hidden folders
-.conda/
 .cache/
-.dotnet/
+.gnupg/
 .mozilla/
 .pki/
 .ssh/
 .vscode/
 .steam/
-.zoom/
 .zotero/
 
 # .config folder

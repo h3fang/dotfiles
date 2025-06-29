@@ -17,7 +17,6 @@ export XDG_STATE_HOME=~/.local/state
 
 export XAUTHORITY="$XDG_CACHE_HOME"/Xauthority
 export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
-export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export GOPATH="$XDG_DATA_HOME"/go
 export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
 export TEXMFHOME="$XDG_DATA_HOME"/texmf
@@ -26,9 +25,6 @@ export TEXMFCONFIG="$XDG_CONFIG_HOME/"texlive/texmf-config
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export DOTNET_CLI_HOME="$XDG_DATA_HOME"/dotnet
-
-# GPG
-export GPG_TTY="$(tty)"
 
 # fcitx5
 export GTK_IM_MODULE=fcitx
