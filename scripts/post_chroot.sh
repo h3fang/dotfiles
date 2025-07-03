@@ -12,7 +12,7 @@ sudo pacman -Syu --needed base-devel git
 # makepkg.conf
 sudo sed -i 's/^#MAKEFLAGS=.*/MAKEFLAGS="-j$(nproc)"/' /etc/makepkg.conf
 sudo sed -i 's/\sdebug\s/ !debug /' /etc/makepkg.conf
-sudo sed -i 's/^#PACKAGER=.*/PACKAGER="hefang hf.enigma@gmail.com"/' /etc/makepkg.conf
+sudo sed -i 's/^#PACKAGER=.*/PACKAGER="hefang <hf.enigma@gmail.com>"/' /etc/makepkg.conf
 
 # dotfiles
 dotfiles="$HOME/.config/dotfiles"
