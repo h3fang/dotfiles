@@ -1,7 +1,4 @@
 #!/bin/bash
-#########
-### assuming UEFI, *entire* /dev/sda disk (>100GiB), Intel microcode
-#########
 
 set -eEuo pipefail
 failure() {
@@ -19,11 +16,11 @@ s_uefi() {
 
 s_partitions() {
     echo "making partitions ..."
-    parted -s /dev/sda -a optimal -- mklabel gpt \
-    mkpart primary fat32 1MiB 513MiB \
+    parted -s /dev/nvme0n1 -a optimal -- mklabel gpt \
+    mkpart primary fat32 1MiB 1GiB \
     set 1 esp on \
     name 1 boot \
-    mkpart primary 513MiB 100GiB \
+    mkpart primary 1GiB 100GiB \
     name 2 root \
     mkpart primary 100GiB -1MiB \
     name 3 home
@@ -31,17 +28,17 @@ s_partitions() {
 
 s_formating() {
     echo "formating partitions ..."
-    mkfs.fat -F32 /dev/sda1
-    mkfs.ext4 /dev/sda2
-    mkfs.ext4 /dev/sda3
+    mkfs.fat -F32 /dev/nvme0n1p1
+    mkfs.ext4 /dev/nvme0n1p2
+    mkfs.ext4 /dev/nvme0n1p3
 }
 
 s_mounting() {
     echo "mounting partitions ..."
-    mount /dev/sda2 /mnt
+    mount /dev/nvme0n1p2 /mnt
     mkdir /mnt/{boot,home}
-    mount /dev/sda1 /mnt/boot
-    mount /dev/sda3 /mnt/home
+    mount /dev/nvme0n1p1 /mnt/boot
+    mount /dev/nvme0n1p3 /mnt/home
 }
 
 s_mirrors() {
@@ -52,7 +49,8 @@ s_mirrors() {
 
 s_pacstrap() {
     echo "installing basic packages ..."
-    pacstrap /mnt base linux e2fsprogs dosfstools linux-firmware neovim iwd
+    # firmwares can be customized later
+    pacstrap /mnt base linux-zen e2fsprogs dosfstools linux-firmware neovim iwd
 }
 
 s_fstab() {
