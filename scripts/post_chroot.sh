@@ -215,6 +215,9 @@ EOF
 sudo systemctl enable systemd-networkd.service systemd-resolved.service
 sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 
+# rkfill, needed for some laptops
+# sudo systemctl enable --now rfkill-unblock@all.service
+
 # disable gvfs automount for network
 sudo sed -i 's/^AutoMount=true$/AutoMount=false/' /usr/share/gvfs/mounts/network.mount || true
 
