@@ -36,11 +36,11 @@
         }
     },
     "cpu": {
-        "format": " {usage}%",
+        "format": " {usage}%",
         "tooltip": false
     },
     "memory": {
-        "format": " {}%"
+        "format": " {}%"
     },
     "battery": {
         "states": {
@@ -49,7 +49,7 @@
             "critical": 15
         },
         "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
+        "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
         "format-alt": "{icon} {time}",
         "format-icons": ["", "", "", "", ""]
@@ -59,8 +59,8 @@
         "tooltip-format-wifi": "Interface: {ifname}\nSSID: {essid}\nStrength: {signaldBm} dBm\nFrequency: {frequency} GHz\nUpload: {bandwidthUpBytes}\nDownload: {bandwidthDownBytes}",
         "tooltip-format-disconnected": "",
         "format-wifi": "  {signalStrength}%",
-        "format-ethernet": "",
-        "format-linked": " {ifname} (No IP)",
+        "format-ethernet": "",
+        "format-linked": " {ifname} (No IP)",
         "format-disconnected": "",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
@@ -69,14 +69,14 @@
         "format": "{icon} {volume}%",
         "format-alt": "{format_source}",
         "format-bluetooth": "{icon} {volume}%",
-        "format-bluetooth-muted": " {icon}",
-        "format-muted": " {volume}%",
+        "format-bluetooth-muted": "󰗿 {icon}",
+        "format-muted": " {volume}%",
         "format-source": " {volume}%",
         "format-source-muted": " {volume}%",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
             "phone": "",
             "portable": "",
             "car": "",
