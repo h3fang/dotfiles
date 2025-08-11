@@ -50,7 +50,7 @@ s_mirrors() {
 s_pacstrap() {
     echo "installing basic packages ..."
     # firmwares can be customized later
-    pacstrap /mnt base linux-zen e2fsprogs dosfstools linux-firmware neovim iwd
+    pacstrap /mnt base linux e2fsprogs dosfstools linux-firmware neovim iwd
 }
 
 s_fstab() {

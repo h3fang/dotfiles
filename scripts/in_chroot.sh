@@ -82,7 +82,7 @@ COMPRESSION="zstd"
 COMPRESSION_OPTIONS=(-T0)
 EOF
 
-sed -i "s/PRESETS=('default' 'fallback')/PRESETS=('default')/" /etc/mkinitcpio.d/linux-zen.preset
+sed -i "s/PRESETS=('default' 'fallback')/PRESETS=('default')/" /etc/mkinitcpio.d/linux.preset
 mkinitcpio -P
 
 # users
@@ -131,9 +131,9 @@ EOF
 
 cat > /boot/loader/entries/arch.conf <<EOF
 title Arch Linux
-linux /vmlinuz-linux-zen
+linux /vmlinuz-linux
 initrd /${Microcode}.img
-initrd /initramfs-linux-zen.img
+initrd /initramfs-linux.img
 options root=$RootUUID rw quiet nmi_watchdog=0 audit=0
 EOF
 
