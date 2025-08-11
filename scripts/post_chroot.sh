@@ -126,7 +126,7 @@ done
 sudo pacman -S --needed linux-firmware-realtek linux-firmware-cirrus linux-firmware-other linux-firmware-intel sof-firmware \
     pacman-contrib rebuild-detector \
     zsh zsh-completions zsh-syntax-highlighting zsh-autosuggestions fzf starship alacritty \
-    ttf-hack-nerd ttf-roboto ttf-nerd-fonts-symbols-mono woff2-font-awesome noto-fonts noto-fonts-cjk noto-fonts-emoji \
+    ttf-hack-nerd ttf-roboto ttf-nerd-fonts-symbols woff2-font-awesome noto-fonts noto-fonts-cjk noto-fonts-emoji \
     pipewire pipewire-pulse wireplumber \
     zip unzip unrar 7zip file-roller \
     htop fd ncdu man-db man-pages eza bat ripgrep gnome-keyring fastfetch borg polkit-gnome systembus-notify duf dog trash-cli \
