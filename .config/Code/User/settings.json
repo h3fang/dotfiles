@@ -9,7 +9,7 @@
     // explorer
     "explorer.confirmDelete": false,
     // Editor
-    "workbench.colorTheme": "Default Dark+",
+    "workbench.colorTheme": "Default Light+",
     "workbench.colorCustomizations": {
         "[Default Light+]": {
             "editor.background": "#e7e7e7",
