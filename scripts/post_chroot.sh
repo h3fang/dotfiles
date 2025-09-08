@@ -134,7 +134,7 @@ sudo pacman -S --needed linux-firmware-realtek linux-firmware-cirrus linux-firmw
     mpv loupe evince poppler-data typst \
     transmission-gtk firefox profile-cleaner openssh openbsd-netcat rclone rsync \
     sway xorg-xwayland swaybg swayidle swaylock xdg-desktop-portal xdg-desktop-portal-wlr \
-    waybar python-requests rofi-wayland dunst papirus-icon-theme wl-clipboard wf-recorder grim slurp satty acpi jq \
+    waybar python-requests rofi dunst papirus-icon-theme wl-clipboard wf-recorder grim slurp satty acpi jq \
     thunar thunar-volman gvfs udiskie brightnessctl \
     fcitx5 fcitx5-qt fcitx5-gtk fcitx5-chinese-addons fcitx5-pinyin-zhwiki \
     python clang gdb cmake rustup mold tokei cargo-outdated nodejs
