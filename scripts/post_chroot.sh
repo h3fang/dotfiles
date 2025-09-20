@@ -212,7 +212,23 @@ sudo tee /etc/systemd/system/systemd-networkd-wait-online.service.d/wait-for-any
 ExecStart=/usr/lib/systemd/systemd-networkd-wait-online --any
 EOF
 
-sudo systemctl enable systemd-networkd.service systemd-resolved.service
+# systemd-resolved
+
+sudo mkdir -p /etc/systemd/resolved.conf.d
+sudo tee /etc/systemd/resolved.conf.d/dnssec.conf > /dev/null <<EOF
+[Resolve]
+DNSSEC=allow-downgrade
+EOF
+
+if [[ -L /etc/resolv.conf ]]; then
+    sudo rm /etc/resolv.conf
+fi
+
+if [[ -f /etc/resolv.conf ]]; then
+    sudo mv /etc/resolv.conf /etc/resolv.conf.backup
+fi
+
+sudo systemctl enable --now systemd-networkd.service systemd-resolved.service
 sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 
 # rkfill, needed for some laptops
