@@ -217,7 +217,7 @@ EOF
 sudo mkdir -p /etc/systemd/resolved.conf.d
 sudo tee /etc/systemd/resolved.conf.d/dnssec.conf > /dev/null <<EOF
 [Resolve]
-DNSSEC=allow-downgrade
+DNSSEC=no
 EOF
 
 if [[ -L /etc/resolv.conf ]]; then
