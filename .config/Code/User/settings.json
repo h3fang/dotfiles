@@ -60,6 +60,8 @@
     "extensions.ignoreRecommendations": true,
     "workbench.settings.enableNaturalLanguageSearch": false,
     "workbench.enableExperiments": false,
+    // chat
+    "chat.disableAIFeatures": true,
     // typst
     "tinymist.formatterMode": "typstyle",
     // svelte
