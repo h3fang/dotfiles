@@ -22,7 +22,7 @@ bindings = [
 
 [[hints.enabled]]
 binding = { key = "U", mods = "Control|Shift" }
-action = "Copy"
+command = "xdg-open"
 hyperlinks = true
 mouse.enabled = true
 mouse.mods = "Control"
