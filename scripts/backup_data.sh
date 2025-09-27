@@ -44,6 +44,7 @@ borg create --compression auto,zstd,16 --stats --list --filter=AME \
     --exclude "sh:$HOME/projects/**/[rR]esults" \
     --exclude "sh:$HOME/projects/**/.godot" \
     --exclude "sh:$HOME/projects/**/.import" \
+    --exclude "sh:$HOME/projects/**/.venv" \
     --exclude "sh:$HOME/projects/**/.vscode/ipch" \
     --exclude "sh:$HOME/projects/**/node_modules" \
     --exclude "sh:$HOME/projects/**/*.so" \
@@ -60,6 +61,8 @@ borg create --compression auto,zstd,16 --stats --list --filter=AME \
     --exclude "sh:$HOME/projects/AUR/*/src" \
     --exclude "sh:$HOME/projects/Courses/**/*.pdf" \
     --exclude "sh:$HOME/projects/Courses/**/*.npz" \
+    --exclude "sh:$HOME/projects/rust" \
+    --exclude "sh:$HOME/projects/cargo" \
     --exclude "sh:$HOME/**/__pycache__" \
     --exclude "$HOME/projects/blog/public" \
     "::{now:%Y-%m-%d_%H-%M-%S}" \
