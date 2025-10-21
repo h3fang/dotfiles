@@ -18,3 +18,5 @@
 [delta]
     navigate = true
     side-by-side = true
+[feature]
+    manyFiles = true
