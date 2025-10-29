@@ -20,3 +20,5 @@
     side-by-side = true
 [feature]
     manyFiles = true
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
