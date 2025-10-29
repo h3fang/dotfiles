@@ -1,24 +1,24 @@
 [user]
-    email = hf.enigma@gmail.com
-    name = Fang He
+	email = hf.enigma@gmail.com
+	name = Fang He
 [core]
-    autocrlf = input
-    pager = delta
+	autocrlf = input
+	pager = delta
 [alias]
-    st = status
-    co = commit
-    br = branch
-    di = diff
-    dic = diff --cached
-    ch = checkout
+	st = status
+	co = commit
+	br = branch
+	di = diff
+	dic = diff --cached
+	ch = checkout
 [pull]
-    rebase = false
+	rebase = false
 [init]
-    defaultBranch = main
+	defaultBranch = main
 [delta]
-    navigate = true
-    side-by-side = true
+	navigate = true
+	side-by-side = true
 [feature]
-    manyFiles = true
+	manyFiles = true
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
