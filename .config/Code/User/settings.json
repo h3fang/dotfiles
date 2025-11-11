@@ -46,6 +46,7 @@
         "**/cargo/registry/src/**/*.rs": true,
         "**/rustup/toolchains/*/lib/rustlib/**/*.rs": true
     },
+    "rust-analyzer.cargo.targetDir": true,
     // C/C++
     "C_Cpp.clang_format_style": "{BasedOnStyle: LLVM, IndentWidth: 4, ColumnLimit: 100, BreakBeforeBraces: Attach, AccessModifierOffset: -4, AllowShortIfStatementsOnASingleLine: Never,AllowShortBlocksOnASingleLine: Empty, AllowShortFunctionsOnASingleLine: Empty}",
     // python
