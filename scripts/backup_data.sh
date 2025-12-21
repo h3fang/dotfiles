@@ -1,5 +1,5 @@
 #!/bin/bash
-# requires borg, libsecret, libnotify, awk
+# requires borg, libsecret, libnotify, jq
 
 set -eEuo pipefail
 failure() {
@@ -78,19 +78,14 @@ borg create --compression auto,zstd,16 --stats --list --filter=AME \
     ~/Documents \
     ~/.zshenv
 
-# warn for abnormal delta size
-last_backup_info=$(borg info --last 1 | awk '/This archive:/{print}')
-last_size=$(echo "$last_backup_info" | awk '{print $7}')
-last_unit=$(echo "$last_backup_info" | awk '{print $8}')
+deduplicated_size=$(borg info --last 1 --json | jq '.archives[0].stats.deduplicated_size')
 
-# anything other than "kB", including "MB", "GB", or possibly "B" (I dont't know the complete list of uints in borg backup)
-if [[ $last_unit != "kB" ]]; then
-    # delta smaller than 2 MB is fine
-    if ! [[ $last_unit == "MB" && $(echo "$last_size" "2.0" | awk '{if ($1 <= $2) print 1;}') -eq 1 ]]; then
-        echo "Abnormal last backup size: $last_size $last_unit"
-        notify-send -u critical "Abnormal last backup size: $last_size $last_unit"
-        exit 2
-    fi
+# warn if deduplicated_size is greater than 2 MB
+if [[ $deduplicated_size -gt 2097152 ]]; then
+    msg="Abnormal last deduplicated_size: $deduplicated_size"
+    echo "$msg"
+    notify-send -u critical "$msg"
+    exit 2
 fi
 
 borg prune -v --list --keep-within=10d --keep-daily=30 --keep-weekly=4 --keep-monthly=4 --save-space
