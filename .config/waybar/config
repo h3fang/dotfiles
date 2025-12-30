@@ -3,7 +3,7 @@
     "height": 32,
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["custom/weather", "idle_inhibitor", "keyboard-state", "pulseaudio", "network", "battery", "custom/kernel", "custom/systemd", "custom/update", "clock", "tray"],
+    "modules-right": ["custom/weather", "idle_inhibitor", "keyboard-state", "pulseaudio", "network", "battery", "custom/disk", "custom/kernel", "custom/systemd", "custom/update", "clock", "tray"],
     "sway/workspaces": {
          "disable-scroll": true
     },
@@ -111,7 +111,11 @@
         "return-type": "json",
         "signal": 2,
         "exec": "$HOME/.config/waybar/scripts/arch-update 2>/dev/null"
+    },
+    "custom/disk": {
+        "interval": 60,
+        "return-type": "json",
+        "exec": "$HOME/.config/waybar/scripts/disk 2>/dev/null"
     }
 }
-
 // vim: ft=json

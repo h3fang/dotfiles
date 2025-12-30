@@ -59,6 +59,7 @@ button:hover {
 #battery,
 #network,
 #pulseaudio,
+#custom-disk,
 #custom-weather,
 #custom-kernel,
 #custom-systemd,
@@ -120,4 +121,11 @@ label:focus {
     background-color: yellow;
 }
 
+#custom-disk.warning {
+    color: #2d3436;
+    background-color: yellow;
+}
 
+#custom-disk.critical {
+    background-color: #dc143c;
+}

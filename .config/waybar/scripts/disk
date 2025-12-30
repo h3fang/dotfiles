@@ -1,0 +1,37 @@
+#!/bin/env python3
+
+# requires python-psutil
+
+import json
+import shutil
+
+import psutil
+
+ans = {}
+status = 0
+for p in psutil.disk_partitions():
+    usage = shutil.disk_usage(p.mountpoint)
+    used = usage.used / usage.total
+    if used < 0.7:
+        continue
+
+    msg = f"{p.mountpoint}: {used * 100:.1f}% used"
+    if "tooltip" not in ans:
+        ans["tooltip"] = msg
+    else:
+        ans["tooltip"] += msg
+
+    if used < 0.85:
+        status = max(status, 1)
+    else:
+        status = max(status, 2)
+
+if status != 0:
+    ans["text"] = " Disk Usage"
+
+if status == 1:
+    ans["class"] = "warning"
+elif status == 2:
+    ans["class"] = "critical"
+
+print(json.dumps(ans))
