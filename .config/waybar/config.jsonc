@@ -118,4 +118,3 @@
         "exec": "$HOME/.config/waybar/scripts/disk 2>/dev/null"
     }
 }
-// vim: ft=json
