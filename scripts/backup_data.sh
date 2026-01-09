@@ -63,6 +63,7 @@ borg create --compression auto,zstd,16 --stats --list --filter=AME \
     --exclude "sh:$HOME/projects/Courses/**/*.npz" \
     --exclude "sh:$HOME/projects/rust" \
     --exclude "sh:$HOME/projects/cargo" \
+    --exclude "sh:$HOME/projects/playground" \
     --exclude "sh:$HOME/**/__pycache__" \
     --exclude "$HOME/projects/blog/public" \
     "::{now:%Y-%m-%d_%H-%M-%S}" \
