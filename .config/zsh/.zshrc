@@ -41,7 +41,7 @@ alias music='mpv --volume=60 --shuffle --loop-playlist=inf --no-resume-playback 
 alias ncdu='ncdu --color dark'
 alias rm='trash-put'
 alias vim='nvim'
-alias yaySc='yay -Sc --noconfirm'
+alias pacclean='paccache -ruk0 && paccache -rk2 && yay -Sca --noconfirm'
 alias gitgc='git reflog expire --expire=now --all && git gc --prune=now'
 
 # functions
