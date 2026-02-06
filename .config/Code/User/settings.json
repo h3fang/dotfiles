@@ -15,7 +15,8 @@
             "editor.background": "#e7e7e7",
             "tab.activeBackground": "#ccdccc"
         },
-        "editorBracketMatch.border": "#a00"
+        "editorBracketMatch.border": "#d00",
+        "editorBracketMatch.foreground": "#f00"
     },
     "workbench.panel.defaultLocation": "right",
     "window.customTitleBarVisibility": "never",
