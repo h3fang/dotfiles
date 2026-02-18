@@ -70,6 +70,7 @@
 # .config/Code folder
 .config/Code/*
 !.config/Code/User/
+.config/Code/User/chatLanguageModels.json
 .config/Code/User/workspaceStorage/
 .config/Code/User/globalStorage/
 .config/Code/User/History/
