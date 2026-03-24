@@ -51,7 +51,6 @@
     // C/C++
     "C_Cpp.clang_format_style": "{BasedOnStyle: LLVM, IndentWidth: 4, ColumnLimit: 100, BreakBeforeBraces: Attach, AccessModifierOffset: -4, AllowShortIfStatementsOnASingleLine: Never,AllowShortBlocksOnASingleLine: Empty, AllowShortFunctionsOnASingleLine: Empty}",
     // python
-    "python.condaPath": "~/.local/miniconda3/bin/conda",
     "ruff.path": [
         "/usr/bin/ruff"
     ],
@@ -66,8 +65,6 @@
     "chat.disableAIFeatures": true,
     // typst
     "tinymist.formatterMode": "typstyle",
-    // svelte
-    "svelte.enable-ts-plugin": true,
     // misc.
     "files.associations": {
         "*.geojson": "json"
