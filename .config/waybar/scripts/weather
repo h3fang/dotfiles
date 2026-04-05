@@ -3,6 +3,7 @@
 import fcntl
 import json
 import os
+import tempfile
 import time
 import traceback
 from base64 import urlsafe_b64encode
@@ -29,17 +30,18 @@ def json_web_token() -> str:
     payload = urlsafe_b64encode(json.dumps(payload).encode())
 
     header_payload = headers + b"." + payload
-    temp = Path(f"/tmp/qweather-jwt-{t}")
-    with temp.open(mode="wb") as f:
-        f.write(header_payload)
 
-    private_key = Path().home() / ".ssh/qweather.pem"
-    sig = check_output(
-        f"openssl pkeyutl -sign -inkey {private_key} -rawin -in {temp}",
-        shell=True,
-    )
+    with tempfile.NamedTemporaryFile(delete_on_close=False) as f:
+        f.write(header_payload)
+        f.close()
+
+        private_key = Path().home() / ".ssh/qweather.pem"
+        sig = check_output(
+            f"openssl pkeyutl -sign -inkey {private_key} -rawin -in {f.name}",
+            shell=True,
+        )
+
     sig = urlsafe_b64encode(sig)
-    temp.unlink()
     return (header_payload + b"." + sig).decode()
 
 
