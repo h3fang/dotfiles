@@ -132,9 +132,9 @@ sudo pacman -S --needed linux-firmware-realtek linux-firmware-cirrus linux-firmw
     htop fd ncdu man-db man-pages eza bat ripgrep gnome-keyring fastfetch borg polkit-gnome systembus-notify duf dog trash-cli \
     openblas blas-openblas \
     mpv loupe evince poppler-data typst \
-    transmission-gtk firefox profile-cleaner openssh openbsd-netcat rclone rsync \
+    curl transmission-gtk firefox profile-cleaner openssh openbsd-netcat rclone rsync \
     sway xorg-xwayland swaybg swayidle swaylock xdg-desktop-portal xdg-desktop-portal-wlr \
-    waybar python-requests python-psutil rofi dunst papirus-icon-theme wl-clipboard wf-recorder grim slurp satty acpi jq \
+    waybar python-psutil rofi dunst papirus-icon-theme wl-clipboard wf-recorder grim slurp satty acpi jq \
     thunar thunar-volman gvfs gvfs-mtp udiskie brightnessctl \
     fcitx5 fcitx5-qt fcitx5-gtk fcitx5-chinese-addons fcitx5-pinyin-zhwiki \
     python clang gdb cmake rustup mold tokei cargo-outdated nodejs
