@@ -55,6 +55,7 @@
         "/usr/bin/ruff"
     ],
     "ruff.lineLength": 120,
+    "python.analysis.typeCheckingMode": "standard",
     // Privacy
     "telemetry.telemetryLevel": "off",
     "update.mode": "none",
