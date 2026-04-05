@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+# requires: curl
+
 import fcntl
 import json
 import os
@@ -10,10 +12,32 @@ from base64 import urlsafe_b64encode
 from pathlib import Path
 from subprocess import check_output
 
-import requests
-
 HOST = ""
-TIMEOUT = 10
+CONNECT_TIMEOUT = 10
+MAX_TIME = 30
+
+
+def get(
+    url: str,
+    jwt: str,
+):
+    output = check_output(
+        [
+            "curl",
+            "--silent",
+            "-X",
+            "GET",
+            url,
+            "--compressed",
+            "-H",
+            jwt,
+            "-m",
+            str(MAX_TIME),
+            "--connect-timeout",
+            str(CONNECT_TIMEOUT),
+        ]
+    )
+    return json.loads(output.decode())
 
 
 def json_web_token() -> str:
@@ -45,18 +69,13 @@ def json_web_token() -> str:
     return (header_payload + b"." + sig).decode()
 
 
-def get_air_quality(location: str, s: requests.Session) -> str:
-    r = s.get(
-        f"{HOST}/v7/air/now?location={location}",
-        timeout=TIMEOUT,
-    )
-    r.raise_for_status()
-    r = r.json()
+def get_air_quality(location: str, jwt: str) -> str:
+    r = get(f"{HOST}/v7/air/now?location={location}", jwt)
     index = r["now"]
     return f"AQI: {index['aqi']}({index['category']})"
 
 
-def get_location_id(location: str, s: requests.Session) -> str:
+def get_location_id(location: str, jwt: str) -> str:
     ids = {}
     file = Path("/tmp/qweather-loc")
     if file.exists():
@@ -65,12 +84,7 @@ def get_location_id(location: str, s: requests.Session) -> str:
             if location in ids:
                 return ids[location]
 
-    r = s.get(
-        f"{HOST}/geo/v2/city/lookup?location={location}",
-        timeout=TIMEOUT,
-    )
-    r.raise_for_status()
-    r = r.json()
+    r = get(f"{HOST}/geo/v2/city/lookup?location={location}", jwt)
     if "code" in r and int(r["code"]) != 200:
         raise RuntimeError(f"Geoapi returned code: {r['code']}")
     loc_id = r["location"][0]["id"]
@@ -87,17 +101,11 @@ def qweather() -> tuple[str, str]:
     HOST = os.environ["QWEATHER_HOST"]
     location = os.environ["QWEATHER_LOC"]
 
-    s = requests.Session()
-    s.headers.update({"Authorization": f"Bearer {json_web_token()}"})
+    jwt = f"Authorization: Bearer {json_web_token()}"
 
-    location_id = get_location_id(location, s)
+    location_id = get_location_id(location, jwt)
 
-    r = s.get(
-        f"{HOST}/v7/weather/now?location={location_id}",
-        timeout=TIMEOUT,
-    )
-    r.raise_for_status()
-    d = r.json()
+    d = get(f"{HOST}/v7/weather/now?location={location_id}", jwt)
 
     n = d["now"]
     summary = f"{location} {n['text']} {n['temp']}℃"
@@ -113,7 +121,7 @@ def qweather() -> tuple[str, str]:
 
     if "cloud" in n:
         details += f"Cloudiness: {n['cloud']}%\n"
-    details += get_air_quality(location_id, s)
+    details += get_air_quality(location_id, jwt)
     return summary, details
 
 
