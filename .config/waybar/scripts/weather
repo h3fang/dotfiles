@@ -2,25 +2,23 @@
 
 # requires: curl
 
+import base64
 import fcntl
 import json
 import os
 import tempfile
 import time
 import traceback
-from base64 import urlsafe_b64encode
 from pathlib import Path
 from subprocess import check_output
 
-HOST = ""
+HOST = os.environ["QWEATHER_HOST"]
+LOCATION = os.environ["QWEATHER_LOC"]
 CONNECT_TIMEOUT = 10
 MAX_TIME = 30
 
 
-def get(
-    url: str,
-    jwt: str,
-):
+def get(url: str, jwt: str):
     output = check_output(
         [
             "curl",
@@ -28,7 +26,6 @@ def get(
             "--fail",
             "-X",
             "GET",
-            url,
             "--compressed",
             "-H",
             jwt,
@@ -36,23 +33,28 @@ def get(
             str(MAX_TIME),
             "--connect-timeout",
             str(CONNECT_TIMEOUT),
+            url,
         ]
     )
     return json.loads(output.decode())
 
 
+def b64encode(input: bytes) -> bytes:
+    return base64.urlsafe_b64encode(input).rstrip(b"=")
+
+
 def json_web_token() -> str:
     kid = os.environ["QWEATHER_KID"]
     sub = os.environ["QWEATHER_SUB"]
-    headers = urlsafe_b64encode(json.dumps({"alg": "EdDSA", "kid": kid}).encode())
+    headers = b64encode(json.dumps({"alg": "EdDSA", "kid": kid}).encode())
 
     t = int(time.time())
     payload = {
+        "sub": sub,
         "iat": t - 30,
         "exp": t + 600,
-        "sub": sub,
     }
-    payload = urlsafe_b64encode(json.dumps(payload).encode())
+    payload = b64encode(json.dumps(payload).encode())
 
     header_payload = headers + b"." + payload
 
@@ -66,7 +68,7 @@ def json_web_token() -> str:
             shell=True,
         )
 
-    sig = urlsafe_b64encode(sig)
+    sig = b64encode(sig)
     return (header_payload + b"." + sig).decode()
 
 
@@ -98,18 +100,14 @@ def get_location_id(location: str, jwt: str) -> str:
 
 
 def qweather() -> tuple[str, str]:
-    global HOST
-    HOST = os.environ["QWEATHER_HOST"]
-    location = os.environ["QWEATHER_LOC"]
-
     jwt = f"Authorization: Bearer {json_web_token()}"
 
-    location_id = get_location_id(location, jwt)
+    location_id = get_location_id(LOCATION, jwt)
 
     d = get(f"{HOST}/v7/weather/now?location={location_id}", jwt)
 
     n = d["now"]
-    summary = f"{location} {n['text']} {n['temp']}℃"
+    summary = f"{LOCATION} {n['text']} {n['temp']}℃"
     details = (
         f"Feels Like: {n['feelsLike']}℃\n"
         + f"Pressure: {n['pressure']} hPa\n"
@@ -134,7 +132,7 @@ def update() -> str:
         summary, details = qweather()
     except Exception as e:
         summary = f"<span color='red'>{type(e).__name__}</span>"
-        details = "\n".join(traceback.format_tb(e.__traceback__))
+        details = traceback.format_exc(limit=2)
 
     return json.dumps({"text": summary, "tooltip": details})
 
