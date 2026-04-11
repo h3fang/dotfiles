@@ -73,13 +73,13 @@ def json_web_token() -> str:
     return (header_payload + b"." + sig).decode()
 
 
-def get_air_quality(location: str, jwt: str) -> str:
-    r = get(f"{HOST}/v7/air/now?location={location}", jwt)
-    index = r["now"]
+def get_air_quality(lat: float, lon: float, jwt: str) -> str:
+    r = get(f"{HOST}/airquality/v1/current/{lat:.2f}/{lon:.2f}", jwt)
+    index = r["indexes"][0]
     return f"AQI: {index['aqi']}({index['category']})"
 
 
-def get_location_id(location: str, jwt: str) -> str:
+def get_geo_info(location: str, jwt: str) -> tuple[str, float, float]:
     ids = {}
     file = Path("/tmp/qweather-loc")
     if file.exists():
@@ -92,19 +92,20 @@ def get_location_id(location: str, jwt: str) -> str:
     r = get(f"{HOST}/geo/v2/city/lookup?{urlencode(params)}", jwt)
     if "code" in r and int(r["code"]) != 200:
         raise RuntimeError(f"Geoapi returned code: {r['code']}")
-    loc_id = r["location"][0]["id"]
-    ids[location] = loc_id
+    loc = r["location"][0]
+    info = (loc["id"], float(loc["lat"]), float(loc["lon"]))
+    ids[location] = info
 
     with file.open(mode="w") as f:
         json.dump(ids, f)
 
-    return loc_id
+    return info
 
 
 def qweather() -> tuple[str, str]:
     jwt = f"Authorization: Bearer {json_web_token()}"
 
-    location_id = get_location_id(LOCATION, jwt)
+    (location_id, lat, lon) = get_geo_info(LOCATION, jwt)
 
     d = get(f"{HOST}/v7/weather/now?location={location_id}", jwt)
 
@@ -122,7 +123,7 @@ def qweather() -> tuple[str, str]:
 
     if "cloud" in n:
         details += f"Cloudiness: {n['cloud']}%\n"
-    details += get_air_quality(location_id, jwt)
+    details += get_air_quality(lat, lon, jwt)
     return summary, details
 
 
