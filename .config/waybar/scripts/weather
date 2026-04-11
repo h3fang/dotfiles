@@ -11,6 +11,7 @@ import time
 import traceback
 from pathlib import Path
 from subprocess import check_output
+from urllib.parse import urlencode
 
 HOST = os.environ["QWEATHER_HOST"]
 LOCATION = os.environ["QWEATHER_LOC"]
@@ -87,7 +88,8 @@ def get_location_id(location: str, jwt: str) -> str:
             if location in ids:
                 return ids[location]
 
-    r = get(f"{HOST}/geo/v2/city/lookup?location={location}", jwt)
+    params = {"location": location, "range": "cn", "number": 1}
+    r = get(f"{HOST}/geo/v2/city/lookup?{urlencode(params)}", jwt)
     if "code" in r and int(r["code"]) != 200:
         raise RuntimeError(f"Geoapi returned code: {r['code']}")
     loc_id = r["location"][0]["id"]
