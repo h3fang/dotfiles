@@ -8,46 +8,48 @@
 
 import fcntl
 import json
+import subprocess
 import time
 import traceback
-from subprocess import CalledProcessError, check_output
 
 BASE_COLOR = "white"
 UPDATE_COLOR = "lime"
 ERROR_COLOR = "red"
 
 
-def check_updates(cmd: str, no_update_ret: int, limit=5) -> tuple[int, str, str]:
+def check_updates(
+    cmd: list[str], no_update_ret: int, updates_limit: int = 5
+) -> tuple[int, str, str]:
     try:
-        output = check_output(cmd, shell=True, timeout=15).decode()
-        updates = [line for line in output.split("\n") if line]
-        count = len(updates)
-        updates = "\n".join(updates[:limit])
-        if count > limit:
-            updates += "\n..."
-        color = UPDATE_COLOR if count > 0 else BASE_COLOR
-        return count, updates, color
-    except CalledProcessError as e:
-        if e.returncode == no_update_ret:
+        result = subprocess.run(cmd, timeout=15, capture_output=True, text=True)
+
+        if result.returncode == no_update_ret:
             return 0, "", BASE_COLOR
-        else:
-            content = traceback.format_exc(limit=2)
-            return 0, content, ERROR_COLOR
+
+        result.check_returncode()
+
+        updates = result.stdout.splitlines()
+        count = len(updates)
+        content = "\n".join(updates[:updates_limit])
+        if count > updates_limit:
+            content += "\n..."
+        color = UPDATE_COLOR if count > 0 else BASE_COLOR
+        return count, content, color
     except Exception:
         content = traceback.format_exc(limit=2)
         return 0, content, ERROR_COLOR
 
 
 def update() -> str:
-    repo_count, repo_updates, repo_color = check_updates("checkupdates", 2)
-    aur_count, aur_updates, aur_color = check_updates("yay -Qua", 1)
+    repo_count, repo_content, repo_color = check_updates(["checkupdates"], 2)
+    aur_count, aur_content, aur_color = check_updates(["yay", "-Qua"], 1)
 
     summary = f" <span color='{repo_color}'>{repo_count}</span>+<span color='{aur_color}'>{aur_count}</span>"
 
-    if len(repo_updates) == 0 and len(aur_updates) == 0:
+    if len(repo_content) == 0 and len(aur_content) == 0:
         details = "Up to date"
     else:
-        details = f"{repo_updates}\n{aur_updates}".strip("\n")
+        details = f"{repo_content}\n{aur_content}".strip("\n")
 
     return json.dumps({"text": summary, "tooltip": details})
 
