@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# requires: curl
+# requires: curl, openssl
 
 import base64
 import fcntl
@@ -64,12 +64,20 @@ def json_web_token() -> str:
         f.close()
 
         private_key = Path().home() / ".ssh/qweather.pem"
-        sig = check_output(
-            f"openssl pkeyutl -sign -inkey {private_key} -rawin -in {f.name}",
-            shell=True,
+        output = check_output(
+            [
+                "openssl",
+                "pkeyutl",
+                "-sign",
+                "-inkey",
+                str(private_key),
+                "-rawin",
+                "-in",
+                f.name,
+            ],
         )
 
-    sig = b64encode(sig)
+    sig = b64encode(output)
     return (header_payload + b"." + sig).decode()
 
 
