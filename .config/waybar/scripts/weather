@@ -10,7 +10,7 @@ import tempfile
 import time
 import traceback
 from pathlib import Path
-from subprocess import check_output
+from subprocess import run, check_output
 from urllib.parse import urlencode
 
 HOST = os.environ["QWEATHER_HOST"]
@@ -20,24 +20,36 @@ MAX_TIME = 30
 
 
 def get(url: str, jwt: str):
-    output = check_output(
+    result = run(
         [
             "curl",
             "--silent",
-            "--fail",
+            "--show-error",
             "-X",
             "GET",
             "--compressed",
             "-H",
             jwt,
+            "-H",
+            "Accept: application/json",
             "-m",
             str(MAX_TIME),
             "--connect-timeout",
             str(CONNECT_TIMEOUT),
             url,
-        ]
+        ],
+        capture_output=True,
+        text=True,
     )
-    return json.loads(output.decode())
+
+    if result.returncode != 0:
+        raise RuntimeError(result.stderr)
+
+    resp = json.loads(result.stdout)
+    if "error" in resp:
+        raise RuntimeError(json.dumps(resp["error"], indent=2))
+
+    return resp
 
 
 def b64encode(input: bytes) -> bytes:
@@ -119,20 +131,26 @@ def qweather() -> tuple[str, str]:
 
     n = d["now"]
     summary = f"{LOCATION} {n['text']} {n['temp']}℃"
-    details = (
-        f"Feels Like: {n['feelsLike']}℃\n"
-        + f"Pressure: {n['pressure']} hPa\n"
-        + f"Humidity: {n['humidity']}%\n"
-        + f"Visibility: {n['vis']} km\n"
-        + f"Wind Speed: {n['windSpeed']} km/h\n"
-        + f"Wind Direction: {n['wind360']} degree\n"
-        + f"Observation Time: {n['obsTime']}\n"
-    )
+    details = [
+        f"Feels Like: {n['feelsLike']}℃",
+        f"Pressure: {n['pressure']} hPa",
+        f"Humidity: {n['humidity']}%",
+        f"Visibility: {n['vis']} km",
+        f"Wind Speed: {n['windSpeed']} km/h",
+        f"Wind Direction: {n['wind360']} degree",
+        f"Observation Time: {n['obsTime']}",
+    ]
 
     if "cloud" in n:
-        details += f"Cloudiness: {n['cloud']}%\n"
-    details += get_air_quality(lat, lon, jwt)
-    return summary, details
+        details.append(f"Cloudiness: {n['cloud']}%")
+
+    try:
+        details.append(get_air_quality(lat, lon, jwt))
+    except Exception:
+        details.append("\nAir quality:")
+        details.append(traceback.format_exc(limit=2))
+
+    return summary, "\n".join(details)
 
 
 def update() -> str:
