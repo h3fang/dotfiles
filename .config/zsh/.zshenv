@@ -6,7 +6,6 @@ export XDG_CACHE_HOME=~/.cache
 export XDG_DATA_HOME=~/.local/share
 export XDG_STATE_HOME=~/.local/state
 
-export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}"/zsh
 export XAUTHORITY="$XDG_CACHE_HOME"/Xauthority
 export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
 export GOPATH="$XDG_DATA_HOME"/go
@@ -54,3 +53,4 @@ export VISUAL='nvim'
 export EDITOR='nvim'
 export LESSHISTFILE=/dev/null
 export EXA_COLORS='da=38;5;33'
+

@@ -151,6 +151,10 @@ if ! command -v pf >/dev/null 2>&1; then
     makepkg -fsric
 fi
 
+# zsh
+zdotdir='export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}"/zsh' 
+grep -qxF "$zdotdir" /etc/zsh/zshenv > /dev/null || echo "$zdotdir" | sudo tee -a /etc/zsh/zshenv > /dev/null
+
 # kernel modules
 echo 'blacklist pcspkr' | sudo tee /etc/modprobe.d/nobeep.conf
 sudo rmmod pcspkr || true
