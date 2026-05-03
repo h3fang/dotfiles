@@ -76,8 +76,7 @@ borg create --compression auto,zstd,16 --stats --list --filter=AME \
     ~/scripts \
     ~/Pictures \
     ~/projects \
-    ~/Documents \
-    ~/.zshenv
+    ~/Documents
 
 deduplicated_size=$(borg info --last 1 --json | jq '.archives[0].stats.deduplicated_size')
 
