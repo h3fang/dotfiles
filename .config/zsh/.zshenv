@@ -41,7 +41,7 @@ export QT_FONT_DPI=96
 export SDL_AUDIODRIVER=pipewire
 
 # rust
-export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
+export RUSTUP_DIST_SERVER="https://rsproxy.cn"
 export PATH="$PATH:$CARGO_HOME/bin"
 
 # fzf

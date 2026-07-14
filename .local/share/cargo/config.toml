@@ -1,8 +1,8 @@
 [source.crates-io]
-replace-with = 'aliyun'
+replace-with = 'rsproxy-sparse'
 
-[source.aliyun]
-registry = "sparse+https://mirrors.aliyun.com/crates.io-index/"
+[source.rsproxy-sparse]
+registry = "sparse+https://rsproxy.cn/index/"
 
 [net]
 git-fetch-with-cli = true
